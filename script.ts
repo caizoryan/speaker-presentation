@@ -4,6 +4,10 @@ let capture;
 let corners
 let capturing = false
 
+let canvas = document.getElementById('p5')
+let c_width = canvas?.clientWidth
+let c_height = canvas?.clientHeight
+
 let img
 let graphic
 let spread_1 = {
@@ -20,7 +24,7 @@ setInterval(() => {
 let sketch = (p: p5) => {
 	function draw_base() {
 		if (capturing) {
-			p.image(capture, 0, 0, 720, 600);
+			p.image(capture, 0, 0, c_width, c_height);
 			if (corners) {
 				p.fill(255, 0, 0)
 				for (let i = 0; i < corners.length; i++) {
@@ -89,12 +93,12 @@ let sketch = (p: p5) => {
 	}
 
 	p.setup = () => {
-		p.createCanvas(720, 600);
+		p.createCanvas(c_width, c_height);
 
 		if (capturing) {
 			//@ts-ignore
 			capture = p.createCapture(p.VIDEO);
-			capture.size(720, 600);
+			capture.size(c_width, c_height);
 			capture.hide();
 			qr_code_init()
 		}
@@ -119,7 +123,7 @@ let sketch = (p: p5) => {
 
 }
 
-new p5(sketch, document.getElementById('canvas')!);
+new p5(sketch, document.getElementById('p5')!);
 
 
 

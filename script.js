@@ -17500,6 +17500,9 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
   var capture;
   var corners;
   var capturing = false;
+  var canvas = document.getElementById("p5");
+  var c_width = canvas?.clientWidth;
+  var c_height = canvas?.clientHeight;
   var img;
   var graphic;
   var spread_1 = {
@@ -17513,7 +17516,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
   var sketch = (p) => {
     function draw_base() {
       if (capturing) {
-        p.image(capture, 0, 0, 720, 600);
+        p.image(capture, 0, 0, c_width, c_height);
         if (corners) {
           p.fill(255, 0, 0);
           for (let i = 0; i < corners.length; i++) {
@@ -17554,9 +17557,9 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
     }
     function qr_code_init() {
       setInterval(() => {
-        let canvas = document.querySelector("canvas");
-        if (!canvas) return;
-        qr_scanner_min_default.scanImage(canvas, { returnDetailedScanResult: true }).then((result) => {
+        let canvas2 = document.querySelector("canvas");
+        if (!canvas2) return;
+        qr_scanner_min_default.scanImage(canvas2, { returnDetailedScanResult: true }).then((result) => {
           let text = result.data;
           corners = result.cornerPoints;
         }).catch((error) => {
@@ -17570,10 +17573,10 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
       });
     };
     p.setup = () => {
-      p.createCanvas(720, 600);
+      p.createCanvas(c_width, c_height);
       if (capturing) {
         capture = p.createCapture(p.VIDEO);
-        capture.size(720, 600);
+        capture.size(c_width, c_height);
         capture.hide();
         qr_code_init();
       }
@@ -17586,7 +17589,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
       image_and_grid(img, 50, 50, 180, 290, counter);
     };
   };
-  new import_p5.default(sketch, document.getElementById("canvas"));
+  new import_p5.default(sketch, document.getElementById("p5"));
 })();
 /*! Bundled license information:
 

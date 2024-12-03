@@ -121,11 +121,9 @@ let sketch = (p: p5) => {
 		p.background(255);
 		p.fill(255, 150, 0);
 		p.ellipse(200, 200, 500, 500);
-		p.fill(0, 150, 0, 127);
-		p.ellipse(200, 200, 25 * val, 25 * val);
 		p.textSize(32);
 
-		if (val > 0) counter = (counter + (val / 50))
+		if (val > 0) counter = (counter + (val / 100))
 
 		// draw base image
 		draw_base()

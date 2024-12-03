@@ -5,6 +5,7 @@ let corners
 let capturing = false
 
 let img
+let graphic
 let spread_1 = {
 	image: [img, 0, 0, 50, 70, 89, 330],
 }
@@ -19,7 +20,7 @@ setInterval(() => {
 let sketch = (p: p5) => {
 	function draw_base() {
 		if (capturing) {
-			p.image(capture, 0, 0, 720, 400);
+			p.image(capture, 0, 0, 720, 600);
 			if (corners) {
 				p.fill(255, 0, 0)
 				for (let i = 0; i < corners.length; i++) {
@@ -29,7 +30,7 @@ let sketch = (p: p5) => {
 		}
 	}
 
-	function draw_pixel_grid(x: number, y: number, w: number, h: number, skip: number) {
+	function draw_pixel_grid(p, x: number, y: number, w: number, h: number, skip: number) {
 		let size = 10
 		let row = w / size
 		let col = h / size
@@ -50,6 +51,20 @@ let sketch = (p: p5) => {
 				}
 			}
 		}
+	}
+
+	function image_and_grid(img, x, y, w, h, skip) {
+		if (!graphic) graphic = p.createGraphics(p.width, p.height)
+
+		graphic.image(img, x, y, w, h)
+		graphic.blendMode(p.SCREEN)
+		graphic.blendMode(p.MULTIPLY)
+		draw_pixel_grid(graphic, x, y, w, h, skip)
+		graphic.blendMode(p.BLEND)
+
+		p.blendMode(p.SCREEN)
+		p.image(graphic, 0, 0)
+		p.blendMode(p.BLEND)
 	}
 
 	function qr_code_init() {
@@ -74,12 +89,12 @@ let sketch = (p: p5) => {
 	}
 
 	p.setup = () => {
-		p.createCanvas(720, 400);
+		p.createCanvas(720, 600);
 
 		if (capturing) {
 			//@ts-ignore
 			capture = p.createCapture(p.VIDEO);
-			capture.size(720, 400);
+			capture.size(720, 600);
 			capture.hide();
 			qr_code_init()
 		}
@@ -89,14 +104,14 @@ let sketch = (p: p5) => {
 
 	p.draw = () => {
 		p.background(255);
+		p.fill(255, 150, 0);
+		p.ellipse(200, 200, 500, 500);
+
 		// draw base image
 		draw_base()
 
 		// draw pixel grid
-		p.image(img, 0, 0, 200, 200)
-		p.blendMode(p.MULTIPLY)
-		draw_pixel_grid(0, 0, 200, 200, counter)
-		p.blendMode(p.NORMAL)
+		image_and_grid(img, 50, 50, 180, 290, counter)
 
 		// draw relevant information
 		// Object.entries(spread_1).forEach(([key, value]) => p[key](...value))

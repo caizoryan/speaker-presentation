@@ -17501,6 +17501,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
   var corners;
   var capturing = false;
   var img;
+  var graphic;
   var spread_1 = {
     image: [img, 0, 0, 50, 70, 89, 330]
   };
@@ -17512,7 +17513,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
   var sketch = (p) => {
     function draw_base() {
       if (capturing) {
-        p.image(capture, 0, 0, 720, 400);
+        p.image(capture, 0, 0, 720, 600);
         if (corners) {
           p.fill(255, 0, 0);
           for (let i = 0; i < corners.length; i++) {
@@ -17521,24 +17522,35 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
         }
       }
     }
-    function draw_pixel_grid(x, y, w, h, skip) {
+    function draw_pixel_grid(p2, x, y, w, h, skip) {
       let size = 10;
       let row = w / size;
       let col = h / size;
       let positive = "white";
       let negative = "black";
-      p.noStroke();
+      p2.noStroke();
       for (let i = 0; i < row; i++) {
         for (let j = 0; j < col; j++) {
           if (grid_compare[i][j] < skip / 100) {
-            p.fill(positive);
-            p.rect(x + i * size, y + j * size, size, size);
+            p2.fill(positive);
+            p2.rect(x + i * size, y + j * size, size, size);
           } else {
-            p.fill(negative);
-            p.rect(x + i * size, y + j * size, size, size);
+            p2.fill(negative);
+            p2.rect(x + i * size, y + j * size, size, size);
           }
         }
       }
+    }
+    function image_and_grid(img2, x, y, w, h, skip) {
+      if (!graphic) graphic = p.createGraphics(p.width, p.height);
+      graphic.image(img2, x, y, w, h);
+      graphic.blendMode(p.SCREEN);
+      graphic.blendMode(p.MULTIPLY);
+      draw_pixel_grid(graphic, x, y, w, h, skip);
+      graphic.blendMode(p.BLEND);
+      p.blendMode(p.SCREEN);
+      p.image(graphic, 0, 0);
+      p.blendMode(p.BLEND);
     }
     function qr_code_init() {
       setInterval(() => {
@@ -17558,21 +17570,20 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
       });
     };
     p.setup = () => {
-      p.createCanvas(720, 400);
+      p.createCanvas(720, 600);
       if (capturing) {
         capture = p.createCapture(p.VIDEO);
-        capture.size(720, 400);
+        capture.size(720, 600);
         capture.hide();
         qr_code_init();
       }
     };
     p.draw = () => {
       p.background(255);
+      p.fill(255, 150, 0);
+      p.ellipse(200, 200, 500, 500);
       draw_base();
-      p.image(img, 0, 0, 200, 200);
-      p.blendMode(p.MULTIPLY);
-      draw_pixel_grid(0, 0, 200, 200, counter);
-      p.blendMode(p.NORMAL);
+      image_and_grid(img, 50, 50, 180, 290, counter);
     };
   };
   new import_p5.default(sketch, document.getElementById("canvas"));

@@ -11,6 +11,8 @@
   "description": "",
   "dependencies": {
     "p5": "^1.11.2",
-    "qr-scanner": "^1.4.2"
+    "p5.sound": "^0.1.0",
+    "qr-scanner": "^1.4.2",
+    "tone": "^15.0.4"
   }
 }

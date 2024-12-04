@@ -6,7 +6,7 @@ import * as tone from "tone"
 let capture;
 let corners
 let mic
-let capturing = false
+let capturing = true
 
 let canvas = document.getElementById('p5')
 let c_width = canvas?.clientWidth
@@ -16,11 +16,19 @@ let img, img_1, img_2
 
 let graphic
 
-let current = "spread_0"
+let current = "spread_1"
 
-let spread_1 = {
-	image: [img, 0, 0, 50, 70, 89, 330],
+let spreads = {
+	spread_1: {
+		image_grid: [img_1, 50, 50, 180, 290, () => counter],
+	},
+
+	spread_2: {
+		image_grid: [img_1, 50, 50, 180, 290, () => counter],
+	}
 }
+
+
 let grid_compare = Array.from({ length: 500 }, () => Array.from({ length: 500 }, () => Math.random()))
 
 
@@ -61,6 +69,7 @@ let sketch = (p: p5) => {
 	}
 
 	function image_and_grid(img, x, y, w, h, skip) {
+		if ("function" === typeof skip) skip = skip()
 		if (!graphic) graphic = p.createGraphics(p.width, p.height)
 
 		graphic.image(img, x, y, w, h)
@@ -105,9 +114,8 @@ let sketch = (p: p5) => {
 	}
 
 	p.preload = () => {
-		img = p.loadImage("./img.jpg", () => { spread_1.image[0] = img });
-		img_1 = p.loadImage("./spread_1.png");
-		img_2 = p.loadImage("./spread_2.png");
+		img_1 = p.loadImage("./spread_1.png", () => { spreads["spread_1"].image_grid[0] = img_1 });
+		img_2 = p.loadImage("./spread_2.png", () => { spreads["spread_2"].image_grid[0] = img_2 });
 	}
 
 	p.setup = () => {
@@ -128,7 +136,6 @@ let sketch = (p: p5) => {
 
 	}
 
-
 	p.draw = () => {
 		let val = meter.getValue() + 30
 		p.background(255);
@@ -146,13 +153,15 @@ let sketch = (p: p5) => {
 		if (current === "spread_2") i = img_2
 
 		// draw pixel grid
-		image_and_grid(i, 50, 50, 180, 290, counter)
+		// image_and_grid(i, 50, 50, 180, 290, counter)
 		p.fill(0);
 		p.text("Value: " + val, 10, 30);
 		p.text("Counter: " + counter, 50, 50);
 
 		// draw relevant information
-		// Object.entries(spread_1).forEach(([key, value]) => p[key](...value))
+		if (spreads[current]) {
+			Object.entries(spreads[current]).forEach(([key, value]) => p[key](...value))
+		}
 	}
 
 	p.keyPressed = (e) => {
@@ -162,6 +171,9 @@ let sketch = (p: p5) => {
 		}
 
 	}
+
+	//@ts-ignore
+	p.image_grid = image_and_grid
 
 }
 

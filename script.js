@@ -36445,7 +36445,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
   var capture;
   var corners;
   var mic;
-  var capturing = false;
+  var capturing = true;
   var canvas = document.getElementById("p5");
   var c_width = canvas?.clientWidth;
   var c_height = canvas?.clientHeight;
@@ -36453,9 +36453,14 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
   var img_1;
   var img_2;
   var graphic;
-  var current = "spread_0";
-  var spread_1 = {
-    image: [img, 0, 0, 50, 70, 89, 330]
+  var current = "spread_1";
+  var spreads = {
+    spread_1: {
+      image_grid: [img_1, 50, 50, 180, 290, () => counter]
+    },
+    spread_2: {
+      image_grid: [img_1, 50, 50, 180, 290, () => counter]
+    }
   };
   var grid_compare = Array.from({ length: 500 }, () => Array.from({ length: 500 }, () => Math.random()));
   var counter = 0;
@@ -36489,6 +36494,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
       }
     }
     function image_and_grid(img2, x, y, w, h3, skip) {
+      if ("function" === typeof skip) skip = skip();
       if (!graphic) graphic = p.createGraphics(p.width, p.height);
       graphic.image(img2, x, y, w, h3);
       graphic.blendMode(p.SCREEN);
@@ -36524,11 +36530,12 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
       }, 500);
     }
     p.preload = () => {
-      img = p.loadImage("./img.jpg", () => {
-        spread_1.image[0] = img;
+      img_1 = p.loadImage("./spread_1.png", () => {
+        spreads["spread_1"].image_grid[0] = img_1;
       });
-      img_1 = p.loadImage("./spread_1.png");
-      img_2 = p.loadImage("./spread_2.png");
+      img_2 = p.loadImage("./spread_2.png", () => {
+        spreads["spread_2"].image_grid[0] = img_2;
+      });
     };
     p.setup = () => {
       p.createCanvas(c_width, c_height);
@@ -36554,10 +36561,12 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
       let i = img;
       if (current === "spread_1") i = img_1;
       if (current === "spread_2") i = img_2;
-      image_and_grid(i, 50, 50, 180, 290, counter);
       p.fill(0);
       p.text("Value: " + val, 10, 30);
       p.text("Counter: " + counter, 50, 50);
+      if (spreads[current]) {
+        Object.entries(spreads[current]).forEach(([key, value]) => p[key](...value));
+      }
     };
     p.keyPressed = (e3) => {
       if (e3.key === "c") {
@@ -36565,6 +36574,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
         console.log("Counter reset");
       }
     };
+    p.image_grid = image_and_grid;
   };
   new import_p5.default(sketch, document.getElementById("p5"));
   function map_value(value, oldMin, oldMax, newMin, newMax) {

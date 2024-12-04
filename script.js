@@ -224,7 +224,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             function o(e5, t3, r3) {
               if ("string" == typeof e5) {
                 var o2 = e5, n2 = t3;
-                if (d.isEncoding(n2 = "string" == typeof n2 && "" !== n2 ? n2 : "utf8")) return s3 = 0 | h(o2, n2), i2 = l(s3), i2 = (o2 = i2.write(o2, n2)) !== s3 ? i2.slice(0, o2) : i2;
+                if (d.isEncoding(n2 = "string" == typeof n2 && "" !== n2 ? n2 : "utf8")) return s3 = 0 | h3(o2, n2), i2 = l(s3), i2 = (o2 = i2.write(o2, n2)) !== s3 ? i2.slice(0, o2) : i2;
                 throw new TypeError("Unknown encoding: " + n2);
               }
               if (ArrayBuffer.isView(e5)) return u(e5);
@@ -266,7 +266,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               if (t2 <= e5) throw new RangeError("Attempt to allocate Buffer larger than maximum size: 0x" + t2.toString(16) + " bytes");
               return 0 | e5;
             }
-            function h(e5, t3) {
+            function h3(e5, t3) {
               if (d.isBuffer(e5)) return e5.length;
               if (ArrayBuffer.isView(e5) || O(e5, ArrayBuffer)) return e5.byteLength;
               if ("string" != typeof e5) throw new TypeError('The "string" argument must be one of type string, Buffer, or ArrayBuffer. Received type ' + typeof e5);
@@ -309,9 +309,9 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                 case "utf-8":
                   return T(this, t3, r3);
                 case "ascii":
-                  var d2 = this, l2 = t3, h2 = r3, f2 = "";
-                  h2 = Math.min(d2.length, h2);
-                  for (var p2 = l2; p2 < h2; ++p2) f2 += String.fromCharCode(127 & d2[p2]);
+                  var d2 = this, l2 = t3, h4 = r3, f2 = "";
+                  h4 = Math.min(d2.length, h4);
+                  for (var p2 = l2; p2 < h4; ++p2) f2 += String.fromCharCode(127 & d2[p2]);
                   return f2;
                 case "latin1":
                 case "binary":
@@ -362,7 +362,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                 if (c2 - (u2 = -1 === u2 ? c2 : u2) + 1 === a2) return u2 * s3;
               } else -1 !== u2 && (c2 -= c2 - u2), u2 = -1;
               else for (c2 = r3 = i2 < r3 + a2 ? i2 - a2 : r3; 0 <= c2; c2--) {
-                for (var d2 = true, h2 = 0; h2 < a2; h2++) if (l2(e5, c2 + h2) !== l2(t3, h2)) {
+                for (var d2 = true, h4 = 0; h4 < a2; h4++) if (l2(e5, c2 + h4) !== l2(t3, h4)) {
                   d2 = false;
                   break;
                 }
@@ -401,9 +401,9 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                 }
                 null === c2 ? (c2 = 65533, d2 = 1) : 65535 < c2 && (c2 -= 65536, o2.push(c2 >>> 10 & 1023 | 55296), c2 = 56320 | 1023 & c2), o2.push(c2), n2 += d2;
               }
-              var h2 = o2, f2 = h2.length;
-              if (f2 <= v) return String.fromCharCode.apply(String, h2);
-              for (var p2 = "", m2 = 0; m2 < f2; ) p2 += String.fromCharCode.apply(String, h2.slice(m2, m2 += v));
+              var h4 = o2, f2 = h4.length;
+              if (f2 <= v) return String.fromCharCode.apply(String, h4);
+              for (var p2 = "", m2 = 0; m2 < f2; ) p2 += String.fromCharCode.apply(String, h4.slice(m2, m2 += v));
               return p2;
             }
             L.kMaxLength = t2, (d.TYPED_ARRAY_SUPPORT = function() {
@@ -458,7 +458,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                 s3.copy(r3, o2), o2 += s3.length;
               }
               return r3;
-            }, d.byteLength = h, d.prototype._isBuffer = true, d.prototype.swap16 = function() {
+            }, d.byteLength = h3, d.prototype._isBuffer = true, d.prototype.swap16 = function() {
               var e5 = this.length;
               if (e5 % 2 != 0) throw new RangeError("Buffer size must be a multiple of 16-bits");
               for (var t3 = 0; t3 < e5; t3 += 2) a(this, t3, t3 + 1);
@@ -512,9 +512,9 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               o2 = o2 || "utf8";
               for (var s3, i2, a2, l2 = false; ; ) switch (o2) {
                 case "hex":
-                  var u2 = this, c2 = e5, d2 = t3, h2 = r3, f2 = (d2 = Number(d2) || 0, u2.length - d2);
-                  (!h2 || f2 < (h2 = Number(h2))) && (h2 = f2), (f2 = c2.length) / 2 < h2 && (h2 = f2 / 2);
-                  for (var p2 = 0; p2 < h2; ++p2) {
+                  var u2 = this, c2 = e5, d2 = t3, h4 = r3, f2 = (d2 = Number(d2) || 0, u2.length - d2);
+                  (!h4 || f2 < (h4 = Number(h4))) && (h4 = f2), (f2 = c2.length) / 2 < h4 && (h4 = f2 / 2);
+                  for (var p2 = 0; p2 < h4; ++p2) {
                     var m2 = parseInt(c2.substr(2 * p2, 2), 16);
                     if (C(m2)) return p2;
                     u2[d2 + p2] = m2;
@@ -793,7 +793,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
           function o(e4) {
             return l(e4) && u(E, c(e4));
           }
-          var n, s2 = e3("../internals/array-buffer-native"), i = e3("../internals/descriptors"), a = e3("../internals/global"), l = e3("../internals/is-object"), u = e3("../internals/has"), c = e3("../internals/classof"), d = e3("../internals/create-non-enumerable-property"), h = e3("../internals/redefine"), f = e3("../internals/object-define-property").f, p = e3("../internals/object-get-prototype-of"), m = e3("../internals/object-set-prototype-of"), y = e3("../internals/well-known-symbol"), e3 = e3("../internals/uid"), g = a.Int8Array, v = g && g.prototype, b = a.Uint8ClampedArray, b = b && b.prototype, _ = g && p(g), j = v && p(v), x = Object.prototype, w = x.isPrototypeOf, y = y("toStringTag"), S = e3("TYPED_ARRAY_TAG"), T = s2 && !!m && "Opera" !== c(a.opera), e3 = false, E = { Int8Array: 1, Uint8Array: 1, Uint8ClampedArray: 1, Int16Array: 2, Uint16Array: 2, Int32Array: 4, Uint32Array: 4, Float32Array: 4, Float64Array: 8 };
+          var n, s2 = e3("../internals/array-buffer-native"), i = e3("../internals/descriptors"), a = e3("../internals/global"), l = e3("../internals/is-object"), u = e3("../internals/has"), c = e3("../internals/classof"), d = e3("../internals/create-non-enumerable-property"), h3 = e3("../internals/redefine"), f = e3("../internals/object-define-property").f, p = e3("../internals/object-get-prototype-of"), m = e3("../internals/object-set-prototype-of"), y = e3("../internals/well-known-symbol"), e3 = e3("../internals/uid"), g = a.Int8Array, v = g && g.prototype, b = a.Uint8ClampedArray, b = b && b.prototype, _ = g && p(g), j = v && p(v), x = Object.prototype, w = x.isPrototypeOf, y = y("toStringTag"), S = e3("TYPED_ARRAY_TAG"), T = s2 && !!m && "Opera" !== c(a.opera), e3 = false, E = { Int8Array: 1, Uint8Array: 1, Uint8ClampedArray: 1, Int16Array: 2, Uint16Array: 2, Int32Array: 4, Uint32Array: 4, Float32Array: 4, Float64Array: 8 };
           for (n in E) a[n] || (T = false);
           if ((!T || "function" != typeof _ || _ === Function.prototype) && (_ = function() {
             throw TypeError("Incorrect invocation");
@@ -819,7 +819,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                 o2 = a[o2];
                 o2 && u(o2.prototype, e4) && delete o2.prototype[e4];
               }
-              j[e4] && !r3 || h(j, e4, !r3 && T && v[e4] || t3);
+              j[e4] && !r3 || h3(j, e4, !r3 && T && v[e4] || t3);
             }
           }, exportTypedArrayStaticMethod: function(e4, t3, r3) {
             var o2, n2;
@@ -828,11 +828,11 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                 if (r3) for (o2 in E) (n2 = a[o2]) && u(n2, e4) && delete n2[e4];
                 if (_[e4] && !r3) return;
                 try {
-                  return h(_, e4, !r3 && T && g[e4] || t3);
+                  return h3(_, e4, !r3 && T && g[e4] || t3);
                 } catch (e5) {
                 }
               }
-              for (o2 in E) !(n2 = a[o2]) || n2[e4] && !r3 || h(n2, e4, t3);
+              for (o2 in E) !(n2 = a[o2]) || n2[e4] && !r3 || h3(n2, e4, t3);
             }
           }, isView: function(e4) {
             e4 = c(e4);
@@ -872,7 +872,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             if (r3 = m(r3), e4 = b(e4), r3 + t3 > e4.byteLength) throw O(S);
             for (var i2 = b(e4.buffer).bytes, a2 = r3 + e4.byteOffset, l2 = o2(+n2), u2 = 0; u2 < t3; u2++) i2[a2 + u2] = l2[s3 ? u2 : t3 - u2 - 1];
           }
-          var c = e3("../internals/global"), d = e3("../internals/descriptors"), U = e3("../internals/array-buffer-native"), N = e3("../internals/create-non-enumerable-property"), h = e3("../internals/redefine-all"), f = e3("../internals/fails"), p = e3("../internals/an-instance"), B = e3("../internals/to-integer"), G = e3("../internals/to-length"), m = e3("../internals/to-index"), y = e3("../internals/ieee754"), V = e3("../internals/object-get-prototype-of"), g = e3("../internals/object-set-prototype-of"), z = e3("../internals/object-get-own-property-names").f, H = e3("../internals/object-define-property").f, W = e3("../internals/array-fill"), v = e3("../internals/set-to-string-tag"), e3 = e3("../internals/internal-state"), b = e3.get, _ = e3.set, j = "ArrayBuffer", x = "DataView", w = "prototype", S = "Wrong index", T = c[j], E = T, M = c[x], e3 = M && M[w], k = Object.prototype, O = c.RangeError, C = y.pack, P = y.unpack;
+          var c = e3("../internals/global"), d = e3("../internals/descriptors"), U = e3("../internals/array-buffer-native"), N = e3("../internals/create-non-enumerable-property"), h3 = e3("../internals/redefine-all"), f = e3("../internals/fails"), p = e3("../internals/an-instance"), B = e3("../internals/to-integer"), G = e3("../internals/to-length"), m = e3("../internals/to-index"), y = e3("../internals/ieee754"), V = e3("../internals/object-get-prototype-of"), g = e3("../internals/object-set-prototype-of"), z = e3("../internals/object-get-own-property-names").f, H = e3("../internals/object-define-property").f, W = e3("../internals/array-fill"), v = e3("../internals/set-to-string-tag"), e3 = e3("../internals/internal-state"), b = e3.get, _ = e3.set, j = "ArrayBuffer", x = "DataView", w = "prototype", S = "Wrong index", T = c[j], E = T, M = c[x], e3 = M && M[w], k = Object.prototype, O = c.RangeError, C = y.pack, P = y.unpack;
           if (U) {
             if (!f(function() {
               T(1);
@@ -888,7 +888,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             }
             g && V(e3) !== k && g(e3, k);
             var y = new M(new E(2)), I = e3.setInt8;
-            y.setInt8(0, 2147483648), y.setInt8(1, 2147483649), !y.getInt8(0) && y.getInt8(1) || h(e3, { setInt8: function(e4, t3) {
+            y.setInt8(0, 2147483648), y.setInt8(1, 2147483649), !y.getInt8(0) && y.getInt8(1) || h3(e3, { setInt8: function(e4, t3) {
               I.call(this, e4, t3 << 24 >> 24);
             }, setUint8: function(e4, t3) {
               I.call(this, e4, t3 << 24 >> 24);
@@ -903,7 +903,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             if (t3 < 0 || o2 < t3) throw O("Wrong offset");
             if (o2 < t3 + (r3 = void 0 === r3 ? o2 - t3 : G(r3))) throw O("Wrong length");
             _(this, { buffer: e4, byteLength: r3, byteOffset: t3 }), d || (this.buffer = e4, this.byteLength = r3, this.byteOffset = t3);
-          }, d && (a(E, "byteLength"), a(M, "buffer"), a(M, "byteLength"), a(M, "byteOffset")), h(M[w], { getInt8: function(e4) {
+          }, d && (a(E, "byteLength"), a(M, "buffer"), a(M, "byteLength"), a(M, "byteOffset")), h3(M[w], { getInt8: function(e4) {
             return l(this, 1, e4)[0] << 24 >> 24;
           }, getUint8: function(e4) {
             return l(this, 1, e4)[0];
@@ -964,10 +964,10 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
           "use strict";
           var f = e3("../internals/function-bind-context"), p = e3("../internals/to-object"), m = e3("../internals/call-with-safe-iteration-closing"), y = e3("../internals/is-array-iterator-method"), g = e3("../internals/to-length"), v = e3("../internals/create-property"), b = e3("../internals/get-iterator-method");
           t2.exports = function(e4) {
-            var t3, r3, o, n, s2, i, a = p(e4), e4 = "function" == typeof this ? this : Array, l = arguments.length, u = 1 < l ? arguments[1] : void 0, c = void 0 !== u, d = b(a), h = 0;
-            if (c && (u = f(u, 2 < l ? arguments[2] : void 0, 2)), null == d || e4 == Array && y(d)) for (r3 = new e4(t3 = g(a.length)); h < t3; h++) i = c ? u(a[h], h) : a[h], v(r3, h, i);
-            else for (s2 = (n = d.call(a)).next, r3 = new e4(); !(o = s2.call(n)).done; h++) i = c ? m(n, u, [o.value, h], true) : o.value, v(r3, h, i);
-            return r3.length = h, r3;
+            var t3, r3, o, n, s2, i, a = p(e4), e4 = "function" == typeof this ? this : Array, l = arguments.length, u = 1 < l ? arguments[1] : void 0, c = void 0 !== u, d = b(a), h3 = 0;
+            if (c && (u = f(u, 2 < l ? arguments[2] : void 0, 2)), null == d || e4 == Array && y(d)) for (r3 = new e4(t3 = g(a.length)); h3 < t3; h3++) i = c ? u(a[h3], h3) : a[h3], v(r3, h3, i);
+            else for (s2 = (n = d.call(a)).next, r3 = new e4(); !(o = s2.call(n)).done; h3++) i = c ? m(n, u, [o.value, h3], true) : o.value, v(r3, h3, i);
+            return r3.length = h3, r3;
           };
         }, { "../internals/call-with-safe-iteration-closing": 26, "../internals/create-property": 40, "../internals/function-bind-context": 55, "../internals/get-iterator-method": 58, "../internals/is-array-iterator-method": 72, "../internals/to-length": 138, "../internals/to-object": 139 }], 18: [function(e3, t2, r2) {
           function o(a) {
@@ -982,12 +982,12 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
           var l = e3("../internals/to-indexed-object"), u = e3("../internals/to-length"), c = e3("../internals/to-absolute-index");
           t2.exports = { includes: o(true), indexOf: o(false) };
         }, { "../internals/to-absolute-index": 134, "../internals/to-indexed-object": 136, "../internals/to-length": 138 }], 19: [function(e3, t2, r2) {
-          function o(h) {
-            var f = 1 == h, p = 2 == h, m = 3 == h, y = 4 == h, g = 6 == h, v = 5 == h || g;
+          function o(h3) {
+            var f = 1 == h3, p = 2 == h3, m = 3 == h3, y = 4 == h3, g = 6 == h3, v = 5 == h3 || g;
             return function(e4, t3, r3, o2) {
-              for (var n, s2, i = j(e4), a = _(i), l = b(t3, r3, 3), u = x(a.length), c = 0, t3 = o2 || w, d = f ? t3(e4, u) : p ? t3(e4, 0) : void 0; c < u; c++) if ((v || c in a) && (s2 = l(n = a[c], c, i), h)) {
+              for (var n, s2, i = j(e4), a = _(i), l = b(t3, r3, 3), u = x(a.length), c = 0, t3 = o2 || w, d = f ? t3(e4, u) : p ? t3(e4, 0) : void 0; c < u; c++) if ((v || c in a) && (s2 = l(n = a[c], c, i), h3)) {
                 if (f) d[c] = s2;
-                else if (s2) switch (h) {
+                else if (s2) switch (h3) {
                   case 3:
                     return true;
                   case 5:
@@ -1051,7 +1051,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
           function o(u) {
             return function(e4, t3, r3, o2) {
               c(t3);
-              var n = d(e4), s2 = h(n), i = f(n.length), a = u ? i - 1 : 0, l = u ? -1 : 1;
+              var n = d(e4), s2 = h3(n), i = f(n.length), a = u ? i - 1 : 0, l = u ? -1 : 1;
               if (r3 < 2) for (; ; ) {
                 if (a in s2) {
                   o2 = s2[a], a += l;
@@ -1063,7 +1063,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               return o2;
             };
           }
-          var c = e3("../internals/a-function"), d = e3("../internals/to-object"), h = e3("../internals/indexed-object"), f = e3("../internals/to-length");
+          var c = e3("../internals/a-function"), d = e3("../internals/to-object"), h3 = e3("../internals/indexed-object"), f = e3("../internals/to-length");
           t2.exports = { left: o(false), right: o(true) };
         }, { "../internals/a-function": 5, "../internals/indexed-object": 67, "../internals/to-length": 138, "../internals/to-object": 139 }], 25: [function(e3, t2, r2) {
           var o = e3("../internals/is-object"), n = e3("../internals/is-array"), s2 = e3("../internals/well-known-symbol")("species");
@@ -1130,7 +1130,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
           };
         }, { "../internals/classof-raw": 28, "../internals/to-string-tag-support": 143, "../internals/well-known-symbol": 150 }], 30: [function(e3, t2, r2) {
           "use strict";
-          var u = e3("../internals/object-define-property").f, c = e3("../internals/object-create"), d = e3("../internals/redefine-all"), h = e3("../internals/function-bind-context"), f = e3("../internals/an-instance"), p = e3("../internals/iterate"), i = e3("../internals/define-iterator"), a = e3("../internals/set-species"), m = e3("../internals/descriptors"), y = e3("../internals/internal-metadata").fastKey, e3 = e3("../internals/internal-state"), g = e3.set, v = e3.getterFor;
+          var u = e3("../internals/object-define-property").f, c = e3("../internals/object-create"), d = e3("../internals/redefine-all"), h3 = e3("../internals/function-bind-context"), f = e3("../internals/an-instance"), p = e3("../internals/iterate"), i = e3("../internals/define-iterator"), a = e3("../internals/set-species"), m = e3("../internals/descriptors"), y = e3("../internals/internal-metadata").fastKey, e3 = e3("../internals/internal-state"), g = e3.set, v = e3.getterFor;
           t2.exports = { getConstructor: function(e4, r3, o, n) {
             function s2(e5, t3, r4) {
               var o2, n2 = l(e5), s3 = i2(e5, t3);
@@ -1151,7 +1151,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               var t3, r4, o2 = l(this), e5 = i2(this, e5);
               return e5 && (t3 = e5.next, r4 = e5.previous, delete o2.index[e5.index], e5.removed = true, r4 && (r4.next = t3), t3 && (t3.previous = r4), o2.first == e5 && (o2.first = t3), o2.last == e5 && (o2.last = r4), m ? o2.size-- : this.size--), !!e5;
             }, forEach: function(e5) {
-              for (var t3, r4 = l(this), o2 = h(e5, 1 < arguments.length ? arguments[1] : void 0, 3); t3 = t3 ? t3.next : r4.first; ) for (o2(t3.value, t3.key, this); t3 && t3.removed; ) t3 = t3.previous;
+              for (var t3, r4 = l(this), o2 = h3(e5, 1 < arguments.length ? arguments[1] : void 0, 3); t3 = t3 ? t3.next : r4.first; ) for (o2(t3.value, t3.key, this); t3 && t3.removed; ) t3 = t3.previous;
             }, has: function(e5) {
               return !!i2(this, e5);
             } }), d(a2.prototype, o ? { get: function(e5) {
@@ -1186,7 +1186,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               return e5[0] === t3;
             });
           }
-          var u = e3("../internals/redefine-all"), c = e3("../internals/internal-metadata").getWeakData, d = e3("../internals/an-object"), h = e3("../internals/is-object"), f = e3("../internals/an-instance"), p = e3("../internals/iterate"), s2 = e3("../internals/array-iteration"), m = e3("../internals/has"), e3 = e3("../internals/internal-state"), y = e3.set, g = e3.getterFor, i = s2.find, a = s2.findIndex, v = 0;
+          var u = e3("../internals/redefine-all"), c = e3("../internals/internal-metadata").getWeakData, d = e3("../internals/an-object"), h3 = e3("../internals/is-object"), f = e3("../internals/an-instance"), p = e3("../internals/iterate"), s2 = e3("../internals/array-iteration"), m = e3("../internals/has"), e3 = e3("../internals/internal-state"), y = e3.set, g = e3.getterFor, i = s2.find, a = s2.findIndex, v = 0;
           o.prototype = { get: function(e4) {
             e4 = n(this, e4);
             if (e4) return e4[1];
@@ -1210,13 +1210,13 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             }), a2 = g(r3);
             return u(i2.prototype, { delete: function(e5) {
               var t3, r4 = a2(this);
-              return !!h(e5) && (true === (t3 = c(e5)) ? l(r4).delete(e5) : t3 && m(t3, r4.id) && delete t3[r4.id]);
+              return !!h3(e5) && (true === (t3 = c(e5)) ? l(r4).delete(e5) : t3 && m(t3, r4.id) && delete t3[r4.id]);
             }, has: function(e5) {
               var t3, r4 = a2(this);
-              return !!h(e5) && (true === (t3 = c(e5)) ? l(r4).has(e5) : t3 && m(t3, r4.id));
+              return !!h3(e5) && (true === (t3 = c(e5)) ? l(r4).has(e5) : t3 && m(t3, r4.id));
             } }), u(i2.prototype, o2 ? { get: function(e5) {
               var t3, r4 = a2(this);
-              if (h(e5)) return true === (t3 = c(e5)) ? l(r4).get(e5) : t3 ? t3[r4.id] : void 0;
+              if (h3(e5)) return true === (t3 = c(e5)) ? l(r4).get(e5) : t3 ? t3[r4.id] : void 0;
             }, set: function(e5, t3) {
               return s3(this, e5, t3);
             } } : { add: function(e5) {
@@ -1241,21 +1241,21 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                 return r4.call(this, 0 === e6 ? 0 : e6, t4), this;
               });
             }
-            var n, s2, i, a, l, u = -1 !== r3.indexOf("Map"), c = -1 !== r3.indexOf("Weak"), d = u ? "set" : "add", h = g[r3], f = h && h.prototype, p = h, m = {};
-            return v(r3, "function" != typeof h || !(c || f.forEach && !S(function() {
-              new h().entries().next();
+            var n, s2, i, a, l, u = -1 !== r3.indexOf("Map"), c = -1 !== r3.indexOf("Weak"), d = u ? "set" : "add", h3 = g[r3], f = h3 && h3.prototype, p = h3, m = {};
+            return v(r3, "function" != typeof h3 || !(c || f.forEach && !S(function() {
+              new h3().entries().next();
             }))) ? (p = t3.getConstructor(e4, r3, u, d), _.REQUIRED = true) : v(r3, true) && (s2 = (n = new p())[d](c ? {} : -0, 1) != n, i = S(function() {
               n.has(1);
             }), a = T(function(e5) {
-              new h(e5);
+              new h3(e5);
             }), l = !c && S(function() {
-              for (var e5 = new h(), t4 = 5; t4--; ) e5[d](t4, t4);
+              for (var e5 = new h3(), t4 = 5; t4--; ) e5[d](t4, t4);
               return !e5.has(-0);
             }), a || (((p = e4(function(e5, t4) {
               x(e5, p, r3);
-              e5 = M(new h(), e5, p);
+              e5 = M(new h3(), e5, p);
               return null != t4 && j(t4, e5[d], e5, u), e5;
-            })).prototype = f).constructor = p), (i || l) && (o("delete"), o("has"), u && o("get")), (l || s2) && o(d), c && f.clear && delete f.clear), m[r3] = p, y({ global: true, forced: p != h }, m), E(p, r3), c || t3.setStrong(p, r3, u), p;
+            })).prototype = f).constructor = p), (i || l) && (o("delete"), o("has"), u && o("get")), (l || s2) && o(d), c && f.clear && delete f.clear), m[r3] = p, y({ global: true, forced: p != h3 }, m), E(p, r3), c || t3.setStrong(p, r3, u), p;
           };
         }, { "../internals/an-instance": 9, "../internals/check-correctness-of-iteration": 27, "../internals/export": 50, "../internals/fails": 51, "../internals/global": 60, "../internals/inherit-if-required": 68, "../internals/internal-metadata": 70, "../internals/is-forced": 74, "../internals/is-object": 75, "../internals/iterate": 78, "../internals/redefine": 110, "../internals/set-to-string-tag": 119 }], 33: [function(e3, t2, r2) {
           var a = e3("../internals/has"), l = e3("../internals/own-keys"), u = e3("../internals/object-get-own-property-descriptor"), c = e3("../internals/object-define-property");
@@ -1343,9 +1343,9 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                 return new r3(this);
               };
             }
-            var l, u, o2 = t3 + " Iterator", c = false, d = e4.prototype, h = d[M] || d["@@iterator"] || n && d[n], f = !E && h || a(n), p = "Array" == t3 && d.entries || h;
-            if (p && (p = v(p.call(new e4())), T !== Object.prototype && p.next && (w || v(p) === T || (b ? b(p, T) : "function" != typeof p[M] && j(p, M, m)), _(p, o2, true, true), w && (S[o2] = m))), n == k && h && h.name !== k && (c = true, f = function() {
-              return h.call(this);
+            var l, u, o2 = t3 + " Iterator", c = false, d = e4.prototype, h3 = d[M] || d["@@iterator"] || n && d[n], f = !E && h3 || a(n), p = "Array" == t3 && d.entries || h3;
+            if (p && (p = v(p.call(new e4())), T !== Object.prototype && p.next && (w || v(p) === T || (b ? b(p, T) : "function" != typeof p[M] && j(p, M, m)), _(p, o2, true, true), w && (S[o2] = m))), n == k && h3 && h3.name !== k && (c = true, f = function() {
+              return h3.call(this);
             }), w && !i || d[M] === f || j(d, M, f), S[t3] = f, n) if (l = { values: a(k), keys: s2 ? f : a("keys"), entries: a(O) }, i) for (u in l) !E && !c && u in d || x(d, u, l[u]);
             else y({ target: t3, proto: true, forced: E || c }, l);
             return l;
@@ -1382,7 +1382,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
         }, { "../internals/engine-user-agent": 47, "../internals/global": 60 }], 49: [function(e3, t2, r2) {
           t2.exports = ["constructor", "hasOwnProperty", "isPrototypeOf", "propertyIsEnumerable", "toLocaleString", "toString", "valueOf"];
         }, {}], 50: [function(e3, t2, r2) {
-          var u = e3("../internals/global"), c = e3("../internals/object-get-own-property-descriptor").f, d = e3("../internals/create-non-enumerable-property"), h = e3("../internals/redefine"), f = e3("../internals/set-global"), p = e3("../internals/copy-constructor-properties"), m = e3("../internals/is-forced");
+          var u = e3("../internals/global"), c = e3("../internals/object-get-own-property-descriptor").f, d = e3("../internals/create-non-enumerable-property"), h3 = e3("../internals/redefine"), f = e3("../internals/set-global"), p = e3("../internals/copy-constructor-properties"), m = e3("../internals/is-forced");
           t2.exports = function(e4, t3) {
             var r3, o, n, s2 = e4.target, i = e4.global, a = e4.stat, l = i ? u : a ? u[s2] || f(s2, {}) : (u[s2] || {}).prototype;
             if (l) for (r3 in t3) {
@@ -1390,7 +1390,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                 if (typeof o == typeof n) continue;
                 p(o, n);
               }
-              (e4.sham || n && n.sham) && d(o, "sham", true), h(l, r3, o, e4);
+              (e4.sham || n && n.sham) && d(o, "sham", true), h3(l, r3, o, e4);
             }
           };
         }, { "../internals/copy-constructor-properties": 33, "../internals/create-non-enumerable-property": 38, "../internals/global": 60, "../internals/is-forced": 74, "../internals/object-get-own-property-descriptor": 94, "../internals/redefine": 110, "../internals/set-global": 117 }], 51: [function(e3, t2, r2) {
@@ -1404,7 +1404,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
         }, {}], 52: [function(e3, t2, r2) {
           "use strict";
           e3("../modules/es.regexp.exec");
-          var u = e3("../internals/redefine"), c = e3("../internals/fails"), d = e3("../internals/well-known-symbol"), h = e3("../internals/regexp-exec"), f = e3("../internals/create-non-enumerable-property"), p = d("species"), m = !c(function() {
+          var u = e3("../internals/redefine"), c = e3("../internals/fails"), d = e3("../internals/well-known-symbol"), h3 = e3("../internals/regexp-exec"), f = e3("../internals/create-non-enumerable-property"), p = d("species"), m = !c(function() {
             var e4 = /./;
             return e4.exec = function() {
               var e5 = [];
@@ -1431,7 +1431,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               }, t4[i](""), !e5;
             });
             a && l && ("replace" !== r3 || m && y && !g) && ("split" !== r3 || v) || (s2 = /./[i], t3 = (l = t3(i, ""[r3], function(e5, t4, r4, o2, n2) {
-              return t4.exec === h ? a && !n2 ? { done: true, value: s2.call(t4, r4, o2) } : { done: true, value: e5.call(r4, t4, o2) } : { done: false };
+              return t4.exec === h3 ? a && !n2 ? { done: true, value: s2.call(t4, r4, o2) } : { done: true, value: e5.call(r4, t4, o2) } : { done: false };
             }, { REPLACE_KEEPS_$0: y, REGEXP_REPLACE_SUBSTITUTES_UNDEFINED_CAPTURE: g }))[0], n = l[1], u(String.prototype, r3, t3), u(RegExp.prototype, i, 2 == e4 ? function(e5, t4) {
               return n.call(e5, this, t4);
             } : function(e5) {
@@ -1440,10 +1440,10 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
           };
         }, { "../internals/create-non-enumerable-property": 38, "../internals/fails": 51, "../internals/redefine": 110, "../internals/regexp-exec": 112, "../internals/well-known-symbol": 150, "../modules/es.regexp.exec": 195 }], 53: [function(e3, t2, r2) {
           "use strict";
-          function h(e4, t3, r3, o, n, s2, i, a) {
+          function h3(e4, t3, r3, o, n, s2, i, a) {
             for (var l, u = n, c = 0, d = !!i && m(i, a, 3); c < o; ) {
               if (c in r3) {
-                if (l = d ? d(r3[c], c, t3) : r3[c], 0 < s2 && f(l)) u = h(e4, t3, l, p(l.length), u, s2 - 1) - 1;
+                if (l = d ? d(r3[c], c, t3) : r3[c], 0 < s2 && f(l)) u = h3(e4, t3, l, p(l.length), u, s2 - 1) - 1;
                 else {
                   if (9007199254740991 <= u) throw TypeError("Exceed the acceptable array length");
                   e4[u] = l;
@@ -1455,7 +1455,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             return u;
           }
           var f = e3("../internals/is-array"), p = e3("../internals/to-length"), m = e3("../internals/function-bind-context");
-          t2.exports = h;
+          t2.exports = h3;
         }, { "../internals/function-bind-context": 55, "../internals/is-array": 73, "../internals/to-length": 138 }], 54: [function(e3, t2, r2) {
           e3 = e3("../internals/fails");
           t2.exports = !e3(function() {
@@ -1556,10 +1556,10 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             } }).a;
           });
         }, { "../internals/descriptors": 43, "../internals/document-create-element": 44, "../internals/fails": 51 }], 66: [function(e3, t2, r2) {
-          var h = Math.abs, f = Math.pow, p = Math.floor, m = Math.log, y = Math.LN2;
+          var h3 = Math.abs, f = Math.pow, p = Math.floor, m = Math.log, y = Math.LN2;
           t2.exports = { pack: function(e4, t3, r3) {
             var o, n, s2, i = new Array(r3), a = 8 * r3 - t3 - 1, r3 = (1 << a) - 1, l = r3 >> 1, u = 23 === t3 ? f(2, -24) - f(2, -77) : 0, c = e4 < 0 || 0 === e4 && 1 / e4 < 0 ? 1 : 0, d = 0;
-            for ((e4 = h(e4)) != e4 || e4 === 1 / 0 ? (n = e4 != e4 ? 1 : 0, o = r3) : (o = p(m(e4) / y), e4 * (s2 = f(2, -o)) < 1 && (o--, s2 *= 2), 2 <= (e4 += 1 <= o + l ? u / s2 : u * f(2, 1 - l)) * s2 && (o++, s2 /= 2), r3 <= o + l ? (n = 0, o = r3) : 1 <= o + l ? (n = (e4 * s2 - 1) * f(2, t3), o += l) : (n = e4 * f(2, l - 1) * f(2, t3), o = 0)); 8 <= t3; i[d++] = 255 & n, n /= 256, t3 -= 8) ;
+            for ((e4 = h3(e4)) != e4 || e4 === 1 / 0 ? (n = e4 != e4 ? 1 : 0, o = r3) : (o = p(m(e4) / y), e4 * (s2 = f(2, -o)) < 1 && (o--, s2 *= 2), 2 <= (e4 += 1 <= o + l ? u / s2 : u * f(2, 1 - l)) * s2 && (o++, s2 /= 2), r3 <= o + l ? (n = 0, o = r3) : 1 <= o + l ? (n = (e4 * s2 - 1) * f(2, t3), o += l) : (n = e4 * f(2, l - 1) * f(2, t3), o = 0)); 8 <= t3; i[d++] = 255 & n, n /= 256, t3 -= 8) ;
             for (o = o << t3 | n, a += t3; 0 < a; i[d++] = 255 & o, o /= 256, a -= 8) ;
             return i[--d] |= 128 * c, i;
           }, unpack: function(e4, t3) {
@@ -1594,30 +1594,30 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
           function o(e4) {
             a(e4, c, { value: { objectID: "O" + ++d, weakData: {} } });
           }
-          var n = e3("../internals/hidden-keys"), s2 = e3("../internals/is-object"), i = e3("../internals/has"), a = e3("../internals/object-define-property").f, l = e3("../internals/uid"), u = e3("../internals/freezing"), c = l("meta"), d = 0, h = Object.isExtensible || function() {
+          var n = e3("../internals/hidden-keys"), s2 = e3("../internals/is-object"), i = e3("../internals/has"), a = e3("../internals/object-define-property").f, l = e3("../internals/uid"), u = e3("../internals/freezing"), c = l("meta"), d = 0, h3 = Object.isExtensible || function() {
             return true;
           }, f = t2.exports = { REQUIRED: false, fastKey: function(e4, t3) {
             if (!s2(e4)) return "symbol" == typeof e4 ? e4 : ("string" == typeof e4 ? "S" : "P") + e4;
             if (!i(e4, c)) {
-              if (!h(e4)) return "F";
+              if (!h3(e4)) return "F";
               if (!t3) return "E";
               o(e4);
             }
             return e4[c].objectID;
           }, getWeakData: function(e4, t3) {
             if (!i(e4, c)) {
-              if (!h(e4)) return true;
+              if (!h3(e4)) return true;
               if (!t3) return false;
               o(e4);
             }
             return e4[c].weakData;
           }, onFreeze: function(e4) {
-            return u && f.REQUIRED && h(e4) && !i(e4, c) && o(e4), e4;
+            return u && f.REQUIRED && h3(e4) && !i(e4, c) && o(e4), e4;
           } };
           n[c] = true;
         }, { "../internals/freezing": 54, "../internals/has": 61, "../internals/hidden-keys": 62, "../internals/is-object": 75, "../internals/object-define-property": 93, "../internals/uid": 147 }], 71: [function(e3, t2, r2) {
-          var o, n, s2, i, a, l, u, c, d = e3("../internals/native-weak-map"), h = e3("../internals/global"), f = e3("../internals/is-object"), p = e3("../internals/create-non-enumerable-property"), m = e3("../internals/has"), y = e3("../internals/shared-key"), e3 = e3("../internals/hidden-keys"), h = h.WeakMap;
-          u = d ? (o = new h(), n = o.get, s2 = o.has, i = o.set, a = function(e4, t3) {
+          var o, n, s2, i, a, l, u, c, d = e3("../internals/native-weak-map"), h3 = e3("../internals/global"), f = e3("../internals/is-object"), p = e3("../internals/create-non-enumerable-property"), m = e3("../internals/has"), y = e3("../internals/shared-key"), e3 = e3("../internals/hidden-keys"), h3 = h3.WeakMap;
+          u = d ? (o = new h3(), n = o.get, s2 = o.has, i = o.set, a = function(e4, t3) {
             return i.call(o, e4, t3), t3;
           }, l = function(e4) {
             return n.call(o, e4) || {};
@@ -1668,7 +1668,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             return o(e4) && (void 0 !== (t3 = e4[s2]) ? !!t3 : "RegExp" == n(e4));
           };
         }, { "../internals/classof-raw": 28, "../internals/is-object": 75, "../internals/well-known-symbol": 150 }], 78: [function(e3, t2, r2) {
-          function h(e4, t3) {
+          function h3(e4, t3) {
             this.stopped = e4, this.result = t3;
           }
           var f = e3("../internals/an-object"), p = e3("../internals/is-array-iterator-method"), m = e3("../internals/to-length"), y = e3("../internals/function-bind-context"), g = e3("../internals/get-iterator-method"), v = e3("../internals/call-with-safe-iteration-closing");
@@ -1678,15 +1678,15 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             else {
               if ("function" != typeof (t3 = g(e4))) throw TypeError("Target is not iterable");
               if (p(t3)) {
-                for (i = 0, a = m(e4.length); i < a; i++) if ((l = o ? d(f(c = e4[i])[0], c[1]) : d(e4[i])) && l instanceof h) return l;
-                return new h(false);
+                for (i = 0, a = m(e4.length); i < a; i++) if ((l = o ? d(f(c = e4[i])[0], c[1]) : d(e4[i])) && l instanceof h3) return l;
+                return new h3(false);
               }
               s2 = t3.call(e4);
             }
-            for (u = s2.next; !(c = u.call(s2)).done; ) if ("object" == typeof (l = v(s2, d, c.value, o)) && l && l instanceof h) return l;
-            return new h(false);
+            for (u = s2.next; !(c = u.call(s2)).done; ) if ("object" == typeof (l = v(s2, d, c.value, o)) && l && l instanceof h3) return l;
+            return new h3(false);
           }).stop = function(e4) {
-            return new h(true, e4);
+            return new h3(true, e4);
           };
         }, { "../internals/an-object": 10, "../internals/call-with-safe-iteration-closing": 26, "../internals/function-bind-context": 55, "../internals/get-iterator-method": 58, "../internals/is-array-iterator-method": 72, "../internals/to-length": 138 }], 79: [function(e3, t2, r2) {
           "use strict";
@@ -1701,8 +1701,8 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             return 0 == (e4 = +e4) || e4 != e4 ? e4 : e4 < 0 ? -1 : 1;
           };
         }, {}], 82: [function(e3, t2, r2) {
-          var o, n, s2, i, a, l, u, c, d = e3("../internals/global"), h = e3("../internals/object-get-own-property-descriptor").f, f = e3("../internals/classof-raw"), p = e3("../internals/task").set, e3 = e3("../internals/engine-is-ios"), m = d.MutationObserver || d.WebKitMutationObserver, y = d.process, g = d.Promise, v = "process" == f(y), f = h(d, "queueMicrotask"), h = f && f.value;
-          h || (o = function() {
+          var o, n, s2, i, a, l, u, c, d = e3("../internals/global"), h3 = e3("../internals/object-get-own-property-descriptor").f, f = e3("../internals/classof-raw"), p = e3("../internals/task").set, e3 = e3("../internals/engine-is-ios"), m = d.MutationObserver || d.WebKitMutationObserver, y = d.process, g = d.Promise, v = "process" == f(y), f = h3(d, "queueMicrotask"), h3 = f && f.value;
+          h3 || (o = function() {
             var e4, t3;
             for (v && (e4 = y.domain) && e4.exit(); n; ) {
               t3 = n.fn, n = n.next;
@@ -1721,7 +1721,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             c.call(u, o);
           }) : function() {
             p.call(d, o);
-          }), t2.exports = h || function(e4) {
+          }), t2.exports = h3 || function(e4) {
             e4 = { fn: e4, next: void 0 };
             s2 && (s2.next = e4), n || (n = e4, i()), s2 = e4;
           };
@@ -1770,29 +1770,29 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
           };
         }, { "../internals/global": 60 }], 90: [function(e3, t2, r2) {
           "use strict";
-          var h = e3("../internals/descriptors"), o = e3("../internals/fails"), f = e3("../internals/object-keys"), p = e3("../internals/object-get-own-property-symbols"), m = e3("../internals/object-property-is-enumerable"), y = e3("../internals/to-object"), g = e3("../internals/indexed-object"), n = Object.assign, s2 = Object.defineProperty;
+          var h3 = e3("../internals/descriptors"), o = e3("../internals/fails"), f = e3("../internals/object-keys"), p = e3("../internals/object-get-own-property-symbols"), m = e3("../internals/object-property-is-enumerable"), y = e3("../internals/to-object"), g = e3("../internals/indexed-object"), n = Object.assign, s2 = Object.defineProperty;
           t2.exports = !n || o(function() {
             var e4, t3, r3, o2;
-            return !(!h || 1 === n({ b: 1 }, n(s2({}, "a", { enumerable: true, get: function() {
+            return !(!h3 || 1 === n({ b: 1 }, n(s2({}, "a", { enumerable: true, get: function() {
               s2(this, "b", { value: 3, enumerable: false });
             } }), { b: 2 })).b) || (t3 = {}, o2 = "abcdefghijklmnopqrst", (e4 = {})[r3 = Symbol()] = 7, o2.split("").forEach(function(e5) {
               t3[e5] = e5;
             }), 7 != n({}, e4)[r3] || f(n({}, t3)).join("") != o2);
           }) ? function(e4, t3) {
-            for (var r3 = y(e4), o2 = arguments.length, n2 = 1, s3 = p.f, i = m.f; n2 < o2; ) for (var a, l = g(arguments[n2++]), u = s3 ? f(l).concat(s3(l)) : f(l), c = u.length, d = 0; d < c; ) a = u[d++], h && !i.call(l, a) || (r3[a] = l[a]);
+            for (var r3 = y(e4), o2 = arguments.length, n2 = 1, s3 = p.f, i = m.f; n2 < o2; ) for (var a, l = g(arguments[n2++]), u = s3 ? f(l).concat(s3(l)) : f(l), c = u.length, d = 0; d < c; ) a = u[d++], h3 && !i.call(l, a) || (r3[a] = l[a]);
             return r3;
           } : n;
         }, { "../internals/descriptors": 43, "../internals/fails": 51, "../internals/indexed-object": 67, "../internals/object-get-own-property-symbols": 97, "../internals/object-keys": 100, "../internals/object-property-is-enumerable": 101, "../internals/to-object": 139 }], 91: [function(e3, t2, r2) {
           function o() {
           }
-          var n, s2 = e3("../internals/an-object"), i = e3("../internals/object-define-properties"), a = e3("../internals/enum-bug-keys"), l = e3("../internals/hidden-keys"), u = e3("../internals/html"), c = e3("../internals/document-create-element"), e3 = e3("../internals/shared-key"), d = "prototype", h = "script", f = e3("IE_PROTO"), p = function(e4) {
-            return "<" + h + ">" + e4 + "</" + h + ">";
+          var n, s2 = e3("../internals/an-object"), i = e3("../internals/object-define-properties"), a = e3("../internals/enum-bug-keys"), l = e3("../internals/hidden-keys"), u = e3("../internals/html"), c = e3("../internals/document-create-element"), e3 = e3("../internals/shared-key"), d = "prototype", h3 = "script", f = e3("IE_PROTO"), p = function(e4) {
+            return "<" + h3 + ">" + e4 + "</" + h3 + ">";
           }, m = function() {
             try {
               n = document.domain && new ActiveXObject("htmlfile");
             } catch (e5) {
             }
-            m = n ? ((e4 = n).write(p("")), e4.close(), t3 = e4.parentWindow.Object, e4 = null, t3) : (e4 = c("iframe"), t3 = "java" + h + ":", e4.style.display = "none", u.appendChild(e4), e4.src = String(t3), (t3 = e4.contentWindow.document).open(), t3.write(p("document.F=Object")), t3.close(), t3.F);
+            m = n ? ((e4 = n).write(p("")), e4.close(), t3 = e4.parentWindow.Object, e4 = null, t3) : (e4 = c("iframe"), t3 = "java" + h3 + ":", e4.style.display = "none", u.appendChild(e4), e4.src = String(t3), (t3 = e4.contentWindow.document).open(), t3.write(p("document.F=Object")), t3.close(), t3.F);
             for (var e4, t3, r3 = a.length; r3--; ) delete m[d][a[r3]];
             return m();
           };
@@ -1945,10 +1945,10 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
           };
         }, { "./classof-raw": 28, "./regexp-exec": 112 }], 112: [function(e3, t2, r2) {
           "use strict";
-          var o, n, d = e3("./regexp-flags"), e3 = e3("./regexp-sticky-helpers"), h = RegExp.prototype.exec, f = String.prototype.replace, s2 = h, p = (o = /a/, n = /b*/g, h.call(o, "a"), h.call(n, "a"), 0 !== o.lastIndex || 0 !== n.lastIndex), m = e3.UNSUPPORTED_Y || e3.BROKEN_CARET, y = void 0 !== /()??/.exec("")[1];
+          var o, n, d = e3("./regexp-flags"), e3 = e3("./regexp-sticky-helpers"), h3 = RegExp.prototype.exec, f = String.prototype.replace, s2 = h3, p = (o = /a/, n = /b*/g, h3.call(o, "a"), h3.call(n, "a"), 0 !== o.lastIndex || 0 !== n.lastIndex), m = e3.UNSUPPORTED_Y || e3.BROKEN_CARET, y = void 0 !== /()??/.exec("")[1];
           t2.exports = s2 = p || y || m ? function(e4) {
             var t3, r3, o2, n2, s3 = this, i = m && s3.sticky, a = d.call(s3), l = s3.source, u = 0, c = e4;
-            return i && (-1 === (a = a.replace("y", "")).indexOf("g") && (a += "g"), c = String(e4).slice(s3.lastIndex), 0 < s3.lastIndex && (!s3.multiline || s3.multiline && "\n" !== e4[s3.lastIndex - 1]) && (l = "(?: " + l + ")", c = " " + c, u++), r3 = new RegExp("^(?:" + l + ")", a)), y && (r3 = new RegExp("^" + l + "$(?!\\s)", a)), p && (t3 = s3.lastIndex), o2 = h.call(i ? r3 : s3, c), i ? o2 ? (o2.input = o2.input.slice(u), o2[0] = o2[0].slice(u), o2.index = s3.lastIndex, s3.lastIndex += o2[0].length) : s3.lastIndex = 0 : p && o2 && (s3.lastIndex = s3.global ? o2.index + o2[0].length : t3), y && o2 && 1 < o2.length && f.call(o2[0], r3, function() {
+            return i && (-1 === (a = a.replace("y", "")).indexOf("g") && (a += "g"), c = String(e4).slice(s3.lastIndex), 0 < s3.lastIndex && (!s3.multiline || s3.multiline && "\n" !== e4[s3.lastIndex - 1]) && (l = "(?: " + l + ")", c = " " + c, u++), r3 = new RegExp("^(?:" + l + ")", a)), y && (r3 = new RegExp("^" + l + "$(?!\\s)", a)), p && (t3 = s3.lastIndex), o2 = h3.call(i ? r3 : s3, c), i ? o2 ? (o2.input = o2.input.slice(u), o2[0] = o2[0].slice(u), o2.index = s3.lastIndex, s3.lastIndex += o2[0].length) : s3.lastIndex = 0 : p && o2 && (s3.lastIndex = s3.global ? o2.index + o2[0].length : t3), y && o2 && 1 < o2.length && f.call(o2[0], r3, function() {
               for (n2 = 1; n2 < arguments.length - 2; n2++) void 0 === arguments[n2] && (o2[n2] = void 0);
             }), o2;
           } : s2;
@@ -2075,13 +2075,13 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               for (s3 += (u - n) * d, n = u, c = 0; c < e4.length; c++) {
                 if ((t3 = e4[c]) < n && ++s3 > v) throw RangeError(w);
                 if (t3 == n) {
-                  for (var h = s3, f = b; ; f += b) {
+                  for (var h3 = s3, f = b; ; f += b) {
                     var p = f <= i2 ? 1 : i2 + _ <= f ? _ : f - i2;
-                    if (h < p) break;
-                    var m = h - p, y = b - p;
-                    r3.push(E(g(p + m % y))), h = T(m / y);
+                    if (h3 < p) break;
+                    var m = h3 - p, y = b - p;
+                    r3.push(E(g(p + m % y))), h3 = T(m / y);
                   }
-                  r3.push(E(g(h))), i2 = function(e5, t4, r4) {
+                  r3.push(E(g(h3))), i2 = function(e5, t4, r4) {
                     var o2 = 0;
                     for (e5 = r4 ? T(e5 / x) : e5 >> 1, e5 += T(e5 / t4); S * _ >> 1 < e5; o2 += b) e5 = T(e5 / S);
                     return T(o2 + (S + 1) * e5 / (e5 + j));
@@ -2134,7 +2134,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
           function s2(e4) {
             a.postMessage(e4 + "", f.protocol + "//" + f.host);
           }
-          var i, a = e3("../internals/global"), l = e3("../internals/fails"), u = e3("../internals/classof-raw"), c = e3("../internals/function-bind-context"), d = e3("../internals/html"), h = e3("../internals/document-create-element"), e3 = e3("../internals/engine-is-ios"), f = a.location, p = a.setImmediate, m = a.clearImmediate, y = a.process, g = a.MessageChannel, v = a.Dispatch, b = 0, _ = {}, j = "onreadystatechange", x = function(e4) {
+          var i, a = e3("../internals/global"), l = e3("../internals/fails"), u = e3("../internals/classof-raw"), c = e3("../internals/function-bind-context"), d = e3("../internals/html"), h3 = e3("../internals/document-create-element"), e3 = e3("../internals/engine-is-ios"), f = a.location, p = a.setImmediate, m = a.clearImmediate, y = a.process, g = a.MessageChannel, v = a.Dispatch, b = 0, _ = {}, j = "onreadystatechange", x = function(e4) {
             var t3;
             _.hasOwnProperty(e4) && (t3 = _[e4], delete _[e4], t3());
           };
@@ -2149,8 +2149,8 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             y.nextTick(o(e4));
           } : v && v.now ? i = function(e4) {
             v.now(o(e4));
-          } : g && !e3 ? (e3 = (u = new g()).port2, u.port1.onmessage = n, i = c(e3.postMessage, e3, 1)) : !a.addEventListener || "function" != typeof postMessage || a.importScripts || l(s2) || "file:" === f.protocol ? i = j in h("script") ? function(e4) {
-            d.appendChild(h("script"))[j] = function() {
+          } : g && !e3 ? (e3 = (u = new g()).port2, u.port1.onmessage = n, i = c(e3.postMessage, e3, 1)) : !a.addEventListener || "function" != typeof postMessage || a.importScripts || l(s2) || "file:" === f.protocol ? i = j in h3("script") ? function(e4) {
+            d.appendChild(h3("script"))[j] = function() {
               d.removeChild(this), x(e4);
             };
           } : function(e4) {
@@ -2242,9 +2242,9 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             return o(e4, t3 = d(t3, true)) ? U(2, e4[t3]) : X(e4, t3);
           }
           function s2(e4, t3, r3) {
-            return !(o(e4, t3 = d(t3, true)) && b(r3) && h(r3, "value")) || h(r3, "get") || h(r3, "set") || r3.configurable || h(r3, "writable") && !r3.writable || h(r3, "enumerable") && !r3.enumerable ? E(e4, t3, r3) : (e4[t3] = r3.value, e4);
+            return !(o(e4, t3 = d(t3, true)) && b(r3) && h3(r3, "value")) || h3(r3, "get") || h3(r3, "set") || r3.configurable || h3(r3, "writable") && !r3.writable || h3(r3, "enumerable") && !r3.enumerable ? E(e4, t3, r3) : (e4[t3] = r3.value, e4);
           }
-          var a = e3("../internals/export"), l = e3("../internals/global"), i = e3("../internals/descriptors"), F = e3("../internals/typed-array-constructors-require-wrappers"), u = e3("../internals/array-buffer-view-core"), c = e3("../internals/array-buffer"), m = e3("../internals/an-instance"), U = e3("../internals/create-property-descriptor"), y = e3("../internals/create-non-enumerable-property"), N = e3("../internals/to-length"), g = e3("../internals/to-index"), v = e3("../internals/to-offset"), d = e3("../internals/to-primitive"), h = e3("../internals/has"), B = e3("../internals/classof"), b = e3("../internals/is-object"), G = e3("../internals/object-create"), _ = e3("../internals/object-set-prototype-of"), V = e3("../internals/object-get-own-property-names").f, j = e3("../internals/typed-array-from"), z = e3("../internals/array-iteration").forEach, H = e3("../internals/set-species"), x = e3("../internals/object-define-property"), w = e3("../internals/object-get-own-property-descriptor"), S = e3("../internals/internal-state"), W = e3("../internals/inherit-if-required"), T = S.get, q = S.set, E = x.f, X = w.f, Y = Math.round, M = l.RangeError, k = c.ArrayBuffer, Z = c.DataView, O = u.NATIVE_ARRAY_BUFFER_VIEWS, C = u.TYPED_ARRAY_TAG, P = u.TypedArray, A = u.TypedArrayPrototype, K = u.aTypedArrayConstructor, L = u.isTypedArray, R = "BYTES_PER_ELEMENT", I = "Wrong length";
+          var a = e3("../internals/export"), l = e3("../internals/global"), i = e3("../internals/descriptors"), F = e3("../internals/typed-array-constructors-require-wrappers"), u = e3("../internals/array-buffer-view-core"), c = e3("../internals/array-buffer"), m = e3("../internals/an-instance"), U = e3("../internals/create-property-descriptor"), y = e3("../internals/create-non-enumerable-property"), N = e3("../internals/to-length"), g = e3("../internals/to-index"), v = e3("../internals/to-offset"), d = e3("../internals/to-primitive"), h3 = e3("../internals/has"), B = e3("../internals/classof"), b = e3("../internals/is-object"), G = e3("../internals/object-create"), _ = e3("../internals/object-set-prototype-of"), V = e3("../internals/object-get-own-property-names").f, j = e3("../internals/typed-array-from"), z = e3("../internals/array-iteration").forEach, H = e3("../internals/set-species"), x = e3("../internals/object-define-property"), w = e3("../internals/object-get-own-property-descriptor"), S = e3("../internals/internal-state"), W = e3("../internals/inherit-if-required"), T = S.get, q = S.set, E = x.f, X = w.f, Y = Math.round, M = l.RangeError, k = c.ArrayBuffer, Z = c.DataView, O = u.NATIVE_ARRAY_BUFFER_VIEWS, C = u.TYPED_ARRAY_TAG, P = u.TypedArray, A = u.TypedArrayPrototype, K = u.aTypedArrayConstructor, L = u.isTypedArray, R = "BYTES_PER_ELEMENT", I = "Wrong length";
           i ? (O || (w.f = n, x.f = s2, r2(A, "buffer"), r2(A, "byteOffset"), r2(A, "byteLength"), r2(A, "length")), a({ target: "Object", stat: true, forced: !O }, { getOwnPropertyDescriptor: n, defineProperty: s2 }), t2.exports = function(e4, t3, n2) {
             function u2(e5, o3) {
               E(e5, o3, { get: function() {
@@ -2255,16 +2255,16 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                 t4 = T(t4), n2 && (e6 = (e6 = Y(e6)) < 0 ? 0 : 255 < e6 ? 255 : 255 & e6), t4.view[s3](r4 * c2 + t4.byteOffset, e6, true);
               }, enumerable: true });
             }
-            var c2 = e4.match(/\d+$/)[0] / 8, d2 = e4 + (n2 ? "Clamped" : "") + "Array", r3 = "get" + e4, s3 = "set" + e4, i2 = l[d2], h2 = i2, e4 = h2 && h2.prototype, o2 = {};
-            O ? F && (h2 = t3(function(e5, t4, r4, o3) {
-              return m(e5, h2, d2), W(b(t4) ? p(t4) ? void 0 !== o3 ? new i2(t4, v(r4, c2), o3) : void 0 !== r4 ? new i2(t4, v(r4, c2)) : new i2(t4) : L(t4) ? f(h2, t4) : j.call(h2, t4) : new i2(g(t4)), e5, h2);
-            }), _ && _(h2, P), z(V(i2), function(e5) {
-              e5 in h2 || y(h2, e5, i2[e5]);
-            }), h2.prototype = e4) : (h2 = t3(function(e5, t4, r4, o3) {
-              m(e5, h2, d2);
+            var c2 = e4.match(/\d+$/)[0] / 8, d2 = e4 + (n2 ? "Clamped" : "") + "Array", r3 = "get" + e4, s3 = "set" + e4, i2 = l[d2], h4 = i2, e4 = h4 && h4.prototype, o2 = {};
+            O ? F && (h4 = t3(function(e5, t4, r4, o3) {
+              return m(e5, h4, d2), W(b(t4) ? p(t4) ? void 0 !== o3 ? new i2(t4, v(r4, c2), o3) : void 0 !== r4 ? new i2(t4, v(r4, c2)) : new i2(t4) : L(t4) ? f(h4, t4) : j.call(h4, t4) : new i2(g(t4)), e5, h4);
+            }), _ && _(h4, P), z(V(i2), function(e5) {
+              e5 in h4 || y(h4, e5, i2[e5]);
+            }), h4.prototype = e4) : (h4 = t3(function(e5, t4, r4, o3) {
+              m(e5, h4, d2);
               var n3, s4, i3 = 0, a2 = 0;
               if (b(t4)) {
-                if (!p(t4)) return L(t4) ? f(h2, t4) : j.call(h2, t4);
+                if (!p(t4)) return L(t4) ? f(h4, t4) : j.call(h4, t4);
                 var l2 = t4, a2 = v(r4, c2), r4 = t4.byteLength;
                 if (void 0 === o3) {
                   if (r4 % c2) throw M(I);
@@ -2273,7 +2273,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                 s4 = n3 / c2;
               } else s4 = g(t4), l2 = new k(n3 = s4 * c2);
               for (q(e5, { buffer: l2, byteOffset: a2, byteLength: n3, length: s4, view: new Z(l2) }); i3 < s4; ) u2(e5, i3++);
-            }), _ && _(h2, P), e4 = h2.prototype = G(A)), e4.constructor !== h2 && y(e4, "constructor", h2), C && y(e4, C, d2), o2[d2] = h2, a({ global: true, forced: h2 != i2, sham: !O }, o2), R in h2 || y(h2, R, c2), R in e4 || y(e4, R, c2), H(d2);
+            }), _ && _(h4, P), e4 = h4.prototype = G(A)), e4.constructor !== h4 && y(e4, "constructor", h4), C && y(e4, C, d2), o2[d2] = h4, a({ global: true, forced: h4 != i2, sham: !O }, o2), R in h4 || y(h4, R, c2), R in e4 || y(e4, R, c2), H(d2);
           }) : t2.exports = function() {
           };
         }, { "../internals/an-instance": 9, "../internals/array-buffer": 13, "../internals/array-buffer-view-core": 12, "../internals/array-iteration": 19, "../internals/classof": 29, "../internals/create-non-enumerable-property": 38, "../internals/create-property-descriptor": 39, "../internals/descriptors": 43, "../internals/export": 50, "../internals/global": 60, "../internals/has": 61, "../internals/inherit-if-required": 68, "../internals/internal-state": 71, "../internals/is-object": 75, "../internals/object-create": 91, "../internals/object-define-property": 93, "../internals/object-get-own-property-descriptor": 94, "../internals/object-get-own-property-names": 96, "../internals/object-set-prototype-of": 102, "../internals/set-species": 118, "../internals/to-index": 135, "../internals/to-length": 138, "../internals/to-offset": 140, "../internals/to-primitive": 142, "../internals/typed-array-constructors-require-wrappers": 145, "../internals/typed-array-from": 146 }], 145: [function(e3, t2, r2) {
@@ -2288,9 +2288,9 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             return 1 !== new a(new i(2), 1, void 0).length;
           });
         }, { "../internals/array-buffer-view-core": 12, "../internals/check-correctness-of-iteration": 27, "../internals/fails": 51, "../internals/global": 60 }], 146: [function(e3, t2, r2) {
-          var h = e3("../internals/to-object"), f = e3("../internals/to-length"), p = e3("../internals/get-iterator-method"), m = e3("../internals/is-array-iterator-method"), y = e3("../internals/function-bind-context"), g = e3("../internals/array-buffer-view-core").aTypedArrayConstructor;
+          var h3 = e3("../internals/to-object"), f = e3("../internals/to-length"), p = e3("../internals/get-iterator-method"), m = e3("../internals/is-array-iterator-method"), y = e3("../internals/function-bind-context"), g = e3("../internals/array-buffer-view-core").aTypedArrayConstructor;
           t2.exports = function(e4) {
-            var t3, r3, o, n, s2, i, a = h(e4), l = arguments.length, u = 1 < l ? arguments[1] : void 0, c = void 0 !== u, d = p(a);
+            var t3, r3, o, n, s2, i, a = h3(e4), l = arguments.length, u = 1 < l ? arguments[1] : void 0, c = void 0 !== u, d = p(a);
             if (null != d && !m(d)) for (i = (s2 = d.call(a)).next, a = []; !(n = i.call(s2)).done; ) a.push(n.value);
             for (c && 2 < l && (u = y(u, arguments[2], 2)), r3 = f(a.length), o = new (g(this))(r3), t3 = 0; t3 < r3; t3++) o[t3] = c ? u(a[t3], t3) : a[t3];
             return o;
@@ -2319,12 +2319,12 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
           o({ global: true, forced: n[i] !== s2 }, { ArrayBuffer: s2 }), e3(i);
         }, { "../internals/array-buffer": 13, "../internals/export": 50, "../internals/global": 60, "../internals/set-species": 118 }], 153: [function(e3, t2, r2) {
           "use strict";
-          var o = e3("../internals/export"), n = e3("../internals/fails"), d = e3("../internals/is-array"), h = e3("../internals/is-object"), f = e3("../internals/to-object"), p = e3("../internals/to-length"), m = e3("../internals/create-property"), y = e3("../internals/array-species-create"), s2 = e3("../internals/array-method-has-species-support"), i = e3("../internals/well-known-symbol"), e3 = e3("../internals/engine-v8-version"), g = i("isConcatSpreadable"), v = 9007199254740991, b = "Maximum allowed index exceeded", i = 51 <= e3 || !n(function() {
+          var o = e3("../internals/export"), n = e3("../internals/fails"), d = e3("../internals/is-array"), h3 = e3("../internals/is-object"), f = e3("../internals/to-object"), p = e3("../internals/to-length"), m = e3("../internals/create-property"), y = e3("../internals/array-species-create"), s2 = e3("../internals/array-method-has-species-support"), i = e3("../internals/well-known-symbol"), e3 = e3("../internals/engine-v8-version"), g = i("isConcatSpreadable"), v = 9007199254740991, b = "Maximum allowed index exceeded", i = 51 <= e3 || !n(function() {
             var e4 = [];
             return e4[g] = false, e4.concat()[0] !== e4;
           }), e3 = s2("concat");
           o({ target: "Array", proto: true, forced: !i || !e3 }, { concat: function(e4) {
-            for (var t3, r3, o2, n2, s3, i2 = f(this), a = y(i2, 0), l = 0, u = -1, c = arguments.length; u < c; u++) if (s3 = void 0, !h(n2 = o2 = -1 === u ? i2 : arguments[u]) || (void 0 !== (s3 = n2[g]) ? !s3 : !d(n2))) {
+            for (var t3, r3, o2, n2, s3, i2 = f(this), a = y(i2, 0), l = 0, u = -1, c = arguments.length; u < c; u++) if (s3 = void 0, !h3(n2 = o2 = -1 === u ? i2 : arguments[u]) || (void 0 !== (s3 = n2[g]) ? !s3 : !d(n2))) {
               if (v <= l) throw TypeError(b);
               m(a, l++, o2);
             } else {
@@ -2420,9 +2420,9 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
           } });
         }, { "../internals/array-iteration": 19, "../internals/array-method-has-species-support": 21, "../internals/array-method-uses-to-length": 23, "../internals/export": 50 }], 169: [function(e3, t2, r2) {
           "use strict";
-          var o = e3("../internals/export"), u = e3("../internals/is-object"), c = e3("../internals/is-array"), d = e3("../internals/to-absolute-index"), h = e3("../internals/to-length"), f = e3("../internals/to-indexed-object"), p = e3("../internals/create-property"), n = e3("../internals/well-known-symbol"), s2 = e3("../internals/array-method-has-species-support"), e3 = e3("../internals/array-method-uses-to-length"), s2 = s2("slice"), e3 = e3("slice", { ACCESSORS: true, 0: 0, 1: 2 }), m = n("species"), y = [].slice, g = Math.max;
+          var o = e3("../internals/export"), u = e3("../internals/is-object"), c = e3("../internals/is-array"), d = e3("../internals/to-absolute-index"), h3 = e3("../internals/to-length"), f = e3("../internals/to-indexed-object"), p = e3("../internals/create-property"), n = e3("../internals/well-known-symbol"), s2 = e3("../internals/array-method-has-species-support"), e3 = e3("../internals/array-method-uses-to-length"), s2 = s2("slice"), e3 = e3("slice", { ACCESSORS: true, 0: 0, 1: 2 }), m = n("species"), y = [].slice, g = Math.max;
           o({ target: "Array", proto: true, forced: !s2 || !e3 }, { slice: function(e4, t3) {
-            var r3, o2, n2, s3 = f(this), i = h(s3.length), a = d(e4, i), l = d(void 0 === t3 ? i : t3, i);
+            var r3, o2, n2, s3 = f(this), i = h3(s3.length), a = d(e4, i), l = d(void 0 === t3 ? i : t3, i);
             if (c(s3) && ((r3 = "function" == typeof (r3 = s3.constructor) && (r3 === Array || c(r3.prototype)) || u(r3) && null === (r3 = r3[m]) ? void 0 : r3) === Array || void 0 === r3)) return y.call(s3, a, l);
             for (o2 = new (void 0 === r3 ? Array : r3)(g(l - a, 0)), n2 = 0; a < l; a++, n2++) a in s3 && p(o2, n2, s3[a]);
             return o2.length = n2, o2;
@@ -2435,10 +2435,10 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
           } });
         }, { "../internals/array-iteration": 19, "../internals/array-method-is-strict": 22, "../internals/array-method-uses-to-length": 23, "../internals/export": 50 }], 171: [function(e3, t2, r2) {
           "use strict";
-          var o = e3("../internals/export"), d = e3("../internals/to-absolute-index"), h = e3("../internals/to-integer"), f = e3("../internals/to-length"), p = e3("../internals/to-object"), m = e3("../internals/array-species-create"), y = e3("../internals/create-property"), n = e3("../internals/array-method-has-species-support"), e3 = e3("../internals/array-method-uses-to-length"), n = n("splice"), e3 = e3("splice", { ACCESSORS: true, 0: 0, 1: 2 }), g = Math.max, v = Math.min;
+          var o = e3("../internals/export"), d = e3("../internals/to-absolute-index"), h3 = e3("../internals/to-integer"), f = e3("../internals/to-length"), p = e3("../internals/to-object"), m = e3("../internals/array-species-create"), y = e3("../internals/create-property"), n = e3("../internals/array-method-has-species-support"), e3 = e3("../internals/array-method-uses-to-length"), n = n("splice"), e3 = e3("splice", { ACCESSORS: true, 0: 0, 1: 2 }), g = Math.max, v = Math.min;
           o({ target: "Array", proto: true, forced: !n || !e3 }, { splice: function(e4, t3) {
             var r3, o2, n2, s2, i, a, l = p(this), u = f(l.length), c = d(e4, u), e4 = arguments.length;
-            if (0 === e4 ? r3 = o2 = 0 : o2 = 1 === e4 ? (r3 = 0, u - c) : (r3 = e4 - 2, v(g(h(t3), 0), u - c)), 9007199254740991 < u + r3 - o2) throw TypeError("Maximum allowed length exceeded");
+            if (0 === e4 ? r3 = o2 = 0 : o2 = 1 === e4 ? (r3 = 0, u - c) : (r3 = e4 - 2, v(g(h3(t3), 0), u - c)), 9007199254740991 < u + r3 - o2) throw TypeError("Maximum allowed length exceeded");
             for (n2 = m(l, o2), s2 = 0; s2 < o2; s2++) (i = c + s2) in l && y(n2, s2, l[i]);
             if (r3 < (n2.length = o2)) {
               for (s2 = c; s2 < u - o2; s2++) a = s2 + r3, (i = s2 + o2) in l ? l[a] = l[i] : delete l[a];
@@ -2507,11 +2507,11 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             }
             return +l2;
           }
-          var n = e3("../internals/descriptors"), s2 = e3("../internals/global"), i = e3("../internals/is-forced"), a = e3("../internals/redefine"), l = e3("../internals/has"), u = e3("../internals/classof-raw"), c = e3("../internals/inherit-if-required"), d = e3("../internals/to-primitive"), h = e3("../internals/fails"), f = e3("../internals/object-create"), p = e3("../internals/object-get-own-property-names").f, m = e3("../internals/object-get-own-property-descriptor").f, y = e3("../internals/object-define-property").f, g = e3("../internals/string-trim").trim, v = "Number", b = s2[v], _ = b.prototype, j = u(f(_)) == v;
+          var n = e3("../internals/descriptors"), s2 = e3("../internals/global"), i = e3("../internals/is-forced"), a = e3("../internals/redefine"), l = e3("../internals/has"), u = e3("../internals/classof-raw"), c = e3("../internals/inherit-if-required"), d = e3("../internals/to-primitive"), h3 = e3("../internals/fails"), f = e3("../internals/object-create"), p = e3("../internals/object-get-own-property-names").f, m = e3("../internals/object-get-own-property-descriptor").f, y = e3("../internals/object-define-property").f, g = e3("../internals/string-trim").trim, v = "Number", b = s2[v], _ = b.prototype, j = u(f(_)) == v;
           if (i(v, !b(" 0o1") || !b("0b1") || b("+0x1"))) {
             for (var x, w = function(e4) {
               var e4 = arguments.length < 1 ? 0 : e4, t3 = this;
-              return t3 instanceof w && (j ? h(function() {
+              return t3 instanceof w && (j ? h3(function() {
                 _.valueOf.call(t3);
               }) : u(t3) != v) ? c(new b(o(e4)), t3, w) : o(e4);
             }, S = n ? p(b) : "MAX_VALUE,MIN_VALUE,NaN,NEGATIVE_INFINITY,POSITIVE_INFINITY,EPSILON,isFinite,isInteger,isNaN,isSafeInteger,MAX_SAFE_INTEGER,MIN_SAFE_INTEGER,parseFloat,parseInt,isInteger".split(","), T = 0; S.length > T; T++) l(b, x = S[T]) && !l(w, x) && y(w, x, m(b, x));
@@ -2526,7 +2526,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
           function c(e4, t3, r3) {
             return 0 === t3 ? r3 : t3 % 2 == 1 ? c(e4, t3 - 1, r3 * e4) : c(e4 * e4, t3 / 2, r3);
           }
-          var o = e3("../internals/export"), d = e3("../internals/to-integer"), h = e3("../internals/this-number-value"), f = e3("../internals/string-repeat"), e3 = e3("../internals/fails"), n = 1 .toFixed, p = Math.floor;
+          var o = e3("../internals/export"), d = e3("../internals/to-integer"), h3 = e3("../internals/this-number-value"), f = e3("../internals/string-repeat"), e3 = e3("../internals/fails"), n = 1 .toFixed, p = Math.floor;
           o({ target: "Number", proto: true, forced: n && ("0.000" !== 8e-5.toFixed(3) || "1" !== 0.9.toFixed(0) || "1.25" !== 1.255.toFixed(2) || "1000000000000000128" !== 1000000000000000100 .toFixed(0)) || !e3(function() {
             n.call({});
           }) }, { toFixed: function(e4) {
@@ -2540,7 +2540,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               for (var e5, t4 = 6, r4 = ""; 0 <= --t4; ) "" === r4 && 0 !== t4 && 0 === a[t4] || (e5 = String(a[t4]), r4 = "" === r4 ? e5 : r4 + f.call("0", 7 - e5.length) + e5);
               return r4;
             }
-            var n2, s2, i = h(this), e4 = d(e4), a = [0, 0, 0, 0, 0, 0], l = "", u = "0";
+            var n2, s2, i = h3(this), e4 = d(e4), a = [0, 0, 0, 0, 0, 0], l = "", u = "0";
             if (e4 < 0 || 20 < e4) throw RangeError("Incorrect fraction digits");
             if (i != i) return "NaN";
             if (i <= -1e21 || 1e21 <= i) return String(i);
@@ -2602,7 +2602,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
           o || n(Object.prototype, "toString", e3, { unsafe: true });
         }, { "../internals/object-to-string": 104, "../internals/redefine": 110, "../internals/to-string-tag-support": 143 }], 191: [function(e3, D, F) {
           "use strict";
-          var r2, t2, o, n, s2 = e3("../internals/export"), i = e3("../internals/is-pure"), g = e3("../internals/global"), a = e3("../internals/get-built-in"), l = e3("../internals/native-promise-constructor"), U = e3("../internals/redefine"), N = e3("../internals/redefine-all"), B = e3("../internals/set-to-string-tag"), G = e3("../internals/set-species"), V = e3("../internals/is-object"), c = e3("../internals/a-function"), z = e3("../internals/an-instance"), H = e3("../internals/classof-raw"), W = e3("../internals/inspect-source"), d = e3("../internals/iterate"), q = e3("../internals/check-correctness-of-iteration"), X = e3("../internals/species-constructor"), v = e3("../internals/task").set, u = e3("../internals/microtask"), h = e3("../internals/promise-resolve"), Y = e3("../internals/host-report-errors"), f = e3("../internals/new-promise-capability"), b = e3("../internals/perform"), p = e3("../internals/internal-state"), Z = e3("../internals/is-forced"), m = e3("../internals/well-known-symbol"), y = e3("../internals/engine-v8-version"), K = m("species"), _ = "Promise", j = p.get, Q = p.set, J = p.getterFor(_), x = l, w = g.TypeError, S = g.document, T = g.process, E = a("fetch"), M = f.f, $ = M, k = "process" == H(T), ee = !!(S && S.createEvent && g.dispatchEvent), O = "unhandledrejection", te = "rejectionhandled", C = 1, re = 2, P = 1, oe = 2, e3 = Z(_, function() {
+          var r2, t2, o, n, s2 = e3("../internals/export"), i = e3("../internals/is-pure"), g = e3("../internals/global"), a = e3("../internals/get-built-in"), l = e3("../internals/native-promise-constructor"), U = e3("../internals/redefine"), N = e3("../internals/redefine-all"), B = e3("../internals/set-to-string-tag"), G = e3("../internals/set-species"), V = e3("../internals/is-object"), c = e3("../internals/a-function"), z = e3("../internals/an-instance"), H = e3("../internals/classof-raw"), W = e3("../internals/inspect-source"), d = e3("../internals/iterate"), q = e3("../internals/check-correctness-of-iteration"), X = e3("../internals/species-constructor"), v = e3("../internals/task").set, u = e3("../internals/microtask"), h3 = e3("../internals/promise-resolve"), Y = e3("../internals/host-report-errors"), f = e3("../internals/new-promise-capability"), b = e3("../internals/perform"), p = e3("../internals/internal-state"), Z = e3("../internals/is-forced"), m = e3("../internals/well-known-symbol"), y = e3("../internals/engine-v8-version"), K = m("species"), _ = "Promise", j = p.get, Q = p.set, J = p.getterFor(_), x = l, w = g.TypeError, S = g.document, T = g.process, E = a("fetch"), M = f.f, $ = M, k = "process" == H(T), ee = !!(S && S.createEvent && g.dispatchEvent), O = "unhandledrejection", te = "rejectionhandled", C = 1, re = 2, P = 1, oe = 2, e3 = Z(_, function() {
             var e4, t3;
             if (!(W(x) !== String(x))) {
               if (66 === y) return true;
@@ -2624,16 +2624,16 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             var y2;
             p2.notified || (p2.notified = true, y2 = p2.reactions, u(function() {
               for (var r3, o2, e4 = p2.value, t3 = p2.state == C, n2 = 0; y2.length > n2; ) {
-                var s3, i2, a2, l2 = y2[n2++], u2 = t3 ? l2.ok : l2.fail, c2 = l2.resolve, d2 = l2.reject, h2 = l2.domain;
+                var s3, i2, a2, l2 = y2[n2++], u2 = t3 ? l2.ok : l2.fail, c2 = l2.resolve, d2 = l2.reject, h4 = l2.domain;
                 try {
                   u2 ? (t3 || (p2.rejection === oe && function(e5, t4) {
                     v.call(g, function() {
                       if (k) T.emit("rejectionHandled", e5);
                       else se(te, e5, t4.value);
                     });
-                  }(f2, p2), p2.rejection = P), true === u2 ? s3 = e4 : (h2 && h2.enter(), s3 = u2(e4), h2 && (h2.exit(), a2 = true)), s3 === l2.promise ? d2(w("Promise-chain cycle")) : (i2 = ne(s3)) ? i2.call(s3, c2, d2) : c2(s3)) : d2(e4);
+                  }(f2, p2), p2.rejection = P), true === u2 ? s3 = e4 : (h4 && h4.enter(), s3 = u2(e4), h4 && (h4.exit(), a2 = true)), s3 === l2.promise ? d2(w("Promise-chain cycle")) : (i2 = ne(s3)) ? i2.call(s3, c2, d2) : c2(s3)) : d2(e4);
                 } catch (e5) {
-                  h2 && !a2 && h2.exit(), d2(e5);
+                  h4 && !a2 && h4.exit(), d2(e5);
                 }
               }
               p2.reactions = [], p2.notified = false, m2 && !p2.rejection && (r3 = f2, o2 = p2, v.call(g, function() {
@@ -2699,12 +2699,12 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               n.call(r3, e5, t4);
             }).then(e4, t3);
           }, { unsafe: true }), "function" == typeof E && s2({ global: true, enumerable: true, forced: true }, { fetch: function(e4) {
-            return h(x, E.apply(g, arguments));
+            return h3(x, E.apply(g, arguments));
           } }))), s2({ global: true, wrap: true, forced: e3 }, { Promise: x }), B(x, _, false, true), G(_), o = a(_), s2({ target: _, stat: true, forced: e3 }, { reject: function(e4) {
             var t3 = M(this);
             return t3.reject.call(void 0, e4), t3.promise;
           } }), s2({ target: _, stat: true, forced: i || e3 }, { resolve: function(e4) {
-            return h(i && this === o ? x : this, e4);
+            return h3(i && this === o ? x : this, e4);
           } }), s2({ target: _, stat: true, forced: m }, { all: function(e4) {
             var a2 = this, t3 = M(a2), l2 = t3.resolve, u2 = t3.reject, r3 = b(function() {
               var o2 = c(a2.resolve), n2 = [], s3 = 0, i2 = 1;
@@ -2731,14 +2731,14 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             }
             return !(c(function() {
             }, [], e4) instanceof e4);
-          }), h = !e3(function() {
+          }), h3 = !e3(function() {
             c(function() {
             });
-          }), n = d || h;
+          }), n = d || h3;
           o({ target: "Reflect", stat: true, forced: n, sham: n }, { construct: function(e4, t3) {
             s2(e4), i(t3);
             var r3 = arguments.length < 3 ? e4 : s2(arguments[2]);
-            if (h && !d) return c(e4, t3, r3);
+            if (h3 && !d) return c(e4, t3, r3);
             if (e4 == r3) {
               switch (t3.length) {
                 case 0:
@@ -2765,7 +2765,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             return i(t3) === n ? t3[r3] : (o2 = l.f(t3, r3)) ? a(o2, "value") ? o2.value : void 0 === o2.get ? void 0 : o2.get.call(n) : s2(o2 = u(t3)) ? e4(o2, r3, n) : void 0;
           } });
         }, { "../internals/an-object": 10, "../internals/export": 50, "../internals/has": 61, "../internals/is-object": 75, "../internals/object-get-own-property-descriptor": 94, "../internals/object-get-prototype-of": 98 }], 194: [function(e3, t2, r2) {
-          var o = e3("../internals/descriptors"), n = e3("../internals/global"), s2 = e3("../internals/is-forced"), i = e3("../internals/inherit-if-required"), a = e3("../internals/object-define-property").f, l = e3("../internals/object-get-own-property-names").f, u = e3("../internals/is-regexp"), c = e3("../internals/regexp-flags"), d = e3("../internals/regexp-sticky-helpers"), h = e3("../internals/redefine"), f = e3("../internals/fails"), p = e3("../internals/internal-state").set, m = e3("../internals/set-species"), y = e3("../internals/well-known-symbol")("match"), g = n.RegExp, v = g.prototype, b = /a/g, _ = /a/g, j = new g(b) !== b, x = d.UNSUPPORTED_Y;
+          var o = e3("../internals/descriptors"), n = e3("../internals/global"), s2 = e3("../internals/is-forced"), i = e3("../internals/inherit-if-required"), a = e3("../internals/object-define-property").f, l = e3("../internals/object-get-own-property-names").f, u = e3("../internals/is-regexp"), c = e3("../internals/regexp-flags"), d = e3("../internals/regexp-sticky-helpers"), h3 = e3("../internals/redefine"), f = e3("../internals/fails"), p = e3("../internals/internal-state").set, m = e3("../internals/set-species"), y = e3("../internals/well-known-symbol")("match"), g = n.RegExp, v = g.prototype, b = /a/g, _ = /a/g, j = new g(b) !== b, x = d.UNSUPPORTED_Y;
           if (o && s2("RegExp", !j || x || f(function() {
             return _[y] = false, g(b) != b || g(_) == _ || "/a/i" != g(b, "i");
           }))) {
@@ -2782,7 +2782,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                 g[t3] = e4;
               } });
             }(S[T++]);
-            (v.constructor = w).prototype = v, h(n, "RegExp", w);
+            (v.constructor = w).prototype = v, h3(n, "RegExp", w);
           }
           m("RegExp");
         }, { "../internals/descriptors": 43, "../internals/fails": 51, "../internals/global": 60, "../internals/inherit-if-required": 68, "../internals/internal-state": 71, "../internals/is-forced": 74, "../internals/is-regexp": 77, "../internals/object-define-property": 93, "../internals/object-get-own-property-names": 96, "../internals/redefine": 110, "../internals/regexp-flags": 113, "../internals/regexp-sticky-helpers": 114, "../internals/set-species": 118, "../internals/well-known-symbol": 150 }], 195: [function(e3, t2, r2) {
@@ -2830,7 +2830,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
           });
         }, { "../internals/define-iterator": 41, "../internals/internal-state": 71, "../internals/string-multibyte": 125 }], 201: [function(e3, t2, r2) {
           "use strict";
-          var o = e3("../internals/fix-regexp-well-known-symbol-logic"), c = e3("../internals/an-object"), d = e3("../internals/to-length"), n = e3("../internals/require-object-coercible"), h = e3("../internals/advance-string-index"), f = e3("../internals/regexp-exec-abstract");
+          var o = e3("../internals/fix-regexp-well-known-symbol-logic"), c = e3("../internals/an-object"), d = e3("../internals/to-length"), n = e3("../internals/require-object-coercible"), h3 = e3("../internals/advance-string-index"), f = e3("../internals/regexp-exec-abstract");
           o("match", 1, function(o2, l, u) {
             return [function(e4) {
               var t3 = n(this), r3 = null == e4 ? void 0 : e4[o2];
@@ -2842,7 +2842,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               if (!r3.global) return f(r3, o3);
               for (var n2 = r3.unicode, s2 = [], i = r3.lastIndex = 0; null !== (a = f(r3, o3)); ) {
                 var a = String(a[0]);
-                "" === (s2[i] = a) && (r3.lastIndex = h(o3, d(r3.lastIndex), n2)), i++;
+                "" === (s2[i] = a) && (r3.lastIndex = h3(o3, d(r3.lastIndex), n2)), i++;
               }
               return 0 === i ? null : s2;
             }];
@@ -2869,8 +2869,8 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                 if (r3.done) return r3.value;
               }
               for (var o2, n2 = T(e5), s3 = String(this), i = "function" == typeof t3, a = (i || (t3 = String(t3)), n2.global), l = (a && (o2 = n2.unicode, n2.lastIndex = 0), []); null !== (f = C(n2, s3)) && (l.push(f), a); ) "" === String(f[0]) && (n2.lastIndex = O(s3, M(n2.lastIndex), o2));
-              for (var u, c = "", d = 0, h = 0; h < l.length; h++) {
-                for (var f = l[h], p = String(f[0]), m = P(A(k(f.index), s3.length), 0), y = [], g = 1; g < f.length; g++) y.push(void 0 === (u = f[g]) ? u : String(u));
+              for (var u, c = "", d = 0, h3 = 0; h3 < l.length; h3++) {
+                for (var f = l[h3], p = String(f[0]), m = P(A(k(f.index), s3.length), 0), y = [], g = 1; g < f.length; g++) y.push(void 0 === (u = f[g]) ? u : String(u));
                 var v = f.groups, b = i ? (b = [p].concat(y, m, s3), void 0 !== v && b.push(v), String(t3.apply(void 0, b))) : function(s4, i2, a2, l2, u2, e6) {
                   var c2 = a2 + s4.length, d2 = l2.length, t4 = I;
                   void 0 !== u2 && (u2 = E(u2), t4 = R);
@@ -2916,7 +2916,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
           });
         }, { "../internals/an-object": 10, "../internals/fix-regexp-well-known-symbol-logic": 52, "../internals/regexp-exec-abstract": 111, "../internals/require-object-coercible": 115, "../internals/same-value": 116 }], 206: [function(e3, t2, r2) {
           "use strict";
-          var o = e3("../internals/fix-regexp-well-known-symbol-logic"), c = e3("../internals/is-regexp"), g = e3("../internals/an-object"), d = e3("../internals/require-object-coercible"), v = e3("../internals/species-constructor"), b = e3("../internals/advance-string-index"), _ = e3("../internals/to-length"), j = e3("../internals/regexp-exec-abstract"), h = e3("../internals/regexp-exec"), e3 = e3("../internals/fails"), f = [].push, x = Math.min, w = 4294967295, S = !e3(function() {
+          var o = e3("../internals/fix-regexp-well-known-symbol-logic"), c = e3("../internals/is-regexp"), g = e3("../internals/an-object"), d = e3("../internals/require-object-coercible"), v = e3("../internals/species-constructor"), b = e3("../internals/advance-string-index"), _ = e3("../internals/to-length"), j = e3("../internals/regexp-exec-abstract"), h3 = e3("../internals/regexp-exec"), e3 = e3("../internals/fails"), f = [].push, x = Math.min, w = 4294967295, S = !e3(function() {
             return !RegExp(w, "y");
           });
           o("split", 2, function(n, p, m) {
@@ -2925,7 +2925,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               if (0 == o2) return [];
               if (void 0 === e4) return [r3];
               if (!c(e4)) return p.call(r3, e4, o2);
-              for (var n2, s2, i, a = [], t3 = (e4.ignoreCase ? "i" : "") + (e4.multiline ? "m" : "") + (e4.unicode ? "u" : "") + (e4.sticky ? "y" : ""), l = 0, u = new RegExp(e4.source, t3 + "g"); (n2 = h.call(u, r3)) && !(l < (s2 = u.lastIndex) && (a.push(r3.slice(l, n2.index)), 1 < n2.length && n2.index < r3.length && f.apply(a, n2.slice(1)), i = n2[0].length, l = s2, a.length >= o2)); ) u.lastIndex === n2.index && u.lastIndex++;
+              for (var n2, s2, i, a = [], t3 = (e4.ignoreCase ? "i" : "") + (e4.multiline ? "m" : "") + (e4.unicode ? "u" : "") + (e4.sticky ? "y" : ""), l = 0, u = new RegExp(e4.source, t3 + "g"); (n2 = h3.call(u, r3)) && !(l < (s2 = u.lastIndex) && (a.push(r3.slice(l, n2.index)), 1 < n2.length && n2.index < r3.length && f.apply(a, n2.slice(1)), i = n2[0].length, l = s2, a.length >= o2)); ) u.lastIndex === n2.index && u.lastIndex++;
               return l === r3.length ? !i && u.test("") || a.push("") : a.push(r3.slice(l)), a.length > o2 ? a.slice(0, o2) : a;
             } : "0".split(void 0, 0).length ? function(e4, t3) {
               return void 0 === e4 && 0 === t3 ? [] : p.call(this, e4, t3);
@@ -2941,11 +2941,11 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               if (0 === o2.length) return null === j(i, o2) ? [o2] : [];
               for (var l = 0, u = 0, c2 = []; u < o2.length; ) {
                 i.lastIndex = S ? u : 0;
-                var d2, h2 = j(i, S ? o2 : o2.slice(u));
-                if (null === h2 || (d2 = x(_(i.lastIndex + (S ? 0 : u)), o2.length)) === l) u = b(o2, u, n2);
+                var d2, h4 = j(i, S ? o2 : o2.slice(u));
+                if (null === h4 || (d2 = x(_(i.lastIndex + (S ? 0 : u)), o2.length)) === l) u = b(o2, u, n2);
                 else {
                   if (c2.push(o2.slice(l, u)), c2.length === a) return c2;
-                  for (var f2 = 1; f2 <= h2.length - 1; f2++) if (c2.push(h2[f2]), c2.length === a) return c2;
+                  for (var f2 = 1; f2 <= h4.length - 1; f2++) if (c2.push(h4[f2]), c2.length === a) return c2;
                   u = l = d2;
                 }
               }
@@ -2973,12 +2973,12 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
           } });
         }, { "../internals/export": 50, "../internals/string-trim": 131, "../internals/string-trim-forced": 130 }], 210: [function(e3, t2, r2) {
           "use strict";
-          var o, n, s2, i, a, l = e3("../internals/export"), u = e3("../internals/descriptors"), c = e3("../internals/global"), d = e3("../internals/has"), h = e3("../internals/is-object"), f = e3("../internals/object-define-property").f, e3 = e3("../internals/copy-constructor-properties"), p = c.Symbol;
+          var o, n, s2, i, a, l = e3("../internals/export"), u = e3("../internals/descriptors"), c = e3("../internals/global"), d = e3("../internals/has"), h3 = e3("../internals/is-object"), f = e3("../internals/object-define-property").f, e3 = e3("../internals/copy-constructor-properties"), p = c.Symbol;
           !u || "function" != typeof p || "description" in p.prototype && void 0 === p().description || (o = {}, e3(n = function() {
             var e4 = arguments.length < 1 || void 0 === arguments[0] ? void 0 : String(arguments[0]), t3 = this instanceof n ? new p(e4) : void 0 === e4 ? p() : p(e4);
             return "" === e4 && (o[t3] = true), t3;
           }, p), (c = n.prototype = p.prototype).constructor = n, s2 = c.toString, i = "Symbol(test)" == String(p("test")), a = /^Symbol\((.*)\)[^)]+$/, f(c, "description", { configurable: true, get: function() {
-            var e4 = h(this) ? this.valueOf() : this, t3 = s2.call(e4);
+            var e4 = h3(this) ? this.valueOf() : this, t3 = s2.call(e4);
             return d(o, e4) ? "" : "" === (e4 = i ? t3.slice(7, -1) : t3.replace(a, "$1")) ? void 0 : e4;
           } }), l({ global: true, forced: true }, { Symbol: n }));
         }, { "../internals/copy-constructor-properties": 33, "../internals/descriptors": 43, "../internals/export": 50, "../internals/global": 60, "../internals/has": 61, "../internals/is-object": 75, "../internals/object-define-property": 93 }], 211: [function(e3, t2, r2) {
@@ -3006,7 +3006,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               l(E, e5) || l(ee, e5) || t3.push(e5);
             }), t3;
           }
-          var n = e3("../internals/export"), N = e3("../internals/global"), B = e3("../internals/get-built-in"), G = e3("../internals/is-pure"), s2 = e3("../internals/descriptors"), i = e3("../internals/native-symbol"), V = e3("../internals/use-symbol-as-uid"), a = e3("../internals/fails"), l = e3("../internals/has"), z = e3("../internals/is-array"), H = e3("../internals/is-object"), u = e3("../internals/an-object"), W = e3("../internals/to-object"), c = e3("../internals/to-indexed-object"), d = e3("../internals/to-primitive"), h = e3("../internals/create-property-descriptor"), f = e3("../internals/object-create"), q = e3("../internals/object-keys"), X = e3("../internals/object-get-own-property-names"), Y = e3("../internals/object-get-own-property-names-external"), p = e3("../internals/object-get-own-property-symbols"), Z = e3("../internals/object-get-own-property-descriptor"), K = e3("../internals/object-define-property"), Q = e3("../internals/object-property-is-enumerable"), J = e3("../internals/create-non-enumerable-property"), m = e3("../internals/redefine"), y = e3("../internals/shared"), $ = e3("../internals/shared-key"), ee = e3("../internals/hidden-keys"), te = e3("../internals/uid"), re = e3("../internals/well-known-symbol"), oe = e3("../internals/well-known-symbol-wrapped"), ne = e3("../internals/define-well-known-symbol"), se = e3("../internals/set-to-string-tag"), g = e3("../internals/internal-state"), v = e3("../internals/array-iteration").forEach, b = $("hidden"), _ = "Symbol", j = "prototype", e3 = re("toPrimitive"), ie = g.set, ae = g.getterFor(_), x = Object[j], w = N.Symbol, S = B("JSON", "stringify"), le = Z.f, T = K.f, ue = Y.f, ce = Q.f, E = y("symbols"), M = y("op-symbols"), k = y("string-to-symbol-registry"), O = y("symbol-to-string-registry"), $ = y("wks"), g = N.QObject, C = !g || !g[j] || !g[j].findChild, P = s2 && a(function() {
+          var n = e3("../internals/export"), N = e3("../internals/global"), B = e3("../internals/get-built-in"), G = e3("../internals/is-pure"), s2 = e3("../internals/descriptors"), i = e3("../internals/native-symbol"), V = e3("../internals/use-symbol-as-uid"), a = e3("../internals/fails"), l = e3("../internals/has"), z = e3("../internals/is-array"), H = e3("../internals/is-object"), u = e3("../internals/an-object"), W = e3("../internals/to-object"), c = e3("../internals/to-indexed-object"), d = e3("../internals/to-primitive"), h3 = e3("../internals/create-property-descriptor"), f = e3("../internals/object-create"), q = e3("../internals/object-keys"), X = e3("../internals/object-get-own-property-names"), Y = e3("../internals/object-get-own-property-names-external"), p = e3("../internals/object-get-own-property-symbols"), Z = e3("../internals/object-get-own-property-descriptor"), K = e3("../internals/object-define-property"), Q = e3("../internals/object-property-is-enumerable"), J = e3("../internals/create-non-enumerable-property"), m = e3("../internals/redefine"), y = e3("../internals/shared"), $ = e3("../internals/shared-key"), ee = e3("../internals/hidden-keys"), te = e3("../internals/uid"), re = e3("../internals/well-known-symbol"), oe = e3("../internals/well-known-symbol-wrapped"), ne = e3("../internals/define-well-known-symbol"), se = e3("../internals/set-to-string-tag"), g = e3("../internals/internal-state"), v = e3("../internals/array-iteration").forEach, b = $("hidden"), _ = "Symbol", j = "prototype", e3 = re("toPrimitive"), ie = g.set, ae = g.getterFor(_), x = Object[j], w = N.Symbol, S = B("JSON", "stringify"), le = Z.f, T = K.f, ue = Y.f, ce = Q.f, E = y("symbols"), M = y("op-symbols"), k = y("string-to-symbol-registry"), O = y("symbol-to-string-registry"), $ = y("wks"), g = N.QObject, C = !g || !g[j] || !g[j].findChild, P = s2 && a(function() {
             return 7 != f(T({}, "a", { get: function() {
               return T(this, "a", { value: 7 }).a;
             } })).a;
@@ -3020,7 +3020,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
           }, L = function(e4, t3, r3) {
             e4 === x && L(M, t3, r3), u(e4);
             t3 = d(t3, true);
-            return u(r3), (l(E, t3) ? (r3.enumerable ? (l(e4, b) && e4[b][t3] && (e4[b][t3] = false), r3 = f(r3, { enumerable: h(0, false) })) : (l(e4, b) || T(e4, b, h(1, {})), e4[b][t3] = true), P) : T)(e4, t3, r3);
+            return u(r3), (l(E, t3) ? (r3.enumerable ? (l(e4, b) && e4[b][t3] && (e4[b][t3] = false), r3 = f(r3, { enumerable: h3(0, false) })) : (l(e4, b) || T(e4, b, h3(1, {})), e4[b][t3] = true), P) : T)(e4, t3, r3);
           }, R = function(e4) {
             var e4 = d(e4, true), t3 = ce.call(this, e4);
             return !(this === x && l(E, e4) && !l(M, e4)) && (!(t3 || !l(this, e4) || !l(E, e4) || l(this, b) && this[b][e4]) || t3);
@@ -3033,7 +3033,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
           i || (m((w = function() {
             if (this instanceof w) throw TypeError("Symbol is not a constructor");
             var e4 = arguments.length && void 0 !== arguments[0] ? String(arguments[0]) : void 0, t3 = te(e4), r3 = function(e5) {
-              this === x && r3.call(M, e5), l(this, b) && l(this[b], t3) && (this[b][t3] = false), P(this, t3, h(1, e5));
+              this === x && r3.call(M, e5), l(this, b) && l(this[b], t3) && (this[b][t3] = false), P(this, t3, h3(1, e5));
             };
             return s2 && C && P(x, t3, { configurable: true, set: r3 }), o(t3, e4);
           })[j], "toString", function() {
@@ -3290,8 +3290,8 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               return e4(this, arguments.length ? arguments[0] : void 0);
             };
           }
-          var n, s2, i, a, l, u = e3("../internals/global"), c = e3("../internals/redefine-all"), d = e3("../internals/internal-metadata"), h = e3("../internals/collection"), f = e3("../internals/collection-weak"), p = e3("../internals/is-object"), m = e3("../internals/internal-state").enforce, e3 = e3("../internals/native-weak-map"), u = !u.ActiveXObject && "ActiveXObject" in u, y = Object.isExtensible, t2 = t2.exports = h("WeakMap", o, f);
-          e3 && u && (n = f.getConstructor(o, "WeakMap", true), d.REQUIRED = true, h = t2.prototype, s2 = h.delete, i = h.has, a = h.get, l = h.set, c(h, { delete: function(e4) {
+          var n, s2, i, a, l, u = e3("../internals/global"), c = e3("../internals/redefine-all"), d = e3("../internals/internal-metadata"), h3 = e3("../internals/collection"), f = e3("../internals/collection-weak"), p = e3("../internals/is-object"), m = e3("../internals/internal-state").enforce, e3 = e3("../internals/native-weak-map"), u = !u.ActiveXObject && "ActiveXObject" in u, y = Object.isExtensible, t2 = t2.exports = h3("WeakMap", o, f);
+          e3 && u && (n = f.getConstructor(o, "WeakMap", true), d.REQUIRED = true, h3 = t2.prototype, s2 = h3.delete, i = h3.has, a = h3.get, l = h3.set, c(h3, { delete: function(e4) {
             var t3;
             return p(e4) && !y(e4) ? ((t3 = m(this)).frozen || (t3.frozen = new n()), s2.call(this, e4) || t3.frozen.delete(e4)) : s2.call(this, e4);
           }, has: function(e4) {
@@ -3317,18 +3317,18 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
         }, { "../internals/array-for-each": 16, "../internals/create-non-enumerable-property": 38, "../internals/dom-iterables": 45, "../internals/global": 60 }], 246: [function(e3, t2, r2) {
           var o, n = e3("../internals/global"), s2 = e3("../internals/dom-iterables"), i = e3("../modules/es.array.iterator"), a = e3("../internals/create-non-enumerable-property"), e3 = e3("../internals/well-known-symbol"), l = e3("iterator"), u = e3("toStringTag"), c = i.values;
           for (o in s2) {
-            var d = n[o], h = d && d.prototype;
-            if (h) {
-              if (h[l] !== c) try {
-                a(h, l, c);
+            var d = n[o], h3 = d && d.prototype;
+            if (h3) {
+              if (h3[l] !== c) try {
+                a(h3, l, c);
               } catch (e4) {
-                h[l] = c;
+                h3[l] = c;
               }
-              if (h[u] || a(h, u, o), s2[o]) {
-                for (var f in i) if (h[f] !== i[f]) try {
-                  a(h, f, i[f]);
+              if (h3[u] || a(h3, u, o), s2[o]) {
+                for (var f in i) if (h3[f] !== i[f]) try {
+                  a(h3, f, i[f]);
                 } catch (e4) {
-                  h[f] = i[f];
+                  h3[f] = i[f];
                 }
               }
             }
@@ -3366,7 +3366,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             else for (a2 in l2) g(l2, a2) && u2.push({ key: a2, value: l2[a2] + "" });
             else R(u2, "string" == typeof l2 ? "?" === l2.charAt(0) ? l2.slice(1) : l2 : l2 + "");
           }
-          var o = e3("../internals/export"), i = e3("../internals/get-built-in"), a = e3("../internals/native-url"), l = e3("../internals/redefine"), h = e3("../internals/redefine-all"), f = e3("../internals/set-to-string-tag"), p = e3("../internals/create-iterator-constructor"), m = e3("../internals/internal-state"), y = e3("../internals/an-instance"), g = e3("../internals/has"), v = e3("../internals/function-bind-context"), b = e3("../internals/classof"), _ = e3("../internals/an-object"), j = e3("../internals/is-object"), x = e3("../internals/object-create"), w = e3("../internals/create-property-descriptor"), S = e3("../internals/get-iterator"), T = e3("../internals/get-iterator-method"), e3 = e3("../internals/well-known-symbol"), E = i("fetch"), M = i("Headers"), i = e3("iterator"), k = "URLSearchParams", O = k + "Iterator", C = m.set, P = m.getterFor(k), F = m.getterFor(O), U = /\+/g, A = Array(4), L = function(e4) {
+          var o = e3("../internals/export"), i = e3("../internals/get-built-in"), a = e3("../internals/native-url"), l = e3("../internals/redefine"), h3 = e3("../internals/redefine-all"), f = e3("../internals/set-to-string-tag"), p = e3("../internals/create-iterator-constructor"), m = e3("../internals/internal-state"), y = e3("../internals/an-instance"), g = e3("../internals/has"), v = e3("../internals/function-bind-context"), b = e3("../internals/classof"), _ = e3("../internals/an-object"), j = e3("../internals/is-object"), x = e3("../internals/object-create"), w = e3("../internals/create-property-descriptor"), S = e3("../internals/get-iterator"), T = e3("../internals/get-iterator-method"), e3 = e3("../internals/well-known-symbol"), E = i("fetch"), M = i("Headers"), i = e3("iterator"), k = "URLSearchParams", O = k + "Iterator", C = m.set, P = m.getterFor(k), F = m.getterFor(O), U = /\+/g, A = Array(4), L = function(e4) {
             var t3, r3 = e4.replace(U, " "), o2 = 4;
             try {
               return decodeURIComponent(r3);
@@ -3382,7 +3382,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             var e4 = F(this), t3 = e4.kind, e4 = e4.iterator.next(), r3 = e4.value;
             return e4.done || (e4.value = "keys" === t3 ? r3.key : "values" === t3 ? r3.value : [r3.key, r3.value]), e4;
           }), e3 = d.prototype;
-          h(e3, { append: function(e4, t3) {
+          h3(e3, { append: function(e4, t3) {
             u(arguments.length, 2);
             var r3 = P(this);
             r3.entries.push({ key: e4 + "", value: t3 + "" }), r3.updateURL();
@@ -3447,7 +3447,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             return !e4.host || e4.cannotBeABaseURL || "file" == e4.scheme;
           }
           function a(e4, t3, r3, o2) {
-            var n2, s3, i2, a2 = r3 || me, l2 = 0, u2 = "", c2 = false, d2 = false, h2 = false;
+            var n2, s3, i2, a2 = r3 || me, l2 = 0, u2 = "", c2 = false, d2 = false, h4 = false;
             for (r3 || (e4.scheme = "", e4.username = "", e4.password = "", e4.host = null, e4.port = null, e4.path = [], e4.query = null, e4.fragment = null, e4.cannotBeABaseURL = false, t3 = t3.replace(ie, "")), t3 = t3.replace(ae, ""), n2 = b(t3); l2 <= n2.length; ) {
               switch (s3 = n2[l2], a2) {
                 case me:
@@ -3527,7 +3527,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                     c2 && (u2 = "%40" + u2);
                     for (var c2 = true, f2 = b(u2), p2 = 0; p2 < f2.length; p2++) {
                       var m2 = f2[p2];
-                      ":" != m2 || h2 ? (m2 = E(m2, T), h2 ? e4.password += m2 : e4.username += m2) : h2 = true;
+                      ":" != m2 || h4 ? (m2 = E(m2, T), h4 ? e4.password += m2 : e4.username += m2) : h4 = true;
                     }
                     u2 = "";
                   } else if (s3 == g || "/" == s3 || "?" == s3 || "#" == s3 || "\\" == s3 && k(e4)) {
@@ -3655,21 +3655,21 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
           function t2(e4, t3) {
             return { get: e4, set: t3, configurable: true, enumerable: true };
           }
-          var g, r2, o, U = e3("../internals/export"), u = e3("../internals/descriptors"), N = e3("../internals/native-url"), s2 = e3("../internals/global"), B = e3("../internals/object-define-properties"), i = e3("../internals/redefine"), G = e3("../internals/an-instance"), v = e3("../internals/has"), d = e3("../internals/object-assign"), b = e3("../internals/array-from"), V = e3("../internals/string-multibyte").codeAt, z = e3("../internals/string-punycode-to-ascii"), H = e3("../internals/set-to-string-tag"), W = e3("../modules/web.url-search-params"), e3 = e3("../internals/internal-state"), h = s2.URL, q = W.URLSearchParams, f = W.getState, X = e3.set, p = e3.getterFor("URL"), Y = Math.floor, Z = Math.pow, K = "Invalid authority", _ = "Invalid scheme", j = "Invalid host", Q = "Invalid port", J = /[A-Za-z]/, $ = /[\d+-.A-Za-z]/, x = /\d/, ee = /^(0x|0X)/, te = /^[0-7]+$/, re = /^\d+$/, oe = /^[\dA-Fa-f]+$/, ne = /[\u0000\u0009\u000A\u000D #%/:?@[\\]]/, se = /[\u0000\u0009\u000A\u000D #/:?@[\\]]/, ie = /^[\u0000-\u001F ]+|[\u0000-\u001F ]+$/g, ae = /[\u0009\u000A\u000D]/g, w = function(e4, t3) {
+          var g, r2, o, U = e3("../internals/export"), u = e3("../internals/descriptors"), N = e3("../internals/native-url"), s2 = e3("../internals/global"), B = e3("../internals/object-define-properties"), i = e3("../internals/redefine"), G = e3("../internals/an-instance"), v = e3("../internals/has"), d = e3("../internals/object-assign"), b = e3("../internals/array-from"), V = e3("../internals/string-multibyte").codeAt, z = e3("../internals/string-punycode-to-ascii"), H = e3("../internals/set-to-string-tag"), W = e3("../modules/web.url-search-params"), e3 = e3("../internals/internal-state"), h3 = s2.URL, q = W.URLSearchParams, f = W.getState, X = e3.set, p = e3.getterFor("URL"), Y = Math.floor, Z = Math.pow, K = "Invalid authority", _ = "Invalid scheme", j = "Invalid host", Q = "Invalid port", J = /[A-Za-z]/, $ = /[\d+-.A-Za-z]/, x = /\d/, ee = /^(0x|0X)/, te = /^[0-7]+$/, re = /^\d+$/, oe = /^[\dA-Fa-f]+$/, ne = /[\u0000\u0009\u000A\u000D #%/:?@[\\]]/, se = /[\u0000\u0009\u000A\u000D #/:?@[\\]]/, ie = /^[\u0000-\u001F ]+|[\u0000-\u001F ]+$/g, ae = /[\u0009\u000A\u000D]/g, w = function(e4, t3) {
             var r3, o2, n2;
             if ("[" == t3.charAt(0)) return "]" == t3.charAt(t3.length - 1) && (r3 = function(e5) {
-              var t4 = [0, 0, 0, 0, 0, 0, 0, 0], r4 = 0, o3 = null, n3 = 0, s3, i2, a2, l2, u2, c2, d2, h2 = function() {
+              var t4 = [0, 0, 0, 0, 0, 0, 0, 0], r4 = 0, o3 = null, n3 = 0, s3, i2, a2, l2, u2, c2, d2, h4 = function() {
                 return e5.charAt(n3);
               };
-              if (h2() == ":") {
+              if (h4() == ":") {
                 if (e5.charAt(1) != ":") return;
                 n3 += 2;
                 r4++;
                 o3 = r4;
               }
-              while (h2()) {
+              while (h4()) {
                 if (r4 == 8) return;
-                if (h2() == ":") {
+                if (h4() == ":") {
                   if (o3 !== null) return;
                   n3++;
                   r4++;
@@ -3677,23 +3677,23 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                   continue;
                 }
                 s3 = i2 = 0;
-                while (i2 < 4 && oe.test(h2())) {
-                  s3 = s3 * 16 + parseInt(h2(), 16);
+                while (i2 < 4 && oe.test(h4())) {
+                  s3 = s3 * 16 + parseInt(h4(), 16);
                   n3++;
                   i2++;
                 }
-                if (h2() == ".") {
+                if (h4() == ".") {
                   if (i2 == 0) return;
                   n3 -= i2;
                   if (r4 > 6) return;
                   a2 = 0;
-                  while (h2()) {
+                  while (h4()) {
                     l2 = null;
-                    if (a2 > 0) if (h2() == "." && a2 < 4) n3++;
+                    if (a2 > 0) if (h4() == "." && a2 < 4) n3++;
                     else return;
-                    if (!x.test(h2())) return;
-                    while (x.test(h2())) {
-                      u2 = parseInt(h2(), 10);
+                    if (!x.test(h4())) return;
+                    while (x.test(h4())) {
+                      u2 = parseInt(h4(), 10);
                       if (l2 === null) l2 = u2;
                       else if (l2 == 0) return;
                       else l2 = l2 * 10 + u2;
@@ -3706,10 +3706,10 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                   }
                   if (a2 != 4) return;
                   break;
-                } else if (h2() == ":") {
+                } else if (h4() == ":") {
                   n3++;
-                  if (!h2()) return;
-                } else if (h2()) return;
+                  if (!h4()) return;
+                } else if (h4()) return;
                 t4[r4++] = s3;
               }
               if (o3 !== null) {
@@ -3854,10 +3854,10 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             return m.call(this);
           }, { enumerable: true }), i(s2, "toString", function() {
             return m.call(this);
-          }, { enumerable: true }), h && (r2 = h.createObjectURL, o = h.revokeObjectURL, r2 && i(l, "createObjectURL", function(e4) {
-            return r2.apply(h, arguments);
+          }, { enumerable: true }), h3 && (r2 = h3.createObjectURL, o = h3.revokeObjectURL, r2 && i(l, "createObjectURL", function(e4) {
+            return r2.apply(h3, arguments);
           }), o && i(l, "revokeObjectURL", function(e4) {
-            return o.apply(h, arguments);
+            return o.apply(h3, arguments);
           })), H(l, "URL"), U({ global: true, forced: !N, sham: !u }, { URL: l });
         }, { "../internals/an-instance": 9, "../internals/array-from": 17, "../internals/descriptors": 43, "../internals/export": 50, "../internals/global": 60, "../internals/has": 61, "../internals/internal-state": 71, "../internals/native-url": 85, "../internals/object-assign": 90, "../internals/object-define-properties": 92, "../internals/redefine": 110, "../internals/set-to-string-tag": 119, "../internals/string-multibyte": 125, "../internals/string-punycode-to-ascii": 128, "../modules/es.string.iterator": 200, "../modules/web.url-search-params": 247 }], 249: [function(e3, t2, r2) {
           "use strict";
@@ -3873,17 +3873,17 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               var r3 = Array.isArray || function(e5) {
                 return "[object Array]" === Object.prototype.toString.call(e5);
               }, o2 = 0, t3 = void 0, n = void 0, i = function(e5, t4) {
-                d[o2] = e5, d[o2 + 1] = t4, 2 === (o2 += 2) && (n ? n(h) : D());
+                d[o2] = e5, d[o2 + 1] = t4, 2 === (o2 += 2) && (n ? n(h3) : D());
               };
               var e4 = "undefined" != typeof window ? window : void 0, s2 = e4 || {}, s2 = s2.MutationObserver || s2.WebKitMutationObserver, a = "undefined" == typeof self && void 0 !== B && "[object process]" === {}.toString.call(B), u = "undefined" != typeof Uint8ClampedArray && "undefined" != typeof importScripts && "undefined" != typeof MessageChannel;
               function c() {
                 var e5 = setTimeout;
                 return function() {
-                  return e5(h, 1);
+                  return e5(h3, 1);
                 };
               }
               var d = new Array(1e3);
-              function h() {
+              function h3() {
                 for (var e5 = 0; e5 < o2; e5 += 2) (0, d[e5])(d[e5 + 1]), d[e5] = void 0, d[e5 + 1] = void 0;
                 o2 = 0;
               }
@@ -3891,7 +3891,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                 try {
                   var e5 = Function("return this")().require("vertx");
                   return void 0 !== (t3 = e5.runOnLoop || e5.runOnContext) ? function() {
-                    t3(h);
+                    t3(h3);
                   } : c();
                 } catch (e6) {
                   return c();
@@ -3909,10 +3909,10 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                 return e5 && "object" == typeof e5 && e5.constructor === this ? e5 : (T(t4 = new this(_), e5), t4);
               }
               var D = a ? function() {
-                return B.nextTick(h);
-              } : s2 ? (m = 0, a = new s2(h), y = document.createTextNode(""), a.observe(y, { characterData: true }), function() {
+                return B.nextTick(h3);
+              } : s2 ? (m = 0, a = new s2(h3), y = document.createTextNode(""), a.observe(y, { characterData: true }), function() {
                 y.data = m = ++m % 2;
-              }) : u ? ((p = new MessageChannel()).port1.onmessage = h, function() {
+              }) : u ? ((p = new MessageChannel()).port1.onmessage = h3, function() {
                 return p.port2.postMessage(0);
               }) : (void 0 === e4 && "function" == typeof V ? f : c)(), b = Math.random().toString(36).substring(2);
               function _() {
@@ -4103,7 +4103,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                 window[t4] = void 0;
               }
             }
-            function h(e5) {
+            function h3(e5) {
               e5 = document.getElementById(e5);
               e5 && document.getElementsByTagName("head")[0].removeChild(e5);
             }
@@ -4113,14 +4113,14 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                 var r4 = i.jsonpCallbackFunction || "jsonp_" + Date.now() + "_" + Math.ceil(1e5 * Math.random()), o3 = u + "_" + r4, n2 = (window[r4] = function(e6) {
                   t4({ ok: true, json: function() {
                     return Promise.resolve(e6);
-                  } }), c && clearTimeout(c), h(o3), d(r4);
+                  } }), c && clearTimeout(c), h3(o3), d(r4);
                 }, a += -1 === a.indexOf("?") ? "?" : "&", document.createElement("script"));
                 n2.setAttribute("src", "" + a + u + "=" + r4), i.charset && n2.setAttribute("charset", i.charset), n2.id = o3, document.getElementsByTagName("head")[0].appendChild(n2), c = setTimeout(function() {
-                  e5(new Error("JSONP request to " + s2 + " timed out")), d(r4), h(o3), window[r4] = function() {
+                  e5(new Error("JSONP request to " + s2 + " timed out")), d(r4), h3(o3), window[r4] = function() {
                     d(r4);
                   };
                 }, l), n2.onerror = function() {
-                  e5(new Error("JSONP request to " + s2 + " failed")), d(r4), h(o3), c && clearTimeout(c);
+                  e5(new Error("JSONP request to " + s2 + " failed")), d(r4), h3(o3), c && clearTimeout(c);
                 };
               });
             };
@@ -4128,10 +4128,10 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
         }, {}], 252: [function(e3, t2, r2) {
           var o = function(a) {
             "use strict";
-            var l, u, c, d, h, f, t3, p, m, o2, e4;
+            var l, u, c, d, h3, f, t3, p, m, o2, e4;
             if (!(void 0 === a || "undefined" != typeof navigator && /MSIE [1-9]\./.test(navigator.userAgent))) return e4 = a.document, l = function() {
               return a.URL || a.webkitURL || a;
-            }, u = e4.createElementNS("http://www.w3.org/1999/xhtml", "a"), c = "download" in u, d = /constructor/i.test(a.HTMLElement) || a.safari, h = /CriOS\/[\d]+/.test(navigator.userAgent), f = function(e5) {
+            }, u = e4.createElementNS("http://www.w3.org/1999/xhtml", "a"), c = "download" in u, d = /constructor/i.test(a.HTMLElement) || a.safari, h3 = /CriOS\/[\d]+/.test(navigator.userAgent), f = function(e5) {
               (a.setImmediate || a.setTimeout)(function() {
                 throw e5;
               }, 0);
@@ -4156,8 +4156,8 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               s2.readyState = s2.INIT, c ? (o3 = l().createObjectURL(e5), setTimeout(function() {
                 var e6, t5;
                 u.href = o3, u.download = r3, e6 = u, t5 = new MouseEvent("click"), e6.dispatchEvent(t5), i(), p(o3), s2.readyState = s2.DONE;
-              })) : (h || t4 && d) && a.FileReader ? ((n = new FileReader()).onloadend = function() {
-                var e6 = h ? n.result : n.result.replace(/^data:[^;]*;/, "data:attachment/file;");
+              })) : (h3 || t4 && d) && a.FileReader ? ((n = new FileReader()).onloadend = function() {
+                var e6 = h3 ? n.result : n.result.replace(/^data:[^;]*;/, "data:attachment/file;");
                 a.open(e6, "_blank") || (a.location.href = e6), e6 = void 0, s2.readyState = s2.DONE, i();
               }, n.readAsDataURL(e5), s2.readyState = s2.INIT) : (o3 = o3 || l().createObjectURL(e5), !t4 && a.open(o3, "_blank") || (a.location.href = o3), s2.readyState = s2.DONE, i(), p(o3));
             }).prototype, "undefined" != typeof navigator && navigator.msSaveOrOpenBlob ? function(e5, t4, r3) {
@@ -4171,13 +4171,13 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             return o;
           });
         }, {}], 253: [function(e3, t2, r2) {
-          var o, n = Object.defineProperty, s2 = (n(r2, "__esModule", { value: true }), r2), i = { GIFEncoder: () => h, applyPalette: () => function(e4, t3, r3 = "rgb565") {
+          var o, n = Object.defineProperty, s2 = (n(r2, "__esModule", { value: true }), r2), i = { GIFEncoder: () => h3, applyPalette: () => function(e4, t3, r3 = "rgb565") {
             if (!e4 || !e4.buffer) throw new Error("quantize() expected RGBA Uint8Array data");
             if (!(e4 instanceof Uint8Array || e4 instanceof Uint8ClampedArray)) throw new Error("quantize() expected RGBA Uint8Array data");
             if (256 < t3.length) throw new Error("applyPalette() only works with 256 colors or less");
             const o2 = new Uint32Array(e4.buffer), n2 = o2.length, s3 = "rgb444" === r3 ? 4096 : 65536, i2 = new Uint8Array(n2), a2 = new Array(s3);
             if ("rgba4444" === r3) for (let e5 = 0; e5 < n2; e5++) {
-              var l2 = o2[e5], u2 = l2 >> 24 & 255, c2 = l2 >> 16 & 255, d2 = l2 >> 8 & 255, l2 = 255 & l2, h2 = P(l2, d2, c2, u2), h2 = h2 in a2 ? a2[h2] : a2[h2] = function(t4, r4, o3, n3, s4) {
+              var l2 = o2[e5], u2 = l2 >> 24 & 255, c2 = l2 >> 16 & 255, d2 = l2 >> 8 & 255, l2 = 255 & l2, h4 = P(l2, d2, c2, u2), h4 = h4 in a2 ? a2[h4] : a2[h4] = function(t4, r4, o3, n3, s4) {
                 let i3 = 0, a3 = 1e100;
                 for (let e6 = 0; e6 < s4.length; e6++) {
                   var l3, u3 = s4[e6], c3 = v(u3[3] - n3);
@@ -4185,7 +4185,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                 }
                 return i3;
               }(l2, d2, c2, u2, t3);
-              i2[e5] = h2;
+              i2[e5] = h4;
             }
             else {
               const g = "rgb444" === r3 ? A : C;
@@ -4226,9 +4226,9 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                 e6.rc += s4, e6.gc += l3, e6.bc += a3, e6.ac += i3, e6.cnt++;
               }
               else if ("rgb444" === e5) for (let t5 = 0; t5 < n3; ++t5) {
-                var c3 = r4[t5], d3 = c3 >> 16 & 255, h3 = c3 >> 8 & 255, c3 = 255 & c3, f3 = A(c3, h3, d3);
+                var c3 = r4[t5], d3 = c3 >> 16 & 255, h5 = c3 >> 8 & 255, c3 = 255 & c3, f3 = A(c3, h5, d3);
                 let e6 = f3 in o3 ? o3[f3] : o3[f3] = D();
-                e6.rc += c3, e6.gc += h3, e6.bc += d3, e6.cnt++;
+                e6.rc += c3, e6.gc += h5, e6.bc += d3, e6.cnt++;
               }
               else for (let t5 = 0; t5 < n3; ++t5) {
                 var p2 = r4[t5], m2 = p2 >> 16 & 255, y2 = p2 >> 8 & 255, p2 = 255 & p2, g2 = C(p2, y2, m2);
@@ -4236,7 +4236,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                 e6.rc += p2, e6.gc += y2, e6.bc += m2, e6.cnt++;
               }
               return o3;
-            }(e4, o2), d2 = c2.length, h2 = d2 - 1, f2 = new Uint32Array(d2 + 1);
+            }(e4, o2), d2 = c2.length, h4 = d2 - 1, f2 = new Uint32Array(d2 + 1);
             for (var p = 0, m = 0; m < d2; ++m) {
               const O2 = c2[m];
               null != O2 && (E2 = 1 / O2.cnt, u2 && (O2.ac *= E2), O2.rc *= E2, O2.gc *= E2, O2.bc *= E2, c2[p++] = O2);
@@ -4255,13 +4255,13 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               for (; ; ) {
                 var x = f2[1];
                 if ((_ = c2[x]).tm >= _.mtm && c2[_.nn].mtm <= _.tm) break;
-                _.mtm == h2 ? x = f2[1] = f2[f2[0]--] : (I(c2, x, false), _.tm = m);
+                _.mtm == h4 ? x = f2[1] = f2[f2[0]--] : (I(c2, x, false), _.tm = m);
                 b = c2[x].err;
                 for (g = 1; (v2 = g + g) <= f2[0] && (v2 < f2[0] && c2[f2[v2]].err > c2[f2[v2 + 1]].err && v2++, !(b <= c2[y = f2[v2]].err)); g = v2) f2[g] = y;
                 f2[g] = x;
               }
               var w = c2[_.nn], S2 = _.cnt, T2 = w.cnt, E2 = 1 / (S2 + T2);
-              u2 && (_.ac = E2 * (S2 * _.ac + T2 * w.ac)), _.rc = E2 * (S2 * _.rc + T2 * w.rc), _.gc = E2 * (S2 * _.gc + T2 * w.gc), _.bc = E2 * (S2 * _.bc + T2 * w.bc), _.cnt += w.cnt, _.mtm = ++m, c2[w.bk].fw = w.fw, c2[w.fw].bk = w.bk, w.mtm = h2;
+              u2 && (_.ac = E2 * (S2 * _.ac + T2 * w.ac)), _.rc = E2 * (S2 * _.rc + T2 * w.rc), _.gc = E2 * (S2 * _.gc + T2 * w.gc), _.bc = E2 * (S2 * _.bc + T2 * w.bc), _.cnt += w.cnt, _.mtm = ++m, c2[w.bk].fw = w.fw, c2[w.fw].bk = w.bk, w.mtm = h4;
             }
             let M2 = [];
             for (m = 0; ; 0) {
@@ -4323,8 +4323,8 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             s3.fill(0), a2.fill(0), i2.fill(-1);
             let u2 = 0, c2 = 0;
             var d2 = o2 + 1;
-            const h2 = d2;
-            let f2 = false, p = h2, m = (1 << p) - 1;
+            const h4 = d2;
+            let f2 = false, p = h4, m = (1 << p) - 1;
             var y = 1 << d2 - 1;
             const g = 1 + y;
             let v2 = 2 + y, b = 0, _ = r3[0], j = 0;
@@ -4346,7 +4346,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             return E2(_), E2(g), n2.writeByte(0), n2.bytesView();
             function E2(e5) {
               for (u2 &= k[c2], 0 < c2 ? u2 |= e5 << c2 : u2 = e5, c2 += p; 8 <= c2; ) s3[b++] = 255 & u2, 254 <= b && (n2.writeByte(b), n2.writeBytesView(s3, 0, b), b = 0), u2 >>= 8, c2 -= 8;
-              if ((v2 > m || f2) && (f2 ? (p = h2, m = (1 << p) - 1, f2 = false) : (++p, m = 12 === p ? 1 << p : (1 << p) - 1)), e5 == g) {
+              if ((v2 > m || f2) && (f2 ? (p = h4, m = (1 << p) - 1, f2 = false) : (++p, m = 12 === p ? 1 << p : (1 << p) - 1)), e5 == g) {
                 for (; 0 < c2; ) s3[b++] = 255 & u2, 254 <= b && (n2.writeByte(b), n2.writeBytesView(s3, 0, b), b = 0), u2 >>= 8, c2 -= 8;
                 0 < b && (n2.writeByte(b), n2.writeBytesView(s3, 0, b), b = 0);
               }
@@ -4371,8 +4371,8 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             var o2 = 0, n2 = 1e100;
             const s3 = e4[t3];
             for (var i2 = s3.cnt, a2 = s3.ac, l2 = s3.rc, u2 = s3.gc, c2 = s3.bc, d2 = s3.fw; 0 != d2; d2 = e4[d2].fw) {
-              var h2, f2 = e4[d2], p = f2.cnt, p = i2 * p / (i2 + p);
-              n2 <= p || (h2 = 0, r3 && n2 <= (h2 += p * R(f2.ac - a2)) || n2 <= (h2 += p * R(f2.rc - l2)) || n2 <= (h2 += p * R(f2.gc - u2)) || n2 <= (h2 += p * R(f2.bc - c2)) || (n2 = h2, o2 = d2));
+              var h4, f2 = e4[d2], p = f2.cnt, p = i2 * p / (i2 + p);
+              n2 <= p || (h4 = 0, r3 && n2 <= (h4 += p * R(f2.ac - a2)) || n2 <= (h4 += p * R(f2.rc - l2)) || n2 <= (h4 += p * R(f2.gc - u2)) || n2 <= (h4 += p * R(f2.bc - c2)) || (n2 = h4, o2 = d2));
             }
             s3.err = n2, s3.nn = o2;
           }
@@ -4408,7 +4408,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             }
             return [s3, n2];
           }
-          function h(e4 = {}) {
+          function h3(e4 = {}) {
             const { initialCapacity: t3 = 4096, auto: g = true } = e4, v2 = M(t3);
             const b = new Uint8Array(256), _ = new Int32Array(5003), j = new Int32Array(5003);
             let x = false;
@@ -4429,10 +4429,10 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               let d2 = false;
               if (g ? x || (d2 = true, w(), x = true) : d2 = Boolean(o2.first), t4 = Math.max(0, Math.floor(t4)), r3 = Math.max(0, Math.floor(r3)), d2) {
                 if (!a2) throw new Error("First frame must include a { palette } option");
-                var [o2, h2, f2, p, m = 8] = [v2, t4, r3, a2, u2];
-                p = F(p.length) - 1, m = 128 | m - 1 << 4 | p, E(o2, h2), E(o2, f2), o2.writeBytes([m, 0, 0]), T(v2, a2), 0 <= l2 && (p = v2, h2 = l2, p.writeByte(33), p.writeByte(255), p.writeByte(11), O(p, "NETSCAPE2.0"), p.writeByte(3), p.writeByte(1), E(p, h2), p.writeByte(0));
+                var [o2, h4, f2, p, m = 8] = [v2, t4, r3, a2, u2];
+                p = F(p.length) - 1, m = 128 | m - 1 << 4 | p, E(o2, h4), E(o2, f2), o2.writeBytes([m, 0, 0]), T(v2, a2), 0 <= l2 && (p = v2, h4 = l2, p.writeByte(33), p.writeByte(255), p.writeByte(11), O(p, "NETSCAPE2.0"), p.writeByte(3), p.writeByte(1), E(p, h4), p.writeByte(0));
               }
-              var y, f2 = Math.round(i2 / 10), o2 = v2, m = c2, l2 = f2, h2 = n2, p = s3, i2 = (o2.writeByte(33), o2.writeByte(249), o2.writeByte(4), p < 0 && (p = 0, h2 = false), h2 = h2 ? (y = 1, 2) : y = 0, 0 <= m && (h2 = 7 & m), h2 <<= 2, o2.writeByte(0 | h2 | y), E(o2, l2), o2.writeByte(p || 0), o2.writeByte(0), Boolean(a2) && !d2);
+              var y, f2 = Math.round(i2 / 10), o2 = v2, m = c2, l2 = f2, h4 = n2, p = s3, i2 = (o2.writeByte(33), o2.writeByte(249), o2.writeByte(4), p < 0 && (p = 0, h4 = false), h4 = h4 ? (y = 1, 2) : y = 0, 0 <= m && (h4 = 7 & m), h4 <<= 2, o2.writeByte(0 | h4 | y), E(o2, l2), o2.writeByte(p || 0), o2.writeByte(0), Boolean(a2) && !d2);
               c2 = v2, n2 = t4, s3 = r3, y = i2 ? a2 : null, c2.writeByte(44), E(c2, 0), E(c2, 0), E(c2, n2), E(c2, s3), y ? (n2 = F(y.length) - 1, c2.writeByte(128 | n2)) : c2.writeByte(0), i2 && T(v2, a2), [l2, o2, s3, n2, c2 = 8, i2, a2, e5] = [v2, e5, t4, r3, u2, b, _, j], S(s3, n2, o2, c2, l2, i2, a2, e5);
             } };
             function w() {
@@ -4455,12 +4455,12 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
           function F(e4) {
             return Math.max(Math.ceil(Math.log2(e4)), 1);
           }
-          var f = h;
+          var f = h3;
         }, {}], 254: [function(e3, t2, r2) {
           r2.read = function(e4, t3, r3, o, n) {
-            var s2, i, a = 8 * n - o - 1, l = (1 << a) - 1, u = l >> 1, c = -7, d = r3 ? n - 1 : 0, h = r3 ? -1 : 1, n = e4[t3 + d];
-            for (d += h, s2 = n & (1 << -c) - 1, n >>= -c, c += a; 0 < c; s2 = 256 * s2 + e4[t3 + d], d += h, c -= 8) ;
-            for (i = s2 & (1 << -c) - 1, s2 >>= -c, c += o; 0 < c; i = 256 * i + e4[t3 + d], d += h, c -= 8) ;
+            var s2, i, a = 8 * n - o - 1, l = (1 << a) - 1, u = l >> 1, c = -7, d = r3 ? n - 1 : 0, h3 = r3 ? -1 : 1, n = e4[t3 + d];
+            for (d += h3, s2 = n & (1 << -c) - 1, n >>= -c, c += a; 0 < c; s2 = 256 * s2 + e4[t3 + d], d += h3, c -= 8) ;
+            for (i = s2 & (1 << -c) - 1, s2 >>= -c, c += o; 0 < c; i = 256 * i + e4[t3 + d], d += h3, c -= 8) ;
             if (0 === s2) s2 = 1 - u;
             else {
               if (s2 === l) return i ? NaN : 1 / 0 * (n ? -1 : 1);
@@ -4468,10 +4468,10 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             }
             return (n ? -1 : 1) * i * Math.pow(2, s2 - o);
           }, r2.write = function(e4, t3, r3, o, n, s2) {
-            var i, a, l = 8 * s2 - n - 1, u = (1 << l) - 1, c = u >> 1, d = 23 === n ? Math.pow(2, -24) - Math.pow(2, -77) : 0, h = o ? 0 : s2 - 1, f = o ? 1 : -1, s2 = t3 < 0 || 0 === t3 && 1 / t3 < 0 ? 1 : 0;
-            for (t3 = Math.abs(t3), isNaN(t3) || t3 === 1 / 0 ? (a = isNaN(t3) ? 1 : 0, i = u) : (i = Math.floor(Math.log(t3) / Math.LN2), t3 * (o = Math.pow(2, -i)) < 1 && (i--, o *= 2), 2 <= (t3 += 1 <= i + c ? d / o : d * Math.pow(2, 1 - c)) * o && (i++, o /= 2), u <= i + c ? (a = 0, i = u) : 1 <= i + c ? (a = (t3 * o - 1) * Math.pow(2, n), i += c) : (a = t3 * Math.pow(2, c - 1) * Math.pow(2, n), i = 0)); 8 <= n; e4[r3 + h] = 255 & a, h += f, a /= 256, n -= 8) ;
-            for (i = i << n | a, l += n; 0 < l; e4[r3 + h] = 255 & i, h += f, i /= 256, l -= 8) ;
-            e4[r3 + h - f] |= 128 * s2;
+            var i, a, l = 8 * s2 - n - 1, u = (1 << l) - 1, c = u >> 1, d = 23 === n ? Math.pow(2, -24) - Math.pow(2, -77) : 0, h3 = o ? 0 : s2 - 1, f = o ? 1 : -1, s2 = t3 < 0 || 0 === t3 && 1 / t3 < 0 ? 1 : 0;
+            for (t3 = Math.abs(t3), isNaN(t3) || t3 === 1 / 0 ? (a = isNaN(t3) ? 1 : 0, i = u) : (i = Math.floor(Math.log(t3) / Math.LN2), t3 * (o = Math.pow(2, -i)) < 1 && (i--, o *= 2), 2 <= (t3 += 1 <= i + c ? d / o : d * Math.pow(2, 1 - c)) * o && (i++, o /= 2), u <= i + c ? (a = 0, i = u) : 1 <= i + c ? (a = (t3 * o - 1) * Math.pow(2, n), i += c) : (a = t3 * Math.pow(2, c - 1) * Math.pow(2, n), i = 0)); 8 <= n; e4[r3 + h3] = 255 & a, h3 += f, a /= 256, n -= 8) ;
+            for (i = i << n | a, l += n; 0 < l; e4[r3 + h3] = 255 & i, h3 += f, i /= 256, l -= 8) ;
+            e4[r3 + h3 - f] |= 128 * s2;
           };
         }, {}], 255: [function(o, e3, c) {
           "use strict";
@@ -4559,7 +4559,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
           function M(e4, t3) {
             e4.f += t3.f, e4.b.f += t3.b.f;
           }
-          function h(e4, t3, r3) {
+          function h3(e4, t3, r3) {
             return e4 = e4.a, t3 = t3.a, r3 = r3.a, t3.b.a === e4 ? r3.b.a === e4 ? g(t3.a, r3.a) ? b(r3.b.a, t3.a, r3.a) <= 0 : 0 <= b(t3.b.a, r3.a, t3.a) : b(r3.b.a, e4, r3.a) <= 0 : r3.b.a === e4 ? 0 <= b(t3.b.a, e4, t3.a) : (t3 = v(t3.b.a, e4, t3.a), (e4 = v(r3.b.a, e4, r3.a)) <= t3);
           }
           function k(e4) {
@@ -4655,8 +4655,8 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               if (g(s3, i2)) {
                 if (0 < b(l2, s3, i2)) return;
               } else if (b(a2, i2, s3) < 0) return;
-              var c2, d2, h2 = a2, f2 = s3, p2 = l2, m2 = i2;
-              if (g(h2, f2) || (c2 = h2, h2 = f2, f2 = c2), g(p2, m2) || (c2 = p2, p2 = m2, m2 = c2), g(h2, p2) || (c2 = h2, h2 = p2, p2 = c2, c2 = f2, f2 = m2, m2 = c2), g(p2, f2) ? g(f2, m2) ? ((c2 = v(h2, p2, f2)) + (d2 = v(p2, f2, m2)) < 0 && (c2 = -c2, d2 = -d2), u2.b = j(c2, p2.b, d2, f2.b)) : ((c2 = b(h2, p2, f2)) + (d2 = -b(h2, m2, f2)) < 0 && (c2 = -c2, d2 = -d2), u2.b = j(c2, p2.b, d2, m2.b)) : u2.b = (p2.b + f2.b) / 2, _(h2, f2) || (c2 = h2, h2 = f2, f2 = c2), _(p2, m2) || (c2 = p2, p2 = m2, m2 = c2), _(h2, p2) || (c2 = h2, h2 = p2, p2 = c2, c2 = f2, f2 = m2, m2 = c2), _(p2, f2) ? _(f2, m2) ? ((c2 = V(h2, p2, f2)) + (d2 = V(p2, f2, m2)) < 0 && (c2 = -c2, d2 = -d2), u2.a = j(c2, p2.a, d2, f2.a)) : ((c2 = z(h2, p2, f2)) + (d2 = -z(h2, m2, f2)) < 0 && (c2 = -c2, d2 = -d2), u2.a = j(c2, p2.a, d2, m2.a)) : u2.a = (p2.a + f2.a) / 2, g(u2, e4.a) && (u2.b = e4.a.b, u2.a = e4.a.a), h2 = g(s3, i2) ? s3 : i2, g(h2, u2) && (u2.b = h2.b, u2.a = h2.a), y(u2, s3) || y(u2, i2)) return R(e4, t3), 0;
+              var c2, d2, h4 = a2, f2 = s3, p2 = l2, m2 = i2;
+              if (g(h4, f2) || (c2 = h4, h4 = f2, f2 = c2), g(p2, m2) || (c2 = p2, p2 = m2, m2 = c2), g(h4, p2) || (c2 = h4, h4 = p2, p2 = c2, c2 = f2, f2 = m2, m2 = c2), g(p2, f2) ? g(f2, m2) ? ((c2 = v(h4, p2, f2)) + (d2 = v(p2, f2, m2)) < 0 && (c2 = -c2, d2 = -d2), u2.b = j(c2, p2.b, d2, f2.b)) : ((c2 = b(h4, p2, f2)) + (d2 = -b(h4, m2, f2)) < 0 && (c2 = -c2, d2 = -d2), u2.b = j(c2, p2.b, d2, m2.b)) : u2.b = (p2.b + f2.b) / 2, _(h4, f2) || (c2 = h4, h4 = f2, f2 = c2), _(p2, m2) || (c2 = p2, p2 = m2, m2 = c2), _(h4, p2) || (c2 = h4, h4 = p2, p2 = c2, c2 = f2, f2 = m2, m2 = c2), _(p2, f2) ? _(f2, m2) ? ((c2 = V(h4, p2, f2)) + (d2 = V(p2, f2, m2)) < 0 && (c2 = -c2, d2 = -d2), u2.a = j(c2, p2.a, d2, f2.a)) : ((c2 = z(h4, p2, f2)) + (d2 = -z(h4, m2, f2)) < 0 && (c2 = -c2, d2 = -d2), u2.a = j(c2, p2.a, d2, m2.a)) : u2.a = (p2.a + f2.a) / 2, g(u2, e4.a) && (u2.b = e4.a.b, u2.a = e4.a.a), h4 = g(s3, i2) ? s3 : i2, g(h4, u2) && (u2.b = h4.b, u2.a = h4.a), y(u2, s3) || y(u2, i2)) return R(e4, t3), 0;
               if (!y(a2, e4.a) && 0 <= b(a2, e4.a, u2) || !y(l2, e4.a) && b(l2, e4.a, u2) <= 0) {
                 if (l2 === e4.a) w(o2.b), x(n2.b, o2), o2 = B(t3 = C(t3)).a, P(e4, B(t3), r3), A(e4, t3, o2.b.e, o2, o2, true);
                 else {
@@ -4704,7 +4704,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             o2.a.b = 4e150, o2.a.a = t3, o2.b.a.b = -4e150, o2.b.a.a = t3, e4.a = o2.b.a, r3.a = o2, r3.f = 0, r3.d = false, r3.c = false, r3.h = true, r3.b = false, o2 = p(o2 = e4.f, o2.a, r3), r3.e = o2;
           }
           function $(e4) {
-            this.a = new ee(), this.b = e4, this.c = h;
+            this.a = new ee(), this.b = e4, this.c = h3;
           }
           function p(e4, t3, r3) {
             for (; null !== (t3 = t3.c).b && !e4.c(e4.b, t3.b, r3); ) ;
@@ -4912,7 +4912,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             for (this.e = i2 = new oe(), s3 = this.b.c, r3 = s3.e; r3 !== s3; r3 = r3.e) r3.h = ne(i2, r3);
             var d2 = i2;
             d2.d = [];
-            for (var h2 = 0; h2 < d2.a; h2++) d2.d[h2] = h2;
+            for (var h4 = 0; h4 < d2.a; h4++) d2.d[h4] = h4;
             d2.d.sort(/* @__PURE__ */ function(r4) {
               return function(e5, t4) {
                 return g(r4[e5], r4[t4]) ? 1 : -1;
@@ -5012,20 +5012,20 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               for (var l2 = _(a2), u2 = 0; l2 >>= 1; ) ++u2;
               var l2 = 1 << u2, c = void 0 === s3.delay ? 0 : s3.delay, d = void 0 === s3.disposal ? 0 : s3.disposal;
               if (d < 0 || 3 < d) throw new Error("Disposal out of range.");
-              var h = false, f = 0;
-              if (void 0 !== s3.transparent && null !== s3.transparent && (h = true, (f = s3.transparent) < 0 || l2 <= f)) throw new Error("Transparent color index.");
-              if (0 === d && !h && 0 === c || (g[v++] = 33, g[v++] = 249, g[v++] = 4, g[v++] = d << 2 | (true === h ? 1 : 0), g[v++] = 255 & c, g[v++] = c >> 8 & 255, g[v++] = f, g[v++] = 0), g[v++] = 44, g[v++] = 255 & e5, g[v++] = e5 >> 8 & 255, g[v++] = 255 & t4, g[v++] = t4 >> 8 & 255, g[v++] = 255 & r4, g[v++] = r4 >> 8 & 255, g[v++] = 255 & o3, g[v++] = o3 >> 8 & 255, g[v++] = true === i2 ? 128 | u2 - 1 : 0, true === i2) for (var p = 0, m = a2.length; p < m; ++p) {
+              var h3 = false, f = 0;
+              if (void 0 !== s3.transparent && null !== s3.transparent && (h3 = true, (f = s3.transparent) < 0 || l2 <= f)) throw new Error("Transparent color index.");
+              if (0 === d && !h3 && 0 === c || (g[v++] = 33, g[v++] = 249, g[v++] = 4, g[v++] = d << 2 | (true === h3 ? 1 : 0), g[v++] = 255 & c, g[v++] = c >> 8 & 255, g[v++] = f, g[v++] = 0), g[v++] = 44, g[v++] = 255 & e5, g[v++] = e5 >> 8 & 255, g[v++] = 255 & t4, g[v++] = t4 >> 8 & 255, g[v++] = 255 & r4, g[v++] = r4 >> 8 & 255, g[v++] = 255 & o3, g[v++] = o3 >> 8 & 255, g[v++] = true === i2 ? 128 | u2 - 1 : 0, true === i2) for (var p = 0, m = a2.length; p < m; ++p) {
                 var y = a2[p];
                 g[v++] = y >> 16 & 255, g[v++] = y >> 8 & 255, g[v++] = 255 & y;
               }
               return v = function(t5, r5, e6, o4) {
                 t5[r5++] = e6;
                 var n3 = r5++, s4 = 1 << e6, i3 = s4 - 1, a3 = 1 + s4, l3 = 1 + a3, u3 = e6 + 1, c2 = 0, d2 = 0;
-                function h2(e7) {
+                function h4(e7) {
                   for (; e7 <= c2; ) t5[r5++] = 255 & d2, d2 >>= 8, c2 -= 8, r5 === n3 + 256 && (t5[n3] = 255, n3 = r5++);
                 }
                 function f2(e7) {
-                  d2 |= e7 << c2, c2 += u3, h2(8);
+                  d2 |= e7 << c2, c2 += u3, h4(8);
                 }
                 var p2 = o4[0] & i3, m2 = {};
                 f2(s4);
@@ -5036,7 +5036,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                     4096 === l3 ? (f2(s4), l3 = 1 + a3, u3 = e6 + 1, m2 = {}) : (1 << u3 <= l3 && ++u3, m2[b2] = l3++), p2 = v2;
                   } else p2 = _2;
                 }
-                f2(p2), f2(a3), h2(1), n3 + 1 === r5 ? t5[n3] = 0 : (t5[n3] = r5 - n3 - 1, t5[r5++] = 0);
+                f2(p2), f2(a3), h4(1), n3 + 1 === r5 ? t5[n3] = 0 : (t5[n3] = r5 - n3 - 1, t5[r5++] = 0);
                 return r5;
               }(g, v, u2 < 2 ? 2 : u2, n2);
             }, this.end = function() {
@@ -5052,7 +5052,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             };
           }
           function E(e4, t3, r3, o2) {
-            for (var n = e4[t3++], s2 = 1 << n, i = 1 + s2, a = 1 + i, l = n + 1, u = (1 << l) - 1, c = 0, d = 0, h = 0, f = e4[t3++], p = new Int32Array(4096), m = null; ; ) {
+            for (var n = e4[t3++], s2 = 1 << n, i = 1 + s2, a = 1 + i, l = n + 1, u = (1 << l) - 1, c = 0, d = 0, h3 = 0, f = e4[t3++], p = new Int32Array(4096), m = null; ; ) {
               for (; c < 16 && 0 !== f; ) d |= e4[t3++] << c, c += 8, 1 === f ? f = e4[t3++] : --f;
               if (c < l) break;
               var y = d & u;
@@ -5061,14 +5061,14 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                 if (y == i) break;
                 for (var g = y < a ? y : m, v = 0, b = g; s2 < b; ) b = p[b] >> 8, ++v;
                 var _ = b;
-                if (o2 < h + v + (g !== y ? 1 : 0)) return void console.log("Warning, gif stream longer than expected.");
-                r3[h++] = _;
-                var j = h += v;
-                for (g !== y && (r3[h++] = _), b = g; v--; ) b = p[b], r3[--j] = 255 & b, b >>= 8;
+                if (o2 < h3 + v + (g !== y ? 1 : 0)) return void console.log("Warning, gif stream longer than expected.");
+                r3[h3++] = _;
+                var j = h3 += v;
+                for (g !== y && (r3[h3++] = _), b = g; v--; ) b = p[b], r3[--j] = 255 & b, b >>= 8;
                 null !== m && a < 4096 && (p[a++] = m << 8 | _, u + 1 <= a && l < 12 && (++l, u = u << 1 | 1)), m = y;
               }
             }
-            h !== o2 && console.log("Warning, gif stream shorter than expected.");
+            h3 !== o2 && console.log("Warning, gif stream shorter than expected.");
           }
           try {
             r2.GifWriter = o, r2.GifReader = function(b) {
@@ -5088,8 +5088,8 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                       break;
                     case 249:
                       if (4 !== b[e4++] || 0 !== b[e4 + 4]) throw new Error("Invalid graphics extension block.");
-                      var h = b[e4++], l = b[e4++] | b[e4++] << 8, u = b[e4++];
-                      0 == (1 & h) && (u = null), c = h >> 2 & 7, e4++;
+                      var h3 = b[e4++], l = b[e4++] | b[e4++] << 8, u = b[e4++];
+                      0 == (1 & h3) && (u = null), c = h3 >> 2 & 7, e4++;
                       break;
                     case 254:
                       for (; ; ) {
@@ -5125,14 +5125,14 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                 if (e5 < 0 || e5 >= a.length) throw new Error("Frame index out of range.");
                 return a[e5];
               }, this.decodeAndBlitFrameBGRA = function(e5, t4) {
-                for (var e5 = this.frameInfo(e5), r4 = e5.width * e5.height, o3 = new Uint8Array(r4), n2 = (E(b, e5.data_offset, o3, r4), e5.palette_offset), s3 = e5.transparent_index, i2 = (null === s3 && (s3 = 256), e5.width), a2 = _ - i2, l2 = i2, u2 = 4 * (e5.y * _ + e5.x), c2 = 4 * ((e5.y + e5.height) * _ + e5.x), d2 = u2, h2 = 4 * a2, f2 = (true === e5.interlaced && (h2 += 4 * _ * 7), 8), p2 = 0, m2 = o3.length; p2 < m2; ++p2) {
+                for (var e5 = this.frameInfo(e5), r4 = e5.width * e5.height, o3 = new Uint8Array(r4), n2 = (E(b, e5.data_offset, o3, r4), e5.palette_offset), s3 = e5.transparent_index, i2 = (null === s3 && (s3 = 256), e5.width), a2 = _ - i2, l2 = i2, u2 = 4 * (e5.y * _ + e5.x), c2 = 4 * ((e5.y + e5.height) * _ + e5.x), d2 = u2, h4 = 4 * a2, f2 = (true === e5.interlaced && (h4 += 4 * _ * 7), 8), p2 = 0, m2 = o3.length; p2 < m2; ++p2) {
                   var y2, g2, v2 = o3[p2];
-                  0 === l2 && (l2 = i2, c2 <= (d2 += h2) && (h2 = 4 * a2 + 4 * _ * (f2 - 1), d2 = u2 + (i2 + a2) * (f2 << 1), f2 >>= 1)), v2 === s3 ? d2 += 4 : (y2 = b[n2 + 3 * v2], g2 = b[n2 + 3 * v2 + 1], v2 = b[n2 + 3 * v2 + 2], t4[d2++] = v2, t4[d2++] = g2, t4[d2++] = y2, t4[d2++] = 255), --l2;
+                  0 === l2 && (l2 = i2, c2 <= (d2 += h4) && (h4 = 4 * a2 + 4 * _ * (f2 - 1), d2 = u2 + (i2 + a2) * (f2 << 1), f2 >>= 1)), v2 === s3 ? d2 += 4 : (y2 = b[n2 + 3 * v2], g2 = b[n2 + 3 * v2 + 1], v2 = b[n2 + 3 * v2 + 2], t4[d2++] = v2, t4[d2++] = g2, t4[d2++] = y2, t4[d2++] = 255), --l2;
                 }
               }, this.decodeAndBlitFrameRGBA = function(e5, t4) {
-                for (var e5 = this.frameInfo(e5), r4 = e5.width * e5.height, o3 = new Uint8Array(r4), n2 = (E(b, e5.data_offset, o3, r4), e5.palette_offset), s3 = e5.transparent_index, i2 = (null === s3 && (s3 = 256), e5.width), a2 = _ - i2, l2 = i2, u2 = 4 * (e5.y * _ + e5.x), c2 = 4 * ((e5.y + e5.height) * _ + e5.x), d2 = u2, h2 = 4 * a2, f2 = (true === e5.interlaced && (h2 += 4 * _ * 7), 8), p2 = 0, m2 = o3.length; p2 < m2; ++p2) {
+                for (var e5 = this.frameInfo(e5), r4 = e5.width * e5.height, o3 = new Uint8Array(r4), n2 = (E(b, e5.data_offset, o3, r4), e5.palette_offset), s3 = e5.transparent_index, i2 = (null === s3 && (s3 = 256), e5.width), a2 = _ - i2, l2 = i2, u2 = 4 * (e5.y * _ + e5.x), c2 = 4 * ((e5.y + e5.height) * _ + e5.x), d2 = u2, h4 = 4 * a2, f2 = (true === e5.interlaced && (h4 += 4 * _ * 7), 8), p2 = 0, m2 = o3.length; p2 < m2; ++p2) {
                   var y2, g2, v2 = o3[p2];
-                  0 === l2 && (l2 = i2, c2 <= (d2 += h2) && (h2 = 4 * a2 + 4 * _ * (f2 - 1), d2 = u2 + (i2 + a2) * (f2 << 1), f2 >>= 1)), v2 === s3 ? d2 += 4 : (y2 = b[n2 + 3 * v2], g2 = b[n2 + 3 * v2 + 1], v2 = b[n2 + 3 * v2 + 2], t4[d2++] = y2, t4[d2++] = g2, t4[d2++] = v2, t4[d2++] = 255), --l2;
+                  0 === l2 && (l2 = i2, c2 <= (d2 += h4) && (h4 = 4 * a2 + 4 * _ * (f2 - 1), d2 = u2 + (i2 + a2) * (f2 << 1), f2 >>= 1)), v2 === s3 ? d2 += 4 : (y2 = b[n2 + 3 * v2], g2 = b[n2 + 3 * v2 + 1], v2 = b[n2 + 3 * v2 + 2], t4[d2++] = y2, t4[d2++] = g2, t4[d2++] = v2, t4[d2++] = 255), --l2;
                 }
               };
             };
@@ -5218,9 +5218,9 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                       r4 = ee(s3, V, z);
                       break;
                     case 2:
-                      y2 = m2 = p2 = g2 = i2 = f2 = h2 = d2 = c2 = u2 = l2 = a2 = void 0;
-                      for (var i2, a2 = s3, l2 = s3.ltree, u2 = s3.dtree, c2 = b(a2, 5, 257), d2 = b(a2, 5, 1), h2 = b(a2, 4, 4), f2 = 0; f2 < 19; ++f2) v[f2] = 0;
-                      for (f2 = 0; f2 < h2; ++f2) {
+                      y2 = m2 = p2 = g2 = i2 = f2 = h4 = d2 = c2 = u2 = l2 = a2 = void 0;
+                      for (var i2, a2 = s3, l2 = s3.ltree, u2 = s3.dtree, c2 = b(a2, 5, 257), d2 = b(a2, 5, 1), h4 = b(a2, 4, 4), f2 = 0; f2 < 19; ++f2) v[f2] = 0;
+                      for (f2 = 0; f2 < h4; ++f2) {
                         var p2 = b(a2, 3, 0);
                         v[Y[f2]] = p2;
                       }
@@ -5255,7 +5255,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               function a() {
                 this.x1 = Number.NaN, this.y1 = Number.NaN, this.x2 = Number.NaN, this.y2 = Number.NaN;
               }
-              function h() {
+              function h3() {
                 this.commands = [], this.fill = "black", this.stroke = null, this.strokeWidth = 1;
               }
               function oe(e5) {
@@ -5275,29 +5275,29 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               }, a.prototype.addBezier = function(e5, t4, r4, o3, n2, s3, i2, a2) {
                 var l2 = [e5, t4], u2 = [r4, o3], c2 = [n2, s3], d2 = [i2, a2];
                 this.addPoint(e5, t4), this.addPoint(i2, a2);
-                for (var h2 = 0; h2 <= 1; h2++) {
-                  var f2, p2 = 6 * l2[h2] - 12 * u2[h2] + 6 * c2[h2], m2 = -3 * l2[h2] + 9 * u2[h2] - 9 * c2[h2] + 3 * d2[h2], y2 = 3 * u2[h2] - 3 * l2[h2];
-                  0 == m2 ? 0 == p2 || 0 < (f2 = -y2 / p2) && f2 < 1 && (0 === h2 && this.addX(g(l2[h2], u2[h2], c2[h2], d2[h2], f2)), 1 === h2 && this.addY(g(l2[h2], u2[h2], c2[h2], d2[h2], f2))) : (f2 = Math.pow(p2, 2) - 4 * y2 * m2) < 0 || (0 < (y2 = (-p2 + Math.sqrt(f2)) / (2 * m2)) && y2 < 1 && (0 === h2 && this.addX(g(l2[h2], u2[h2], c2[h2], d2[h2], y2)), 1 === h2 && this.addY(g(l2[h2], u2[h2], c2[h2], d2[h2], y2))), 0 < (y2 = (-p2 - Math.sqrt(f2)) / (2 * m2)) && y2 < 1 && (0 === h2 && this.addX(g(l2[h2], u2[h2], c2[h2], d2[h2], y2)), 1 === h2 && this.addY(g(l2[h2], u2[h2], c2[h2], d2[h2], y2))));
+                for (var h4 = 0; h4 <= 1; h4++) {
+                  var f2, p2 = 6 * l2[h4] - 12 * u2[h4] + 6 * c2[h4], m2 = -3 * l2[h4] + 9 * u2[h4] - 9 * c2[h4] + 3 * d2[h4], y2 = 3 * u2[h4] - 3 * l2[h4];
+                  0 == m2 ? 0 == p2 || 0 < (f2 = -y2 / p2) && f2 < 1 && (0 === h4 && this.addX(g(l2[h4], u2[h4], c2[h4], d2[h4], f2)), 1 === h4 && this.addY(g(l2[h4], u2[h4], c2[h4], d2[h4], f2))) : (f2 = Math.pow(p2, 2) - 4 * y2 * m2) < 0 || (0 < (y2 = (-p2 + Math.sqrt(f2)) / (2 * m2)) && y2 < 1 && (0 === h4 && this.addX(g(l2[h4], u2[h4], c2[h4], d2[h4], y2)), 1 === h4 && this.addY(g(l2[h4], u2[h4], c2[h4], d2[h4], y2))), 0 < (y2 = (-p2 - Math.sqrt(f2)) / (2 * m2)) && y2 < 1 && (0 === h4 && this.addX(g(l2[h4], u2[h4], c2[h4], d2[h4], y2)), 1 === h4 && this.addY(g(l2[h4], u2[h4], c2[h4], d2[h4], y2))));
                 }
               }, a.prototype.addQuad = function(e5, t4, r4, o3, n2, s3) {
                 r4 = e5 + 2 / 3 * (r4 - e5), o3 = t4 + 2 / 3 * (o3 - t4);
                 this.addBezier(e5, t4, r4, o3, r4 + 1 / 3 * (n2 - e5), o3 + 1 / 3 * (s3 - t4), n2, s3);
-              }, h.prototype.moveTo = function(e5, t4) {
+              }, h3.prototype.moveTo = function(e5, t4) {
                 this.commands.push({ type: "M", x: e5, y: t4 });
-              }, h.prototype.lineTo = function(e5, t4) {
+              }, h3.prototype.lineTo = function(e5, t4) {
                 this.commands.push({ type: "L", x: e5, y: t4 });
-              }, h.prototype.curveTo = h.prototype.bezierCurveTo = function(e5, t4, r4, o3, n2, s3) {
+              }, h3.prototype.curveTo = h3.prototype.bezierCurveTo = function(e5, t4, r4, o3, n2, s3) {
                 this.commands.push({ type: "C", x1: e5, y1: t4, x2: r4, y2: o3, x: n2, y: s3 });
-              }, h.prototype.quadTo = h.prototype.quadraticCurveTo = function(e5, t4, r4, o3) {
+              }, h3.prototype.quadTo = h3.prototype.quadraticCurveTo = function(e5, t4, r4, o3) {
                 this.commands.push({ type: "Q", x1: e5, y1: t4, x: r4, y: o3 });
-              }, h.prototype.close = h.prototype.closePath = function() {
+              }, h3.prototype.close = h3.prototype.closePath = function() {
                 this.commands.push({ type: "Z" });
-              }, h.prototype.extend = function(e5) {
+              }, h3.prototype.extend = function(e5) {
                 var t4;
                 if (e5.commands) e5 = e5.commands;
                 else if (e5 instanceof a) return t4 = e5, this.moveTo(t4.x1, t4.y1), this.lineTo(t4.x2, t4.y1), this.lineTo(t4.x2, t4.y2), this.lineTo(t4.x1, t4.y2), void this.close();
                 Array.prototype.push.apply(this.commands, e5);
-              }, h.prototype.getBoundingBox = function() {
+              }, h3.prototype.getBoundingBox = function() {
                 for (var e5 = new a(), t4 = 0, r4 = 0, o3 = 0, n2 = 0, s3 = 0; s3 < this.commands.length; s3++) {
                   var i2 = this.commands[s3];
                   switch (i2.type) {
@@ -5321,14 +5321,14 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                   }
                 }
                 return e5.isEmpty() && e5.addPoint(0, 0), e5;
-              }, h.prototype.draw = function(e5) {
+              }, h3.prototype.draw = function(e5) {
                 e5.beginPath();
                 for (var t4 = 0; t4 < this.commands.length; t4 += 1) {
                   var r4 = this.commands[t4];
                   "M" === r4.type ? e5.moveTo(r4.x, r4.y) : "L" === r4.type ? e5.lineTo(r4.x, r4.y) : "C" === r4.type ? e5.bezierCurveTo(r4.x1, r4.y1, r4.x2, r4.y2, r4.x, r4.y) : "Q" === r4.type ? e5.quadraticCurveTo(r4.x1, r4.y1, r4.x, r4.y) : "Z" === r4.type && e5.closePath();
                 }
                 this.fill && (e5.fillStyle = this.fill, e5.fill()), this.stroke && (e5.strokeStyle = this.stroke, e5.lineWidth = this.strokeWidth, e5.stroke());
-              }, h.prototype.toPathData = function(n2) {
+              }, h3.prototype.toPathData = function(n2) {
                 function e5() {
                   for (var e6 = arguments, t5 = "", r5 = 0; r5 < arguments.length; r5 += 1) {
                     var o4 = e6[r5];
@@ -5342,10 +5342,10 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                   "M" === o3.type ? t4 += "M" + e5(o3.x, o3.y) : "L" === o3.type ? t4 += "L" + e5(o3.x, o3.y) : "C" === o3.type ? t4 += "C" + e5(o3.x1, o3.y1, o3.x2, o3.y2, o3.x, o3.y) : "Q" === o3.type ? t4 += "Q" + e5(o3.x1, o3.y1, o3.x, o3.y) : "Z" === o3.type && (t4 += "Z");
                 }
                 return t4;
-              }, h.prototype.toSVG = function(e5) {
+              }, h3.prototype.toSVG = function(e5) {
                 var t4 = (t4 = '<path d="') + this.toPathData(e5) + '"';
                 return this.fill && "black" !== this.fill && (null === this.fill ? t4 += ' fill="none"' : t4 += ' fill="' + this.fill + '"'), this.stroke && (t4 += ' stroke="' + this.stroke + '" stroke-width="' + this.strokeWidth + '"'), t4 += "/>";
-              }, h.prototype.toDOMElement = function(e5) {
+              }, h3.prototype.toDOMElement = function(e5) {
                 var e5 = this.toPathData(e5), t4 = document.createElementNS("http://www.w3.org/2000/svg", "path");
                 return t4.setAttribute("d", e5), t4;
               };
@@ -5810,7 +5810,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                 if (r4.format = a2.parseUShort(), 12 === r4.format) {
                   var l2, u2 = r4, c2 = a2;
                   c2.parseUShort(), u2.length = c2.parseULong(), u2.language = c2.parseULong(), u2.groupCount = l2 = c2.parseULong(), u2.glyphIndexMap = {};
-                  for (var d2 = 0; d2 < l2; d2 += 1) for (var h2 = c2.parseULong(), f2 = c2.parseULong(), p2 = c2.parseULong(), m2 = h2; m2 <= f2; m2 += 1) u2.glyphIndexMap[m2] = p2, p2++;
+                  for (var d2 = 0; d2 < l2; d2 += 1) for (var h4 = c2.parseULong(), f2 = c2.parseULong(), p2 = c2.parseULong(), m2 = h4; m2 <= f2; m2 += 1) u2.glyphIndexMap[m2] = p2, p2++;
                 } else {
                   if (4 !== r4.format) throw new Error("Only format 4 and 12 cmap tables are supported (found format " + r4.format + ").");
                   var y2 = r4, g2 = e5, v2 = t4, b2 = o3;
@@ -5831,12 +5831,12 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                   });
                 }
                 i2.segments.push({ end: 65535, start: 65535, delta: 1, offset: 0 });
-                var u2 = i2.segments.length, c2 = 0, d2 = [], h2 = [], f2 = [], p2 = [], m2 = [], y2 = [];
+                var u2 = i2.segments.length, c2 = 0, d2 = [], h4 = [], f2 = [], p2 = [], m2 = [], y2 = [];
                 for (r4 = 0; r4 < u2; r4 += 1) {
                   var g2 = i2.segments[r4];
-                  g2.end <= 65535 && g2.start <= 65535 ? (d2 = d2.concat({ name: "end_" + r4, type: "USHORT", value: g2.end }), h2 = h2.concat({ name: "start_" + r4, type: "USHORT", value: g2.start }), f2 = f2.concat({ name: "idDelta_" + r4, type: "SHORT", value: g2.delta }), p2 = p2.concat({ name: "idRangeOffset_" + r4, type: "USHORT", value: g2.offset }), void 0 !== g2.glyphId && (m2 = m2.concat({ name: "glyph_" + r4, type: "USHORT", value: g2.glyphId }))) : c2 += 1, t4 || void 0 === g2.glyphIndex || (y2 = (y2 = (y2 = y2.concat({ name: "cmap12Start_" + r4, type: "ULONG", value: g2.start })).concat({ name: "cmap12End_" + r4, type: "ULONG", value: g2.end })).concat({ name: "cmap12Glyph_" + r4, type: "ULONG", value: g2.glyphIndex }));
+                  g2.end <= 65535 && g2.start <= 65535 ? (d2 = d2.concat({ name: "end_" + r4, type: "USHORT", value: g2.end }), h4 = h4.concat({ name: "start_" + r4, type: "USHORT", value: g2.start }), f2 = f2.concat({ name: "idDelta_" + r4, type: "SHORT", value: g2.delta }), p2 = p2.concat({ name: "idRangeOffset_" + r4, type: "USHORT", value: g2.offset }), void 0 !== g2.glyphId && (m2 = m2.concat({ name: "glyph_" + r4, type: "USHORT", value: g2.glyphId }))) : c2 += 1, t4 || void 0 === g2.glyphIndex || (y2 = (y2 = (y2 = y2.concat({ name: "cmap12Start_" + r4, type: "ULONG", value: g2.start })).concat({ name: "cmap12End_" + r4, type: "ULONG", value: g2.end })).concat({ name: "cmap12Glyph_" + r4, type: "ULONG", value: g2.glyphIndex }));
                 }
-                return i2.segCountX2 = 2 * (u2 - c2), i2.searchRange = 2 * Math.pow(2, Math.floor(Math.log(u2 - c2) / Math.log(2))), i2.entrySelector = Math.log(i2.searchRange / 2) / Math.log(2), i2.rangeShift = i2.segCountX2 - i2.searchRange, i2.fields = i2.fields.concat(d2), i2.fields.push({ name: "reservedPad", type: "USHORT", value: 0 }), i2.fields = i2.fields.concat(h2), i2.fields = i2.fields.concat(f2), i2.fields = i2.fields.concat(p2), i2.fields = i2.fields.concat(m2), i2.cmap4Length = 14 + 2 * d2.length + 2 + 2 * h2.length + 2 * f2.length + 2 * p2.length + 2 * m2.length, t4 || (s3 = 16 + 4 * y2.length, i2.cmap12Offset = 20 + i2.cmap4Length, i2.fields = i2.fields.concat([{ name: "cmap12Format", type: "USHORT", value: 12 }, { name: "cmap12Reserved", type: "USHORT", value: 0 }, { name: "cmap12Length", type: "ULONG", value: s3 }, { name: "cmap12Language", type: "ULONG", value: 0 }, { name: "cmap12nGroups", type: "ULONG", value: y2.length / 3 }]), i2.fields = i2.fields.concat(y2)), i2;
+                return i2.segCountX2 = 2 * (u2 - c2), i2.searchRange = 2 * Math.pow(2, Math.floor(Math.log(u2 - c2) / Math.log(2))), i2.entrySelector = Math.log(i2.searchRange / 2) / Math.log(2), i2.rangeShift = i2.segCountX2 - i2.searchRange, i2.fields = i2.fields.concat(d2), i2.fields.push({ name: "reservedPad", type: "USHORT", value: 0 }), i2.fields = i2.fields.concat(h4), i2.fields = i2.fields.concat(f2), i2.fields = i2.fields.concat(p2), i2.fields = i2.fields.concat(m2), i2.cmap4Length = 14 + 2 * d2.length + 2 + 2 * h4.length + 2 * f2.length + 2 * p2.length + 2 * m2.length, t4 || (s3 = 16 + 4 * y2.length, i2.cmap12Offset = 20 + i2.cmap4Length, i2.fields = i2.fields.concat([{ name: "cmap12Format", type: "USHORT", value: 12 }, { name: "cmap12Reserved", type: "USHORT", value: 0 }, { name: "cmap12Length", type: "ULONG", value: s3 }, { name: "cmap12Language", type: "ULONG", value: 0 }, { name: "cmap12nGroups", type: "ULONG", value: y2.length / 3 }]), i2.fields = i2.fields.concat(y2)), i2;
               } }, Se = [".notdef", "space", "exclam", "quotedbl", "numbersign", "dollar", "percent", "ampersand", "quoteright", "parenleft", "parenright", "asterisk", "plus", "comma", "hyphen", "period", "slash", "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "colon", "semicolon", "less", "equal", "greater", "question", "at", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "bracketleft", "backslash", "bracketright", "asciicircum", "underscore", "quoteleft", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "braceleft", "bar", "braceright", "asciitilde", "exclamdown", "cent", "sterling", "fraction", "yen", "florin", "section", "currency", "quotesingle", "quotedblleft", "guillemotleft", "guilsinglleft", "guilsinglright", "fi", "fl", "endash", "dagger", "daggerdbl", "periodcentered", "paragraph", "bullet", "quotesinglbase", "quotedblbase", "quotedblright", "guillemotright", "ellipsis", "perthousand", "questiondown", "grave", "acute", "circumflex", "tilde", "macron", "breve", "dotaccent", "dieresis", "ring", "cedilla", "hungarumlaut", "ogonek", "caron", "emdash", "AE", "ordfeminine", "Lslash", "Oslash", "OE", "ordmasculine", "ae", "dotlessi", "lslash", "oslash", "oe", "germandbls", "onesuperior", "logicalnot", "mu", "trademark", "Eth", "onehalf", "plusminus", "Thorn", "onequarter", "divide", "brokenbar", "degree", "thorn", "threequarters", "twosuperior", "registered", "minus", "eth", "multiply", "threesuperior", "copyright", "Aacute", "Acircumflex", "Adieresis", "Agrave", "Aring", "Atilde", "Ccedilla", "Eacute", "Ecircumflex", "Edieresis", "Egrave", "Iacute", "Icircumflex", "Idieresis", "Igrave", "Ntilde", "Oacute", "Ocircumflex", "Odieresis", "Ograve", "Otilde", "Scaron", "Uacute", "Ucircumflex", "Udieresis", "Ugrave", "Yacute", "Ydieresis", "Zcaron", "aacute", "acircumflex", "adieresis", "agrave", "aring", "atilde", "ccedilla", "eacute", "ecircumflex", "edieresis", "egrave", "iacute", "icircumflex", "idieresis", "igrave", "ntilde", "oacute", "ocircumflex", "odieresis", "ograve", "otilde", "scaron", "uacute", "ucircumflex", "udieresis", "ugrave", "yacute", "ydieresis", "zcaron", "exclamsmall", "Hungarumlautsmall", "dollaroldstyle", "dollarsuperior", "ampersandsmall", "Acutesmall", "parenleftsuperior", "parenrightsuperior", "266 ff", "onedotenleader", "zerooldstyle", "oneoldstyle", "twooldstyle", "threeoldstyle", "fouroldstyle", "fiveoldstyle", "sixoldstyle", "sevenoldstyle", "eightoldstyle", "nineoldstyle", "commasuperior", "threequartersemdash", "periodsuperior", "questionsmall", "asuperior", "bsuperior", "centsuperior", "dsuperior", "esuperior", "isuperior", "lsuperior", "msuperior", "nsuperior", "osuperior", "rsuperior", "ssuperior", "tsuperior", "ff", "ffi", "ffl", "parenleftinferior", "parenrightinferior", "Circumflexsmall", "hyphensuperior", "Gravesmall", "Asmall", "Bsmall", "Csmall", "Dsmall", "Esmall", "Fsmall", "Gsmall", "Hsmall", "Ismall", "Jsmall", "Ksmall", "Lsmall", "Msmall", "Nsmall", "Osmall", "Psmall", "Qsmall", "Rsmall", "Ssmall", "Tsmall", "Usmall", "Vsmall", "Wsmall", "Xsmall", "Ysmall", "Zsmall", "colonmonetary", "onefitted", "rupiah", "Tildesmall", "exclamdownsmall", "centoldstyle", "Lslashsmall", "Scaronsmall", "Zcaronsmall", "Dieresissmall", "Brevesmall", "Caronsmall", "Dotaccentsmall", "Macronsmall", "figuredash", "hypheninferior", "Ogoneksmall", "Ringsmall", "Cedillasmall", "questiondownsmall", "oneeighth", "threeeighths", "fiveeighths", "seveneighths", "onethird", "twothirds", "zerosuperior", "foursuperior", "fivesuperior", "sixsuperior", "sevensuperior", "eightsuperior", "ninesuperior", "zeroinferior", "oneinferior", "twoinferior", "threeinferior", "fourinferior", "fiveinferior", "sixinferior", "seveninferior", "eightinferior", "nineinferior", "centinferior", "dollarinferior", "periodinferior", "commainferior", "Agravesmall", "Aacutesmall", "Acircumflexsmall", "Atildesmall", "Adieresissmall", "Aringsmall", "AEsmall", "Ccedillasmall", "Egravesmall", "Eacutesmall", "Ecircumflexsmall", "Edieresissmall", "Igravesmall", "Iacutesmall", "Icircumflexsmall", "Idieresissmall", "Ethsmall", "Ntildesmall", "Ogravesmall", "Oacutesmall", "Ocircumflexsmall", "Otildesmall", "Odieresissmall", "OEsmall", "Oslashsmall", "Ugravesmall", "Uacutesmall", "Ucircumflexsmall", "Udieresissmall", "Yacutesmall", "Thornsmall", "Ydieresissmall", "001.000", "001.001", "001.002", "001.003", "Black", "Bold", "Book", "Light", "Medium", "Regular", "Roman", "Semibold"], Te = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "space", "exclam", "quotedbl", "numbersign", "dollar", "percent", "ampersand", "quoteright", "parenleft", "parenright", "asterisk", "plus", "comma", "hyphen", "period", "slash", "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "colon", "semicolon", "less", "equal", "greater", "question", "at", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "bracketleft", "backslash", "bracketright", "asciicircum", "underscore", "quoteleft", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "braceleft", "bar", "braceright", "asciitilde", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "exclamdown", "cent", "sterling", "fraction", "yen", "florin", "section", "currency", "quotesingle", "quotedblleft", "guillemotleft", "guilsinglleft", "guilsinglright", "fi", "fl", "", "endash", "dagger", "daggerdbl", "periodcentered", "", "paragraph", "bullet", "quotesinglbase", "quotedblbase", "quotedblright", "guillemotright", "ellipsis", "perthousand", "", "questiondown", "", "grave", "acute", "circumflex", "tilde", "macron", "breve", "dotaccent", "dieresis", "", "ring", "cedilla", "", "hungarumlaut", "ogonek", "caron", "emdash", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "AE", "", "ordfeminine", "", "", "", "", "Lslash", "Oslash", "OE", "ordmasculine", "", "", "", "", "", "ae", "", "", "", "dotlessi", "", "", "lslash", "oslash", "oe", "germandbls"], Ee = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "space", "exclamsmall", "Hungarumlautsmall", "", "dollaroldstyle", "dollarsuperior", "ampersandsmall", "Acutesmall", "parenleftsuperior", "parenrightsuperior", "twodotenleader", "onedotenleader", "comma", "hyphen", "period", "fraction", "zerooldstyle", "oneoldstyle", "twooldstyle", "threeoldstyle", "fouroldstyle", "fiveoldstyle", "sixoldstyle", "sevenoldstyle", "eightoldstyle", "nineoldstyle", "colon", "semicolon", "commasuperior", "threequartersemdash", "periodsuperior", "questionsmall", "", "asuperior", "bsuperior", "centsuperior", "dsuperior", "esuperior", "", "", "isuperior", "", "", "lsuperior", "msuperior", "nsuperior", "osuperior", "", "", "rsuperior", "ssuperior", "tsuperior", "", "ff", "fi", "fl", "ffi", "ffl", "parenleftinferior", "", "parenrightinferior", "Circumflexsmall", "hyphensuperior", "Gravesmall", "Asmall", "Bsmall", "Csmall", "Dsmall", "Esmall", "Fsmall", "Gsmall", "Hsmall", "Ismall", "Jsmall", "Ksmall", "Lsmall", "Msmall", "Nsmall", "Osmall", "Psmall", "Qsmall", "Rsmall", "Ssmall", "Tsmall", "Usmall", "Vsmall", "Wsmall", "Xsmall", "Ysmall", "Zsmall", "colonmonetary", "onefitted", "rupiah", "Tildesmall", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "exclamdownsmall", "centoldstyle", "Lslashsmall", "", "", "Scaronsmall", "Zcaronsmall", "Dieresissmall", "Brevesmall", "Caronsmall", "", "Dotaccentsmall", "", "", "Macronsmall", "", "", "figuredash", "hypheninferior", "", "", "Ogoneksmall", "Ringsmall", "Cedillasmall", "", "", "", "onequarter", "onehalf", "threequarters", "questiondownsmall", "oneeighth", "threeeighths", "fiveeighths", "seveneighths", "onethird", "twothirds", "", "", "zerosuperior", "onesuperior", "twosuperior", "threesuperior", "foursuperior", "fivesuperior", "sixsuperior", "sevensuperior", "eightsuperior", "ninesuperior", "zeroinferior", "oneinferior", "twoinferior", "threeinferior", "fourinferior", "fiveinferior", "sixinferior", "seveninferior", "eightinferior", "nineinferior", "centinferior", "dollarinferior", "periodinferior", "commainferior", "Agravesmall", "Aacutesmall", "Acircumflexsmall", "Atildesmall", "Adieresissmall", "Aringsmall", "AEsmall", "Ccedillasmall", "Egravesmall", "Eacutesmall", "Ecircumflexsmall", "Edieresissmall", "Igravesmall", "Iacutesmall", "Icircumflexsmall", "Idieresissmall", "Ethsmall", "Ntildesmall", "Ogravesmall", "Oacutesmall", "Ocircumflexsmall", "Otildesmall", "Odieresissmall", "OEsmall", "Oslashsmall", "Ugravesmall", "Uacutesmall", "Ucircumflexsmall", "Udieresissmall", "Yacutesmall", "Thornsmall", "Ydieresissmall"], c = [".notdef", ".null", "nonmarkingreturn", "space", "exclam", "quotedbl", "numbersign", "dollar", "percent", "ampersand", "quotesingle", "parenleft", "parenright", "asterisk", "plus", "comma", "hyphen", "period", "slash", "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "colon", "semicolon", "less", "equal", "greater", "question", "at", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "bracketleft", "backslash", "bracketright", "asciicircum", "underscore", "grave", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "braceleft", "bar", "braceright", "asciitilde", "Adieresis", "Aring", "Ccedilla", "Eacute", "Ntilde", "Odieresis", "Udieresis", "aacute", "agrave", "acircumflex", "adieresis", "atilde", "aring", "ccedilla", "eacute", "egrave", "ecircumflex", "edieresis", "iacute", "igrave", "icircumflex", "idieresis", "ntilde", "oacute", "ograve", "ocircumflex", "odieresis", "otilde", "uacute", "ugrave", "ucircumflex", "udieresis", "dagger", "degree", "cent", "sterling", "section", "bullet", "paragraph", "germandbls", "registered", "copyright", "trademark", "acute", "dieresis", "notequal", "AE", "Oslash", "infinity", "plusminus", "lessequal", "greaterequal", "yen", "mu", "partialdiff", "summation", "product", "pi", "integral", "ordfeminine", "ordmasculine", "Omega", "ae", "oslash", "questiondown", "exclamdown", "logicalnot", "radical", "florin", "approxequal", "Delta", "guillemotleft", "guillemotright", "ellipsis", "nonbreakingspace", "Agrave", "Atilde", "Otilde", "OE", "oe", "endash", "emdash", "quotedblleft", "quotedblright", "quoteleft", "quoteright", "divide", "lozenge", "ydieresis", "Ydieresis", "fraction", "currency", "guilsinglleft", "guilsinglright", "fi", "fl", "daggerdbl", "periodcentered", "quotesinglbase", "quotedblbase", "perthousand", "Acircumflex", "Ecircumflex", "Aacute", "Edieresis", "Egrave", "Iacute", "Icircumflex", "Idieresis", "Igrave", "Oacute", "Ocircumflex", "apple", "Ograve", "Uacute", "Ucircumflex", "Ugrave", "dotlessi", "circumflex", "tilde", "macron", "breve", "dotaccent", "ring", "cedilla", "hungarumlaut", "ogonek", "caron", "Lslash", "lslash", "Scaron", "scaron", "Zcaron", "zcaron", "brokenbar", "Eth", "eth", "Yacute", "yacute", "Thorn", "thorn", "minus", "multiply", "onesuperior", "twosuperior", "threesuperior", "onehalf", "onequarter", "threequarters", "franc", "Gbreve", "gbreve", "Idotaccent", "Scedilla", "scedilla", "Cacute", "cacute", "Ccaron", "ccaron", "dcroat"];
               function Me(e5) {
                 this.font = e5;
@@ -5899,7 +5899,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               }
               f.prototype.bindConstructorValues = function(e5) {
                 var t4;
-                this.index = e5.index || 0, this.name = e5.name || null, this.unicode = e5.unicode || void 0, this.unicodes = e5.unicodes || void 0 !== e5.unicode ? [e5.unicode] : [], e5.xMin && (this.xMin = e5.xMin), e5.yMin && (this.yMin = e5.yMin), e5.xMax && (this.xMax = e5.xMax), e5.yMax && (this.yMax = e5.yMax), e5.advanceWidth && (this.advanceWidth = e5.advanceWidth), Object.defineProperty(this, "path", (e5 = e5.path, t4 = e5 || new h(), { configurable: true, get: function() {
+                this.index = e5.index || 0, this.name = e5.name || null, this.unicode = e5.unicode || void 0, this.unicodes = e5.unicodes || void 0 !== e5.unicode ? [e5.unicode] : [], e5.xMin && (this.xMin = e5.xMin), e5.yMin && (this.yMin = e5.yMin), e5.xMax && (this.xMax = e5.xMax), e5.yMax && (this.yMax = e5.yMax), e5.advanceWidth && (this.advanceWidth = e5.advanceWidth), Object.defineProperty(this, "path", (e5 = e5.path, t4 = e5 || new h3(), { configurable: true, get: function() {
                   return t4 = "function" == typeof t4 ? t4() : t4;
                 }, set: function(e6) {
                   t4 = e6;
@@ -5910,7 +5910,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                 return this.path.getBoundingBox();
               }, f.prototype.getPath = function(e5, t4, r4, o3, n2) {
                 e5 = void 0 !== e5 ? e5 : 0, t4 = void 0 !== t4 ? t4 : 0, r4 = void 0 !== r4 ? r4 : 72;
-                for (var s3, i2, a2 = (o3 = o3 || {}).xScale, l2 = o3.yScale, u2 = ((s3 = o3.hinting && n2 && n2.hinting ? this.path && n2.hinting.exec(this, r4) : s3) ? (i2 = n2.hinting.getCommands(s3), e5 = Math.round(e5), t4 = Math.round(t4), a2 = l2 = 1) : (i2 = this.path.commands, o3 = 1 / this.path.unitsPerEm * r4, void 0 === a2 && (a2 = o3), void 0 === l2 && (l2 = o3)), new h()), c2 = 0; c2 < i2.length; c2 += 1) {
+                for (var s3, i2, a2 = (o3 = o3 || {}).xScale, l2 = o3.yScale, u2 = ((s3 = o3.hinting && n2 && n2.hinting ? this.path && n2.hinting.exec(this, r4) : s3) ? (i2 = n2.hinting.getCommands(s3), e5 = Math.round(e5), t4 = Math.round(t4), a2 = l2 = 1) : (i2 = this.path.commands, o3 = 1 / this.path.unitsPerEm * r4, void 0 === a2 && (a2 = o3), void 0 === l2 && (l2 = o3)), new h3()), c2 = 0; c2 < i2.length; c2 += 1) {
                   var d2 = i2[c2];
                   "M" === d2.type ? u2.moveTo(e5 + d2.x * a2, t4 + -d2.y * l2) : "L" === d2.type ? u2.lineTo(e5 + d2.x * a2, t4 + -d2.y * l2) : "Q" === d2.type ? u2.quadraticCurveTo(e5 + d2.x1 * a2, t4 + -d2.y1 * l2, e5 + d2.x * a2, t4 + -d2.y * l2) : "C" === d2.type ? u2.curveTo(e5 + d2.x1 * a2, t4 + -d2.y1 * l2, e5 + d2.x2 * a2, t4 + -d2.y2 * l2, e5 + d2.x * a2, t4 + -d2.y * l2) : "Z" === d2.type && u2.closePath();
                 }
@@ -5984,8 +5984,8 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                   o3 = l2 + n2[i2];
                 } else o3 = t4 + 2;
                 for (var d2 = 0; d2 < n2.length - 1; d2 += 1) {
-                  var h2 = R.getBytes(e5, l2 + n2[d2], l2 + n2[d2 + 1]);
-                  r4 && (h2 = r4(h2)), s3.push(h2);
+                  var h4 = R.getBytes(e5, l2 + n2[d2], l2 + n2[d2 + 1]);
+                  r4 && (h4 = r4(h4)), s3.push(h4);
                 }
                 return { objects: s3, startOffset: t4, endOffset: o3 };
               }
@@ -6013,9 +6013,9 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                   i2 <= 21 ? (12 === i2 && (i2 = 1200 + o3.parseByte()), n2.push([i2, s3]), s3 = []) : s3.push(Re(o3, i2));
                 }
                 for (var a2 = n2, l2 = {}, u2 = 0; u2 < a2.length; u2 += 1) {
-                  var c2 = a2[u2][0], d2 = a2[u2][1], h2 = void 0, h2 = 1 === d2.length ? d2[0] : d2;
+                  var c2 = a2[u2][0], d2 = a2[u2][1], h4 = void 0, h4 = 1 === d2.length ? d2[0] : d2;
                   if (l2.hasOwnProperty(c2) && !isNaN(l2[c2])) throw new Error("Object " + l2 + " already has key " + c2);
-                  l2[c2] = h2;
+                  l2[c2] = h4;
                 }
                 return l2;
               }
@@ -6046,7 +6046,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                 return n2;
               }
               function Ve(y2, g2, e5) {
-                var v2, b2, _2, j2, t4, x2, w2, r4, S2, T2 = new h(), E2 = [], M2 = 0, k2 = false, O2 = false, C2 = 0, P2 = 0, A2 = (S2 = (y2.isCIDFont ? (t4 = y2.tables.cff.topDict._fdSelect[g2.index], t4 = y2.tables.cff.topDict._fdArray[t4], x2 = t4._subrs, w2 = t4._subrsBias, r4 = t4._defaultWidthX, t4) : (x2 = y2.tables.cff.topDict._subrs, w2 = y2.tables.cff.topDict._subrsBias, r4 = y2.tables.cff.topDict._defaultWidthX, y2.tables.cff.topDict))._nominalWidthX, r4);
+                var v2, b2, _2, j2, t4, x2, w2, r4, S2, T2 = new h3(), E2 = [], M2 = 0, k2 = false, O2 = false, C2 = 0, P2 = 0, A2 = (S2 = (y2.isCIDFont ? (t4 = y2.tables.cff.topDict._fdSelect[g2.index], t4 = y2.tables.cff.topDict._fdArray[t4], x2 = t4._subrs, w2 = t4._subrsBias, r4 = t4._defaultWidthX, t4) : (x2 = y2.tables.cff.topDict._subrs, w2 = y2.tables.cff.topDict._subrsBias, r4 = y2.tables.cff.topDict._defaultWidthX, y2.tables.cff.topDict))._nominalWidthX, r4);
                 function L2(e6, t5) {
                   O2 && T2.closePath(), T2.moveTo(e6, t5), O2 = true;
                 }
@@ -6054,7 +6054,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                   E2.length % 2 == 0 || k2 || (A2 = E2.shift() + S2), M2 += E2.length >> 1, E2.length = 0, k2 = true;
                 }
                 return function e6(t5) {
-                  for (var r5, o3, n2, s3, i2, a2, l2, u2, c2, d2, h2, f2, p2 = 0; p2 < t5.length; ) {
+                  for (var r5, o3, n2, s3, i2, a2, l2, u2, c2, d2, h4, f2, p2 = 0; p2 < t5.length; ) {
                     var m2 = t5[p2];
                     switch (p2 += 1, m2) {
                       case 1:
@@ -6084,16 +6084,16 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                       case 12:
                         switch (m2 = t5[p2], p2 += 1, m2) {
                           case 35:
-                            v2 = C2 + E2.shift(), b2 = P2 + E2.shift(), _2 = v2 + E2.shift(), j2 = b2 + E2.shift(), l2 = _2 + E2.shift(), u2 = j2 + E2.shift(), c2 = l2 + E2.shift(), d2 = u2 + E2.shift(), h2 = c2 + E2.shift(), f2 = d2 + E2.shift(), C2 = h2 + E2.shift(), P2 = f2 + E2.shift(), E2.shift(), T2.curveTo(v2, b2, _2, j2, l2, u2), T2.curveTo(c2, d2, h2, f2, C2, P2);
+                            v2 = C2 + E2.shift(), b2 = P2 + E2.shift(), _2 = v2 + E2.shift(), j2 = b2 + E2.shift(), l2 = _2 + E2.shift(), u2 = j2 + E2.shift(), c2 = l2 + E2.shift(), d2 = u2 + E2.shift(), h4 = c2 + E2.shift(), f2 = d2 + E2.shift(), C2 = h4 + E2.shift(), P2 = f2 + E2.shift(), E2.shift(), T2.curveTo(v2, b2, _2, j2, l2, u2), T2.curveTo(c2, d2, h4, f2, C2, P2);
                             break;
                           case 34:
-                            v2 = C2 + E2.shift(), b2 = P2, _2 = v2 + E2.shift(), j2 = b2 + E2.shift(), l2 = _2 + E2.shift(), u2 = j2, c2 = l2 + E2.shift(), d2 = j2, h2 = c2 + E2.shift(), f2 = P2, C2 = h2 + E2.shift(), T2.curveTo(v2, b2, _2, j2, l2, u2), T2.curveTo(c2, d2, h2, f2, C2, P2);
+                            v2 = C2 + E2.shift(), b2 = P2, _2 = v2 + E2.shift(), j2 = b2 + E2.shift(), l2 = _2 + E2.shift(), u2 = j2, c2 = l2 + E2.shift(), d2 = j2, h4 = c2 + E2.shift(), f2 = P2, C2 = h4 + E2.shift(), T2.curveTo(v2, b2, _2, j2, l2, u2), T2.curveTo(c2, d2, h4, f2, C2, P2);
                             break;
                           case 36:
-                            v2 = C2 + E2.shift(), b2 = P2 + E2.shift(), _2 = v2 + E2.shift(), j2 = b2 + E2.shift(), l2 = _2 + E2.shift(), u2 = j2, c2 = l2 + E2.shift(), d2 = j2, h2 = c2 + E2.shift(), f2 = d2 + E2.shift(), C2 = h2 + E2.shift(), T2.curveTo(v2, b2, _2, j2, l2, u2), T2.curveTo(c2, d2, h2, f2, C2, P2);
+                            v2 = C2 + E2.shift(), b2 = P2 + E2.shift(), _2 = v2 + E2.shift(), j2 = b2 + E2.shift(), l2 = _2 + E2.shift(), u2 = j2, c2 = l2 + E2.shift(), d2 = j2, h4 = c2 + E2.shift(), f2 = d2 + E2.shift(), C2 = h4 + E2.shift(), T2.curveTo(v2, b2, _2, j2, l2, u2), T2.curveTo(c2, d2, h4, f2, C2, P2);
                             break;
                           case 37:
-                            v2 = C2 + E2.shift(), b2 = P2 + E2.shift(), _2 = v2 + E2.shift(), j2 = b2 + E2.shift(), l2 = _2 + E2.shift(), u2 = j2 + E2.shift(), c2 = l2 + E2.shift(), d2 = u2 + E2.shift(), h2 = c2 + E2.shift(), f2 = d2 + E2.shift(), Math.abs(h2 - C2) > Math.abs(f2 - P2) ? C2 = h2 + E2.shift() : P2 = f2 + E2.shift(), T2.curveTo(v2, b2, _2, j2, l2, u2), T2.curveTo(c2, d2, h2, f2, C2, P2);
+                            v2 = C2 + E2.shift(), b2 = P2 + E2.shift(), _2 = v2 + E2.shift(), j2 = b2 + E2.shift(), l2 = _2 + E2.shift(), u2 = j2 + E2.shift(), c2 = l2 + E2.shift(), d2 = u2 + E2.shift(), h4 = c2 + E2.shift(), f2 = d2 + E2.shift(), Math.abs(h4 - C2) > Math.abs(f2 - P2) ? C2 = h4 + E2.shift() : P2 = f2 + E2.shift(), T2.curveTo(v2, b2, _2, j2, l2, u2), T2.curveTo(c2, d2, h4, f2, C2, P2);
                             break;
                           default:
                             console.log("Glyph " + g2.index + ": unknown operator 1200" + m2), E2.length = 0;
@@ -6179,8 +6179,8 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                 for (var t4 = new S.Record("CharStrings INDEX", [{ name: "charStrings", type: "INDEX", value: [] }]), r4 = 0; r4 < e5.length; r4 += 1) {
                   var o3 = e5.get(r4), n2 = function(e6) {
                     for (var t5 = [], r5 = e6.path, o4 = (t5.push({ name: "width", type: "NUMBER", value: e6.advanceWidth }), 0), n3 = 0, s3 = 0; s3 < r5.commands.length; s3 += 1) {
-                      var i2, a2, l2, u2, c2 = void 0, d2 = void 0, h2 = r5.commands[s3];
-                      "M" === (h2 = "Q" === h2.type ? { type: "C", x: h2.x, y: h2.y, x1: 1 / 3 * o4 + 2 / 3 * h2.x1, y1: 1 / 3 * n3 + 2 / 3 * h2.y1, x2: 1 / 3 * h2.x + 2 / 3 * h2.x1, y2: 1 / 3 * h2.y + 2 / 3 * h2.y1 } : h2).type ? (c2 = Math.round(h2.x - o4), d2 = Math.round(h2.y - n3), t5.push({ name: "dx", type: "NUMBER", value: c2 }), t5.push({ name: "dy", type: "NUMBER", value: d2 }), t5.push({ name: "rmoveto", type: "OP", value: 21 }), o4 = Math.round(h2.x), n3 = Math.round(h2.y)) : "L" === h2.type ? (c2 = Math.round(h2.x - o4), d2 = Math.round(h2.y - n3), t5.push({ name: "dx", type: "NUMBER", value: c2 }), t5.push({ name: "dy", type: "NUMBER", value: d2 }), t5.push({ name: "rlineto", type: "OP", value: 5 }), o4 = Math.round(h2.x), n3 = Math.round(h2.y)) : "C" === h2.type && (i2 = Math.round(h2.x1 - o4), a2 = Math.round(h2.y1 - n3), l2 = Math.round(h2.x2 - h2.x1), u2 = Math.round(h2.y2 - h2.y1), c2 = Math.round(h2.x - h2.x2), d2 = Math.round(h2.y - h2.y2), t5.push({ name: "dx1", type: "NUMBER", value: i2 }), t5.push({ name: "dy1", type: "NUMBER", value: a2 }), t5.push({ name: "dx2", type: "NUMBER", value: l2 }), t5.push({ name: "dy2", type: "NUMBER", value: u2 }), t5.push({ name: "dx", type: "NUMBER", value: c2 }), t5.push({ name: "dy", type: "NUMBER", value: d2 }), t5.push({ name: "rrcurveto", type: "OP", value: 8 }), o4 = Math.round(h2.x), n3 = Math.round(h2.y));
+                      var i2, a2, l2, u2, c2 = void 0, d2 = void 0, h4 = r5.commands[s3];
+                      "M" === (h4 = "Q" === h4.type ? { type: "C", x: h4.x, y: h4.y, x1: 1 / 3 * o4 + 2 / 3 * h4.x1, y1: 1 / 3 * n3 + 2 / 3 * h4.y1, x2: 1 / 3 * h4.x + 2 / 3 * h4.x1, y2: 1 / 3 * h4.y + 2 / 3 * h4.y1 } : h4).type ? (c2 = Math.round(h4.x - o4), d2 = Math.round(h4.y - n3), t5.push({ name: "dx", type: "NUMBER", value: c2 }), t5.push({ name: "dy", type: "NUMBER", value: d2 }), t5.push({ name: "rmoveto", type: "OP", value: 21 }), o4 = Math.round(h4.x), n3 = Math.round(h4.y)) : "L" === h4.type ? (c2 = Math.round(h4.x - o4), d2 = Math.round(h4.y - n3), t5.push({ name: "dx", type: "NUMBER", value: c2 }), t5.push({ name: "dy", type: "NUMBER", value: d2 }), t5.push({ name: "rlineto", type: "OP", value: 5 }), o4 = Math.round(h4.x), n3 = Math.round(h4.y)) : "C" === h4.type && (i2 = Math.round(h4.x1 - o4), a2 = Math.round(h4.y1 - n3), l2 = Math.round(h4.x2 - h4.x1), u2 = Math.round(h4.y2 - h4.y1), c2 = Math.round(h4.x - h4.x2), d2 = Math.round(h4.y - h4.y2), t5.push({ name: "dx1", type: "NUMBER", value: i2 }), t5.push({ name: "dy1", type: "NUMBER", value: a2 }), t5.push({ name: "dx2", type: "NUMBER", value: l2 }), t5.push({ name: "dy2", type: "NUMBER", value: u2 }), t5.push({ name: "dx", type: "NUMBER", value: c2 }), t5.push({ name: "dy", type: "NUMBER", value: d2 }), t5.push({ name: "rrcurveto", type: "OP", value: 8 }), o4 = Math.round(h4.x), n3 = Math.round(h4.y));
                     }
                     return t5.push({ name: "endchar", type: "OP", value: 14 }), t5;
                   }(o3);
@@ -6235,7 +6235,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                   if (0 === (e6 = n3.parseCard8())) for (var s4 = n3.parseCard8(), i3 = 0; i3 < s4; i3 += 1) o4[l3 = n3.parseCard8()] = i3;
                   else {
                     if (1 !== e6) throw new Error("Unknown encoding format " + e6);
-                    for (var a3 = n3.parseCard8(), l3 = 1, u3 = 0; u3 < a3; u3 += 1) for (var c2 = n3.parseCard8(), d2 = n3.parseCard8(), h2 = c2; h2 <= c2 + d2; h2 += 1) o4[h2] = l3, l3 += 1;
+                    for (var a3 = n3.parseCard8(), l3 = 1, u3 = 0; u3 < a3; u3 += 1) for (var c2 = n3.parseCard8(), d2 = n3.parseCard8(), h4 = c2; h4 <= c2 + d2; h4 += 1) o4[h4] = l3, l3 += 1;
                   }
                   return new Oe(o4, r5);
                 }(e5, t4 + n2.encoding, o3), r4.encoding = r4.encoding || r4.cffEncoding, r4.glyphs = new p.GlyphSet(r4);
@@ -6341,7 +6341,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               }
               var dt = { parse: function(e5, t4, r4) {
                 for (var o3 = {}, n2 = new R.Parser(e5, t4), t4 = n2.parseUShort(), s3 = n2.parseUShort(), i2 = n2.offset + n2.parseUShort(), a2 = 0; a2 < s3; a2++) {
-                  var l2 = n2.parseUShort(), u2 = n2.parseUShort(), c2 = n2.parseUShort(), d2 = n2.parseUShort(), d2 = et[d2] || d2, h2 = n2.parseUShort(), f2 = n2.parseUShort(), p2 = function(e6, t5, r5) {
+                  var l2 = n2.parseUShort(), u2 = n2.parseUShort(), c2 = n2.parseUShort(), d2 = n2.parseUShort(), d2 = et[d2] || d2, h4 = n2.parseUShort(), f2 = n2.parseUShort(), p2 = function(e6, t5, r5) {
                     switch (e6) {
                       case 0:
                         if (65535 === t5) return "und";
@@ -6353,21 +6353,21 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                         return ot[t5];
                     }
                   }(l2, c2, r4), l2 = at(l2, u2, c2);
-                  void 0 !== l2 && void 0 !== p2 && (u2 = void 0, (u2 = l2 === nt ? m.UTF16(e5, i2 + f2, h2) : m.MACSTRING(e5, i2 + f2, h2, l2)) && ((c2 = void 0 === (c2 = o3[d2]) ? o3[d2] = {} : c2)[p2] = u2));
+                  void 0 !== l2 && void 0 !== p2 && (u2 = void 0, (u2 = l2 === nt ? m.UTF16(e5, i2 + f2, h4) : m.MACSTRING(e5, i2 + f2, h4, l2)) && ((c2 = void 0 === (c2 = o3[d2]) ? o3[d2] = {} : c2)[p2] = u2));
                 }
                 return 1 === t4 && n2.parseUShort(), o3;
               }, make: function(e5, t4) {
                 var r4, o3 = [], n2 = {}, s3 = lt(et);
                 for (r4 in e5) {
                   var i2 = s3[r4];
-                  if (void 0 === i2 && (i2 = r4), h2 = parseInt(i2), isNaN(h2)) throw new Error('Name table entry "' + r4 + '" does not exist, see nameTableNames for complete list.');
-                  n2[h2] = e5[r4], o3.push(h2);
+                  if (void 0 === i2 && (i2 = r4), h4 = parseInt(i2), isNaN(h4)) throw new Error('Name table entry "' + r4 + '" does not exist, see nameTableNames for complete list.');
+                  n2[h4] = e5[r4], o3.push(h4);
                 }
                 for (var a2 = lt(tt), l2 = lt(ot), u2 = [], c2 = [], d2 = 0; d2 < o3.length; d2++) {
-                  var h2, f2, p2 = n2[h2 = o3[d2]];
+                  var h4, f2, p2 = n2[h4 = o3[d2]];
                   for (f2 in p2) {
-                    var m2 = p2[f2], y2 = 1, g2 = a2[f2], v2 = rt[g2], b2 = at(y2, v2, g2), b2 = w.MACSTRING(m2, b2), _2 = (void 0 === b2 && (y2 = 0, (g2 = t4.indexOf(f2)) < 0 && (g2 = t4.length, t4.push(f2)), v2 = 4, b2 = w.UTF16(m2)), ct(b2, c2)), y2 = (u2.push(ut(y2, v2, g2, h2, b2.length, _2)), l2[f2]);
-                    void 0 !== y2 && (g2 = ct(v2 = w.UTF16(m2), c2), u2.push(ut(3, 1, y2, h2, v2.length, g2)));
+                    var m2 = p2[f2], y2 = 1, g2 = a2[f2], v2 = rt[g2], b2 = at(y2, v2, g2), b2 = w.MACSTRING(m2, b2), _2 = (void 0 === b2 && (y2 = 0, (g2 = t4.indexOf(f2)) < 0 && (g2 = t4.length, t4.push(f2)), v2 = 4, b2 = w.UTF16(m2)), ct(b2, c2)), y2 = (u2.push(ut(y2, v2, g2, h4, b2.length, _2)), l2[f2]);
+                    void 0 !== y2 && (g2 = ct(v2 = w.UTF16(m2), c2), u2.push(ut(3, 1, y2, h4, v2.length, g2)));
                   }
                 }
                 u2.sort(function(e6, t5) {
@@ -6509,14 +6509,14 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                 return r4;
               }
               var wt = { make: jt, fontToTable: function(e5) {
-                for (var t4, r4 = [], o3 = [], n2 = [], s3 = [], i2 = [], a2 = [], l2 = [], u2 = 0, c2 = 0, d2 = 0, h2 = 0, f2 = 0, p2 = 0; p2 < e5.glyphs.length; p2 += 1) {
+                for (var t4, r4 = [], o3 = [], n2 = [], s3 = [], i2 = [], a2 = [], l2 = [], u2 = 0, c2 = 0, d2 = 0, h4 = 0, f2 = 0, p2 = 0; p2 < e5.glyphs.length; p2 += 1) {
                   var m2 = e5.glyphs.get(p2), y2 = 0 | m2.unicode;
                   if (isNaN(m2.advanceWidth)) throw new Error("Glyph " + m2.name + " (" + p2 + "): advanceWidth is not a number.");
                   (y2 < t4 || void 0 === t4) && 0 < y2 && (t4 = y2), u2 < y2 && (u2 = y2);
                   var y2 = ft.getUnicodeRange(y2);
                   if (y2 < 32) c2 |= 1 << y2;
                   else if (y2 < 64) d2 |= 1 << y2 - 32;
-                  else if (y2 < 96) h2 |= 1 << y2 - 64;
+                  else if (y2 < 96) h4 |= 1 << y2 - 64;
                   else {
                     if (!(y2 < 123)) throw new Error("Unicode ranges bits > 123 are reserved for internal usage");
                     f2 |= 1 << y2 - 96;
@@ -6526,7 +6526,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                 var g2, v2 = { xMin: Math.min.apply(null, r4), yMin: Math.min.apply(null, o3), xMax: Math.max.apply(null, n2), yMax: Math.max.apply(null, s3), advanceWidthMax: Math.max.apply(null, i2), advanceWidthAvg: function(e6) {
                   for (var t5 = 0, r5 = 0; r5 < e6.length; r5 += 1) t5 += e6[r5];
                   return t5 / e6.length;
-                }(i2), minLeftSideBearing: Math.min.apply(null, a2), maxLeftSideBearing: Math.max.apply(null, a2), minRightSideBearing: Math.min.apply(null, l2) }, b2 = (v2.ascender = e5.ascender, v2.descender = e5.descender, Ze.make({ flags: 3, unitsPerEm: e5.unitsPerEm, xMin: v2.xMin, yMin: v2.yMin, xMax: v2.xMax, yMax: v2.yMax, lowestRecPPEM: 3, createdTimestamp: e5.createdTimestamp })), _2 = Ke.make({ ascender: v2.ascender, descender: v2.descender, advanceWidthMax: v2.advanceWidthMax, minLeftSideBearing: v2.minLeftSideBearing, minRightSideBearing: v2.minRightSideBearing, xMaxExtent: v2.maxLeftSideBearing + (v2.xMax - v2.xMin), numberOfHMetrics: e5.glyphs.length }), j2 = $e.make(e5.glyphs.length), x2 = ft.make({ xAvgCharWidth: Math.round(v2.advanceWidthAvg), usWeightClass: e5.tables.os2.usWeightClass, usWidthClass: e5.tables.os2.usWidthClass, usFirstCharIndex: t4, usLastCharIndex: u2, ulUnicodeRange1: c2, ulUnicodeRange2: d2, ulUnicodeRange3: h2, ulUnicodeRange4: f2, fsSelection: e5.tables.os2.fsSelection, sTypoAscender: v2.ascender, sTypoDescender: v2.descender, sTypoLineGap: 0, usWinAscent: v2.yMax, usWinDescent: Math.abs(v2.yMin), ulCodePageRange1: 1, sxHeight: xt(e5, "xyvw", { yMax: Math.round(v2.ascender / 2) }).yMax, sCapHeight: xt(e5, "HIKLEFJMNTZBDPRAGOQSUVWXY", v2).yMax, usDefaultChar: e5.hasChar(" ") ? 32 : 0, usBreakChar: e5.hasChar(" ") ? 32 : 0 }), w2 = Qe.make(e5.glyphs), S2 = we.make(e5.glyphs), T2 = e5.getEnglishName("fontFamily"), E2 = e5.getEnglishName("fontSubfamily"), M2 = T2 + " " + E2, k2 = (k2 = e5.getEnglishName("postScriptName")) || T2.replace(/\s/g, "") + "-" + E2, O2 = {};
+                }(i2), minLeftSideBearing: Math.min.apply(null, a2), maxLeftSideBearing: Math.max.apply(null, a2), minRightSideBearing: Math.min.apply(null, l2) }, b2 = (v2.ascender = e5.ascender, v2.descender = e5.descender, Ze.make({ flags: 3, unitsPerEm: e5.unitsPerEm, xMin: v2.xMin, yMin: v2.yMin, xMax: v2.xMax, yMax: v2.yMax, lowestRecPPEM: 3, createdTimestamp: e5.createdTimestamp })), _2 = Ke.make({ ascender: v2.ascender, descender: v2.descender, advanceWidthMax: v2.advanceWidthMax, minLeftSideBearing: v2.minLeftSideBearing, minRightSideBearing: v2.minRightSideBearing, xMaxExtent: v2.maxLeftSideBearing + (v2.xMax - v2.xMin), numberOfHMetrics: e5.glyphs.length }), j2 = $e.make(e5.glyphs.length), x2 = ft.make({ xAvgCharWidth: Math.round(v2.advanceWidthAvg), usWeightClass: e5.tables.os2.usWeightClass, usWidthClass: e5.tables.os2.usWidthClass, usFirstCharIndex: t4, usLastCharIndex: u2, ulUnicodeRange1: c2, ulUnicodeRange2: d2, ulUnicodeRange3: h4, ulUnicodeRange4: f2, fsSelection: e5.tables.os2.fsSelection, sTypoAscender: v2.ascender, sTypoDescender: v2.descender, sTypoLineGap: 0, usWinAscent: v2.yMax, usWinDescent: Math.abs(v2.yMin), ulCodePageRange1: 1, sxHeight: xt(e5, "xyvw", { yMax: Math.round(v2.ascender / 2) }).yMax, sCapHeight: xt(e5, "HIKLEFJMNTZBDPRAGOQSUVWXY", v2).yMax, usDefaultChar: e5.hasChar(" ") ? 32 : 0, usBreakChar: e5.hasChar(" ") ? 32 : 0 }), w2 = Qe.make(e5.glyphs), S2 = we.make(e5.glyphs), T2 = e5.getEnglishName("fontFamily"), E2 = e5.getEnglishName("fontSubfamily"), M2 = T2 + " " + E2, k2 = (k2 = e5.getEnglishName("postScriptName")) || T2.replace(/\s/g, "") + "-" + E2, O2 = {};
                 for (g2 in e5.names) O2[g2] = e5.names[g2];
                 O2.uniqueID || (O2.uniqueID = { en: e5.getEnglishName("manufacturer") + ":" + M2 }), O2.postScriptName || (O2.postScriptName = { en: k2 }), O2.preferredFamily || (O2.preferredFamily = e5.names.fontFamily), O2.preferredSubfamily || (O2.preferredSubfamily = e5.names.fontSubfamily);
                 var C2 = [], P2 = dt.make(O2, C2), C2 = 0 < C2.length ? Je.make(C2) : void 0, A2 = pt.make(), M2 = Ye.make(e5.glyphs, { version: e5.getEnglishName("version"), fullName: M2, familyName: T2, weightName: E2, postScriptName: k2, unitsPerEm: e5.unitsPerEm, fontBBox: [0, v2.yMin, v2.ascender, v2.advanceWidthMax] }), T2 = e5.metas && 0 < Object.keys(e5.metas).length ? gt.make(e5.metas) : void 0, E2 = [b2, _2, j2, x2, P2, S2, A2, M2, w2];
@@ -6595,7 +6595,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                   for (var s3 = e5.endPointIndices = [], i2 = 0; i2 < e5.numberOfContours; i2 += 1) s3.push(n2.parseUShort());
                   e5.instructionLength = n2.parseUShort(), e5.instructions = [];
                   for (var a2 = 0; a2 < e5.instructionLength; a2 += 1) e5.instructions.push(n2.parseByte());
-                  for (var l2 = s3[s3.length - 1] + 1, u2 = [], c2 = 0; c2 < l2; c2 += 1) if (o3 = n2.parseByte(), u2.push(o3), 0 < (8 & o3)) for (var d2 = n2.parseByte(), h2 = 0; h2 < d2; h2 += 1) u2.push(o3), c2 += 1;
+                  for (var l2 = s3[s3.length - 1] + 1, u2 = [], c2 = 0; c2 < l2; c2 += 1) if (o3 = n2.parseByte(), u2.push(o3), 0 < (8 & o3)) for (var d2 = n2.parseByte(), h4 = 0; h4 < d2; h4 += 1) u2.push(o3), c2 += 1;
                   if (L.argument(u2.length === l2, "Bad flags."), 0 < s3.length) {
                     var f2, p2 = [];
                     if (0 < l2) {
@@ -6627,7 +6627,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                 return r4;
               }
               function Rt(e5) {
-                var t4 = new h();
+                var t4 = new h3();
                 if (e5) for (var r4 = function(e6) {
                   for (var t5 = [], r5 = [], o4 = 0; o4 < e6.length; o4 += 1) {
                     var n3 = e6[o4];
@@ -6733,7 +6733,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                       }
                       break;
                     case 2:
-                      var d2 = this.getGlyphClass(i2.classDef1, t4), h2 = this.getGlyphClass(i2.classDef2, r4), d2 = i2.classRecords[d2][h2];
+                      var d2 = this.getGlyphClass(i2.classDef1, t4), h4 = this.getGlyphClass(i2.classDef2, r4), d2 = i2.classRecords[d2][h4];
                       return d2.value1 && d2.value1.xAdvance || 0;
                   }
                 }
@@ -6746,8 +6746,8 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                 for (var o3 = [], n2 = this.getLookupTables(t4, r4, e5, 1), s3 = 0; s3 < n2.length; s3++) for (var i2 = n2[s3].subtables, a2 = 0; a2 < i2.length; a2++) {
                   var l2 = i2[a2], u2 = this.expandCoverage(l2.coverage), c2 = void 0;
                   if (1 === l2.substFormat) for (var d2 = l2.deltaGlyphId, c2 = 0; c2 < u2.length; c2++) {
-                    var h2 = u2[c2];
-                    o3.push({ sub: h2, by: h2 + d2 });
+                    var h4 = u2[c2];
+                    o3.push({ sub: h4, by: h4 + d2 });
                   }
                   else {
                     var f2 = l2.substitute;
@@ -6759,9 +6759,9 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                 for (var o3 = [], n2 = this.getLookupTables(t4, r4, e5, 3), s3 = 0; s3 < n2.length; s3++) for (var i2 = n2[s3].subtables, a2 = 0; a2 < i2.length; a2++) for (var l2 = i2[a2], u2 = this.expandCoverage(l2.coverage), c2 = l2.alternateSets, d2 = 0; d2 < u2.length; d2++) o3.push({ sub: u2[d2], by: c2[d2] });
                 return o3;
               }, i.prototype.getLigatures = function(e5, t4, r4) {
-                for (var o3 = [], n2 = this.getLookupTables(t4, r4, e5, 4), s3 = 0; s3 < n2.length; s3++) for (var i2 = n2[s3].subtables, a2 = 0; a2 < i2.length; a2++) for (var l2 = i2[a2], u2 = this.expandCoverage(l2.coverage), c2 = l2.ligatureSets, d2 = 0; d2 < u2.length; d2++) for (var h2 = u2[d2], f2 = c2[d2], p2 = 0; p2 < f2.length; p2++) {
+                for (var o3 = [], n2 = this.getLookupTables(t4, r4, e5, 4), s3 = 0; s3 < n2.length; s3++) for (var i2 = n2[s3].subtables, a2 = 0; a2 < i2.length; a2++) for (var l2 = i2[a2], u2 = this.expandCoverage(l2.coverage), c2 = l2.ligatureSets, d2 = 0; d2 < u2.length; d2++) for (var h4 = u2[d2], f2 = c2[d2], p2 = 0; p2 < f2.length; p2++) {
                   var m2 = f2[p2];
-                  o3.push({ sub: [h2].concat(m2.components), by: m2.ligGlyph });
+                  o3.push({ sub: [h4].concat(m2.components), by: m2.ligGlyph });
                 }
                 return o3;
               }, i.prototype.addSingle = function(e5, t4, r4, o3) {
@@ -6995,8 +6995,8 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                 var r4 = t4.stack, o3 = r4.pop(), n2 = t4.fv, s3 = t4.pv, i2 = t4.ppem, a2 = t4.deltaBase + 16 * (e5 - 1), l2 = t4.deltaShift, u2 = t4.z0;
                 _.DEBUG && console.log(t4.step, "DELTAP[" + e5 + "]", o3, r4);
                 for (var c2 = 0; c2 < o3; c2++) {
-                  var d2 = r4.pop(), h2 = r4.pop();
-                  a2 + ((240 & h2) >> 4) === i2 && (0 <= (h2 = (15 & h2) - 8) && h2++, _.DEBUG && console.log(t4.step, "DELTAPFIX", d2, "by", h2 * l2), d2 = u2[d2], n2.setRelative(d2, d2, h2 * l2, s3));
+                  var d2 = r4.pop(), h4 = r4.pop();
+                  a2 + ((240 & h4) >> 4) === i2 && (0 <= (h4 = (15 & h4) - 8) && h4++, _.DEBUG && console.log(t4.step, "DELTAPFIX", d2, "by", h4 * l2), d2 = u2[d2], n2.setRelative(d2, d2, h4 * l2, s3));
                 }
               }
               function fr(e5, t4) {
@@ -7031,8 +7031,8 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                 t4.ip = r4;
               }
               function C(e5, t4, r4, o3, n2, s3) {
-                var i2, a2, l2 = s3.stack, u2 = e5 && l2.pop(), l2 = l2.pop(), c2 = s3.rp0, c2 = s3.z0[c2], d2 = s3.z1[l2], h2 = s3.minDis, f2 = s3.fv, p2 = s3.dpv, m2 = i2 = p2.distance(d2, c2, true, true), y2 = 0 <= m2 ? 1 : -1;
-                m2 = Math.abs(m2), e5 && (a2 = s3.cvt[u2], o3 && Math.abs(m2 - a2) < s3.cvCutIn && (m2 = a2)), r4 && m2 < h2 && (m2 = h2), o3 && (m2 = s3.round(m2)), f2.setRelative(d2, c2, y2 * m2, p2), f2.touch(d2), _.DEBUG && console.log(s3.step, (e5 ? "MIRP[" : "MDRP[") + (t4 ? "M" : "m") + (r4 ? ">" : "_") + (o3 ? "R" : "_") + (0 === n2 ? "Gr" : 1 === n2 ? "Bl" : 2 === n2 ? "Wh" : "") + "]", e5 ? u2 + "(" + s3.cvt[u2] + "," + a2 + ")" : "", l2, "(d =", i2, "->", y2 * m2, ")"), s3.rp1 = s3.rp0, s3.rp2 = l2, t4 && (s3.rp0 = l2);
+                var i2, a2, l2 = s3.stack, u2 = e5 && l2.pop(), l2 = l2.pop(), c2 = s3.rp0, c2 = s3.z0[c2], d2 = s3.z1[l2], h4 = s3.minDis, f2 = s3.fv, p2 = s3.dpv, m2 = i2 = p2.distance(d2, c2, true, true), y2 = 0 <= m2 ? 1 : -1;
+                m2 = Math.abs(m2), e5 && (a2 = s3.cvt[u2], o3 && Math.abs(m2 - a2) < s3.cvCutIn && (m2 = a2)), r4 && m2 < h4 && (m2 = h4), o3 && (m2 = s3.round(m2)), f2.setRelative(d2, c2, y2 * m2, p2), f2.touch(d2), _.DEBUG && console.log(s3.step, (e5 ? "MIRP[" : "MDRP[") + (t4 ? "M" : "m") + (r4 ? ">" : "_") + (o3 ? "R" : "_") + (0 === n2 ? "Gr" : 1 === n2 ? "Bl" : 2 === n2 ? "Wh" : "") + "]", e5 ? u2 + "(" + s3.cvt[u2] + "," + a2 + ")" : "", l2, "(d =", i2, "->", y2 * m2, ")"), s3.rp1 = s3.rp0, s3.rp2 = l2, t4 && (s3.rp0 = l2);
               }
               Ft.prototype.exec = function(e5, t4) {
                 if ("number" != typeof t4) throw new Error("Point size is not a number!");
@@ -7072,9 +7072,9 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                   for (var s3 = t4.font, i2 = [], a2 = [], l2 = 0; l2 < n2.length; l2++) {
                     var u2 = n2[l2], c2 = s3.glyphs.get(u2.glyphIndex), d2 = new M("glyf", c2.instructions);
                     _.DEBUG && (console.log("---EXEC COMP " + l2 + "---"), d2.step = -1), gr(c2, d2, r4, o3);
-                    for (var h2 = Math.round(u2.dx * r4), f2 = Math.round(u2.dy * o3), p2 = d2.gZone, m2 = d2.contours, y2 = 0; y2 < p2.length; y2++) {
+                    for (var h4 = Math.round(u2.dx * r4), f2 = Math.round(u2.dy * o3), p2 = d2.gZone, m2 = d2.contours, y2 = 0; y2 < p2.length; y2++) {
                       var g2 = p2[y2];
-                      g2.xTouched = g2.yTouched = false, g2.xo = g2.x = g2.x + h2, g2.yo = g2.y = g2.y + f2;
+                      g2.xTouched = g2.yTouched = false, g2.xo = g2.x = g2.x + h4, g2.yo = g2.y = g2.y + f2;
                     }
                     var v2 = i2.length;
                     i2.push.apply(i2, p2);
@@ -7085,7 +7085,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                 return i2;
               }, gr = function(e5, t4, r4, o3) {
                 for (var n2, s3, i2, a2 = e5.points || [], l2 = a2.length, u2 = t4.gZone = t4.z0 = t4.z1 = t4.z2 = [], c2 = t4.contours = [], d2 = 0; d2 < l2; d2++) n2 = a2[d2], u2[d2] = new E(n2.x * r4, n2.y * o3, n2.lastPointOfContour, n2.onCurve);
-                for (var h2 = 0; h2 < l2; h2++) n2 = u2[h2], s3 || (s3 = n2, c2.push(h2)), n2.lastPointOfContour ? ((n2.nextPointOnContour = s3).prevPointOnContour = n2, s3 = void 0) : (i2 = u2[h2 + 1], (n2.nextPointOnContour = i2).prevPointOnContour = n2);
+                for (var h4 = 0; h4 < l2; h4++) n2 = u2[h4], s3 || (s3 = n2, c2.push(h4)), n2.lastPointOfContour ? ((n2.nextPointOnContour = s3).prevPointOnContour = n2, s3 = void 0) : (i2 = u2[h4 + 1], (n2.nextPointOnContour = i2).prevPointOnContour = n2);
                 if (!t4.inhibitGridFit) {
                   if (_.DEBUG) {
                     console.log("PROCESSING GLYPH", t4.stack);
@@ -7478,8 +7478,8 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                   var e5 = t4.script || this.substitution.getDefaultScriptName(), a2 = [];
                   t4.features.liga && (a2 = a2.concat(this.substitution.getFeature("liga", e5, t4.language))), t4.features.rlig && (a2 = a2.concat(this.substitution.getFeature("rlig", e5, t4.language)));
                   for (var l2 = 0; l2 < i2; l2 += 1) for (var u2 = 0; u2 < a2.length; u2++) {
-                    for (var c2 = a2[u2], d2 = c2.sub, h2 = d2.length, f2 = 0; f2 < h2 && d2[f2] === o3[l2 + f2]; ) f2++;
-                    f2 === h2 && (o3.splice(l2, h2, c2.by), i2 = i2 - h2 + 1);
+                    for (var c2 = a2[u2], d2 = c2.sub, h4 = d2.length, f2 = 0; f2 < h4 && d2[f2] === o3[l2 + f2]; ) f2++;
+                    f2 === h4 && (o3.splice(l2, h4, c2.by), i2 = i2 - h4 + 1);
                   }
                 }
                 for (var p2 = new Array(i2), m2 = this.glyphs.get(0), y2 = 0; y2 < i2; y2 += 1) p2[y2] = this.glyphs.get(o3[y2]) || m2;
@@ -7505,7 +7505,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                 }
                 return t4;
               }, P.prototype.getPath = function(e5, t4, r4, o3, n2) {
-                var s3 = new h();
+                var s3 = new h3();
                 return this.forEachGlyph(e5, t4, r4, o3, n2, function(e6, t5, r5, o4) {
                   e6 = e6.getPath(t5, r5, o4, n2, this);
                   s3.extend(e6);
@@ -7577,8 +7577,8 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                 }(a2, e5.instances[a2], e5.axes, t4));
                 return r4;
               }, parse: function(e5, t4, r4) {
-                for (var o3, n2, s3, i2, a2 = new R.Parser(e5, t4), l2 = a2.parseULong(), u2 = (L.argument(65536 === l2, "Unsupported fvar table version."), a2.parseOffset16()), c2 = (a2.skip("uShort", 1), a2.parseUShort()), d2 = a2.parseUShort(), h2 = a2.parseUShort(), f2 = a2.parseUShort(), p2 = [], m2 = 0; m2 < c2; m2++) p2.push((o3 = e5, n2 = t4 + u2 + m2 * d2, s3 = r4, void 0, i2 = {}, o3 = new R.Parser(o3, n2), i2.tag = o3.parseTag(), i2.minValue = o3.parseFixed(), i2.defaultValue = o3.parseFixed(), i2.maxValue = o3.parseFixed(), o3.skip("uShort", 1), i2.name = s3[o3.parseUShort()] || {}, i2));
-                for (var y2 = [], g2 = t4 + u2 + c2 * d2, v2 = 0; v2 < h2; v2++) y2.push(function(e6, t5, r5, o4) {
+                for (var o3, n2, s3, i2, a2 = new R.Parser(e5, t4), l2 = a2.parseULong(), u2 = (L.argument(65536 === l2, "Unsupported fvar table version."), a2.parseOffset16()), c2 = (a2.skip("uShort", 1), a2.parseUShort()), d2 = a2.parseUShort(), h4 = a2.parseUShort(), f2 = a2.parseUShort(), p2 = [], m2 = 0; m2 < c2; m2++) p2.push((o3 = e5, n2 = t4 + u2 + m2 * d2, s3 = r4, void 0, i2 = {}, o3 = new R.Parser(o3, n2), i2.tag = o3.parseTag(), i2.minValue = o3.parseFixed(), i2.defaultValue = o3.parseFixed(), i2.maxValue = o3.parseFixed(), o3.skip("uShort", 1), i2.name = s3[o3.parseUShort()] || {}, i2));
+                for (var y2 = [], g2 = t4 + u2 + c2 * d2, v2 = 0; v2 < h4; v2++) y2.push(function(e6, t5, r5, o4) {
                   var n3 = {}, s4 = new R.Parser(e6, t5);
                   n3.name = o4[s4.parseUShort()] || {}, s4.skip("uShort", 1), n3.coordinates = {};
                   for (var i3 = 0; i3 < r5.length; ++i3) n3.coordinates[r5[i3].tag] = s4.parseFixed();
@@ -7630,9 +7630,9 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                 if (1 !== t4) throw new Error("Unsupported kern table version (" + t4 + ").");
                 var c2 = e5, d2 = {}, n2 = (c2.skip("uShort"), 1 < c2.parseULong() && console.warn("Only the first kern subtable is supported."), c2.skip("uLong"), 255 & c2.parseUShort());
                 if (c2.skip("uShort"), 0 == n2) {
-                  var h2 = c2.parseUShort();
+                  var h4 = c2.parseUShort();
                   c2.skip("uShort", 3);
-                  for (var f2 = 0; f2 < h2; f2 += 1) {
+                  for (var f2 = 0; f2 < h4; f2 += 1) {
                     var p2 = c2.parseUShort(), m2 = c2.parseUShort(), y2 = c2.parseShort();
                     d2[p2 + "," + m2] = y2;
                   }
@@ -7674,7 +7674,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                 return { data: new DataView(r4.buffer, 0), offset: 0 };
               }
               function Cr(e5) {
-                var t4, r4, o3, n2, s3, i2, a2, l2, u2, c2, d2, h2, f2, p2, m2 = new P({ empty: true }), y2 = new DataView(e5, 0), g2 = [], e5 = R.getTag(y2, 0);
+                var t4, r4, o3, n2, s3, i2, a2, l2, u2, c2, d2, h4, f2, p2, m2 = new P({ empty: true }), y2 = new DataView(e5, 0), g2 = [], e5 = R.getTag(y2, 0);
                 if (e5 === String.fromCharCode(0, 1, 0, 0) || "true" === e5 || "typ1" === e5) m2.outlinesFormat = "truetype", g2 = Or(y2, o3 = R.getUShort(y2, 4));
                 else if ("OTTO" === e5) m2.outlinesFormat = "cff", g2 = Or(y2, o3 = R.getUShort(y2, 4));
                 else {
@@ -7724,7 +7724,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                       j2 = I(y2, _2), m2.tables.maxp = $e.parse(j2.data, j2.offset), m2.numGlyphs = m2.tables.maxp.numGlyphs;
                       break;
                     case "name":
-                      h2 = _2;
+                      h4 = _2;
                       break;
                     case "OS/2":
                       j2 = I(y2, _2), m2.tables.os2 = ft.parse(j2.data, j2.offset);
@@ -7757,7 +7757,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                       f2 = _2;
                   }
                 }
-                v2 = I(y2, h2);
+                v2 = I(y2, h4);
                 if (m2.tables.name = dt.parse(v2.data, v2.offset, r4), m2.names = m2.tables.name, i2 && d2) {
                   e5 = 0 === t4, v2 = I(y2, d2), v2 = Er.parse(v2.data, v2.offset, m2.numGlyphs, e5), e5 = I(y2, i2);
                   m2.glyphs = Dt.parse(e5.data, e5.offset, v2, m2);
@@ -7773,7 +7773,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                 for (var O2 = 0; O2 < x2.glyphs.length; O2 += 1) E2 = x2.glyphs.get(O2), x2.cffEncoding ? x2.isCIDFont ? E2.name = "gid" + O2 : E2.name = x2.cffEncoding.charset[O2] : x2.glyphNames.names && (E2.name = x2.glyphNames.glyphIndexToName(O2));
                 return c2 ? (e5 = I(y2, c2), m2.kerningPairs = Tr.parse(e5.data, e5.offset)) : m2.kerningPairs = {}, a2 && (v2 = I(y2, a2), m2.tables.gpos = Sr.parse(v2.data, v2.offset), m2.position.init()), l2 && (e5 = I(y2, l2), m2.tables.gsub = yt.parse(e5.data, e5.offset)), s3 && (v2 = I(y2, s3), m2.tables.fvar = xr.parse(v2.data, v2.offset, m2.names)), f2 && (e5 = I(y2, f2), m2.tables.meta = gt.parse(e5.data, e5.offset), m2.metas = m2.tables.meta), m2;
               }
-              _.Font = P, _.Glyph = f, _.Path = h, _.BoundingBox = a, _._parse = R, _.parse = Cr, _.load = function(e5, o3) {
+              _.Font = P, _.Glyph = f, _.Path = h3, _.BoundingBox = a, _._parse = R, _.parse = Cr, _.load = function(e5, o3) {
                 ("undefined" == typeof window ? Mr : kr)(e5, function(e6, t4) {
                   if (e6) return o3(e6);
                   var r4;
@@ -7911,12 +7911,12 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             }
           }
           var l, u = [], c = false, d = -1;
-          function h() {
+          function h3() {
             c && l && (c = false, l.length ? u = l.concat(u) : d = -1, u.length && f());
           }
           function f() {
             if (!c) {
-              for (var e4 = a(h), t3 = (c = true, u.length); t3; ) {
+              for (var e4 = a(h3), t3 = (c = true, u.length); t3; ) {
                 for (l = u, u = []; ++d < t3; ) l && l[d].run();
                 d = -1, t3 = u.length;
               }
@@ -8005,7 +8005,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                   a2 = f;
                   r5 = c(n2, s3, i2);
                   if ("normal" === r5.type) {
-                    if (a2 = i2.done ? p : h, r5.arg !== m) return { value: r5.arg, done: i2.done };
+                    if (a2 = i2.done ? p : h3, r5.arg !== m) return { value: r5.arg, done: i2.done };
                   } else "throw" === r5.type && (a2 = p, i2.method = "throw", i2.arg = r5.arg);
                 }
               }), t4;
@@ -8018,7 +8018,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               }
             }
             s2.wrap = i;
-            var d = "suspendedStart", h = "suspendedYield", f = "executing", p = "completed", m = {};
+            var d = "suspendedStart", h3 = "suspendedYield", f = "executing", p = "completed", m = {};
             function y() {
             }
             function a() {
@@ -8182,7 +8182,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               if ("string" != typeof e5 && (e5 = String(e5)), /[^a-z0-9\-#$%&'*+.\^_`|~]/i.test(e5)) throw new TypeError("Invalid character in header field name");
               return e5.toLowerCase();
             }
-            function h(e5) {
+            function h3(e5) {
               return e5 = "string" != typeof e5 ? String(e5) : e5;
             }
             function f(t4) {
@@ -8292,7 +8292,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             }, l = ArrayBuffer.isView || function(e5) {
               return e5 && -1 < s2.indexOf(Object.prototype.toString.call(e5));
             }), p.prototype.append = function(e5, t4) {
-              e5 = d(e5), t4 = h(t4);
+              e5 = d(e5), t4 = h3(t4);
               var r4 = this.map[e5];
               this.map[e5] = r4 ? r4 + "," + t4 : t4;
             }, p.prototype.delete = function(e5) {
@@ -8302,7 +8302,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             }, p.prototype.has = function(e5) {
               return this.map.hasOwnProperty(d(e5));
             }, p.prototype.set = function(e5, t4) {
-              this.map[d(e5)] = h(t4);
+              this.map[d(e5)] = h3(t4);
             }, p.prototype.forEach = function(e5, t4) {
               for (var r4 in this.map) this.map.hasOwnProperty(r4) && e5.call(t4, this.map[r4], r4, this);
             }, p.prototype.keys = function() {
@@ -8383,16 +8383,16 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
           e3("core-js/modules/es.array.concat"), e3("core-js/modules/es.regexp.exec"), e3("core-js/modules/es.string.ends-with"), e3("core-js/modules/es.string.replace"), e3("core-js/modules/es.array.concat"), e3("core-js/modules/es.regexp.exec"), e3("core-js/modules/es.string.ends-with"), e3("core-js/modules/es.string.replace"), Object.defineProperty(r2, "__esModule", { value: true }), r2.default = void 0;
           var s2 = (e3 = e3("../core/main")) && e3.__esModule ? e3 : { default: e3 };
           var i = "_Description", a = "_fallbackDesc", l = "_fallbackTable", u = "_Label", c = "_labelDesc", d = "_labelTable";
-          function h(e4) {
+          function h3(e4) {
             if ("label" === e4 || "fallback" === e4) throw new Error("description should not be LABEL or FALLBACK");
             return e4.endsWith(".") || e4.endsWith(";") || e4.endsWith(",") || e4.endsWith("?") || e4.endsWith("!") || (e4 += "."), e4;
           }
           s2.default.prototype.describe = function(e4, t3) {
             var r3;
-            s2.default._validateParameters("describe", arguments), "string" == typeof e4 && (r3 = this.canvas.id, e4 = h(e4), this.dummyDOM || (this.dummyDOM = document.getElementById(r3).parentNode), this.descriptions || (this.descriptions = {}), this.descriptions.fallback ? this.descriptions.fallback.innerHTML !== e4 && (this.descriptions.fallback.innerHTML = e4) : this._describeHTML("fallback", e4), t3 === this.LABEL && (this.descriptions.label ? this.descriptions.label.innerHTML !== e4 && (this.descriptions.label.innerHTML = e4) : this._describeHTML("label", e4)));
+            s2.default._validateParameters("describe", arguments), "string" == typeof e4 && (r3 = this.canvas.id, e4 = h3(e4), this.dummyDOM || (this.dummyDOM = document.getElementById(r3).parentNode), this.descriptions || (this.descriptions = {}), this.descriptions.fallback ? this.descriptions.fallback.innerHTML !== e4 && (this.descriptions.fallback.innerHTML = e4) : this._describeHTML("fallback", e4), t3 === this.LABEL && (this.descriptions.label ? this.descriptions.label.innerHTML !== e4 && (this.descriptions.label.innerHTML = e4) : this._describeHTML("label", e4)));
           }, s2.default.prototype.describeElement = function(e4, t3, r3) {
             var o, n;
-            s2.default._validateParameters("describeElement", arguments), "string" == typeof t3 && "string" == typeof e4 && (o = this.canvas.id, t3 = h(t3), n = function(e5) {
+            s2.default._validateParameters("describeElement", arguments), "string" == typeof t3 && "string" == typeof e4 && (o = this.canvas.id, t3 = h3(t3), n = function(e5) {
               if ("label" === e5 || "fallback" === e5) throw new Error("element name should not be LABEL or FALLBACK");
               e5.endsWith(".") || e5.endsWith(";") || e5.endsWith(",") ? e5 = e5.replace(/.$/, ":") : e5.endsWith(":") || (e5 += ":");
               return e5;
@@ -8675,7 +8675,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             }
             o2.default = e4, t3 && t3.set(e4, o2);
             return o2;
-          }(e3("../core/constants")), h = s2(e3("./color_conversion"));
+          }(e3("../core/constants")), h3 = s2(e3("./color_conversion"));
           function a() {
             var e4;
             return "function" != typeof WeakMap ? null : (e4 = /* @__PURE__ */ new WeakMap(), a = function() {
@@ -8705,7 +8705,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                   var u2 = l2[n2];
                   u2 < 0 ? l2[n2] = 0 : 1 < u2 && (l2[n2] = 1);
                 }
-                return i2 === d.HSL ? h.default._hslaToRGBA(l2) : i2 === d.HSB ? h.default._hsbaToRGBA(l2) : l2;
+                return i2 === d.HSL ? h3.default._hslaToRGBA(l2) : i2 === d.HSB ? h3.default._hsbaToRGBA(l2) : l2;
               }
               if (1 === s3 && "string" == typeof e5) {
                 r4 = e5.trim().toLowerCase();
@@ -8740,14 +8740,14 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                   return 0 === t5 ? parseInt(e6, 10) / 360 : 3 === t5 ? parseFloat(e6) : parseInt(e6, 10) / 100;
                 })), (l2 = l2.map(function(e6) {
                   return Math.max(Math.min(e6, 1), 0);
-                })).length) return h.default._hslaToRGBA(l2);
+                })).length) return h3.default._hslaToRGBA(l2);
                 if (m.HSB.test(r4) ? (l2 = m.HSB.exec(r4).slice(1).map(function(e6, t5) {
                   return 0 === t5 ? parseInt(e6, 10) / 360 : parseInt(e6, 10) / 100;
                 }))[3] = 1 : m.HSBA.test(r4) && (l2 = m.HSBA.exec(r4).slice(1).map(function(e6, t5) {
                   return 0 === t5 ? parseInt(e6, 10) / 360 : 3 === t5 ? parseFloat(e6) : parseInt(e6, 10) / 100;
                 })), l2.length) {
                   for (n2 = l2.length - 1; 0 <= n2; --n2) l2[n2] = Math.max(Math.min(l2[n2], 1), 0);
-                  return h.default._hsbaToRGBA(l2);
+                  return h3.default._hsbaToRGBA(l2);
                 }
                 l2 = [1, 1, 1, 1];
               } else {
@@ -8776,24 +8776,24 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                   return "rgba(".concat((100 * r4[0]).toPrecision(3), "%, ", (100 * r4[1]).toPrecision(3), "%, ", (100 * r4[2]).toPrecision(3), "%, ", (100 * r4[3]).toPrecision(3), "%)");
                 case "hsb":
                 case "hsv":
-                  return this.hsba || (this.hsba = h.default._rgbaToHSBA(this._array)), "hsb(".concat(this.hsba[0] * this.maxes[d.HSB][0], ", ", this.hsba[1] * this.maxes[d.HSB][1], ", ", this.hsba[2] * this.maxes[d.HSB][2], ")");
+                  return this.hsba || (this.hsba = h3.default._rgbaToHSBA(this._array)), "hsb(".concat(this.hsba[0] * this.maxes[d.HSB][0], ", ", this.hsba[1] * this.maxes[d.HSB][1], ", ", this.hsba[2] * this.maxes[d.HSB][2], ")");
                 case "hsb%":
                 case "hsv%":
-                  return this.hsba || (this.hsba = h.default._rgbaToHSBA(this._array)), "hsb(".concat((100 * this.hsba[0]).toPrecision(3), "%, ", (100 * this.hsba[1]).toPrecision(3), "%, ", (100 * this.hsba[2]).toPrecision(3), "%)");
+                  return this.hsba || (this.hsba = h3.default._rgbaToHSBA(this._array)), "hsb(".concat((100 * this.hsba[0]).toPrecision(3), "%, ", (100 * this.hsba[1]).toPrecision(3), "%, ", (100 * this.hsba[2]).toPrecision(3), "%)");
                 case "hsba":
                 case "hsva":
-                  return this.hsba || (this.hsba = h.default._rgbaToHSBA(this._array)), "hsba(".concat(this.hsba[0] * this.maxes[d.HSB][0], ", ", this.hsba[1] * this.maxes[d.HSB][1], ", ", this.hsba[2] * this.maxes[d.HSB][2], ", ", o2, ")");
+                  return this.hsba || (this.hsba = h3.default._rgbaToHSBA(this._array)), "hsba(".concat(this.hsba[0] * this.maxes[d.HSB][0], ", ", this.hsba[1] * this.maxes[d.HSB][1], ", ", this.hsba[2] * this.maxes[d.HSB][2], ", ", o2, ")");
                 case "hsba%":
                 case "hsva%":
-                  return this.hsba || (this.hsba = h.default._rgbaToHSBA(this._array)), "hsba(".concat((100 * this.hsba[0]).toPrecision(3), "%, ", (100 * this.hsba[1]).toPrecision(3), "%, ", (100 * this.hsba[2]).toPrecision(3), "%, ", (100 * o2).toPrecision(3), "%)");
+                  return this.hsba || (this.hsba = h3.default._rgbaToHSBA(this._array)), "hsba(".concat((100 * this.hsba[0]).toPrecision(3), "%, ", (100 * this.hsba[1]).toPrecision(3), "%, ", (100 * this.hsba[2]).toPrecision(3), "%, ", (100 * o2).toPrecision(3), "%)");
                 case "hsl":
-                  return this.hsla || (this.hsla = h.default._rgbaToHSLA(this._array)), "hsl(".concat(this.hsla[0] * this.maxes[d.HSL][0], ", ", this.hsla[1] * this.maxes[d.HSL][1], ", ", this.hsla[2] * this.maxes[d.HSL][2], ")");
+                  return this.hsla || (this.hsla = h3.default._rgbaToHSLA(this._array)), "hsl(".concat(this.hsla[0] * this.maxes[d.HSL][0], ", ", this.hsla[1] * this.maxes[d.HSL][1], ", ", this.hsla[2] * this.maxes[d.HSL][2], ")");
                 case "hsl%":
-                  return this.hsla || (this.hsla = h.default._rgbaToHSLA(this._array)), "hsl(".concat((100 * this.hsla[0]).toPrecision(3), "%, ", (100 * this.hsla[1]).toPrecision(3), "%, ", (100 * this.hsla[2]).toPrecision(3), "%)");
+                  return this.hsla || (this.hsla = h3.default._rgbaToHSLA(this._array)), "hsl(".concat((100 * this.hsla[0]).toPrecision(3), "%, ", (100 * this.hsla[1]).toPrecision(3), "%, ", (100 * this.hsla[2]).toPrecision(3), "%)");
                 case "hsla":
-                  return this.hsla || (this.hsla = h.default._rgbaToHSLA(this._array)), "hsla(".concat(this.hsla[0] * this.maxes[d.HSL][0], ", ", this.hsla[1] * this.maxes[d.HSL][1], ", ", this.hsla[2] * this.maxes[d.HSL][2], ", ", o2, ")");
+                  return this.hsla || (this.hsla = h3.default._rgbaToHSLA(this._array)), "hsla(".concat(this.hsla[0] * this.maxes[d.HSL][0], ", ", this.hsla[1] * this.maxes[d.HSL][1], ", ", this.hsla[2] * this.maxes[d.HSL][2], ", ", o2, ")");
                 case "hsla%":
-                  return this.hsla || (this.hsla = h.default._rgbaToHSLA(this._array)), "hsl(".concat((100 * this.hsla[0]).toPrecision(3), "%, ", (100 * this.hsla[1]).toPrecision(3), "%, ", (100 * this.hsla[2]).toPrecision(3), "%, ", (100 * o2).toPrecision(3), "%)");
+                  return this.hsla || (this.hsla = h3.default._rgbaToHSLA(this._array)), "hsl(".concat((100 * this.hsla[0]).toPrecision(3), "%, ", (100 * this.hsla[1]).toPrecision(3), "%, ", (100 * this.hsla[2]).toPrecision(3), "%, ", (100 * o2).toPrecision(3), "%)");
                 default:
                   return "rgba(".concat(t4[0], ",", t4[1], ",", t4[2], ",", o2, ")");
               }
@@ -8819,17 +8819,17 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             } }, { key: "_getBlue", value: function() {
               return this._array[2] * this.maxes[d.RGB][2];
             } }, { key: "_getBrightness", value: function() {
-              return this.hsba || (this.hsba = h.default._rgbaToHSBA(this._array)), this.hsba[2] * this.maxes[d.HSB][2];
+              return this.hsba || (this.hsba = h3.default._rgbaToHSBA(this._array)), this.hsba[2] * this.maxes[d.HSB][2];
             } }, { key: "_getGreen", value: function() {
               return this._array[1] * this.maxes[d.RGB][1];
             } }, { key: "_getHue", value: function() {
-              return this.mode === d.HSB ? (this.hsba || (this.hsba = h.default._rgbaToHSBA(this._array)), this.hsba[0] * this.maxes[d.HSB][0]) : (this.hsla || (this.hsla = h.default._rgbaToHSLA(this._array)), this.hsla[0] * this.maxes[d.HSL][0]);
+              return this.mode === d.HSB ? (this.hsba || (this.hsba = h3.default._rgbaToHSBA(this._array)), this.hsba[0] * this.maxes[d.HSB][0]) : (this.hsla || (this.hsla = h3.default._rgbaToHSLA(this._array)), this.hsla[0] * this.maxes[d.HSL][0]);
             } }, { key: "_getLightness", value: function() {
-              return this.hsla || (this.hsla = h.default._rgbaToHSLA(this._array)), this.hsla[2] * this.maxes[d.HSL][2];
+              return this.hsla || (this.hsla = h3.default._rgbaToHSLA(this._array)), this.hsla[2] * this.maxes[d.HSL][2];
             } }, { key: "_getRed", value: function() {
               return this._array[0] * this.maxes[d.RGB][0];
             } }, { key: "_getSaturation", value: function() {
-              return this.mode === d.HSB ? (this.hsba || (this.hsba = h.default._rgbaToHSBA(this._array)), this.hsba[1] * this.maxes[d.HSB][1]) : (this.hsla || (this.hsla = h.default._rgbaToHSLA(this._array)), this.hsla[1] * this.maxes[d.HSL][1]);
+              return this.mode === d.HSB ? (this.hsba || (this.hsba = h3.default._rgbaToHSBA(this._array)), this.hsba[1] * this.maxes[d.HSB][1]) : (this.hsla || (this.hsla = h3.default._rgbaToHSLA(this._array)), this.hsla[1] * this.maxes[d.HSL][1]);
             } }]) && l(e4.prototype, t3), r3 && l(e4, r3), c2;
           }(), n.default.Color);
           r2.default = u;
@@ -8945,7 +8945,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
           function d() {
             return window.innerWidth || document.documentElement && document.documentElement.clientWidth || document.body && document.body.clientWidth || 0;
           }
-          function h() {
+          function h3() {
             return window.innerHeight || document.documentElement && document.documentElement.clientHeight || document.body && document.body.clientHeight || 0;
           }
           n.default.prototype.print = function() {
@@ -8965,11 +8965,11 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
           }, n.default.prototype.noCursor = function() {
             this._curElement.elt.style.cursor = "none";
           }, n.default.prototype.webglVersion = s2.P2D, n.default.prototype.displayWidth = screen.width, n.default.prototype.displayHeight = screen.height, n.default.prototype.windowWidth = 0, n.default.prototype.windowHeight = 0, n.default.prototype._onresize = function(e4) {
-            this._setProperty("windowWidth", d()), this._setProperty("windowHeight", h());
+            this._setProperty("windowWidth", d()), this._setProperty("windowHeight", h3());
             var t3 = this._isGlobal ? window : this;
             "function" != typeof t3.windowResized || void 0 === (t3 = t3.windowResized(e4)) || t3 || e4.preventDefault();
           }, n.default.prototype._updateWindowSize = function() {
-            this._setProperty("windowWidth", d()), this._setProperty("windowHeight", h());
+            this._setProperty("windowWidth", d()), this._setProperty("windowHeight", h3());
           }, n.default.prototype.width = 0, n.default.prototype.height = 0, n.default.prototype.fullscreen = function(e4) {
             if (n.default._validateParameters("fullscreen", arguments), void 0 === e4) return document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement;
             if (e4) {
@@ -9049,7 +9049,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             })(e4);
           }
           e3("core-js/modules/es.symbol"), e3("core-js/modules/es.symbol.description"), e3("core-js/modules/es.symbol.iterator"), e3("core-js/modules/es.array.filter"), e3("core-js/modules/es.array.for-each"), e3("core-js/modules/es.array.from"), e3("core-js/modules/es.array.includes"), e3("core-js/modules/es.array.index-of"), e3("core-js/modules/es.array.iterator"), e3("core-js/modules/es.array.join"), e3("core-js/modules/es.array.map"), e3("core-js/modules/es.array.slice"), e3("core-js/modules/es.object.get-own-property-descriptor"), e3("core-js/modules/es.object.keys"), e3("core-js/modules/es.object.to-string"), e3("core-js/modules/es.regexp.constructor"), e3("core-js/modules/es.regexp.exec"), e3("core-js/modules/es.regexp.to-string"), e3("core-js/modules/es.string.includes"), e3("core-js/modules/es.string.iterator"), e3("core-js/modules/es.string.match"), e3("core-js/modules/es.string.split"), e3("core-js/modules/es.string.trim"), e3("core-js/modules/es.weak-map"), e3("core-js/modules/web.dom-collections.for-each"), e3("core-js/modules/web.dom-collections.iterator"), e3("core-js/modules/es.array.filter"), e3("core-js/modules/es.array.for-each"), e3("core-js/modules/es.array.includes"), e3("core-js/modules/es.array.index-of"), e3("core-js/modules/es.array.join"), e3("core-js/modules/es.array.map"), e3("core-js/modules/es.array.slice"), e3("core-js/modules/es.object.keys"), e3("core-js/modules/es.regexp.constructor"), e3("core-js/modules/es.regexp.exec"), e3("core-js/modules/es.regexp.to-string"), e3("core-js/modules/es.string.includes"), e3("core-js/modules/es.string.match"), e3("core-js/modules/es.string.split"), e3("core-js/modules/es.string.trim"), e3("core-js/modules/web.dom-collections.for-each"), Object.defineProperty(r2, "__esModule", { value: true }), r2.default = void 0;
-          var n = C(e3("../main")), s2 = e3("../internationalization"), a = O(e3("../constants")), l, u, c, d, h, f, p, m, y, g, v, b, _, j, x, w, S, T, E, M, I;
+          var n = C(e3("../main")), s2 = e3("../internationalization"), a = O(e3("../constants")), l, u, c, d, h3, f, p, m, y, g, v, b, _, j, x, w, S, T, E, M, I;
           function k() {
             var e4;
             return "function" != typeof WeakMap ? null : (e4 = /* @__PURE__ */ new WeakMap(), k = function() {
@@ -9487,7 +9487,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               var l2, u2, c = this._createFriendlyGlobalFunctionBinder();
               if (e5) e5(this), g._checkForUserDefinedFunctions(this);
               else {
-                for (var h in this._isGlobal = true, g.instance = this, g.prototype) "function" == typeof g.prototype[h] ? (l2 = h.substring(2), this._events.hasOwnProperty(l2) || (Math.hasOwnProperty(h) && Math[h] === g.prototype[h] ? c(h, g.prototype[h]) : c(h, g.prototype[h].bind(this)))) : c(h, g.prototype[h]);
+                for (var h3 in this._isGlobal = true, g.instance = this, g.prototype) "function" == typeof g.prototype[h3] ? (l2 = h3.substring(2), this._events.hasOwnProperty(l2) || (Math.hasOwnProperty(h3) && Math[h3] === g.prototype[h3] ? c(h3, g.prototype[h3]) : c(h3, g.prototype[h3].bind(this)))) : c(h3, g.prototype[h3]);
                 for (var f in this) this.hasOwnProperty(f) && c(f, this[f]);
               }
               for (u2 in this._events) {
@@ -9640,7 +9640,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               return e5.__proto__ = t4, e5;
             })(e4, t3);
           }
-          function h(r3) {
+          function h3(r3) {
             return function() {
               var e4, t3 = l(r3);
               return f(this, function() {
@@ -9671,7 +9671,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             var t3 = u2;
             if ("function" != typeof e4 && null !== e4) throw new TypeError("Super expression must either be null or a function");
             t3.prototype = Object.create(e4 && e4.prototype, { constructor: { value: t3, writable: true, configurable: true } }), e4 && s2(t3, e4);
-            var r3, l2 = h(u2);
+            var r3, l2 = h3(u2);
             function u2(e5, t4, r4, o2, n2) {
               var s3;
               if (!(this instanceof u2)) throw new TypeError("Cannot call a class as a function");
@@ -9754,10 +9754,10 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                   } catch (e5) {
                   }
                 }
-              }() ? (e4 = n(this).constructor, Reflect.construct(r3, arguments, e4)) : r3.apply(this, arguments), r3 = this, !(t3 = e4) || "object" !== l(t3) && "function" != typeof t3 ? h(r3) : t3;
+              }() ? (e4 = n(this).constructor, Reflect.construct(r3, arguments, e4)) : r3.apply(this, arguments), r3 = this, !(t3 = e4) || "object" !== l(t3) && "function" != typeof t3 ? h3(r3) : t3;
             };
           }
-          function h(e4) {
+          function h3(e4) {
             if (void 0 === e4) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
             return e4;
           }
@@ -9773,7 +9773,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             var r3, n2 = d(s3);
             function s3(e5, t4, r4) {
               var o2;
-              if (this instanceof s3) return (o2 = n2.call(this, e5, t4)).canvas = e5, o2._pixelsState = t4, r4 ? (o2._isMainCanvas = true, o2._pInst._setProperty("_curElement", h(o2)), o2._pInst._setProperty("canvas", o2.canvas), o2._pInst._setProperty("width", o2.width), o2._pInst._setProperty("height", o2.height)) : (o2.canvas.style.display = "none", o2._styles = []), o2._clipping = false, o2._clipInvert = false, o2._textSize = 12, o2._textLeading = 15, o2._textFont = "sans-serif", o2._textStyle = P.NORMAL, o2._textAscent = null, o2._textDescent = null, o2._textAlign = P.LEFT, o2._textBaseline = P.BASELINE, o2._textWrap = P.WORD, o2._rectMode = P.CORNER, o2._ellipseMode = P.CENTER, o2._curveTightness = 0, o2._imageMode = P.CORNER, o2._tint = null, o2._doStroke = true, o2._doFill = true, o2._strokeSet = false, o2._fillSet = false, o2._leadingSet = false, o2._pushPopDepth = 0, o2;
+              if (this instanceof s3) return (o2 = n2.call(this, e5, t4)).canvas = e5, o2._pixelsState = t4, r4 ? (o2._isMainCanvas = true, o2._pInst._setProperty("_curElement", h3(o2)), o2._pInst._setProperty("canvas", o2.canvas), o2._pInst._setProperty("width", o2.width), o2._pInst._setProperty("height", o2.height)) : (o2.canvas.style.display = "none", o2._styles = []), o2._clipping = false, o2._clipInvert = false, o2._textSize = 12, o2._textLeading = 15, o2._textFont = "sans-serif", o2._textStyle = P.NORMAL, o2._textAscent = null, o2._textDescent = null, o2._textAlign = P.LEFT, o2._textBaseline = P.BASELINE, o2._textWrap = P.WORD, o2._rectMode = P.CORNER, o2._ellipseMode = P.CENTER, o2._curveTightness = 0, o2._imageMode = P.CORNER, o2._tint = null, o2._doStroke = true, o2._doFill = true, o2._strokeSet = false, o2._fillSet = false, o2._leadingSet = false, o2._pushPopDepth = 0, o2;
               throw new TypeError("Cannot call a class as a function");
             }
             return t3 = s3, (e4 = [{ key: "push", value: function() {
@@ -9808,7 +9808,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             } }, { key: "textWrap", value: function(e5) {
               return this._setProperty("_textWrap", e5), this._textWrap;
             } }, { key: "text", value: function(e5, t4, r4, o2, n3) {
-              var s4, i2, a2, l2, u2 = this._pInst, c2 = this._textWrap, d2 = Number.MAX_VALUE, h2 = r4;
+              var s4, i2, a2, l2, u2 = this._pInst, c2 = this._textWrap, d2 = Number.MAX_VALUE, h4 = r4;
               if ((this._doFill || this._doStroke) && void 0 !== e5) {
                 if (s4 = (e5 = (e5 = "string" != typeof e5 ? e5.toString() : e5).replace(/(\t)/g, "  ")).split("\n"), void 0 !== o2) {
                   switch (this._rectMode === P.CENTER && (t4 -= o2 / 2), this._textAlign) {
@@ -9819,17 +9819,17 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                       t4 += o2;
                   }
                   if (void 0 !== n3) {
-                    this._rectMode === P.CENTER && (r4 -= n3 / 2, h2 -= n3 / 2);
+                    this._rectMode === P.CENTER && (r4 -= n3 / 2, h4 -= n3 / 2);
                     var e5 = r4, f2 = u2.textAscent();
                     switch (this._textBaseline) {
                       case P.BOTTOM:
-                        l2 = r4 + n3, r4 = Math.max(l2, r4), h2 += f2;
+                        l2 = r4 + n3, r4 = Math.max(l2, r4), h4 += f2;
                         break;
                       case P.CENTER:
-                        l2 = r4 + n3 / 2, r4 = Math.max(l2, r4), h2 += f2 / 2;
+                        l2 = r4 + n3 / 2, r4 = Math.max(l2, r4), h4 += f2 / 2;
                     }
                     d2 = r4 + n3 - f2, this._textBaseline === P.CENTER && (d2 = e5 + n3 - f2 / 2);
-                  } else this._textBaseline !== P.BOTTOM && this._textBaseline !== P.CENTER || (h2 = r4 - (e5 = u2.textSize() * this._textLeading) / 2, d2 = r4 + e5 / 2);
+                  } else this._textBaseline !== P.BOTTOM && this._textBaseline !== P.CENTER || (h4 = r4 - (e5 = u2.textSize() * this._textLeading) / 2, d2 = r4 + e5 / 2);
                   if (c2 === P.WORD) {
                     for (var p = [], m = 0; m < s4.length; m++) {
                       for (var y = "", g = s4[m].split(" "), v = 0; v < g.length; v++) i2 = "".concat(y + g[v]) + " ", y = o2 < (a2 = this.textWidth(i2)) && 0 < y.length ? (p.push(y), "".concat(g[v]) + " ") : i2;
@@ -9839,8 +9839,8 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                     this._textBaseline === P.CENTER ? b = (p.length - 1) * u2.textLeading() / 2 : this._textBaseline === P.BOTTOM && (b = (p.length - 1) * u2.textLeading());
                     for (var _ = 0; _ < s4.length; _++) {
                       y = "", g = s4[_].split(" ");
-                      for (var j = 0; j < g.length; j++) i2 = "".concat(y + g[j]) + " ", o2 < (a2 = this.textWidth(i2)) && 0 < y.length ? (this._renderText(u2, y.trim(), t4, r4 - b, d2, h2), y = "".concat(g[j]) + " ", r4 += u2.textLeading()) : y = i2;
-                      this._renderText(u2, y.trim(), t4, r4 - b, d2, h2), r4 += u2.textLeading();
+                      for (var j = 0; j < g.length; j++) i2 = "".concat(y + g[j]) + " ", o2 < (a2 = this.textWidth(i2)) && 0 < y.length ? (this._renderText(u2, y.trim(), t4, r4 - b, d2, h4), y = "".concat(g[j]) + " ", r4 += u2.textLeading()) : y = i2;
+                      this._renderText(u2, y.trim(), t4, r4 - b, d2, h4), r4 += u2.textLeading();
                     }
                   } else {
                     for (var x = [], w = 0; w < s4.length; w++) for (var S = s4[w].split(y = ""), T = 0; T < S.length; T++) i2 = "".concat(y + S[T]), (a2 = this.textWidth(i2)) <= o2 ? y += S[T] : o2 < a2 && 0 < y.length && (x.push(y), y = "".concat(S[T]));
@@ -9849,14 +9849,14 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                     this._textBaseline === P.CENTER ? E = (x.length - 1) * u2.textLeading() / 2 : this._textBaseline === P.BOTTOM && (E = (x.length - 1) * u2.textLeading());
                     for (var M = 0; M < s4.length; M++) {
                       S = s4[M].split(y = "");
-                      for (var k = 0; k < S.length; k++) i2 = "".concat(y + S[k]), (a2 = this.textWidth(i2)) <= o2 ? y += S[k] : o2 < a2 && 0 < y.length && (this._renderText(u2, y.trim(), t4, r4 - E, d2, h2), r4 += u2.textLeading(), y = "".concat(S[k]));
+                      for (var k = 0; k < S.length; k++) i2 = "".concat(y + S[k]), (a2 = this.textWidth(i2)) <= o2 ? y += S[k] : o2 < a2 && 0 < y.length && (this._renderText(u2, y.trim(), t4, r4 - E, d2, h4), r4 += u2.textLeading(), y = "".concat(S[k]));
                     }
-                    this._renderText(u2, y.trim(), t4, r4 - E, d2, h2), r4 += u2.textLeading();
+                    this._renderText(u2, y.trim(), t4, r4 - E, d2, h4), r4 += u2.textLeading();
                   }
                 } else {
                   var O = 0;
                   this._textBaseline === P.CENTER ? O = (s4.length - 1) * u2.textLeading() / 2 : this._textBaseline === P.BOTTOM && (O = (s4.length - 1) * u2.textLeading());
-                  for (var C = 0; C < s4.length; C++) this._renderText(u2, s4[C], t4, r4 - O, d2, h2 - O), r4 += u2.textLeading();
+                  for (var C = 0; C < s4.length; C++) this._renderText(u2, s4[C], t4, r4 - O, d2, h4 - O), r4 += u2.textLeading();
                 }
                 return u2;
               }
@@ -9926,7 +9926,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
           function l(e4, t3, r3) {
             return (l = "undefined" != typeof Reflect && Reflect.get ? Reflect.get : function(e5, t4, r4) {
               var e5 = function(e6, t5) {
-                for (; !Object.prototype.hasOwnProperty.call(e6, t5) && null !== (e6 = h(e6)); ) ;
+                for (; !Object.prototype.hasOwnProperty.call(e6, t5) && null !== (e6 = h3(e6)); ) ;
                 return e6;
               }(e5, t4);
               if (e5) return (e5 = Object.getOwnPropertyDescriptor(e5, t4)).get ? e5.get.call(r4) : e5.value;
@@ -9939,7 +9939,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
           }
           function c(r3) {
             return function() {
-              var e4, t3 = h(r3), t3 = (e4 = function() {
+              var e4, t3 = h3(r3), t3 = (e4 = function() {
                 if ("undefined" != typeof Reflect && Reflect.construct && !Reflect.construct.sham) {
                   if ("function" == typeof Proxy) return 1;
                   try {
@@ -9948,7 +9948,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                   } catch (e5) {
                   }
                 }
-              }() ? (e4 = h(this).constructor, Reflect.construct(t3, arguments, e4)) : t3.apply(this, arguments), this);
+              }() ? (e4 = h3(this).constructor, Reflect.construct(t3, arguments, e4)) : t3.apply(this, arguments), this);
               if (!e4 || "object" !== i(e4) && "function" != typeof e4) {
                 if (void 0 !== t3) return t3;
                 throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
@@ -9956,8 +9956,8 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               return e4;
             };
           }
-          function h(e4) {
-            return (h = Object.setPrototypeOf ? Object.getPrototypeOf : function(e5) {
+          function h3(e4) {
+            return (h3 = Object.setPrototypeOf ? Object.getPrototypeOf : function(e5) {
               return e5.__proto__ || Object.getPrototypeOf(e5);
             })(e4);
           }
@@ -9977,7 +9977,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             } }, { key: "_applyDefaults", value: function() {
               this._cachedFillStyle = this._cachedStrokeStyle = void 0, this._cachedBlendMode = p.BLEND, this._setFill(p._DEFAULT_FILL), this._setStroke(p._DEFAULT_STROKE), this.drawingContext.lineCap = p.ROUND, this.drawingContext.font = "normal 12px sans-serif";
             } }, { key: "resize", value: function(e5, t4) {
-              l(h(n2.prototype), "resize", this).call(this, e5, t4), this.drawingContext.scale(this._pInst._pixelDensity, this._pInst._pixelDensity);
+              l(h3(n2.prototype), "resize", this).call(this, e5, t4), this.drawingContext.scale(this._pInst._pixelDensity, this._pInst._pixelDensity);
             } }, { key: "background", value: function() {
               var e5, t4;
               this.drawingContext.save(), this.resetMatrix(), (arguments.length <= 0 ? void 0 : arguments[0]) instanceof d.default.Image ? 0 <= (arguments.length <= 1 ? void 0 : arguments[1]) ? (e5 = arguments.length <= 0 ? void 0 : arguments[0], this.drawingContext.globalAlpha = (arguments.length <= 1 ? void 0 : arguments[1]) / 255, this._pInst.image(e5, 0, 0, this.width, this.height)) : this._pInst.image(arguments.length <= 0 ? void 0 : arguments[0], 0, 0, this.width, this.height) : (e5 = this._getFill(), t4 = (t4 = this._pInst).color.apply(t4, arguments), this._pInst._addAccsOutput() && this._pInst._accsBackground(t4.levels), t4 = t4.toString(), this._setFill(t4), this._isErasing && this.blendMode(this._cachedBlendMode), this.drawingContext.fillRect(0, 0, this.width, this.height), this._setFill(e5), this._isErasing && this._pInst.erase()), this.drawingContext.restore();
@@ -9994,10 +9994,10 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             } }, { key: "noErase", value: function() {
               this._isErasing && (this.drawingContext.fillStyle = this._cachedFillStyle, this.drawingContext.strokeStyle = this._cachedStrokeStyle, this.blendMode(this._cachedBlendMode), this._isErasing = false);
             } }, { key: "beginClip", value: function() {
-              var e5 = 0 < arguments.length && void 0 !== arguments[0] ? arguments[0] : {}, e5 = (l(h(n2.prototype), "beginClip", this).call(this, e5), this._cachedFillStyle = this.drawingContext.fillStyle, this._pInst.color(255, 0).toString()), e5 = (this.drawingContext.fillStyle = e5, this._cachedStrokeStyle = this.drawingContext.strokeStyle, this._pInst.color(255, 0).toString()), e5 = (this.drawingContext.strokeStyle = e5, this._cachedBlendMode);
+              var e5 = 0 < arguments.length && void 0 !== arguments[0] ? arguments[0] : {}, e5 = (l(h3(n2.prototype), "beginClip", this).call(this, e5), this._cachedFillStyle = this.drawingContext.fillStyle, this._pInst.color(255, 0).toString()), e5 = (this.drawingContext.fillStyle = e5, this._cachedStrokeStyle = this.drawingContext.strokeStyle, this._pInst.color(255, 0).toString()), e5 = (this.drawingContext.strokeStyle = e5, this._cachedBlendMode);
               this.blendMode(p.BLEND), this._cachedBlendMode = e5, this.drawingContext.beginPath(), this._clipInvert && (this.drawingContext.moveTo(-2 * this.width, -2 * this.height), this.drawingContext.lineTo(-2 * this.width, 2 * this.height), this.drawingContext.lineTo(2 * this.width, 2 * this.height), this.drawingContext.lineTo(2 * this.width, -2 * this.height), this.drawingContext.closePath());
             } }, { key: "endClip", value: function() {
-              this._doFillStrokeClose(), this.drawingContext.clip(), l(h(n2.prototype), "endClip", this).call(this), this.drawingContext.fillStyle = this._cachedFillStyle, this.drawingContext.strokeStyle = this._cachedStrokeStyle, this.blendMode(this._cachedBlendMode);
+              this._doFillStrokeClose(), this.drawingContext.clip(), l(h3(n2.prototype), "endClip", this).call(this), this.drawingContext.fillStyle = this._cachedFillStyle, this.drawingContext.strokeStyle = this._cachedStrokeStyle, this.blendMode(this._cachedBlendMode);
             } }, { key: "image", value: function(e5, t4, r4, o3, n3, s3, i2, a2, l2) {
               e5.gifProperties && e5._animateGif(this._pInst);
               try {
@@ -10067,11 +10067,11 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               } else if (!u2 && c2 && this._getStroke() === f) return this;
               return this._clipping || l2.beginPath(), l2.moveTo(e5, t4), l2.lineTo(r4, o3), l2.lineTo(n3, s3), l2.lineTo(i2, a2), l2.closePath(), !this._clipping && u2 && l2.fill(), !this._clipping && c2 && l2.stroke(), this;
             } }, { key: "rect", value: function(e5) {
-              var t4, r4, o3 = e5[0], n3 = e5[1], s3 = e5[2], i2 = e5[3], a2 = e5[4], l2 = e5[5], u2 = e5[6], e5 = e5[7], c2 = this.drawingContext, d2 = this._doFill, h2 = this._doStroke;
-              if (d2 && !h2) {
+              var t4, r4, o3 = e5[0], n3 = e5[1], s3 = e5[2], i2 = e5[3], a2 = e5[4], l2 = e5[5], u2 = e5[6], e5 = e5[7], c2 = this.drawingContext, d2 = this._doFill, h4 = this._doStroke;
+              if (d2 && !h4) {
                 if (this._getFill() === f) return this;
-              } else if (!d2 && h2 && this._getStroke() === f) return this;
-              return this._clipping || c2.beginPath(), void 0 === a2 ? c2.rect(o3, n3, s3, i2) : (void 0 === l2 && (l2 = a2), void 0 === u2 && (u2 = l2), void 0 === e5 && (e5 = u2), h2 = (d2 = Math.abs(s3)) / 2, r4 = (t4 = Math.abs(i2)) / 2, c2.roundRect(o3, n3, s3, i2, [a2 = t4 < 2 * (a2 = d2 < 2 * a2 ? h2 : a2) ? r4 : a2, l2 = t4 < 2 * (l2 = d2 < 2 * l2 ? h2 : l2) ? r4 : l2, u2 = t4 < 2 * (u2 = d2 < 2 * u2 ? h2 : u2) ? r4 : u2, e5 = t4 < 2 * (e5 = d2 < 2 * e5 ? h2 : e5) ? r4 : e5])), !this._clipping && this._doFill && c2.fill(), !this._clipping && this._doStroke && c2.stroke(), this;
+              } else if (!d2 && h4 && this._getStroke() === f) return this;
+              return this._clipping || c2.beginPath(), void 0 === a2 ? c2.rect(o3, n3, s3, i2) : (void 0 === l2 && (l2 = a2), void 0 === u2 && (u2 = l2), void 0 === e5 && (e5 = u2), h4 = (d2 = Math.abs(s3)) / 2, r4 = (t4 = Math.abs(i2)) / 2, c2.roundRect(o3, n3, s3, i2, [a2 = t4 < 2 * (a2 = d2 < 2 * a2 ? h4 : a2) ? r4 : a2, l2 = t4 < 2 * (l2 = d2 < 2 * l2 ? h4 : l2) ? r4 : l2, u2 = t4 < 2 * (u2 = d2 < 2 * u2 ? h4 : u2) ? r4 : u2, e5 = t4 < 2 * (e5 = d2 < 2 * e5 ? h4 : e5) ? r4 : e5])), !this._clipping && this._doFill && c2.fill(), !this._clipping && this._doStroke && c2.stroke(), this;
             } }, { key: "triangle", value: function(e5) {
               var t4 = this.drawingContext, r4 = this._doFill, o3 = this._doStroke, n3 = e5[0], s3 = e5[1], i2 = e5[2], a2 = e5[3], l2 = e5[4], e5 = e5[5];
               if (r4 && !o3) {
@@ -10083,8 +10083,8 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                 var a2, l2, u2, c2 = e5 === p.CLOSE, d2 = (c2 && !s3 && t4.push(t4[0]), t4.length);
                 if (r4 && null === i2) {
                   if (3 < d2) {
-                    var h2 = [], f2 = 1 - this._curveTightness;
-                    for (this._clipping || this.drawingContext.beginPath(), this.drawingContext.moveTo(t4[1][0], t4[1][1]), l2 = 1; l2 + 2 < d2; l2++) a2 = t4[l2], h2[0] = [a2[0], a2[1]], h2[1] = [a2[0] + (f2 * t4[l2 + 1][0] - f2 * t4[l2 - 1][0]) / 6, a2[1] + (f2 * t4[l2 + 1][1] - f2 * t4[l2 - 1][1]) / 6], h2[2] = [t4[l2 + 1][0] + (f2 * t4[l2][0] - f2 * t4[l2 + 2][0]) / 6, t4[l2 + 1][1] + (f2 * t4[l2][1] - f2 * t4[l2 + 2][1]) / 6], h2[3] = [t4[l2 + 1][0], t4[l2 + 1][1]], this.drawingContext.bezierCurveTo(h2[1][0], h2[1][1], h2[2][0], h2[2][1], h2[3][0], h2[3][1]);
+                    var h4 = [], f2 = 1 - this._curveTightness;
+                    for (this._clipping || this.drawingContext.beginPath(), this.drawingContext.moveTo(t4[1][0], t4[1][1]), l2 = 1; l2 + 2 < d2; l2++) a2 = t4[l2], h4[0] = [a2[0], a2[1]], h4[1] = [a2[0] + (f2 * t4[l2 + 1][0] - f2 * t4[l2 - 1][0]) / 6, a2[1] + (f2 * t4[l2 + 1][1] - f2 * t4[l2 - 1][1]) / 6], h4[2] = [t4[l2 + 1][0] + (f2 * t4[l2][0] - f2 * t4[l2 + 2][0]) / 6, t4[l2 + 1][1] + (f2 * t4[l2][1] - f2 * t4[l2 + 2][1]) / 6], h4[3] = [t4[l2 + 1][0], t4[l2 + 1][1]], this.drawingContext.bezierCurveTo(h4[1][0], h4[1][1], h4[2][0], h4[2][1], h4[3][0], h4[3][1]);
                     c2 && this.drawingContext.lineTo(t4[l2 + 1][0], t4[l2 + 1][1]), this._doFillStrokeClose(c2);
                   }
                 } else if (o3 && null === i2) {
@@ -10153,9 +10153,9 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               var e5 = this._pInst, t4 = (this._setProperty("_textAscent", null), this._setProperty("_textDescent", null), t4 = this._textFont, this._isOpenType() && (t4 = this._textFont.font.familyName, this._setProperty("_textStyle", this._textFont.font.styleName)), t4 || "sans-serif");
               return /\s/.exec(t4) && (t4 = '"'.concat(t4, '"')), this.drawingContext.font = "".concat(this._textStyle || "normal", " ").concat(this._textSize || 12, "px ").concat(t4), this.drawingContext.textAlign = this._textAlign, this._textBaseline === p.CENTER ? this.drawingContext.textBaseline = p._CTX_MIDDLE : this.drawingContext.textBaseline = this._textBaseline, e5;
             } }, { key: "push", value: function() {
-              return this.drawingContext.save(), l(h(n2.prototype), "push", this).call(this);
+              return this.drawingContext.save(), l(h3(n2.prototype), "push", this).call(this);
             } }, { key: "pop", value: function(e5) {
-              this.drawingContext.restore(), this._cachedFillStyle = this.drawingContext.fillStyle, this._cachedStrokeStyle = this.drawingContext.strokeStyle, l(h(n2.prototype), "pop", this).call(this, e5);
+              this.drawingContext.restore(), this._cachedFillStyle = this.drawingContext.fillStyle, this._cachedStrokeStyle = this.drawingContext.strokeStyle, l(h3(n2.prototype), "pop", this).call(this, e5);
             } }]) && s2(t3.prototype, e4), r3 && s2(t3, r3), n2;
           }(d.default.Renderer), e3 = (n.prototype.text = function(e4, t3, r3, o2, n2) {
             void 0 !== o2 && this.drawingContext.textBaseline === p.BASELINE && (s3 = true, this.drawingContext.textBaseline = p.TOP);
@@ -10166,20 +10166,20 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
         }, { "./constants": 272, "./main": 283, "./p5.Renderer": 286, "core-js/modules/es.array.concat": 153, "core-js/modules/es.array.fill": 156, "core-js/modules/es.array.iterator": 165, "core-js/modules/es.array.join": 166, "core-js/modules/es.array.slice": 169, "core-js/modules/es.function.name": 174, "core-js/modules/es.object.get-own-property-descriptor": 186, "core-js/modules/es.object.get-prototype-of": 188, "core-js/modules/es.object.to-string": 190, "core-js/modules/es.reflect.construct": 192, "core-js/modules/es.reflect.get": 193, "core-js/modules/es.regexp.exec": 195, "core-js/modules/es.regexp.to-string": 196, "core-js/modules/es.string.iterator": 200, "core-js/modules/es.symbol": 212, "core-js/modules/es.symbol.description": 210, "core-js/modules/es.symbol.iterator": 211, "core-js/modules/es.weak-map": 244, "core-js/modules/web.dom-collections.iterator": 246 }], 288: [function(e3, t2, r2) {
           "use strict";
           e3("core-js/modules/es.symbol"), e3("core-js/modules/es.symbol.description"), e3("core-js/modules/es.symbol.iterator"), e3("core-js/modules/es.array.iterator"), e3("core-js/modules/es.object.assign"), e3("core-js/modules/es.object.to-string"), e3("core-js/modules/es.promise"), e3("core-js/modules/es.string.iterator"), e3("core-js/modules/web.dom-collections.iterator"), e3("core-js/modules/es.symbol"), e3("core-js/modules/es.symbol.description"), e3("core-js/modules/es.symbol.iterator"), e3("core-js/modules/es.array.iterator"), e3("core-js/modules/es.object.assign"), e3("core-js/modules/es.object.to-string"), e3("core-js/modules/es.promise"), e3("core-js/modules/es.string.iterator"), e3("core-js/modules/web.dom-collections.iterator");
-          var h = (e3 = e3("./main")) && e3.__esModule ? e3 : { default: e3 };
-          h.default.prototype._promisePreloads = [];
+          var h3 = (e3 = e3("./main")) && e3.__esModule ? e3 : { default: e3 };
+          h3.default.prototype._promisePreloads = [];
           function o() {
             return {};
           }
-          var f = !(h.default.prototype.registerPromisePreload = function(e4) {
-            h.default.prototype._promisePreloads.push(e4);
+          var f = !(h3.default.prototype.registerPromisePreload = function(e4) {
+            h3.default.prototype._promisePreloads.push(e4);
           });
-          h.default.prototype._setupPromisePreloads = function() {
+          h3.default.prototype._setupPromisePreloads = function() {
             var e4 = true, t3 = false, r3 = void 0;
             try {
               for (var o2, n = this._promisePreloads[Symbol.iterator](); !(e4 = (o2 = n.next()).done); e4 = true) {
                 var s2 = o2.value, i = this, a = s2.method, l = s2.addCallbacks, u = s2.legacyPreloadSetup, c = s2.target || this, d = c[a].bind(c);
-                if (c === h.default.prototype) {
+                if (c === h3.default.prototype) {
                   if (f) continue;
                   i = null, d = c[a];
                 }
@@ -10195,7 +10195,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               }
             }
             f = true;
-          }, h.default.prototype._wrapPromisePreload = function(e4, l, u) {
+          }, h3.default.prototype._wrapPromisePreload = function(e4, l, u) {
             var t3 = function() {
               for (var e5 = this, t4 = (this._incrementPreload(), null), r3 = null, o2 = arguments.length, n = new Array(o2), s2 = 0; s2 < o2; s2++) n[s2] = arguments[s2];
               if (u) for (var i = n.length - 1; 0 <= i && !r3 && "function" == typeof n[i]; i--) r3 = t4, t4 = n.pop();
@@ -10206,7 +10206,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             };
             return t3 = e4 ? t3.bind(e4) : t3;
           };
-          h.default.prototype._legacyPreloadGenerator = function(e4, t3, s2) {
+          h3.default.prototype._legacyPreloadGenerator = function(e4, t3, s2) {
             var i = t3.createBaseObject || o, t3 = function() {
               var t4 = this;
               this._incrementPreload();
@@ -10514,7 +10514,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               return e4;
             }, e4);
           }
-          var n = null, c = [], d = [], h = false, s2 = false, f = false, p = false, m = true, y = (a.default.prototype.beginContour = function() {
+          var n = null, c = [], d = [], h3 = false, s2 = false, f = false, p = false, m = true, y = (a.default.prototype.beginContour = function() {
             return this._renderer.isP3D ? this._renderer.beginContour() : (d = [], p = true), this;
           }, a.default.prototype.beginShape = function(e4) {
             var t3;
@@ -10524,7 +10524,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             if (a.default._validateParameters("bezierVertex", r3), this._renderer.isP3D) (e4 = this._renderer).bezierVertex.apply(e4, r3);
             else if (0 === c.length) a.default._friendlyError("vertex() must be used once before calling bezierVertex()", "bezierVertex");
             else {
-              h = true;
+              h3 = true;
               for (var n2 = [], s3 = 0; s3 < r3.length; s3++) n2[s3] = r3[s3];
               n2.isVert = false, (p ? d : c).push(n2);
             }
@@ -10541,12 +10541,12 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             return this;
           }, a.default.prototype.endShape = function(e4) {
             var t3 = 1 < arguments.length && void 0 !== arguments[1] ? arguments[1] : 1;
-            if (a.default._validateParameters("endShape", arguments), t3 < 1 && (console.log("\u{1F338} p5.js says: You can not have less than one instance"), t3 = 1), this._renderer.isP3D) this._renderer.endShape(e4, s2, h, f, p, n, t3);
+            if (a.default._validateParameters("endShape", arguments), t3 < 1 && (console.log("\u{1F338} p5.js says: You can not have less than one instance"), t3 = 1), this._renderer.isP3D) this._renderer.endShape(e4, s2, h3, f, p, n, t3);
             else {
               if (1 !== t3 && console.log("\u{1F338} p5.js says: Instancing is only supported in WebGL2 mode"), 0 === c.length) return this;
               if (!this._renderer._doStroke && !this._renderer._doFill) return this;
               t3 = e4 === l.CLOSE;
-              t3 && !p && c.push(c[0]), this._renderer.endShape(e4, c, s2, h, f, p, n), m = !(p = f = h = s2 = false), t3 && c.pop();
+              t3 && !p && c.push(c[0]), this._renderer.endShape(e4, c, s2, h3, f, p, n), m = !(p = f = h3 = s2 = false), t3 && c.pop();
             }
             return this;
           }, a.default.prototype.quadraticVertex = function() {
@@ -10781,7 +10781,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               o2.enumerable = o2.enumerable || false, o2.configurable = true, "value" in o2 && (o2.writable = true), Object.defineProperty(e4, o2.key, o2);
             }
           }
-          function h(e4, t3, r3) {
+          function h3(e4, t3, r3) {
             t3 && d(e4.prototype, t3), r3 && d(e4, r3);
           }
           s2.default.prototype.createStringDict = function(e4, t3) {
@@ -10792,7 +10792,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             function r3(e4, t3) {
               return c(this, r3), e4 instanceof Object ? this.data = e4 : (this.data = {}, this.data[e4] = t3), this;
             }
-            return h(r3, [{ key: "size", value: function() {
+            return h3(r3, [{ key: "size", value: function() {
               return Object.keys(this.data).length;
             } }, { key: "hasKey", value: function(e4) {
               return this.data.hasOwnProperty(e4);
@@ -10830,7 +10830,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               for (var e4 = arguments.length, t3 = new Array(e4), r3 = 0; r3 < e4; r3++) t3[r3] = arguments[r3];
               return o2.call.apply(o2, [this].concat(t3));
             }
-            return h(n2, [{ key: "_validate", value: function(e4) {
+            return h3(n2, [{ key: "_validate", value: function(e4) {
               return "string" == typeof e4;
             } }]), n2;
           }(), s2.default.NumberDict = function() {
@@ -10841,7 +10841,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               for (var e4 = arguments.length, t3 = new Array(e4), r3 = 0; r3 < e4; r3++) t3[r3] = arguments[r3];
               return o2.call.apply(o2, [this].concat(t3));
             }
-            return h(n2, [{ key: "_validate", value: function(e4) {
+            return h3(n2, [{ key: "_validate", value: function(e4) {
               return "number" == typeof e4;
             } }, { key: "add", value: function(e4, t3) {
               this.data.hasOwnProperty(e4) ? this.data[e4] += t3 : console.log("The key - ".concat(e4, " does not exist in this dictionary."));
@@ -11065,7 +11065,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             }, e3;
           };
           var y = 0;
-          function h(e3, t3, r3, o2) {
+          function h3(e3, t3, r3, o2) {
             var n2 = document.createElement(t3), s3 = ("string" == typeof (r3 = r3 || "") && (r3 = [r3]), true), t3 = false, i2 = void 0;
             try {
               for (var a2, l2 = r3[Symbol.iterator](); !(s3 = (a2 = l2.next()).done); s3 = true) {
@@ -11096,18 +11096,18 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             function d2(e4) {
               return e4 instanceof HTMLLabelElement;
             }
-            var h2, e3, r3, o2 = arguments.length <= 0 ? void 0 : arguments[0];
-            o2 instanceof f.default.Element && (o2.elt instanceof HTMLDivElement || o2.elt instanceof HTMLSpanElement) ? (h2 = o2, this.elt = o2.elt) : o2 instanceof HTMLDivElement || o2 instanceof HTMLSpanElement ? (h2 = m(o2, this), e3 = this.elt = o2, "string" == typeof (arguments.length <= 1 ? void 0 : arguments[1]) && (r3 = arguments.length <= 1 ? void 0 : arguments[1])) : ("string" == typeof o2 && (r3 = o2), e3 = document.createElement("div"), h2 = m(e3, this), this.elt = e3), h2._name = r3 || "radioOption_".concat(y++);
-            return h2._getOptionsArray = function() {
+            var h4, e3, r3, o2 = arguments.length <= 0 ? void 0 : arguments[0];
+            o2 instanceof f.default.Element && (o2.elt instanceof HTMLDivElement || o2.elt instanceof HTMLSpanElement) ? (h4 = o2, this.elt = o2.elt) : o2 instanceof HTMLDivElement || o2 instanceof HTMLSpanElement ? (h4 = m(o2, this), e3 = this.elt = o2, "string" == typeof (arguments.length <= 1 ? void 0 : arguments[1]) && (r3 = arguments.length <= 1 ? void 0 : arguments[1])) : ("string" == typeof o2 && (r3 = o2), e3 = document.createElement("div"), h4 = m(e3, this), this.elt = e3), h4._name = r3 || "radioOption_".concat(y++);
+            return h4._getOptionsArray = function() {
               return Array.from(this.elt.children).filter(function(e4) {
                 return t3(e4) || d2(e4) && t3(e4.firstElementChild);
               }).map(function(e4) {
                 return t3(e4) ? e4 : e4.firstElementChild;
               });
-            }, h2.option = function(e4, t4) {
+            }, h4.option = function(e4, t4) {
               var r4, o3, n2, s3 = true, i2 = false, a2 = void 0;
               try {
-                for (var l2, u2 = h2._getOptionsArray()[Symbol.iterator](); !(s3 = (l2 = u2.next()).done); s3 = true) {
+                for (var l2, u2 = h4._getOptionsArray()[Symbol.iterator](); !(s3 = (l2 = u2.next()).done); s3 = true) {
                   var c2 = l2.value;
                   if (c2.value === e4) {
                     r4 = c2;
@@ -11123,11 +11123,11 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                   if (i2) throw a2;
                 }
               }
-              return void 0 === r4 && ((r4 = document.createElement("input")).setAttribute("type", "radio"), r4.setAttribute("value", e4)), r4.setAttribute("name", h2._name), d2(r4.parentElement) ? o3 = r4.parentElement : (o3 = document.createElement("label")).insertAdjacentElement("afterbegin", r4), o3.lastElementChild instanceof HTMLSpanElement ? n2 = o3.lastElementChild : (n2 = document.createElement("span"), r4.insertAdjacentElement("afterend", n2)), n2.innerHTML = void 0 === t4 ? e4 : t4, this.elt.appendChild(o3), r4;
-            }, h2.remove = function(e4) {
+              return void 0 === r4 && ((r4 = document.createElement("input")).setAttribute("type", "radio"), r4.setAttribute("value", e4)), r4.setAttribute("name", h4._name), d2(r4.parentElement) ? o3 = r4.parentElement : (o3 = document.createElement("label")).insertAdjacentElement("afterbegin", r4), o3.lastElementChild instanceof HTMLSpanElement ? n2 = o3.lastElementChild : (n2 = document.createElement("span"), r4.insertAdjacentElement("afterend", n2)), n2.innerHTML = void 0 === t4 ? e4 : t4, this.elt.appendChild(o3), r4;
+            }, h4.remove = function(e4) {
               var t4 = true, r4 = false, o3 = void 0;
               try {
-                for (var n2, s3 = h2._getOptionsArray()[Symbol.iterator](); !(t4 = (n2 = s3.next()).done); t4 = true) {
+                for (var n2, s3 = h4._getOptionsArray()[Symbol.iterator](); !(t4 = (n2 = s3.next()).done); t4 = true) {
                   var i2 = n2.value;
                   if (i2.value === e4) return void (d2(i2.parentElement) ? i2.parentElement : i2).remove();
                 }
@@ -11140,10 +11140,10 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                   if (r4) throw o3;
                 }
               }
-            }, h2.value = function() {
+            }, h4.value = function() {
               var e4 = "", t4 = true, r4 = false, o3 = void 0;
               try {
-                for (var n2, s3 = h2._getOptionsArray()[Symbol.iterator](); !(t4 = (n2 = s3.next()).done); t4 = true) {
+                for (var n2, s3 = h4._getOptionsArray()[Symbol.iterator](); !(t4 = (n2 = s3.next()).done); t4 = true) {
                   var i2 = n2.value;
                   if (i2.checked) {
                     e4 = i2.value;
@@ -11160,12 +11160,12 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                 }
               }
               return e4;
-            }, h2.selected = function(e4) {
+            }, h4.selected = function(e4) {
               var t4 = null;
               if (void 0 === e4) {
                 var r4 = true, o3 = false, n2 = void 0;
                 try {
-                  for (var s3, i2 = h2._getOptionsArray()[Symbol.iterator](); !(r4 = (s3 = i2.next()).done); r4 = true) {
+                  for (var s3, i2 = h4._getOptionsArray()[Symbol.iterator](); !(r4 = (s3 = i2.next()).done); r4 = true) {
                     var a2 = s3.value;
                     if (a2.checked) {
                       t4 = a2;
@@ -11182,12 +11182,12 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                   }
                 }
               } else {
-                h2._getOptionsArray().forEach(function(e5) {
+                h4._getOptionsArray().forEach(function(e5) {
                   e5.checked = false, e5.removeAttribute("checked");
                 });
                 var l2 = true, o3 = false, n2 = void 0;
                 try {
-                  for (var u2, c2 = h2._getOptionsArray()[Symbol.iterator](); !(l2 = (u2 = c2.next()).done); l2 = true) {
+                  for (var u2, c2 = h4._getOptionsArray()[Symbol.iterator](); !(l2 = (u2 = c2.next()).done); l2 = true) {
                     var d3 = u2.value;
                     d3.value === e4 && (d3.setAttribute("checked", true), d3.checked = true, t4 = d3);
                   }
@@ -11202,10 +11202,10 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                 }
               }
               return t4;
-            }, h2.disable = function() {
+            }, h4.disable = function() {
               var e4 = !(0 < arguments.length && void 0 !== arguments[0]) || arguments[0], t4 = true, r4 = false, o3 = void 0;
               try {
-                for (var n2, s3 = h2._getOptionsArray()[Symbol.iterator](); !(t4 = (n2 = s3.next()).done); t4 = true) n2.value.setAttribute("disabled", e4);
+                for (var n2, s3 = h4._getOptionsArray()[Symbol.iterator](); !(t4 = (n2 = s3.next()).done); t4 = true) n2.value.setAttribute("disabled", e4);
               } catch (e5) {
                 r4 = true, o3 = e5;
               } finally {
@@ -11215,7 +11215,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                   if (r4) throw o3;
                 }
               }
-            }, h2;
+            }, h4;
           }, f.default.prototype.createColorPicker = function(e3) {
             f.default._validateParameters("createColorPicker", arguments);
             var t3 = document.createElement("input");
@@ -11247,9 +11247,9 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             }, false), m(e3, this);
             console.log("The File APIs are not fully supported in this browser. Cannot create element.");
           }, f.default.prototype.createVideo = function(e3, t3) {
-            return f.default._validateParameters("createVideo", arguments), h(this, "video", e3, t3);
+            return f.default._validateParameters("createVideo", arguments), h3(this, "video", e3, t3);
           }, f.default.prototype.createAudio = function(e3, t3) {
-            return f.default._validateParameters("createAudio", arguments), h(this, "audio", e3, t3);
+            return f.default._validateParameters("createAudio", arguments), h3(this, "audio", e3, t3);
           }, f.default.prototype.VIDEO = "video", f.default.prototype.AUDIO = "audio", void 0 === navigator.mediaDevices && (navigator.mediaDevices = {}), void 0 === navigator.mediaDevices.getUserMedia && (navigator.mediaDevices.getUserMedia = function(r3) {
             var o2 = navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
             return o2 ? new Promise(function(e3, t3) {
@@ -11262,7 +11262,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               var u2 = l2[a2];
               u2 === f.default.prototype.VIDEO ? s3 = false : u2 === f.default.prototype.AUDIO ? n2 = false : "object" === p(u2) ? (void 0 !== u2.flipped && (i2 = u2.flipped, delete u2.flipped), c2 = Object.assign({}, c2, u2)) : "function" == typeof u2 && (o2 = u2);
             }
-            var c2 = Object.assign({}, { video: n2, audio: s3 }, c2), d2 = document.createElement("video"), h2 = (d2.setAttribute("playsinline", ""), navigator.mediaDevices.getUserMedia(c2).then(function(t4) {
+            var c2 = Object.assign({}, { video: n2, audio: s3 }, c2), d2 = document.createElement("video"), h4 = (d2.setAttribute("playsinline", ""), navigator.mediaDevices.getUserMedia(c2).then(function(t4) {
               try {
                 "srcObject" in d2 ? d2.srcObject = t4 : d2.src = window.URL.createObjectURL(t4);
               } catch (e4) {
@@ -11271,9 +11271,9 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             }).catch(function(e4) {
               "NotFoundError" === e4.name && f.default._friendlyError("No webcam found on this device", "createCapture"), "NotAllowedError" === e4.name && f.default._friendlyError("Access to the camera was denied", "createCapture"), console.error(e4);
             }), m(d2, this, true));
-            return h2.loadedmetadata = false, d2.addEventListener("loadedmetadata", function() {
-              d2.play(), d2.width ? (h2.width = d2.width, h2.height = d2.height, i2 && (h2.elt.style.transform = "scaleX(-1)")) : (h2.width = h2.elt.width = d2.videoWidth, h2.height = h2.elt.height = d2.videoHeight), h2.loadedmetadata = true, o2 && o2(d2.srcObject);
-            }), h2.flipped = i2, h2;
+            return h4.loadedmetadata = false, d2.addEventListener("loadedmetadata", function() {
+              d2.play(), d2.width ? (h4.width = d2.width, h4.height = d2.height, i2 && (h4.elt.style.transform = "scaleX(-1)")) : (h4.width = h4.elt.width = d2.videoWidth, h4.height = h4.elt.height = d2.videoHeight), h4.loadedmetadata = true, o2 && o2(d2.srcObject);
+            }), h4.flipped = i2, h4;
           }, f.default.prototype.createElement = function(e3, t3) {
             f.default._validateParameters("createElement", arguments);
             e3 = document.createElement(e3);
@@ -11530,10 +11530,10 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
           o.default.prototype.deviceOrientation = 1 < window.innerWidth / window.innerHeight ? "landscape" : "portrait", o.default.prototype.accelerationX = 0, o.default.prototype.accelerationY = 0, o.default.prototype.accelerationZ = 0, o.default.prototype.pAccelerationX = 0, o.default.prototype.pAccelerationY = 0, o.default.prototype.pAccelerationZ = 0, o.default.prototype._updatePAccelerations = function() {
             this._setProperty("pAccelerationX", this.accelerationX), this._setProperty("pAccelerationY", this.accelerationY), this._setProperty("pAccelerationZ", this.accelerationZ);
           }, o.default.prototype.rotationX = 0, o.default.prototype.rotationY = 0, o.default.prototype.rotationZ = 0, o.default.prototype.pRotationX = 0, o.default.prototype.pRotationY = 0;
-          var i = o.default.prototype.pRotationZ = 0, a = 0, l = 0, u = "clockwise", c = "clockwise", d = "clockwise", h = (o.default.prototype.pRotateDirectionX = void 0, o.default.prototype.pRotateDirectionY = void 0, o.default.prototype.pRotateDirectionZ = void 0, o.default.prototype._updatePRotations = function() {
+          var i = o.default.prototype.pRotationZ = 0, a = 0, l = 0, u = "clockwise", c = "clockwise", d = "clockwise", h3 = (o.default.prototype.pRotateDirectionX = void 0, o.default.prototype.pRotateDirectionY = void 0, o.default.prototype.pRotateDirectionZ = void 0, o.default.prototype._updatePRotations = function() {
             this._setProperty("pRotationX", this.rotationX), this._setProperty("pRotationY", this.rotationY), this._setProperty("pRotationZ", this.rotationZ);
           }, o.default.prototype.turnAxis = void 0, 0.5), f = 30, e3 = (o.default.prototype.setMoveThreshold = function(e4) {
-            o.default._validateParameters("setMoveThreshold", arguments), h = e4;
+            o.default._validateParameters("setMoveThreshold", arguments), h3 = e4;
           }, o.default.prototype.setShakeThreshold = function(e4) {
             o.default._validateParameters("setShakeThreshold", arguments), f = e4;
           }, o.default.prototype._ondeviceorientation = function(e4) {
@@ -11543,7 +11543,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
           }, o.default.prototype._handleMotion = function() {
             90 === window.orientation || -90 === window.orientation ? this._setProperty("deviceOrientation", "landscape") : 0 === window.orientation ? this._setProperty("deviceOrientation", "portrait") : void 0 === window.orientation && this._setProperty("deviceOrientation", "undefined");
             var e4, t3, r3, o2, n, s2 = this._isGlobal ? window : this;
-            "function" == typeof s2.deviceMoved && (Math.abs(this.accelerationX - this.pAccelerationX) > h || Math.abs(this.accelerationY - this.pAccelerationY) > h || Math.abs(this.accelerationZ - this.pAccelerationZ) > h) && s2.deviceMoved(), "function" == typeof s2.deviceTurned && (t3 = this._toDegrees(this.rotationX) + 180, r3 = this._toDegrees(this.pRotationX) + 180, e4 = i + 180, 0 < t3 - r3 && t3 - r3 < 270 || t3 - r3 < -270 ? u = "clockwise" : (t3 - r3 < 0 || 270 < t3 - r3) && (u = "counter-clockwise"), u !== this.pRotateDirectionX && (e4 = t3), 90 < Math.abs(t3 - e4) && Math.abs(t3 - e4) < 270 && (e4 = t3, this._setProperty("turnAxis", "X"), s2.deviceTurned()), this.pRotateDirectionX = u, i = e4 - 180, r3 = this._toDegrees(this.rotationY) + 180, t3 = this._toDegrees(this.pRotationY) + 180, e4 = a + 180, 0 < r3 - t3 && r3 - t3 < 270 || r3 - t3 < -270 ? c = "clockwise" : (r3 - t3 < 0 || 270 < r3 - this.pRotationY) && (c = "counter-clockwise"), c !== this.pRotateDirectionY && (e4 = r3), 90 < Math.abs(r3 - e4) && Math.abs(r3 - e4) < 270 && (e4 = r3, this._setProperty("turnAxis", "Y"), s2.deviceTurned()), this.pRotateDirectionY = c, a = e4 - 180, 0 < (t3 = this._toDegrees(this.rotationZ)) - (r3 = this._toDegrees(this.pRotationZ)) && t3 - r3 < 270 || t3 - r3 < -270 ? d = "clockwise" : (t3 - r3 < 0 || 270 < t3 - r3) && (d = "counter-clockwise"), d !== this.pRotateDirectionZ && (l = t3), 90 < Math.abs(t3 - l) && Math.abs(t3 - l) < 270 && (l = t3, this._setProperty("turnAxis", "Z"), s2.deviceTurned()), this.pRotateDirectionZ = d, this._setProperty("turnAxis", void 0)), "function" == typeof s2.deviceShaken && (null !== this.pAccelerationX && (o2 = Math.abs(this.accelerationX - this.pAccelerationX), n = Math.abs(this.accelerationY - this.pAccelerationY)), f < o2 + n && s2.deviceShaken());
+            "function" == typeof s2.deviceMoved && (Math.abs(this.accelerationX - this.pAccelerationX) > h3 || Math.abs(this.accelerationY - this.pAccelerationY) > h3 || Math.abs(this.accelerationZ - this.pAccelerationZ) > h3) && s2.deviceMoved(), "function" == typeof s2.deviceTurned && (t3 = this._toDegrees(this.rotationX) + 180, r3 = this._toDegrees(this.pRotationX) + 180, e4 = i + 180, 0 < t3 - r3 && t3 - r3 < 270 || t3 - r3 < -270 ? u = "clockwise" : (t3 - r3 < 0 || 270 < t3 - r3) && (u = "counter-clockwise"), u !== this.pRotateDirectionX && (e4 = t3), 90 < Math.abs(t3 - e4) && Math.abs(t3 - e4) < 270 && (e4 = t3, this._setProperty("turnAxis", "X"), s2.deviceTurned()), this.pRotateDirectionX = u, i = e4 - 180, r3 = this._toDegrees(this.rotationY) + 180, t3 = this._toDegrees(this.pRotationY) + 180, e4 = a + 180, 0 < r3 - t3 && r3 - t3 < 270 || r3 - t3 < -270 ? c = "clockwise" : (r3 - t3 < 0 || 270 < r3 - this.pRotationY) && (c = "counter-clockwise"), c !== this.pRotateDirectionY && (e4 = r3), 90 < Math.abs(r3 - e4) && Math.abs(r3 - e4) < 270 && (e4 = r3, this._setProperty("turnAxis", "Y"), s2.deviceTurned()), this.pRotateDirectionY = c, a = e4 - 180, 0 < (t3 = this._toDegrees(this.rotationZ)) - (r3 = this._toDegrees(this.pRotationZ)) && t3 - r3 < 270 || t3 - r3 < -270 ? d = "clockwise" : (t3 - r3 < 0 || 270 < t3 - r3) && (d = "counter-clockwise"), d !== this.pRotateDirectionZ && (l = t3), 90 < Math.abs(t3 - l) && Math.abs(t3 - l) < 270 && (l = t3, this._setProperty("turnAxis", "Z"), s2.deviceTurned()), this.pRotateDirectionZ = d, this._setProperty("turnAxis", void 0)), "function" == typeof s2.deviceShaken && (null !== this.pAccelerationX && (o2 = Math.abs(this.accelerationX - this.pAccelerationX), n = Math.abs(this.accelerationY - this.pAccelerationY)), f < o2 + n && s2.deviceShaken());
           }, o.default);
           r2.default = e3;
         }, { "../core/main": 283 }], 301: [function(e3, t2, r2) {
@@ -11705,13 +11705,13 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               r3[n] = 255 * (s2 * t3 >> 8) / o, r3[n + 1] = 255 * (i * t3 >> 8) / o, r3[n + 2] = 255 * (a * t3 >> 8) / o;
             }
           }, dilate: function(e4) {
-            for (var t3, r3, o, n, s2, i, a, l, u, c = V._toPixels(e4), d = 0, h = c.length ? c.length / 4 : 0, f = new Int32Array(h); d < h; ) for (r3 = (t3 = d) + e4.width; d < r3; ) n = o = V._getARGB(c, d), (u = d - 1) < t3 && (u = d), r3 <= (l = d + 1) && (l = d), (s2 = d - e4.width) < 0 && (s2 = 0), h <= (i = d + e4.width) && (i = d), s2 = V._getARGB(c, s2), u = V._getARGB(c, u), i = V._getARGB(c, i), (n = 77 * (n >> 16 & 255) + 151 * (n >> 8 & 255) + 28 * (255 & n)) < (a = 77 * (u >> 16 & 255) + 151 * (u >> 8 & 255) + 28 * (255 & u)) && (o = u, n = a), n < (a = 77 * ((u = V._getARGB(c, l)) >> 16 & 255) + 151 * (u >> 8 & 255) + 28 * (255 & u)) && (o = u, n = a), n < (l = 77 * (s2 >> 16 & 255) + 151 * (s2 >> 8 & 255) + 28 * (255 & s2)) && (o = s2, n = l), n < (u = 77 * (i >> 16 & 255) + 151 * (i >> 8 & 255) + 28 * (255 & i)) && (o = i, n = u), f[d++] = o;
+            for (var t3, r3, o, n, s2, i, a, l, u, c = V._toPixels(e4), d = 0, h3 = c.length ? c.length / 4 : 0, f = new Int32Array(h3); d < h3; ) for (r3 = (t3 = d) + e4.width; d < r3; ) n = o = V._getARGB(c, d), (u = d - 1) < t3 && (u = d), r3 <= (l = d + 1) && (l = d), (s2 = d - e4.width) < 0 && (s2 = 0), h3 <= (i = d + e4.width) && (i = d), s2 = V._getARGB(c, s2), u = V._getARGB(c, u), i = V._getARGB(c, i), (n = 77 * (n >> 16 & 255) + 151 * (n >> 8 & 255) + 28 * (255 & n)) < (a = 77 * (u >> 16 & 255) + 151 * (u >> 8 & 255) + 28 * (255 & u)) && (o = u, n = a), n < (a = 77 * ((u = V._getARGB(c, l)) >> 16 & 255) + 151 * (u >> 8 & 255) + 28 * (255 & u)) && (o = u, n = a), n < (l = 77 * (s2 >> 16 & 255) + 151 * (s2 >> 8 & 255) + 28 * (255 & s2)) && (o = s2, n = l), n < (u = 77 * (i >> 16 & 255) + 151 * (i >> 8 & 255) + 28 * (255 & i)) && (o = i, n = u), f[d++] = o;
             V._setPixels(c, f);
           }, erode: function(e4) {
-            for (var t3, r3, o, n, s2, i, a, l, u, c = V._toPixels(e4), d = 0, h = c.length ? c.length / 4 : 0, f = new Int32Array(h); d < h; ) for (r3 = (t3 = d) + e4.width; d < r3; ) n = o = V._getARGB(c, d), (u = d - 1) < t3 && (u = d), r3 <= (l = d + 1) && (l = d), (s2 = d - e4.width) < 0 && (s2 = 0), h <= (i = d + e4.width) && (i = d), s2 = V._getARGB(c, s2), u = V._getARGB(c, u), i = V._getARGB(c, i), (a = 77 * (u >> 16 & 255) + 151 * (u >> 8 & 255) + 28 * (255 & u)) < (n = 77 * (n >> 16 & 255) + 151 * (n >> 8 & 255) + 28 * (255 & n)) && (o = u, n = a), (a = 77 * ((u = V._getARGB(c, l)) >> 16 & 255) + 151 * (u >> 8 & 255) + 28 * (255 & u)) < n && (o = u, n = a), (l = 77 * (s2 >> 16 & 255) + 151 * (s2 >> 8 & 255) + 28 * (255 & s2)) < n && (o = s2, n = l), (u = 77 * (i >> 16 & 255) + 151 * (i >> 8 & 255) + 28 * (255 & i)) < n && (o = i, n = u), f[d++] = o;
+            for (var t3, r3, o, n, s2, i, a, l, u, c = V._toPixels(e4), d = 0, h3 = c.length ? c.length / 4 : 0, f = new Int32Array(h3); d < h3; ) for (r3 = (t3 = d) + e4.width; d < r3; ) n = o = V._getARGB(c, d), (u = d - 1) < t3 && (u = d), r3 <= (l = d + 1) && (l = d), (s2 = d - e4.width) < 0 && (s2 = 0), h3 <= (i = d + e4.width) && (i = d), s2 = V._getARGB(c, s2), u = V._getARGB(c, u), i = V._getARGB(c, i), (a = 77 * (u >> 16 & 255) + 151 * (u >> 8 & 255) + 28 * (255 & u)) < (n = 77 * (n >> 16 & 255) + 151 * (n >> 8 & 255) + 28 * (255 & n)) && (o = u, n = a), (a = 77 * ((u = V._getARGB(c, l)) >> 16 & 255) + 151 * (u >> 8 & 255) + 28 * (255 & u)) < n && (o = u, n = a), (l = 77 * (s2 >> 16 & 255) + 151 * (s2 >> 8 & 255) + 28 * (255 & s2)) < n && (o = s2, n = l), (u = 77 * (i >> 16 & 255) + 151 * (i >> 8 & 255) + 28 * (255 & i)) < n && (o = i, n = u), f[d++] = o;
             V._setPixels(c, f);
           }, blur: function(e4, D) {
-            for (var t3, r3, o, n, s2, i, a, l, u, c, d = V._toPixels(e4), h = e4.width, f = e4.height, p = h * f, m = new Int32Array(p), y = 0; y < p; y++) m[y] = V._getARGB(d, y);
+            for (var t3, r3, o, n, s2, i, a, l, u, c, d = V._toPixels(e4), h3 = e4.width, f = e4.height, p = h3 * f, m = new Int32Array(p), y = 0; y < p; y++) m[y] = V._getARGB(d, y);
             var g, v, b, _, j, x, w, S, T = new Int32Array(p), E = new Int32Array(p), M = new Int32Array(p), F = new Int32Array(p), k = 0, O = 3.5 * D | 0;
             if (U !== (O = O < 1 ? 1 : O < 248 ? O : 248)) {
               N = 1 + (U = O) << 1, B = new Int32Array(N), G = new Array(N);
@@ -11724,31 +11724,31 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               for (var R = 0; R < 256; R++) w[R] = j * R;
             }
             for (v = 0; v < f; v++) {
-              for (g = 0; g < h; g++) {
+              for (g = 0; g < h3; g++) {
                 if (n = o = r3 = s2 = t3 = 0, (i = g - U) < 0) c = -i, i = 0;
                 else {
-                  if (h <= i) break;
+                  if (h3 <= i) break;
                   c = 0;
                 }
-                for (b = c; b < N && !(h <= i); b++) {
+                for (b = c; b < N && !(h3 <= i); b++) {
                   var I = m[i + k];
                   _ = G[b], s2 += _[(-16777216 & I) >>> 24], r3 += _[(16711680 & I) >> 16], o += _[(65280 & I) >> 8], n += _[255 & I], t3 += B[b], i++;
                 }
                 T[a = k + g] = s2 / t3, E[a] = r3 / t3, M[a] = o / t3, F[a] = n / t3;
               }
-              k += h;
+              k += h3;
             }
-            for (u = (l = -U) * h, v = k = 0; v < f; v++) {
-              for (g = 0; g < h; g++) {
+            for (u = (l = -U) * h3, v = k = 0; v < f; v++) {
+              for (g = 0; g < h3; g++) {
                 if (n = o = r3 = s2 = t3 = 0, l < 0) c = a = -l, i = g;
                 else {
                   if (f <= l) break;
                   c = 0, a = l, i = g + u;
                 }
-                for (b = c; b < N && !(f <= a); b++) _ = G[b], s2 += _[T[i]], r3 += _[E[i]], o += _[M[i]], n += _[F[i]], t3 += B[b], a++, i += h;
+                for (b = c; b < N && !(f <= a); b++) _ = G[b], s2 += _[T[i]], r3 += _[E[i]], o += _[M[i]], n += _[F[i]], t3 += B[b], a++, i += h3;
                 m[g + k] = s2 / t3 << 24 | r3 / t3 << 16 | o / t3 << 8 | n / t3;
               }
-              k += h, u += h, l++;
+              k += h3, u += h3, l++;
             }
             V._setPixels(d, m);
           } };
@@ -11791,8 +11791,8 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               O.default.prototype.downloadFile(e5, t3, r3), n && n.remove();
             }, s2);
           }, O.default.prototype.encodeAndDownloadGif = function(d, e4) {
-            for (var h = d.gifProperties, t3 = h.loopLimit, r3 = (1 === t3 ? t3 = null : null === t3 && (t3 = 0), new Uint8Array(d.width * d.height * h.numFrames)), f = [], o2 = {}, n = 0; n < h.numFrames; n++) {
-              for (var s2 = /* @__PURE__ */ new Set(), i = h.frames[n].image.data, a = i.length, l = new Uint32Array(d.width * d.height), u = 0, c = 0; u < a; u += 4, c++) {
+            for (var h3 = d.gifProperties, t3 = h3.loopLimit, r3 = (1 === t3 ? t3 = null : null === t3 && (t3 = 0), new Uint8Array(d.width * d.height * h3.numFrames)), f = [], o2 = {}, n = 0; n < h3.numFrames; n++) {
+              for (var s2 = /* @__PURE__ */ new Set(), i = h3.frames[n].image.data, a = i.length, l = new Uint32Array(d.width * d.height), u = 0, c = 0; u < a; u += 4, c++) {
                 var p = i[u + 0] << 16 | i[u + 1] << 8 | i[u + 2] << 0;
                 s2.add(p), l[c] = p;
               }
@@ -11818,7 +11818,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             for (var w = {}, S = 0; S < v.length; S++) w[v[S]] || (w[v[S]] = S);
             for (var T = 1; T < v.length; ) T <<= 1;
             v.length = T;
-            for (var t3 = { loop: t3, palette: new Uint32Array(v) }, E = new C.default.GifWriter(r3, d.width, d.height, t3), M = {}, k = 0; k < h.numFrames; k++) !function(r4) {
+            for (var t3 = { loop: t3, palette: new Uint32Array(v) }, E = new C.default.GifWriter(r3, d.width, d.height, t3), M = {}, k = 0; k < h3.numFrames; k++) !function(r4) {
               var o3 = !y.has(r4), n2 = o3 ? [] : v, s3 = new Uint8Array(d.width * d.height), i2 = {}, a2 = /* @__PURE__ */ new Set(), e5 = (f[r4].forEach(function(e6, t5) {
                 o3 ? (void 0 === i2[e6] && (i2[e6] = n2.length, n2.push(e6)), s3[t5] = i2[e6]) : s3[t5] = w[e6], 0 < r4 && f[r4 - 1][t5] !== e6 && a2.add(e6);
               }), {}), t4 = n2.filter(function(e6) {
@@ -11831,7 +11831,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                   e5.transparent = l2, M.frameOpts.disposal = 1;
                 }
               }
-              if (e5.delay = h.frames[r4].delay / 10, o3) {
+              if (e5.delay = h3.frames[r4].delay / 10, o3) {
                 for (var c2 = 1; c2 < n2.length; ) c2 <<= 1;
                 n2.length = c2, e5.palette = new Uint32Array(n2);
               }
@@ -11922,8 +11922,8 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             a2.done ? t3(l2) : Promise.resolve(l2).then(o2, n2);
           }
           function y(e4, t3, r3, o2, n2, s2, i2, a2, l2, u, c) {
-            var d, h, f, p, m2, y2, g2, v2, b;
-            return e4 === _.COVER && (d = t3, f = r3, g2 = s2, v2 = i2, y2 = a2, b = l2, h = u, p = c, m2 = Math.max(g2 / h, v2 / p), g2 /= m2, v2 /= m2, m2 = y2, y2 = b, d === _.CENTER ? m2 += (h - g2) / 2 : d === _.RIGHT && (m2 += h - g2), f === _.CENTER ? y2 += (p - v2) / 2 : f === _.BOTTOM && (y2 += p - v2), a2 = (b = { x: m2, y: y2, w: g2, h: v2 }).x, l2 = b.y, u = b.w, c = b.h), e4 === _.CONTAIN && (d = t3, h = r3, f = o2, p = n2, m2 = s2, y2 = i2, g2 = u, v2 = c, b = Math.max(g2 / m2, v2 / y2), g2 /= b, v2 /= b, b = f, f = p, d === _.CENTER ? b += (m2 - g2) / 2 : d === _.RIGHT && (b += m2 - g2), h === _.CENTER ? f += (y2 - v2) / 2 : h === _.BOTTOM && (f += y2 - v2), o2 = (e4 = { x: b, y: f, w: g2, h: v2 }).x, n2 = e4.y, s2 = e4.w, i2 = e4.h), { sx: a2, sy: l2, sw: u, sh: c, dx: o2, dy: n2, dw: s2, dh: i2 };
+            var d, h3, f, p, m2, y2, g2, v2, b;
+            return e4 === _.COVER && (d = t3, f = r3, g2 = s2, v2 = i2, y2 = a2, b = l2, h3 = u, p = c, m2 = Math.max(g2 / h3, v2 / p), g2 /= m2, v2 /= m2, m2 = y2, y2 = b, d === _.CENTER ? m2 += (h3 - g2) / 2 : d === _.RIGHT && (m2 += h3 - g2), f === _.CENTER ? y2 += (p - v2) / 2 : f === _.BOTTOM && (y2 += p - v2), a2 = (b = { x: m2, y: y2, w: g2, h: v2 }).x, l2 = b.y, u = b.w, c = b.h), e4 === _.CONTAIN && (d = t3, h3 = r3, f = o2, p = n2, m2 = s2, y2 = i2, g2 = u, v2 = c, b = Math.max(g2 / m2, v2 / y2), g2 /= b, v2 /= b, b = f, f = p, d === _.CENTER ? b += (m2 - g2) / 2 : d === _.RIGHT && (b += m2 - g2), h3 === _.CENTER ? f += (y2 - v2) / 2 : h3 === _.BOTTOM && (f += y2 - v2), o2 = (e4 = { x: b, y: f, w: g2, h: v2 }).x, n2 = e4.y, s2 = e4.w, i2 = e4.h), { sx: a2, sy: l2, sw: u, sh: c, dx: o2, dy: n2, dw: s2, dh: i2 };
           }
           function v(e4, t3) {
             return 0 < e4 && e4 < t3 ? e4 : t3;
@@ -11938,14 +11938,14 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                   for (var e6 = new Uint8Array(e6), r4 = m2, t4 = f, o3 = p, n2 = function(e7) {
                     y2._decrementPreload();
                   }.bind(y2), s2 = new g.default.GifReader(e6), i2 = (r4.width = r4.canvas.width = s2.width, r4.height = r4.canvas.height = s2.height, []), a2 = s2.numFrames(), l2 = new Uint8ClampedArray(r4.width * r4.height * 4), u = 0; u < a2; u++) {
-                    var c = s2.frameInfo(u), d = r4.drawingContext.getImageData(0, 0, r4.width, r4.height), h = (l2 = d.data.slice(), !function(e7, t5) {
+                    var c = s2.frameInfo(u), d = r4.drawingContext.getImageData(0, 0, r4.width, r4.height), h3 = (l2 = d.data.slice(), !function(e7, t5) {
                       try {
                         t5.decodeAndBlitFrameRGBA(e7, l2);
                       } catch (e8) {
                         C.default._friendlyFileLoadError(8, r4.src), "function" == typeof o3 ? o3(e8) : console.error(e8);
                       }
-                    }(u, s2), new ImageData(l2, r4.width, r4.height)), h = (r4.drawingContext.putImageData(h, 0, 0), c.delay);
-                    0 === h && (h = 10), i2.push({ image: r4.drawingContext.getImageData(0, 0, r4.width, r4.height), delay: 10 * h }), 2 === c.disposal ? r4.drawingContext.clearRect(c.x, c.y, c.width, c.height) : 3 === c.disposal && r4.drawingContext.putImageData(d, 0, 0, c.x, c.y, c.width, c.height);
+                    }(u, s2), new ImageData(l2, r4.width, r4.height)), h3 = (r4.drawingContext.putImageData(h3, 0, 0), c.delay);
+                    0 === h3 && (h3 = 10), i2.push({ image: r4.drawingContext.getImageData(0, 0, r4.width, r4.height), delay: 10 * h3 }), 2 === c.disposal ? r4.drawingContext.clearRect(c.x, c.y, c.width, c.height) : 3 === c.disposal && r4.drawingContext.putImageData(d, 0, 0, c.x, c.y, c.width, c.height);
                   }
                   null === (e6 = s2.loopCount()) ? e6 = 1 : 0 === e6 && (e6 = null), r4.drawingContext.putImageData(i2[0].image, 0, 0), 1 < i2.length && (r4.gifProperties = { displayIndex: 0, loopLimit: e6, loopCount: 0, frames: i2, numFrames: a2, playing: true, timeDisplayed: 0, lastChangeTime: 0 }), "function" == typeof t4 && t4(r4), n2();
                 }
@@ -11961,7 +11961,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             }), m2;
           }, C.default.prototype.saveGif = function() {
             a2 = regeneratorRuntime.mark(function e4(t3, r4) {
-              var o2, n2, s2, i2, a3, l2, u, c, d, h, f, p, m2, y2, g2, v2, b, _2, j, x, w, S, T, E, M, k, O = arguments;
+              var o2, n2, s2, i2, a3, l2, u, c, d, h3, f, p, m2, y2, g2, v2, b, _2, j, x, w, S, T, E, M, k, O = arguments;
               return regeneratorRuntime.wrap(function(e5) {
                 for (; ; ) switch (e5.prev = e5.next) {
                   case 0:
@@ -11993,15 +11993,15 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                     e5.next = 20;
                     break;
                   case 20:
-                    return this._recording = true, h = this._targetFrameRate, u = (u = 1 / (h = h !== 1 / 0 && void 0 !== h && 0 !== h ? h : 60) * 1e3) < 20 ? 20 : u, d = (c = "seconds" === s2 ? r4 * h : r4) + (h = "seconds" === s2 ? n2 * h : n2), h = h, this.frameCount = h, f = this._pixelDensity, this.pixelDensity(1), p = [], null !== document.getElementById(l2) && document.getElementById(l2).remove(), i2 || ((m2 = this.createP("")).id(l2), m2.style("font-size", "16px"), m2.style("font-family", "Montserrat"), m2.style("background-color", "#ffffffa0"), m2.style("padding", "8px"), m2.style("border-radius", "10px"), m2.position(0, 0)), this._renderer instanceof C.default.RendererGL && (g2 = this.drawingContext, y2 = new Uint8Array(g2.drawingBufferWidth * g2.drawingBufferHeight * 4)), this.noLoop(), e5.next = 39, Promise.resolve();
+                    return this._recording = true, h3 = this._targetFrameRate, u = (u = 1 / (h3 = h3 !== 1 / 0 && void 0 !== h3 && 0 !== h3 ? h3 : 60) * 1e3) < 20 ? 20 : u, d = (c = "seconds" === s2 ? r4 * h3 : r4) + (h3 = "seconds" === s2 ? n2 * h3 : n2), h3 = h3, this.frameCount = h3, f = this._pixelDensity, this.pixelDensity(1), p = [], null !== document.getElementById(l2) && document.getElementById(l2).remove(), i2 || ((m2 = this.createP("")).id(l2), m2.style("font-size", "16px"), m2.style("font-family", "Montserrat"), m2.style("background-color", "#ffffffa0"), m2.style("padding", "8px"), m2.style("border-radius", "10px"), m2.position(0, 0)), this._renderer instanceof C.default.RendererGL && (g2 = this.drawingContext, y2 = new Uint8Array(g2.drawingBufferWidth * g2.drawingBufferHeight * 4)), this.noLoop(), e5.next = 39, Promise.resolve();
                   case 39:
-                    if (h < d) return this.redraw(), E = void 0, E = this._renderer instanceof C.default.RendererGL ? (y2 = new Uint8Array(g2.drawingBufferWidth * g2.drawingBufferHeight * 4), g2.readPixels(0, 0, g2.drawingBufferWidth, g2.drawingBufferHeight, g2.RGBA, g2.UNSIGNED_BYTE, y2), function(e6, t4, r5) {
+                    if (h3 < d) return this.redraw(), E = void 0, E = this._renderer instanceof C.default.RendererGL ? (y2 = new Uint8Array(g2.drawingBufferWidth * g2.drawingBufferHeight * 4), g2.readPixels(0, 0, g2.drawingBufferWidth, g2.drawingBufferHeight, g2.RGBA, g2.UNSIGNED_BYTE, y2), function(e6, t4, r5) {
                       for (var o3 = parseInt(r5 / 2), n3 = 4 * t4, s3 = new Uint8Array(4 * t4), i3 = 0; i3 < o3; ++i3) {
                         var a4 = i3 * n3, l3 = (r5 - i3 - 1) * n3;
                         s3.set(e6.subarray(a4, a4 + n3)), e6.copyWithin(a4, l3, l3 + n3), e6.set(s3, l3);
                       }
                       return e6;
-                    }(y2, this.width, this.height)) : this.drawingContext.getImageData(0, 0, this.width, this.height).data, p.push(E), h++, i2 || m2.html("Saved frame <b>" + p.length.toString() + "</b> out of " + c.toString()), e5.next = 48, new Promise(function(e6) {
+                    }(y2, this.width, this.height)) : this.drawingContext.getImageData(0, 0, this.width, this.height).data, p.push(E), h3++, i2 || m2.html("Saved frame <b>" + p.length.toString() + "</b> out of " + c.toString()), e5.next = 48, new Promise(function(e6) {
                       return setTimeout(e6, 0);
                     });
                     e5.next = 50;
@@ -12066,9 +12066,9 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             };
           }(), C.default.prototype.image = function(e4, t3, r3, o2, n2, s2, i2, a2, l2, u, c, d) {
             C.default._validateParameters("image", arguments);
-            var h = e4.width, f = e4.height, p = (d = d || _.CENTER, c = c || _.CENTER, e4.elt && (h = void 0 !== h ? h : e4.elt.width, f = void 0 !== f ? f : e4.elt.height), e4.elt && e4.elt.videoWidth && !e4.canvas && (h = void 0 !== h ? h : e4.elt.videoWidth, f = void 0 !== f ? f : e4.elt.videoHeight), o2 || h), n2 = n2 || f, s2 = s2 || 0, i2 = i2 || 0, a2 = v(void 0 !== a2 ? a2 : h, h), h = v(void 0 !== l2 ? l2 : f, f), l2 = 1;
-            e4.elt && !e4.canvas && e4.elt.style.width && (l2 = e4.elt.videoWidth && !o2 ? e4.elt.videoWidth : e4.elt.width, l2 /= parseInt(e4.elt.style.width, 10)), s2 *= l2, i2 *= l2, h *= l2, a2 *= l2;
-            f = y(u, c, d, (f = m.default.modeAdjust(t3, r3, p, n2, this._renderer._imageMode)).x, f.y, f.w, f.h, s2, i2, a2, h);
+            var h3 = e4.width, f = e4.height, p = (d = d || _.CENTER, c = c || _.CENTER, e4.elt && (h3 = void 0 !== h3 ? h3 : e4.elt.width, f = void 0 !== f ? f : e4.elt.height), e4.elt && e4.elt.videoWidth && !e4.canvas && (h3 = void 0 !== h3 ? h3 : e4.elt.videoWidth, f = void 0 !== f ? f : e4.elt.videoHeight), o2 || h3), n2 = n2 || f, s2 = s2 || 0, i2 = i2 || 0, a2 = v(void 0 !== a2 ? a2 : h3, h3), h3 = v(void 0 !== l2 ? l2 : f, f), l2 = 1;
+            e4.elt && !e4.canvas && e4.elt.style.width && (l2 = e4.elt.videoWidth && !o2 ? e4.elt.videoWidth : e4.elt.width, l2 /= parseInt(e4.elt.style.width, 10)), s2 *= l2, i2 *= l2, h3 *= l2, a2 *= l2;
+            f = y(u, c, d, (f = m.default.modeAdjust(t3, r3, p, n2, this._renderer._imageMode)).x, f.y, f.w, f.h, s2, i2, a2, h3);
             this._renderer.image(e4, f.sx, f.sy, f.sw, f.sh, f.dx, f.dy, f.dw, f.dh);
           }, C.default.prototype.tint = function() {
             for (var e4 = arguments.length, t3 = new Array(e4), r3 = 0; r3 < e4; r3++) t3[r3] = arguments[r3];
@@ -12208,8 +12208,8 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             }
             f.default.prototype._copyHelper(this, e4, t3, r3, o2, n, s2, i, a2, l);
           }, f.default.prototype._copyHelper = function(e4, t3, r3, o2, n, s2, i, a2, l, u) {
-            var c = t3.canvas.width / t3.width, d = 0, h = 0;
-            t3._renderer && t3._renderer.isP3D && (d = t3.width / 2, h = t3.height / 2), e4._renderer && e4._renderer.isP3D ? (e4.push(), e4.resetMatrix(), e4.noLights(), e4.blendMode(e4.BLEND), e4.imageMode(e4.CORNER), f.default.RendererGL.prototype.image.call(e4._renderer, t3, r3 + d, o2 + h, n, s2, i, a2, l, u), e4.pop()) : e4.drawingContext.drawImage(t3.canvas, c * (r3 + d), c * (o2 + h), c * n, c * s2, i, a2, l, u);
+            var c = t3.canvas.width / t3.width, d = 0, h3 = 0;
+            t3._renderer && t3._renderer.isP3D && (d = t3.width / 2, h3 = t3.height / 2), e4._renderer && e4._renderer.isP3D ? (e4.push(), e4.resetMatrix(), e4.noLights(), e4.blendMode(e4.BLEND), e4.imageMode(e4.CORNER), f.default.RendererGL.prototype.image.call(e4._renderer, t3, r3 + d, o2 + h3, n, s2, i, a2, l, u), e4.pop()) : e4.drawingContext.drawImage(t3.canvas, c * (r3 + d), c * (o2 + h3), c * n, c * s2, i, a2, l, u);
           }, f.default.prototype.getFilterGraphicsLayer = function() {
             return this._renderer.getFilterGraphicsLayer();
           }, f.default.prototype.filter = function() {
@@ -12328,12 +12328,12 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               }
               if (m2) y2.columns = s3.shift();
               else for (var d = 0; d < s3[0].length; d++) y2.columns[d] = "null";
-              for (var h = 0; h < s3.length; h++) (1 !== s3[h].length || "undefined" !== s3[h][0] && "" !== s3[h][0]) && ((r4 = new v.default.TableRow()).arr = s3[h], r4.obj = function(r5, e6) {
+              for (var h3 = 0; h3 < s3.length; h3++) (1 !== s3[h3].length || "undefined" !== s3[h3][0] && "" !== s3[h3][0]) && ((r4 = new v.default.TableRow()).arr = s3[h3], r4.obj = function(r5, e6) {
                 if (void 0 === (e6 = e6 || [])) for (var t5 = 0; t5 < r5.length; t5++) e6[t5.toString()] = t5;
                 return Object.fromEntries(e6.map(function(e7, t6) {
                   return [e7, r5[t6]];
                 }));
-              }(s3[h], y2.columns), y2.addRow(r4));
+              }(s3[h3], y2.columns), y2.addRow(r4));
               "function" == typeof f && f(y2), g2._decrementPreload();
             }, function(e5) {
               v.default._friendlyFileLoadError(2, t3), r3 ? r3(e5) : console.error(e5);
@@ -12372,12 +12372,12 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             if (2 == a && "string" == typeof l && "object" === y(arguments.length <= 1 ? void 0 : arguments[1])) p = new Request(l, arguments.length <= 1 ? void 0 : arguments[1]), e4 = arguments.length <= 2 ? void 0 : arguments[2], t3 = arguments.length <= 3 ? void 0 : arguments[3];
             else {
               for (var u, c = "GET", d = 1; d < arguments.length; d++) {
-                var h = d < 0 || arguments.length <= d ? void 0 : arguments[d];
-                if ("string" == typeof h) "GET" === h || "POST" === h || "PUT" === h || "DELETE" === h ? c = h : "json" === h || "jsonp" === h || "binary" === h || "arrayBuffer" === h || "xml" === h || "text" === h || "table" === h ? r3 = h : u = h;
-                else if ("number" == typeof h) u = h.toString();
-                else if ("object" === y(h)) if (h.hasOwnProperty("jsonpCallback") || h.hasOwnProperty("jsonpCallbackFunction")) for (var f in h) o2[f] = h[f];
-                else s3 = h instanceof v.default.XML ? (u = h.serialize(), "application/xml") : (u = JSON.stringify(h), "application/json");
-                else "function" == typeof h && (e4 ? t3 = h : e4 = h);
+                var h3 = d < 0 || arguments.length <= d ? void 0 : arguments[d];
+                if ("string" == typeof h3) "GET" === h3 || "POST" === h3 || "PUT" === h3 || "DELETE" === h3 ? c = h3 : "json" === h3 || "jsonp" === h3 || "binary" === h3 || "arrayBuffer" === h3 || "xml" === h3 || "text" === h3 || "table" === h3 ? r3 = h3 : u = h3;
+                else if ("number" == typeof h3) u = h3.toString();
+                else if ("object" === y(h3)) if (h3.hasOwnProperty("jsonpCallback") || h3.hasOwnProperty("jsonpCallbackFunction")) for (var f in h3) o2[f] = h3[f];
+                else s3 = h3 instanceof v.default.XML ? (u = h3.serialize(), "application/xml") : (u = JSON.stringify(h3), "application/json");
+                else "function" == typeof h3 && (e4 ? t3 = h3 : e4 = h3);
               }
               var a = "GET" === c ? new Headers() : new Headers({ "Content-Type": s3 }), p = new Request(l, { method: c, mode: "cors", body: u, headers: a });
             }
@@ -12460,10 +12460,10 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                 }
                 n2.print("    </tr>");
               }
-              for (var h = 0; h < e4.rows.length; h++) {
+              for (var h3 = 0; h3 < e4.rows.length; h3++) {
                 n2.print("    <tr>");
                 for (var f = 0; f < e4.columns.length; f++) {
-                  var p = g(e4.rows[h].getString(f));
+                  var p = g(e4.rows[h3].getString(f));
                   n2.print("      <td>".concat(p)), n2.print("      </td>");
                 }
                 n2.print("    </tr>");
@@ -12558,8 +12558,8 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                 this.rows[l].arr[c] = u;
               }
               else for (var d = 0; d < this.rows.length; d++) {
-                var h = (h = this.rows[d].arr[t4]).replace(n2, "");
-                this.rows[d].arr[t4] = h, this.rows[d].obj[this.columns[t4]] = h;
+                var h3 = (h3 = this.rows[d].arr[t4]).replace(n2, "");
+                this.rows[d].arr[t4] = h3, this.rows[d].obj[this.columns[t4]] = h3;
               }
             } }, { key: "trim", value: function(e5) {
               var t4 = new RegExp(" ", "g");
@@ -12898,11 +12898,11 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               for (var o = 0; o < 4096; o++) _[o] = Math.random();
             }
             e4 < 0 && (e4 = -e4), t3 < 0 && (t3 = -t3), r3 < 0 && (r3 = -r3);
-            for (var n, s2, i = Math.floor(e4), a = Math.floor(t3), l = Math.floor(r3), u = e4 - i, c = t3 - a, d = r3 - l, h = 0, f = 0.5, p = 0; p < x; p++) {
+            for (var n, s2, i = Math.floor(e4), a = Math.floor(t3), l = Math.floor(r3), u = e4 - i, c = t3 - a, d = r3 - l, h3 = 0, f = 0.5, p = 0; p < x; p++) {
               var m = i + (a << 4) + (l << 8), y = b(u), g = b(c), v = _[m & j];
-              v += y * (_[m + 1 & j] - v), n = _[m + 16 & j], v += g * ((n += y * (_[m + 16 + 1 & j] - n)) - v), n = _[(m += 256) & j], n += y * (_[m + 1 & j] - n), s2 = _[m + 16 & j], n += g * ((s2 += y * (_[m + 16 + 1 & j] - s2)) - n), h += (v += b(d) * (n - v)) * f, f *= w, i <<= 1, a <<= 1, l <<= 1, 1 <= (u *= 2) && (i++, u--), 1 <= (c *= 2) && (a++, c--), 1 <= (d *= 2) && (l++, d--);
+              v += y * (_[m + 1 & j] - v), n = _[m + 16 & j], v += g * ((n += y * (_[m + 16 + 1 & j] - n)) - v), n = _[(m += 256) & j], n += y * (_[m + 1 & j] - n), s2 = _[m + 16 & j], n += g * ((s2 += y * (_[m + 16 + 1 & j] - s2)) - n), h3 += (v += b(d) * (n - v)) * f, f *= w, i <<= 1, a <<= 1, l <<= 1, 1 <= (u *= 2) && (i++, u--), 1 <= (c *= 2) && (a++, c--), 1 <= (d *= 2) && (l++, d--);
             }
-            return h;
+            return h3;
           }, e3.default.prototype.noiseDetail = function(e4, t3) {
             0 < e4 && (x = e4), 0 < t3 && (w = t3);
           }, e3.default.prototype.noiseSeed = function(e4) {
@@ -13407,10 +13407,10 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             return o2 ? (void 0 === S.tmpPoint1 && (S.tmpPoint1 = [], S.tmpPoint2 = []), s3 = S.tmpPoint1, i2 = S.tmpPoint2, s3.x = t3.x - e4.x, s3.y = t3.y - e4.y, i2.x = r3.x - t3.x, i2.y = r3.y - t3.y, n2 = s3.x * i2.x + s3.y * i2.y, s3 = Math.sqrt(s3.x * s3.x + s3.y * s3.y), i2 = Math.sqrt(i2.x * i2.x + i2.y * i2.y), Math.acos(n2 / (s3 * i2)) < o2) : 0 == (t3[0] - e4[0]) * (r3[1] - e4[1]) - (r3[0] - e4[0]) * (t3[1] - e4[1]);
           }
           function d(e4, t3, r3, o2, n2, s3, i2, a, l) {
-            var u = 1 - l, c = Math.pow(u, 3), d2 = Math.pow(u, 2), h2 = l * l, f2 = h2 * l, p = c * e4 + 3 * d2 * l * r3 + 3 * u * l * l * n2 + f2 * i2, c = c * t3 + 3 * d2 * l * o2 + 3 * u * l * l * s3 + f2 * a, d2 = e4 + 2 * l * (r3 - e4) + h2 * (n2 - 2 * r3 + e4), f2 = t3 + 2 * l * (o2 - t3) + h2 * (s3 - 2 * o2 + t3), m = r3 + 2 * l * (n2 - r3) + h2 * (i2 - 2 * n2 + r3), h2 = o2 + 2 * l * (s3 - o2) + h2 * (a - 2 * s3 + o2), e4 = u * e4 + l * r3, r3 = u * t3 + l * o2, t3 = u * n2 + l * i2, o2 = u * s3 + l * a, n2 = 90 - 180 * Math.atan2(d2 - m, f2 - h2) / Math.PI;
-            return (m < d2 || f2 < h2) && (n2 += 180), { x: p, y: c, m: { x: d2, y: f2 }, n: { x: m, y: h2 }, start: { x: e4, y: r3 }, end: { x: t3, y: o2 }, alpha: n2 };
+            var u = 1 - l, c = Math.pow(u, 3), d2 = Math.pow(u, 2), h4 = l * l, f2 = h4 * l, p = c * e4 + 3 * d2 * l * r3 + 3 * u * l * l * n2 + f2 * i2, c = c * t3 + 3 * d2 * l * o2 + 3 * u * l * l * s3 + f2 * a, d2 = e4 + 2 * l * (r3 - e4) + h4 * (n2 - 2 * r3 + e4), f2 = t3 + 2 * l * (o2 - t3) + h4 * (s3 - 2 * o2 + t3), m = r3 + 2 * l * (n2 - r3) + h4 * (i2 - 2 * n2 + r3), h4 = o2 + 2 * l * (s3 - o2) + h4 * (a - 2 * s3 + o2), e4 = u * e4 + l * r3, r3 = u * t3 + l * o2, t3 = u * n2 + l * i2, o2 = u * s3 + l * a, n2 = 90 - 180 * Math.atan2(d2 - m, f2 - h4) / Math.PI;
+            return (m < d2 || f2 < h4) && (n2 += 180), { x: p, y: c, m: { x: d2, y: f2 }, n: { x: m, y: h4 }, start: { x: e4, y: r3 }, end: { x: t3, y: o2 }, alpha: n2 };
           }
-          function h(e4, t3, r3, o2, n2, s3, i2, a, l) {
+          function h3(e4, t3, r3, o2, n2, s3, i2, a, l) {
             return null == l ? f(e4, t3, r3, o2, n2, s3, i2, a) : d(e4, t3, r3, o2, n2, s3, i2, a, function(e5, t4, r4, o3, n3, s4, i3, a2, l2) {
               if (!(l2 < 0 || f(e5, t4, r4, o3, n3, s4, i3, a2) < l2)) {
                 var u, c = 0.5, d2 = 1 - c;
@@ -13464,10 +13464,10 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               function n3(e6, t5, r5, o4, n4) {
                 e6 && t5 && "M" === e6[n4][0] && "M" !== t5[n4][0] && (t5.splice(n4, 0, ["M", o4.x, o4.y]), r5.bx = 0, r5.by = 0, r5.x = e6[n4][1], r5.y = e6[n4][2], s4 = Math.max(i3.length, a2 && a2.length || 0));
               }
-              var s4, i3 = b(e5), a2 = t4 && b(t4), l2 = { x: 0, y: 0, bx: 0, by: 0, X: 0, Y: 0, qx: null, qy: null }, u2 = { x: 0, y: 0, bx: 0, by: 0, X: 0, Y: 0, qx: null, qy: null }, c2 = [], d2 = [], h2 = "", f2 = "";
+              var s4, i3 = b(e5), a2 = t4 && b(t4), l2 = { x: 0, y: 0, bx: 0, by: 0, X: 0, Y: 0, qx: null, qy: null }, u2 = { x: 0, y: 0, bx: 0, by: 0, X: 0, Y: 0, qx: null, qy: null }, c2 = [], d2 = [], h4 = "", f2 = "";
               s4 = Math.max(i3.length, a2 && a2.length || 0);
               for (var p = 0; p < s4; p++) {
-                "C" !== (h2 = i3[p] ? i3[p][0] : h2) && (c2[p] = h2, p && (f2 = c2[p - 1])), i3[p] = r4(i3[p], l2, f2), "A" !== c2[p] && "C" === h2 && (c2[p] = "C"), o3(i3, p), a2 && ("C" !== (h2 = a2[p] ? a2[p][0] : h2) && (d2[p] = h2, p && (f2 = d2[p - 1])), a2[p] = r4(a2[p], u2, f2), "A" !== d2[p] && "C" === h2 && (d2[p] = "C"), o3(a2, p)), n3(i3, a2, l2, u2, p), n3(a2, i3, u2, l2, p);
+                "C" !== (h4 = i3[p] ? i3[p][0] : h4) && (c2[p] = h4, p && (f2 = c2[p - 1])), i3[p] = r4(i3[p], l2, f2), "A" !== c2[p] && "C" === h4 && (c2[p] = "C"), o3(i3, p), a2 && ("C" !== (h4 = a2[p] ? a2[p][0] : h4) && (d2[p] = h4, p && (f2 = d2[p - 1])), a2[p] = r4(a2[p], u2, f2), "A" !== d2[p] && "C" === h4 && (d2[p] = "C"), o3(a2, p)), n3(i3, a2, l2, u2, p), n3(a2, i3, u2, l2, p);
                 var m = i3[p], y2 = a2 && a2[p], g = m.length, v2 = a2 && y2.length;
                 l2.x = m[g - 2], l2.y = m[g - 1], l2.bx = parseFloat(m[g - 4]) || l2.x, l2.by = parseFloat(m[g - 3]) || l2.y, u2.bx = a2 && (parseFloat(y2[v2 - 4]) || u2.x), u2.by = a2 && (parseFloat(y2[v2 - 3]) || u2.y), u2.x = a2 && y2[v2 - 2], u2.y = a2 && y2[v2 - 1];
               }
@@ -13475,7 +13475,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             }(e4)).length; u < c; u++) {
               if ("M" === (s3 = e4[u])[0]) o2 = +s3[1], n2 = +s3[2];
               else {
-                if (t3 < l + (i2 = h(o2, n2, s3[1], s3[2], s3[3], s3[4], s3[5], s3[6])) && !r3) return { x: (a = h(o2, n2, s3[1], s3[2], s3[3], s3[4], s3[5], s3[6], t3 - l)).x, y: a.y, alpha: a.alpha };
+                if (t3 < l + (i2 = h3(o2, n2, s3[1], s3[2], s3[3], s3[4], s3[5], s3[6])) && !r3) return { x: (a = h3(o2, n2, s3[1], s3[2], s3[3], s3[4], s3[5], s3[6], t3 - l)).x, y: a.y, alpha: a.alpha };
                 l += i2, o2 = +s3[5], n2 = +s3[6];
               }
               s3.shift();
@@ -13498,8 +13498,8 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                     a[1] = +l[1] + r3;
                     break;
                   case "R":
-                    for (var h2, f2 = 2, p = (h2 = [r3, o2].concat(l.slice(1))).length; f2 < p; f2++) h2[f2] = +h2[f2] + r3, h2[++f2] = +h2[f2] + o2;
-                    t3.pop(), t3 = t3.concat(_(h2, u));
+                    for (var h4, f2 = 2, p = (h4 = [r3, o2].concat(l.slice(1))).length; f2 < p; f2++) h4[f2] = +h4[f2] + r3, h4[++f2] = +h4[f2] + o2;
+                    t3.pop(), t3 = t3.concat(_(h4, u));
                     break;
                   case "M":
                     n2 = +l[1] + r3, s3 = +l[2] + o2;
@@ -13507,7 +13507,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                   default:
                     for (var m = 1, y2 = l.length; m < y2; m++) a[m] = +l[m] + (m % 2 ? r3 : o2);
                 }
-                else if ("R" === l[0]) h2 = [r3, o2].concat(l.slice(1)), t3.pop(), t3 = t3.concat(_(h2, u)), a = ["R"].concat(l.slice(-2));
+                else if ("R" === l[0]) h4 = [r3, o2].concat(l.slice(1)), t3.pop(), t3 = t3.concat(_(h4, u)), a = ["R"].concat(l.slice(-2));
                 else for (var g = 0, v2 = l.length; g < v2; g++) a[g] = l[g];
                 switch (a[0]) {
                   case "Z":
@@ -13533,7 +13533,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             function c(e5, t4, r4) {
               return { x: e5 * Math.cos(r4) - t4 * Math.sin(r4), y: e5 * Math.sin(r4) + t4 * Math.cos(r4) };
             }
-            var d2, h2 = Math.PI, f2 = 120 * h2 / 180, p = h2 / 180 * (+n2 || 0), m = [], y2 = (u ? (x2 = u[0], d2 = u[1], _2 = u[2], j2 = u[3]) : (e4 = (v2 = c(e4, t3, -p)).x, t3 = v2.y, 1 < (y2 = (g = (e4 - (a = (v2 = c(a, l, -p)).x)) / 2) * g / (r3 * r3) + (v2 = (t3 - (l = v2.y)) / 2) * v2 / (o2 * o2)) && (r3 *= y2 = Math.sqrt(y2), o2 *= y2), y2 = r3 * r3, b2 = o2 * o2, _2 = (s3 = (s3 === i2 ? -1 : 1) * Math.sqrt(Math.abs((y2 * b2 - y2 * v2 * v2 - b2 * g * g) / (y2 * v2 * v2 + b2 * g * g)))) * r3 * v2 / o2 + (e4 + a) / 2, j2 = s3 * -o2 * g / r3 + (t3 + l) / 2, x2 = Math.asin(((t3 - j2) / o2).toFixed(9)), d2 = Math.asin(((l - j2) / o2).toFixed(9)), (x2 = e4 < _2 ? h2 - x2 : x2) < 0 && (x2 = 2 * h2 + x2), (d2 = a < _2 ? h2 - d2 : d2) < 0 && (d2 = 2 * h2 + d2), i2 && d2 < x2 && (x2 -= 2 * h2), !i2 && x2 < d2 && (d2 -= 2 * h2)), d2 - x2), g = (Math.abs(y2) > f2 && (b2 = d2, v2 = a, s3 = l, d2 = x2 + f2 * (i2 && x2 < d2 ? 1 : -1), m = E(a = _2 + r3 * Math.cos(d2), l = j2 + o2 * Math.sin(d2), r3, o2, n2, 0, i2, v2, s3, [d2, b2, _2, j2])), y2 = d2 - x2, Math.cos(x2)), h2 = Math.sin(x2), f2 = Math.cos(d2), n2 = Math.sin(d2), i2 = Math.tan(y2 / 4), v2 = 4 / 3 * r3 * i2, s3 = 4 / 3 * o2 * i2, b2 = [e4, t3], _2 = [e4 + v2 * h2, t3 - s3 * g], j2 = [a + v2 * n2, l - s3 * f2], x2 = [a, l];
+            var d2, h4 = Math.PI, f2 = 120 * h4 / 180, p = h4 / 180 * (+n2 || 0), m = [], y2 = (u ? (x2 = u[0], d2 = u[1], _2 = u[2], j2 = u[3]) : (e4 = (v2 = c(e4, t3, -p)).x, t3 = v2.y, 1 < (y2 = (g = (e4 - (a = (v2 = c(a, l, -p)).x)) / 2) * g / (r3 * r3) + (v2 = (t3 - (l = v2.y)) / 2) * v2 / (o2 * o2)) && (r3 *= y2 = Math.sqrt(y2), o2 *= y2), y2 = r3 * r3, b2 = o2 * o2, _2 = (s3 = (s3 === i2 ? -1 : 1) * Math.sqrt(Math.abs((y2 * b2 - y2 * v2 * v2 - b2 * g * g) / (y2 * v2 * v2 + b2 * g * g)))) * r3 * v2 / o2 + (e4 + a) / 2, j2 = s3 * -o2 * g / r3 + (t3 + l) / 2, x2 = Math.asin(((t3 - j2) / o2).toFixed(9)), d2 = Math.asin(((l - j2) / o2).toFixed(9)), (x2 = e4 < _2 ? h4 - x2 : x2) < 0 && (x2 = 2 * h4 + x2), (d2 = a < _2 ? h4 - d2 : d2) < 0 && (d2 = 2 * h4 + d2), i2 && d2 < x2 && (x2 -= 2 * h4), !i2 && x2 < d2 && (d2 -= 2 * h4)), d2 - x2), g = (Math.abs(y2) > f2 && (b2 = d2, v2 = a, s3 = l, d2 = x2 + f2 * (i2 && x2 < d2 ? 1 : -1), m = E(a = _2 + r3 * Math.cos(d2), l = j2 + o2 * Math.sin(d2), r3, o2, n2, 0, i2, v2, s3, [d2, b2, _2, j2])), y2 = d2 - x2, Math.cos(x2)), h4 = Math.sin(x2), f2 = Math.cos(d2), n2 = Math.sin(d2), i2 = Math.tan(y2 / 4), v2 = 4 / 3 * r3 * i2, s3 = 4 / 3 * o2 * i2, b2 = [e4, t3], _2 = [e4 + v2 * h4, t3 - s3 * g], j2 = [a + v2 * n2, l - s3 * f2], x2 = [a, l];
             if (_2[0] = 2 * b2[0] - _2[0], _2[1] = 2 * b2[1] - _2[1], u) return [_2, j2, x2].concat(m);
             for (var w2 = [], S2 = 0, T2 = (m = [_2, j2, x2].concat(m).join().split(",")).length; S2 < T2; S2++) w2[S2] = S2 % 2 ? c(m[S2 - 1], m[S2], p).y : c(m[S2], m[S2 + 1], p).x;
             return w2;
@@ -13552,9 +13552,9 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             return [1 / 3 * e4 + 2 / 3 * r3, 1 / 3 * t3 + 2 / 3 * o2, 1 / 3 * n2 + 2 / 3 * r3, 1 / 3 * s3 + 2 / 3 * o2, n2, s3];
           }
           function f(e4, t3, r3, o2, n2, s3, i2, a, l) {
-            for (var u = (l = 1 < (l = null == l ? 1 : l) ? 1 : l < 0 ? 0 : l) / 2, c = [-0.1252, 0.1252, -0.3678, 0.3678, -0.5873, 0.5873, -0.7699, 0.7699, -0.9041, 0.9041, -0.9816, 0.9816], d2 = 0, h2 = [0.2491, 0.2491, 0.2335, 0.2335, 0.2032, 0.2032, 0.1601, 0.1601, 0.1069, 0.1069, 0.0472, 0.0472], f2 = 0; f2 < 12; f2++) {
+            for (var u = (l = 1 < (l = null == l ? 1 : l) ? 1 : l < 0 ? 0 : l) / 2, c = [-0.1252, 0.1252, -0.3678, 0.3678, -0.5873, 0.5873, -0.7699, 0.7699, -0.9041, 0.9041, -0.9816, 0.9816], d2 = 0, h4 = [0.2491, 0.2491, 0.2335, 0.2335, 0.2032, 0.2032, 0.1601, 0.1601, 0.1069, 0.1069, 0.0472, 0.0472], f2 = 0; f2 < 12; f2++) {
               var p = u * c[f2] + u, m = y(p, e4, r3, n2, i2), p = y(p, t3, o2, s3, a);
-              d2 += h2[f2] * Math.sqrt(m * m + p * p);
+              d2 += h4[f2] * Math.sqrt(m * m + p * p);
             }
             return u * d2;
           }
@@ -13570,9 +13570,9 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             return e4 = t3, (r3 = [{ key: "textBounds", value: function(e5) {
               var t4 = 1 < arguments.length && void 0 !== arguments[1] ? arguments[1] : 0, r4 = 2 < arguments.length && void 0 !== arguments[2] ? arguments[2] : 0, o3 = 3 < arguments.length ? arguments[3] : void 0, n2 = 4 < arguments.length ? arguments[4] : void 0, s3 = n2 && n2.renderer && n2.renderer._pInst || this.parent, i2 = s3._renderer.drawingContext, o3 = (i2.textAlign || v.LEFT, i2.textBaseline || v.BASELINE, o3 || s3._renderer._textSize);
               if (!g) {
-                for (var a = [], l = [], u = [], c = (u[0] = [], []), d2 = this._scale(o3), h2 = s3._renderer.textLeading(), f2 = 0, p = (this.font.forEachGlyph(e5, t4, r4, o3, n2, function(e6, t5, r5, o4) {
+                for (var a = [], l = [], u = [], c = (u[0] = [], []), d2 = this._scale(o3), h4 = s3._renderer.textLeading(), f2 = 0, p = (this.font.forEachGlyph(e5, t4, r4, o3, n2, function(e6, t5, r5, o4) {
                   var n3 = e6.getMetrics();
-                  0 === e6.index ? u[f2 += 1] = [] : (u[f2].push(t5 + n3.xMin * d2), u[f2].push(t5 + n3.xMax * d2), c.push(r5 + f2 * h2 + -n3.yMin * d2), c.push(r5 + f2 * h2 + -n3.yMax * d2));
+                  0 === e6.index ? u[f2 += 1] = [] : (u[f2].push(t5 + n3.xMin * d2), u[f2].push(t5 + n3.xMax * d2), c.push(r5 + f2 * h4 + -n3.yMin * d2), c.push(r5 + f2 * h4 + -n3.yMax * d2));
                 }), 0 < u[f2].length && (a[f2] = Math.min.apply(null, u[f2]), l[f2] = Math.max.apply(null, u[f2])), 0), m = 0; m <= f2; m++) {
                   a[m] = Math.min.apply(null, u[m]), l[m] = Math.max.apply(null, u[m]);
                   var y2 = l[m] - a[m];
@@ -13585,11 +13585,11 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             } }, { key: "textToPoints", value: function(e5, t4, r4, o3, n2) {
               var s3, i2 = t4, a = [], l = this.parent, u = e5.split(/\r?\n|\r|\n/g);
               o3 = o3 || this.parent._renderer._textSize;
-              for (var c, d2, h2, f2 = 0; f2 < u.length; f2++) {
+              for (var c, d2, h4, f2 = 0; f2 < u.length; f2++) {
                 var p = 0;
                 t4 = i2;
                 for (var m = (m = u[f2]).replace("	", "  "), y2 = this._getGlyphs(m), g = 0; g < y2.length; g++) {
-                  if (d2 = m, !((h2 = y2)[c = g].name && "space" === h2[c].name || d2.length === h2.length && " " === d2[c])) for (var v2 = function(e6) {
+                  if (d2 = m, !((h4 = y2)[c = g].name && "space" === h4[c].name || d2.length === h4.length && " " === d2[c])) for (var v2 = function(e6) {
                     for (var t5, r5 = [], o4 = 0; o4 < e6.length; o4++) "M" === e6[o4].type && (t5 && r5.push(t5), t5 = []), t5.push(function(e7) {
                       var t6 = [e7.type];
                       "M" === e7.type || "L" === e7.type ? t6.push(e7.x, e7.y) : "C" === e7.type ? t6.push(e7.x1, e7.y1, e7.x2, e7.y2, e7.x, e7.y) : "Q" === e7.type && t6.push(e7.x1, e7.y1, e7.x, e7.y);
@@ -13910,10 +13910,10 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
           };
           function l(e4, t3, r3, o2, n2, s2, i2) {
             e4 = e4 <= 0 ? 1 : e4, t3 = t3 < 0 ? 0 : t3, r3 = r3 <= 0 ? e4 : r3, o2 = o2 < 3 ? 3 : o2;
-            for (var a2, l2, u = (s2 = void 0 === s2 || s2) ? -2 : 0, c = (n2 = n2 < 1 ? 1 : n2) + ((i2 = void 0 === i2 ? 0 !== t3 : i2) ? 2 : 0), d = Math.atan2(e4 - t3, r3), h = Math.sin(d), f = Math.cos(d), p = u; p <= c; ++p) {
+            for (var a2, l2, u = (s2 = void 0 === s2 || s2) ? -2 : 0, c = (n2 = n2 < 1 ? 1 : n2) + ((i2 = void 0 === i2 ? 0 !== t3 : i2) ? 2 : 0), d = Math.atan2(e4 - t3, r3), h3 = Math.sin(d), f = Math.cos(d), p = u; p <= c; ++p) {
               var m = p / n2, y = r3 * m, g = void 0, g = p < 0 ? (m = y = 0, e4) : n2 < p ? (y = r3, m = 1, t3) : e4 + (t3 - e4) * m;
               for (-2 !== p && p !== n2 + 2 || (g = 0), y -= r3 / 2, a2 = 0; a2 < o2; ++a2) {
-                var v = a2 / (o2 - 1), b = 2 * Math.PI * v, _ = Math.sin(b), b = Math.cos(b), j2 = (this.vertices.push(new S.default.Vector(_ * g, y, b * g)), void 0), j2 = p < 0 ? new S.default.Vector(0, -1, 0) : n2 < p && t3 ? new S.default.Vector(0, 1, 0) : new S.default.Vector(_ * f, h, b * f);
+                var v = a2 / (o2 - 1), b = 2 * Math.PI * v, _ = Math.sin(b), b = Math.cos(b), j2 = (this.vertices.push(new S.default.Vector(_ * g, y, b * g)), void 0), j2 = p < 0 ? new S.default.Vector(0, -1, 0) : n2 < p && t3 ? new S.default.Vector(0, 1, 0) : new S.default.Vector(_ * f, h3, b * f);
                 this.vertexNormals.push(j2), this.uvs.push(v, m);
               }
             }
@@ -14020,7 +14020,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                 this.uModelMatrix = l2;
               }
             } else {
-              var s2 = e4[4], l2 = void 0 === e4[5] ? s2 : e4[5], u = void 0 === e4[6] ? l2 : e4[6], e4 = void 0 === e4[7] ? u : e4[7], c = o2, d = n2, h = ((c += t3) < t3 && (h = t3, t3 = c, c = h), (d += r3) < r3 && (h = r3, r3 = d, d = h), Math.min((c - t3) / 2, (d - r3) / 2)), f = (h < s2 && (s2 = h), h < l2 && (l2 = h), h < u && (u = h), h < e4 && (e4 = h), t3), p = r3, h = c, t3 = d, m = (this.beginShape(), 0 !== l2 ? (this.vertex(h - l2, p), this.quadraticVertex(h, p, h, p + l2)) : this.vertex(h, p), 0 !== u ? (this.vertex(h, t3 - u), this.quadraticVertex(h, t3, h - u, t3)) : this.vertex(h, t3), 0 !== e4 ? (this.vertex(f + e4, t3), this.quadraticVertex(f, t3, f, t3 - e4)) : this.vertex(f, t3), 0 !== s2 ? (this.vertex(f, p + s2), this.quadraticVertex(f, p, f + s2, p)) : this.vertex(f, p), !(this.immediateMode.geometry.uvs.length = 0)), r3 = false, c = void 0;
+              var s2 = e4[4], l2 = void 0 === e4[5] ? s2 : e4[5], u = void 0 === e4[6] ? l2 : e4[6], e4 = void 0 === e4[7] ? u : e4[7], c = o2, d = n2, h3 = ((c += t3) < t3 && (h3 = t3, t3 = c, c = h3), (d += r3) < r3 && (h3 = r3, r3 = d, d = h3), Math.min((c - t3) / 2, (d - r3) / 2)), f = (h3 < s2 && (s2 = h3), h3 < l2 && (l2 = h3), h3 < u && (u = h3), h3 < e4 && (e4 = h3), t3), p = r3, h3 = c, t3 = d, m = (this.beginShape(), 0 !== l2 ? (this.vertex(h3 - l2, p), this.quadraticVertex(h3, p, h3, p + l2)) : this.vertex(h3, p), 0 !== u ? (this.vertex(h3, t3 - u), this.quadraticVertex(h3, t3, h3 - u, t3)) : this.vertex(h3, t3), 0 !== e4 ? (this.vertex(f + e4, t3), this.quadraticVertex(f, t3, f, t3 - e4)) : this.vertex(f, t3), 0 !== s2 ? (this.vertex(f, p + s2), this.quadraticVertex(f, p, f + s2, p)) : this.vertex(f, p), !(this.immediateMode.geometry.uvs.length = 0)), r3 = false, c = void 0;
               try {
                 for (var y, g = this.immediateMode.geometry.vertices[Symbol.iterator](); !(m = (y = g.next()).done); m = true) {
                   var v = y.value, b = (v.x - f) / o2, _ = (v.y - p) / n2;
@@ -14038,13 +14038,13 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               this.endShape(j.CLOSE);
             }
             return this;
-          }, S.default.RendererGL.prototype.quad = function(i2, a2, l2, u, c, d, h, f, p, m, y, g) {
-            var e4 = 12 < arguments.length && void 0 !== arguments[12] ? arguments[12] : 2, t3 = 13 < arguments.length && void 0 !== arguments[13] ? arguments[13] : 2, r3 = "quad|".concat(i2, "|").concat(a2, "|").concat(l2, "|").concat(u, "|").concat(c, "|").concat(d, "|").concat(h, "|").concat(f, "|").concat(p, "|").concat(m, "|").concat(y, "|").concat(g, "|").concat(e4, "|").concat(t3);
+          }, S.default.RendererGL.prototype.quad = function(i2, a2, l2, u, c, d, h3, f, p, m, y, g) {
+            var e4 = 12 < arguments.length && void 0 !== arguments[12] ? arguments[12] : 2, t3 = 13 < arguments.length && void 0 !== arguments[13] ? arguments[13] : 2, r3 = "quad|".concat(i2, "|").concat(a2, "|").concat(l2, "|").concat(u, "|").concat(c, "|").concat(d, "|").concat(h3, "|").concat(f, "|").concat(p, "|").concat(m, "|").concat(y, "|").concat(g, "|").concat(e4, "|").concat(t3);
             if (!this.geometryInHash(r3)) {
               var o2 = new S.default.Geometry(e4, t3, function() {
                 for (var e5 = 1 / (this.detailX - 1), t4 = 1 / (this.detailY - 1), r4 = 0; r4 < this.detailY; r4++) for (var o3 = 0; o3 < this.detailX; o3++) {
                   var n3 = o3 * e5, s3 = r4 * t4;
-                  this.vertices.push(new S.default.Vector((1 - n3) * ((1 - s3) * i2 + s3 * m) + n3 * ((1 - s3) * u + s3 * h), (1 - n3) * ((1 - s3) * a2 + s3 * y) + n3 * ((1 - s3) * c + s3 * f), (1 - n3) * ((1 - s3) * l2 + s3 * g) + n3 * ((1 - s3) * d + s3 * p))), this.uvs.push([n3, s3]);
+                  this.vertices.push(new S.default.Vector((1 - n3) * ((1 - s3) * i2 + s3 * m) + n3 * ((1 - s3) * u + s3 * h3), (1 - n3) * ((1 - s3) * a2 + s3 * y) + n3 * ((1 - s3) * c + s3 * f), (1 - n3) * ((1 - s3) * l2 + s3 * g) + n3 * ((1 - s3) * d + s3 * p))), this.uvs.push([n3, s3]);
                 }
               });
               o2.faces = [];
@@ -14059,19 +14059,19 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             return this.drawBuffers(r3), this;
           }, S.default.RendererGL.prototype.bezier = function(e4, t3, r3, o2, n2, s2, i2, a2, l2, u, c, d) {
             8 === arguments.length && (c = a2, u = i2, a2 = s2, i2 = n2, n2 = o2, o2 = r3, r3 = s2 = l2 = d = 0);
-            var h = this._pInst._bezierDetail || 20;
+            var h3 = this._pInst._bezierDetail || 20;
             this.beginShape();
-            for (var f = 0; f <= h; f++) {
-              var p = Math.pow(1 - f / h, 3), m = f / h * 3 * Math.pow(1 - f / h, 2), y = 3 * Math.pow(f / h, 2) * (1 - f / h), g = Math.pow(f / h, 3);
+            for (var f = 0; f <= h3; f++) {
+              var p = Math.pow(1 - f / h3, 3), m = f / h3 * 3 * Math.pow(1 - f / h3, 2), y = 3 * Math.pow(f / h3, 2) * (1 - f / h3), g = Math.pow(f / h3, 3);
               this.vertex(e4 * p + o2 * m + i2 * y + u * g, t3 * p + n2 * m + a2 * y + c * g, r3 * p + s2 * m + l2 * y + d * g);
             }
             return this.endShape(), this;
           }, S.default.RendererGL.prototype.curve = function(e4, t3, r3, o2, n2, s2, i2, a2, l2, u, c, d) {
             8 === arguments.length && (u = i2, c = a2, i2 = n2, a2 = o2, n2 = o2 = r3, r3 = s2 = l2 = d = 0);
-            var h = this._pInst._curveDetail;
+            var h3 = this._pInst._curveDetail;
             this.beginShape();
-            for (var f = 0; f <= h; f++) {
-              var p = 0.5 * Math.pow(f / h, 3), m = 0.5 * Math.pow(f / h, 2), y = f / h * 0.5;
+            for (var f = 0; f <= h3; f++) {
+              var p = 0.5 * Math.pow(f / h3, 3), m = 0.5 * Math.pow(f / h3, 2), y = f / h3 * 0.5;
               this.vertex(p * (3 * o2 - e4 - 3 * i2 + u) + m * (2 * e4 - 5 * o2 + 4 * i2 - u) + y * (-e4 + i2) + 2 * o2 * 0.5, p * (3 * n2 - t3 - 3 * a2 + c) + m * (2 * t3 - 5 * n2 + 4 * a2 - c) + y * (-t3 + a2) + 2 * n2 * 0.5, p * (3 * s2 - r3 - 3 * l2 + d) + m * (2 * r3 - 5 * s2 + 4 * l2 - d) + y * (-r3 + l2) + 2 * s2 * 0.5);
             }
             return this.endShape(), this;
@@ -14082,12 +14082,12 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             var e4, t3, r3, o2, n2, s2, i2 = [], a2 = [], l2 = arguments.length;
             if (0 === this._lookUpTableBezier.length || this._lutBezierDetail !== this._pInst._curveDetail) {
               this._lookUpTableBezier = [], this._lutBezierDetail = this._pInst._curveDetail;
-              for (var u = 1 / this._lutBezierDetail, c = u, d = 1, h = 0; c < 1; ) {
-                if (s2 = parseFloat(c.toFixed(6)), this._lookUpTableBezier[h] = this._bezierCoefficients(s2), d.toFixed(6) === u.toFixed(6)) {
-                  s2 = parseFloat(d.toFixed(6)) + parseFloat(c.toFixed(6)), ++h, this._lookUpTableBezier[h] = this._bezierCoefficients(s2);
+              for (var u = 1 / this._lutBezierDetail, c = u, d = 1, h3 = 0; c < 1; ) {
+                if (s2 = parseFloat(c.toFixed(6)), this._lookUpTableBezier[h3] = this._bezierCoefficients(s2), d.toFixed(6) === u.toFixed(6)) {
+                  s2 = parseFloat(d.toFixed(6)) + parseFloat(c.toFixed(6)), ++h3, this._lookUpTableBezier[h3] = this._bezierCoefficients(s2);
                   break;
                 }
-                c += u, d -= u, ++h;
+                c += u, d -= u, ++h3;
               }
             }
             for (var f = this._lookUpTableBezier.length, p = [], m = 0; m < 4; m++) p.push([]);
@@ -14124,12 +14124,12 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             var e4, t3, r3, o2, n2, s2, i2 = [], a2 = [], l2 = arguments.length;
             if (0 === this._lookUpTableQuadratic.length || this._lutQuadraticDetail !== this._pInst._curveDetail) {
               this._lookUpTableQuadratic = [], this._lutQuadraticDetail = this._pInst._curveDetail;
-              for (var u = 1 / this._lutQuadraticDetail, c = u, d = 1, h = 0; c < 1; ) {
-                if (s2 = parseFloat(c.toFixed(6)), this._lookUpTableQuadratic[h] = this._quadraticCoefficients(s2), d.toFixed(6) === u.toFixed(6)) {
-                  s2 = parseFloat(d.toFixed(6)) + parseFloat(c.toFixed(6)), ++h, this._lookUpTableQuadratic[h] = this._quadraticCoefficients(s2);
+              for (var u = 1 / this._lutQuadraticDetail, c = u, d = 1, h3 = 0; c < 1; ) {
+                if (s2 = parseFloat(c.toFixed(6)), this._lookUpTableQuadratic[h3] = this._quadraticCoefficients(s2), d.toFixed(6) === u.toFixed(6)) {
+                  s2 = parseFloat(d.toFixed(6)) + parseFloat(c.toFixed(6)), ++h3, this._lookUpTableQuadratic[h3] = this._quadraticCoefficients(s2);
                   break;
                 }
-                c += u, d -= u, ++h;
+                c += u, d -= u, ++h3;
               }
             }
             for (var f = this._lookUpTableQuadratic.length, p = [], m = 0; m < 3; m++) p.push([]);
@@ -14165,12 +14165,12 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             var e4, t3, r3, o2, n2, s2, i2 = [], a2 = [], l2 = arguments.length;
             if (0 === this._lookUpTableBezier.length || this._lutBezierDetail !== this._pInst._curveDetail) {
               this._lookUpTableBezier = [], this._lutBezierDetail = this._pInst._curveDetail;
-              for (var u = 1 / this._lutBezierDetail, c = u, d = 1, h = 0; c < 1; ) {
-                if (s2 = parseFloat(c.toFixed(6)), this._lookUpTableBezier[h] = this._bezierCoefficients(s2), d.toFixed(6) === u.toFixed(6)) {
-                  s2 = parseFloat(d.toFixed(6)) + parseFloat(c.toFixed(6)), ++h, this._lookUpTableBezier[h] = this._bezierCoefficients(s2);
+              for (var u = 1 / this._lutBezierDetail, c = u, d = 1, h3 = 0; c < 1; ) {
+                if (s2 = parseFloat(c.toFixed(6)), this._lookUpTableBezier[h3] = this._bezierCoefficients(s2), d.toFixed(6) === u.toFixed(6)) {
+                  s2 = parseFloat(d.toFixed(6)) + parseFloat(c.toFixed(6)), ++h3, this._lookUpTableBezier[h3] = this._bezierCoefficients(s2);
                   break;
                 }
-                c += u, d -= u, ++h;
+                c += u, d -= u, ++h3;
               }
             }
             var f = this._lookUpTableBezier.length;
@@ -14335,8 +14335,8 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               n2._renderer.prevTouches.forEach(function(e5) {
                 t4.id === e5.id && (e5 = { x: t4.x, y: t4.y, px: e5.x, py: e5.y }, c.push(e5));
               });
-            }), this._renderer.prevTouches = this.touches, 0), d = 0, h = 0, f = 0, p = 0, m = this.height < this.width ? this.height : this.width, y = false;
-            return 0 < c.length ? (y = 0 < c[0].x && c[0].x < this.width && 0 < c[0].y && c[0].y < this.height, 1 === c.length ? (d = -e4 * ((a = c[0]).x - a.px) / m, h = t3 * (a.y - a.py) / m) : (a = c[0], l = c[1], i2 = -(Math.hypot(a.x - l.x, a.y - l.y) - Math.hypot(a.px - l.px, a.py - l.py)) * r3 * 4e-4, f = 0.5 * (a.x + l.x) - 0.5 * (a.px + l.px), p = 0.5 * (a.y + l.y) - 0.5 * (a.py + l.py)), 0 < this.touches.length ? y && (this._renderer.executeRotateAndMove = true, this._renderer.executeZoom = true) : (this._renderer.executeRotateAndMove = false, this._renderer.executeZoom = false)) : (y = 0 < this.mouseX && this.mouseX < this.width && 0 < this.mouseY && this.mouseY < this.height, 0 !== this._mouseWheelDeltaY ? (i2 = Math.sign(this._mouseWheelDeltaY) * r3, i2 *= 0.01, this._mouseWheelDeltaY = 0, y && (this._renderer.executeZoom = true)) : this._renderer.executeZoom = false, this.mouseIsPressed ? (this.mouseButton === this.LEFT ? (d = -e4 * this.movedX / m, h = t3 * this.movedY / m) : this.mouseButton === this.RIGHT && (f = this.movedX, p = this.movedY * s3.yScale), y && (this._renderer.executeRotateAndMove = true)) : this._renderer.executeRotateAndMove = false), 0 !== i2 && this._renderer.executeZoom && (this._renderer.zoomVelocity += i2), 1e-3 < Math.abs(this._renderer.zoomVelocity) ? (o2 ? s3._orbitFree(0, 0, this._renderer.zoomVelocity) : s3._orbit(0, 0, this._renderer.zoomVelocity), 0 !== s3.projMatrix.mat4[15] && (s3.projMatrix.mat4[0] *= Math.pow(10, -this._renderer.zoomVelocity), s3.projMatrix.mat4[5] *= Math.pow(10, -this._renderer.zoomVelocity), this._renderer.uPMatrix.mat4[0] = s3.projMatrix.mat4[0], this._renderer.uPMatrix.mat4[5] = s3.projMatrix.mat4[5]), this._renderer.zoomVelocity *= 0.85) : this._renderer.zoomVelocity = 0, 0 === d && 0 === h || !this._renderer.executeRotateAndMove || this._renderer.rotateVelocity.add(0.6 * d, 0.6 * h), 1e-6 < this._renderer.rotateVelocity.magSq() ? (o2 ? s3._orbitFree(-this._renderer.rotateVelocity.x, this._renderer.rotateVelocity.y, 0) : s3._orbit(this._renderer.rotateVelocity.x, this._renderer.rotateVelocity.y, 0), this._renderer.rotateVelocity.mult(0.85)) : this._renderer.rotateVelocity.set(0, 0), 0 === f && 0 === p || !this._renderer.executeRotateAndMove || (a = 2 * f / this.width, l = 2 * -p / this.height, this._renderer.moveVelocity.add(0.15 * a, 0.15 * l)), 1e-6 < this._renderer.moveVelocity.magSq() ? (r3 = s3._getLocalAxes(), e4 = s3.eyeX - s3.centerX, t3 = s3.eyeY - s3.centerY, m = s3.eyeZ - s3.centerZ, y = Math.sqrt(e4 * e4 + t3 * t3 + m * m), i2 = new g.default.Vector(s3.centerX, s3.centerY, s3.centerZ), i2 = s3.cameraMatrix.multiplyPoint(i2), (i2 = this._renderer.uPMatrix.multiplyAndNormalizePoint(i2)).x -= this._renderer.moveVelocity.x, i2.y -= this._renderer.moveVelocity.y, h = 0 === (d = this._renderer.uPMatrix.mat4)[15] ? (u = (d[8] + i2.x) / d[0] * y, (d[9] + i2.y) / d[5] * y) : (u = (i2.x - d[12]) / d[0], (i2.y - d[13]) / d[5]), s3.setPosition(s3.eyeX + u * r3.x[0] + h * r3.y[0], s3.eyeY + u * r3.x[1] + h * r3.y[1], s3.eyeZ + u * r3.x[2] + h * r3.y[2]), this._renderer.moveVelocity.mult(0.85)) : this._renderer.moveVelocity.set(0, 0), this;
+            }), this._renderer.prevTouches = this.touches, 0), d = 0, h3 = 0, f = 0, p = 0, m = this.height < this.width ? this.height : this.width, y = false;
+            return 0 < c.length ? (y = 0 < c[0].x && c[0].x < this.width && 0 < c[0].y && c[0].y < this.height, 1 === c.length ? (d = -e4 * ((a = c[0]).x - a.px) / m, h3 = t3 * (a.y - a.py) / m) : (a = c[0], l = c[1], i2 = -(Math.hypot(a.x - l.x, a.y - l.y) - Math.hypot(a.px - l.px, a.py - l.py)) * r3 * 4e-4, f = 0.5 * (a.x + l.x) - 0.5 * (a.px + l.px), p = 0.5 * (a.y + l.y) - 0.5 * (a.py + l.py)), 0 < this.touches.length ? y && (this._renderer.executeRotateAndMove = true, this._renderer.executeZoom = true) : (this._renderer.executeRotateAndMove = false, this._renderer.executeZoom = false)) : (y = 0 < this.mouseX && this.mouseX < this.width && 0 < this.mouseY && this.mouseY < this.height, 0 !== this._mouseWheelDeltaY ? (i2 = Math.sign(this._mouseWheelDeltaY) * r3, i2 *= 0.01, this._mouseWheelDeltaY = 0, y && (this._renderer.executeZoom = true)) : this._renderer.executeZoom = false, this.mouseIsPressed ? (this.mouseButton === this.LEFT ? (d = -e4 * this.movedX / m, h3 = t3 * this.movedY / m) : this.mouseButton === this.RIGHT && (f = this.movedX, p = this.movedY * s3.yScale), y && (this._renderer.executeRotateAndMove = true)) : this._renderer.executeRotateAndMove = false), 0 !== i2 && this._renderer.executeZoom && (this._renderer.zoomVelocity += i2), 1e-3 < Math.abs(this._renderer.zoomVelocity) ? (o2 ? s3._orbitFree(0, 0, this._renderer.zoomVelocity) : s3._orbit(0, 0, this._renderer.zoomVelocity), 0 !== s3.projMatrix.mat4[15] && (s3.projMatrix.mat4[0] *= Math.pow(10, -this._renderer.zoomVelocity), s3.projMatrix.mat4[5] *= Math.pow(10, -this._renderer.zoomVelocity), this._renderer.uPMatrix.mat4[0] = s3.projMatrix.mat4[0], this._renderer.uPMatrix.mat4[5] = s3.projMatrix.mat4[5]), this._renderer.zoomVelocity *= 0.85) : this._renderer.zoomVelocity = 0, 0 === d && 0 === h3 || !this._renderer.executeRotateAndMove || this._renderer.rotateVelocity.add(0.6 * d, 0.6 * h3), 1e-6 < this._renderer.rotateVelocity.magSq() ? (o2 ? s3._orbitFree(-this._renderer.rotateVelocity.x, this._renderer.rotateVelocity.y, 0) : s3._orbit(this._renderer.rotateVelocity.x, this._renderer.rotateVelocity.y, 0), this._renderer.rotateVelocity.mult(0.85)) : this._renderer.rotateVelocity.set(0, 0), 0 === f && 0 === p || !this._renderer.executeRotateAndMove || (a = 2 * f / this.width, l = 2 * -p / this.height, this._renderer.moveVelocity.add(0.15 * a, 0.15 * l)), 1e-6 < this._renderer.moveVelocity.magSq() ? (r3 = s3._getLocalAxes(), e4 = s3.eyeX - s3.centerX, t3 = s3.eyeY - s3.centerY, m = s3.eyeZ - s3.centerZ, y = Math.sqrt(e4 * e4 + t3 * t3 + m * m), i2 = new g.default.Vector(s3.centerX, s3.centerY, s3.centerZ), i2 = s3.cameraMatrix.multiplyPoint(i2), (i2 = this._renderer.uPMatrix.multiplyAndNormalizePoint(i2)).x -= this._renderer.moveVelocity.x, i2.y -= this._renderer.moveVelocity.y, h3 = 0 === (d = this._renderer.uPMatrix.mat4)[15] ? (u = (d[8] + i2.x) / d[0] * y, (d[9] + i2.y) / d[5] * y) : (u = (i2.x - d[12]) / d[0], (i2.y - d[13]) / d[5]), s3.setPosition(s3.eyeX + u * r3.x[0] + h3 * r3.y[0], s3.eyeY + u * r3.x[1] + h3 * r3.y[1], s3.eyeZ + u * r3.x[2] + h3 * r3.y[2]), this._renderer.moveVelocity.mult(0.85)) : this._renderer.moveVelocity.set(0, 0), this;
           }, g.default.prototype.debugMode = function() {
             this._assert3d("debugMode");
             for (var e4 = arguments.length, t3 = new Array(e4), r3 = 0; r3 < e4; r3++) t3[r3] = arguments[r3];
@@ -14394,37 +14394,37 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             return this._assert3d("lightFalloff"), m.default._validateParameters("lightFalloff", arguments), e4 < 0 && (e4 = 0, console.warn("Value of constant argument in lightFalloff() should be never be negative. Set to 0.")), t3 < 0 && (t3 = 0, console.warn("Value of linear argument in lightFalloff() should be never be negative. Set to 0.")), r3 < 0 && (r3 = 0, console.warn("Value of quadratic argument in lightFalloff() should be never be negative. Set to 0.")), 0 === e4 && 0 === t3 && 0 === r3 && (e4 = 1, console.warn("Either one of the three arguments in lightFalloff() should be greater than zero. Set constant argument to 1.")), this._renderer.constantAttenuation = e4, this._renderer.linearAttenuation = t3, this._renderer.quadraticAttenuation = r3, this;
           }, m.default.prototype.spotLight = function(e4, t3, r3, o, n, s2, i, a, l, u, c) {
             this._assert3d("spotLight"), m.default._validateParameters("spotLight", arguments);
-            var d, h, f, p = arguments.length;
+            var d, h3, f, p = arguments.length;
             switch (p) {
               case 11:
               case 10:
-                d = this.color(e4, t3, r3), h = new m.default.Vector(o, n, s2), f = new m.default.Vector(i, a, l);
+                d = this.color(e4, t3, r3), h3 = new m.default.Vector(o, n, s2), f = new m.default.Vector(i, a, l);
                 break;
               case 9:
-                e4 instanceof m.default.Color ? (d = e4, h = new m.default.Vector(t3, r3, o), f = new m.default.Vector(n, s2, i), u = a, c = l) : o instanceof m.default.Vector ? (d = this.color(e4, t3, r3), h = o, f = new m.default.Vector(n, s2, i), u = a, c = l) : i instanceof m.default.Vector ? (d = this.color(e4, t3, r3), h = new m.default.Vector(o, n, s2), f = i, u = a, c = l) : (d = this.color(e4, t3, r3), h = new m.default.Vector(o, n, s2), f = new m.default.Vector(i, a, l));
+                e4 instanceof m.default.Color ? (d = e4, h3 = new m.default.Vector(t3, r3, o), f = new m.default.Vector(n, s2, i), u = a, c = l) : o instanceof m.default.Vector ? (d = this.color(e4, t3, r3), h3 = o, f = new m.default.Vector(n, s2, i), u = a, c = l) : i instanceof m.default.Vector ? (d = this.color(e4, t3, r3), h3 = new m.default.Vector(o, n, s2), f = i, u = a, c = l) : (d = this.color(e4, t3, r3), h3 = new m.default.Vector(o, n, s2), f = new m.default.Vector(i, a, l));
                 break;
               case 8:
-                u = (f = e4 instanceof m.default.Color ? (d = e4, h = new m.default.Vector(t3, r3, o), new m.default.Vector(n, s2, i)) : o instanceof m.default.Vector ? (d = this.color(e4, t3, r3), h = o, new m.default.Vector(n, s2, i)) : (d = this.color(e4, t3, r3), h = new m.default.Vector(o, n, s2), i), a);
+                u = (f = e4 instanceof m.default.Color ? (d = e4, h3 = new m.default.Vector(t3, r3, o), new m.default.Vector(n, s2, i)) : o instanceof m.default.Vector ? (d = this.color(e4, t3, r3), h3 = o, new m.default.Vector(n, s2, i)) : (d = this.color(e4, t3, r3), h3 = new m.default.Vector(o, n, s2), i), a);
                 break;
               case 7:
-                e4 instanceof m.default.Color && t3 instanceof m.default.Vector ? (d = e4, h = t3, f = new m.default.Vector(r3, o, n), u = s2, c = i) : e4 instanceof m.default.Color && n instanceof m.default.Vector ? (d = e4, h = new m.default.Vector(t3, r3, o), f = n, u = s2, c = i) : o instanceof m.default.Vector && n instanceof m.default.Vector ? (d = this.color(e4, t3, r3), h = o, f = n, u = s2, c = i) : f = e4 instanceof m.default.Color ? (d = e4, h = new m.default.Vector(t3, r3, o), new m.default.Vector(n, s2, i)) : o instanceof m.default.Vector ? (d = this.color(e4, t3, r3), h = o, new m.default.Vector(n, s2, i)) : (d = this.color(e4, t3, r3), h = new m.default.Vector(o, n, s2), i);
+                e4 instanceof m.default.Color && t3 instanceof m.default.Vector ? (d = e4, h3 = t3, f = new m.default.Vector(r3, o, n), u = s2, c = i) : e4 instanceof m.default.Color && n instanceof m.default.Vector ? (d = e4, h3 = new m.default.Vector(t3, r3, o), f = n, u = s2, c = i) : o instanceof m.default.Vector && n instanceof m.default.Vector ? (d = this.color(e4, t3, r3), h3 = o, f = n, u = s2, c = i) : f = e4 instanceof m.default.Color ? (d = e4, h3 = new m.default.Vector(t3, r3, o), new m.default.Vector(n, s2, i)) : o instanceof m.default.Vector ? (d = this.color(e4, t3, r3), h3 = o, new m.default.Vector(n, s2, i)) : (d = this.color(e4, t3, r3), h3 = new m.default.Vector(o, n, s2), i);
                 break;
               case 6:
-                o instanceof m.default.Vector && n instanceof m.default.Vector ? (d = this.color(e4, t3, r3), h = o, f = n, u = s2) : e4 instanceof m.default.Color && n instanceof m.default.Vector ? (d = e4, h = new m.default.Vector(t3, r3, o), f = n, u = s2) : e4 instanceof m.default.Color && t3 instanceof m.default.Vector && (d = e4, h = t3, f = new m.default.Vector(r3, o, n), u = s2);
+                o instanceof m.default.Vector && n instanceof m.default.Vector ? (d = this.color(e4, t3, r3), h3 = o, f = n, u = s2) : e4 instanceof m.default.Color && n instanceof m.default.Vector ? (d = e4, h3 = new m.default.Vector(t3, r3, o), f = n, u = s2) : e4 instanceof m.default.Color && t3 instanceof m.default.Vector && (d = e4, h3 = t3, f = new m.default.Vector(r3, o, n), u = s2);
                 break;
               case 5:
-                e4 instanceof m.default.Color && t3 instanceof m.default.Vector && r3 instanceof m.default.Vector ? (d = e4, h = t3, f = r3, u = o, c = n) : o instanceof m.default.Vector && n instanceof m.default.Vector ? (d = this.color(e4, t3, r3), h = o, f = n) : e4 instanceof m.default.Color && n instanceof m.default.Vector ? (d = e4, h = new m.default.Vector(t3, r3, o), f = n) : e4 instanceof m.default.Color && t3 instanceof m.default.Vector && (d = e4, h = t3, f = new m.default.Vector(r3, o, n));
+                e4 instanceof m.default.Color && t3 instanceof m.default.Vector && r3 instanceof m.default.Vector ? (d = e4, h3 = t3, f = r3, u = o, c = n) : o instanceof m.default.Vector && n instanceof m.default.Vector ? (d = this.color(e4, t3, r3), h3 = o, f = n) : e4 instanceof m.default.Color && n instanceof m.default.Vector ? (d = e4, h3 = new m.default.Vector(t3, r3, o), f = n) : e4 instanceof m.default.Color && t3 instanceof m.default.Vector && (d = e4, h3 = t3, f = new m.default.Vector(r3, o, n));
                 break;
               case 4:
-                d = e4, h = t3, f = r3, u = o;
+                d = e4, h3 = t3, f = r3, u = o;
                 break;
               case 3:
-                d = e4, h = t3, f = r3;
+                d = e4, h3 = t3, f = r3;
                 break;
               default:
                 return console.warn("Sorry, input for spotlight() is not in prescribed format. Too ".concat(p < 3 ? "few" : "many", " arguments were provided")), this;
             }
-            return this._renderer.spotLightDiffuseColors.push(d._array[0], d._array[1], d._array[2]), Array.prototype.push.apply(this._renderer.spotLightSpecularColors, this._renderer.specularColors), this._renderer.spotLightPositions.push(h.x, h.y, h.z), f.normalize(), this._renderer.spotLightDirections.push(f.x, f.y, f.z), void 0 === u && (u = Math.PI / 3), void 0 !== c && c < 1 ? (c = 1, console.warn("Value of concentration needs to be greater than 1. Setting it to 1")) : void 0 === c && (c = 100), u = this._renderer._pInst._toRadians(u), this._renderer.spotLightAngle.push(Math.cos(u)), this._renderer.spotLightConc.push(c), this._renderer._enableLighting = true, this;
+            return this._renderer.spotLightDiffuseColors.push(d._array[0], d._array[1], d._array[2]), Array.prototype.push.apply(this._renderer.spotLightSpecularColors, this._renderer.specularColors), this._renderer.spotLightPositions.push(h3.x, h3.y, h3.z), f.normalize(), this._renderer.spotLightDirections.push(f.x, f.y, f.z), void 0 === u && (u = Math.PI / 3), void 0 !== c && c < 1 ? (c = 1, console.warn("Value of concentration needs to be greater than 1. Setting it to 1")) : void 0 === c && (c = 100), u = this._renderer._pInst._toRadians(u), this._renderer.spotLightAngle.push(Math.cos(u)), this._renderer.spotLightConc.push(c), this._renderer._enableLighting = true, this;
           }, m.default.prototype.noLights = function() {
             this._assert3d("noLights");
             for (var e4 = arguments.length, t3 = new Array(e4), r3 = 0; r3 < e4; r3++) t3[r3] = arguments[r3];
@@ -14491,11 +14491,11 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               if (0 < d.length) {
                 if ("usemtl" === d[0]) i = d[1];
                 else if ("v" === d[0] || "vn" === d[0]) {
-                  var h = new L.default.Vector(parseFloat(d[1]), parseFloat(d[2]), parseFloat(d[3]));
-                  n2[d[0]].push(h);
+                  var h3 = new L.default.Vector(parseFloat(d[1]), parseFloat(d[2]), parseFloat(d[3]));
+                  n2[d[0]].push(h3);
                 } else if ("vt" === d[0]) {
-                  h = [parseFloat(d[1]), 1 - parseFloat(d[2])];
-                  n2[d[0]].push(h);
+                  h3 = [parseFloat(d[1]), 1 - parseFloat(d[2])];
+                  n2[d[0]].push(h3);
                 } else if ("f" === d[0]) for (var f2 = 3; f2 < d.length; ++f2) {
                   for (var p2 = [], m2 = [1, f2 - 1, f2], y2 = 0; y2 < m2.length; ++y2) {
                     for (var g2, v = d[m2[y2]], b = v.split("/"), _ = 0; _ < b.length; _++) b[_] = parseInt(b[_]) - 1;
@@ -14516,11 +14516,11 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               }(r4, t4, o3)) return;
               return 1;
             }(t3)) {
-              for (var r3, o2, n2, s2, i, a, l2, u2 = e4, c = new DataView(t3), d = c.getUint32(80, true), h = false, f2 = 0; f2 < 70; f2++) 1129270351 === c.getUint32(f2, false) && 82 === c.getUint8(f2 + 4) && 61 === c.getUint8(f2 + 5) && (h = true, s2 = [], i = c.getUint8(f2 + 6) / 255, a = c.getUint8(f2 + 7) / 255, l2 = c.getUint8(f2 + 8) / 255);
+              for (var r3, o2, n2, s2, i, a, l2, u2 = e4, c = new DataView(t3), d = c.getUint32(80, true), h3 = false, f2 = 0; f2 < 70; f2++) 1129270351 === c.getUint32(f2, false) && 82 === c.getUint8(f2 + 4) && 61 === c.getUint8(f2 + 5) && (h3 = true, s2 = [], i = c.getUint8(f2 + 6) / 255, a = c.getUint8(f2 + 7) / 255, l2 = c.getUint8(f2 + 8) / 255);
               for (var p2 = 0; p2 < d; p2++) {
-                for (var m2, y2 = 84 + 50 * p2, g2 = c.getFloat32(y2, true), v = c.getFloat32(4 + y2, true), b = c.getFloat32(8 + y2, true), _ = (h && (m2 = c.getUint16(48 + y2, true), n2 = 0 == (32768 & m2) ? (r3 = (31 & m2) / 31, o2 = (m2 >> 5 & 31) / 31, (m2 >> 10 & 31) / 31) : (r3 = i, o2 = a, l2)), new L.default.Vector(g2, v, b)), j = 1; j <= 3; j++) {
+                for (var m2, y2 = 84 + 50 * p2, g2 = c.getFloat32(y2, true), v = c.getFloat32(4 + y2, true), b = c.getFloat32(8 + y2, true), _ = (h3 && (m2 = c.getUint16(48 + y2, true), n2 = 0 == (32768 & m2) ? (r3 = (31 & m2) / 31, o2 = (m2 >> 5 & 31) / 31, (m2 >> 10 & 31) / 31) : (r3 = i, o2 = a, l2)), new L.default.Vector(g2, v, b)), j = 1; j <= 3; j++) {
                   var x = y2 + 12 * j, x = new L.default.Vector(c.getFloat32(x, true), c.getFloat32(4 + x, true), c.getFloat32(8 + x, true));
-                  u2.vertices.push(x), u2.vertexNormals.push(_), h && s2.push(r3, o2, n2);
+                  u2.vertices.push(x), u2.vertexNormals.push(_), h3 && s2.push(r3, o2, n2);
                 }
                 u2.faces.push([3 * p2, 3 * p2 + 1, 3 * p2 + 2]), u2.uvs.push([0, 0], [0, 0], [0, 0]);
               }
@@ -14577,7 +14577,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                       for (r3 = [], o3 = 0; o3 < t4.length; o3++) (n3 = t4[o3].match(/^mtllib (.+)/)) && !function() {
                         var o4 = "", e7 = n3[1], t5 = i.split("/");
                         o4 = 1 < t5.length ? (t5.pop(), t5.join("/") + "/" + e7) : e7, r3.push(function() {
-                          return h.apply(this, arguments);
+                          return h3.apply(this, arguments);
                         }(o4).then(function(e8) {
                           return e8 ? (t6 = c, r4 = o4, new Promise(function(n4, e9) {
                             var s4 = null, i2 = {};
@@ -14606,8 +14606,8 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                 }, e5, null, [[2, 10]]);
               }))).apply(this, arguments);
             }
-            function h() {
-              return (h = p(regeneratorRuntime.mark(function e5(t4) {
+            function h3() {
+              return (h3 = p(regeneratorRuntime.mark(function e5(t4) {
                 var r3;
                 return regeneratorRuntime.wrap(function(e6) {
                   for (; ; ) switch (e6.prev = e6.next) {
@@ -14906,8 +14906,8 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               }
               this.cameraMatrix = e5.cameraMatrix.copy(), this.projMatrix = e5.projMatrix.copy(), this._isActive() && (this._renderer.uModelMatrix.reset(), this._renderer.uViewMatrix.set(this.cameraMatrix), this._renderer.uPMatrix.set(this.projMatrix));
             } }, { key: "slerp", value: function(e5, t4, r4) {
-              var o2, n2, s2, i, a, l, u, c, d, h, f, p, m, y, g, v, b, _;
-              0 === r4 ? this.set(e5) : 1 === r4 ? this.set(t4) : (0 !== this.projMatrix.mat4[15] && (this.projMatrix.mat4[0] = e5.projMatrix.mat4[0] * Math.pow(t4.projMatrix.mat4[0] / e5.projMatrix.mat4[0], r4), this.projMatrix.mat4[5] = e5.projMatrix.mat4[5] * Math.pow(t4.projMatrix.mat4[5] / e5.projMatrix.mat4[5], r4), this._isActive() && (this._renderer.uPMatrix.mat4 = this.projMatrix.mat4.slice())), i = new j.default.Vector(e5.eyeX, e5.eyeY, e5.eyeZ), a = new j.default.Vector(t4.eyeX, t4.eyeY, t4.eyeZ), v = new j.default.Vector(e5.centerX, e5.centerY, e5.centerZ), _ = new j.default.Vector(t4.centerX, t4.centerY, t4.centerZ), s2 = j.default.Vector.dist(i, v), o2 = j.default.Vector.dist(a, _), o2 = s2 * Math.pow(o2 / s2, r4), s2 = j.default.Vector.sub(i, a), n2 = 1, 1e-6 < (b = (y = i.copy().sub(a).sub(v).add(_)).magSq()) && (n2 = j.default.Vector.dot(s2, y) / b, n2 = Math.max(0, Math.min(n2, 1))), s2 = j.default.Vector.lerp(j.default.Vector.lerp(i, v, n2), j.default.Vector.lerp(a, _, n2), r4), y = e5.cameraMatrix.createSubMatrix3x3(), b = t4.cameraMatrix.createSubMatrix3x3(), i = y.row(2), v = b.row(2), a = y.row(1), _ = b.row(1), e5 = new j.default.Vector(), t4 = new j.default.Vector(), l = new j.default.Vector(), u = new j.default.Vector(), 1 - (c = 0.5 * ((y = (b = b.mult3x3(y.copy().transpose3x3())).diagonal())[0] + y[1] + y[2] - 1)) < 1e-7 ? (e5.set(j.default.Vector.lerp(i, v, r4)).normalize(), l.set(e5).mult(n2 * o2).add(s2), u.set(e5).mult((n2 - 1) * o2).add(s2), t4.set(j.default.Vector.lerp(a, _, r4)).normalize()) : (v = 1 / (1 - c), _ = Math.max(y[0], y[1], y[2]), p = b.mat3[1] + b.mat3[3], m = b.mat3[2] + b.mat3[6], g = b.mat3[5] + b.mat3[7], _ = _ === y[0] ? (h = 0.5 * p * (v /= d = Math.sqrt((y[0] - c) * v)), f = 0.5 * m * v, 0.5 * (b.mat3[7] - b.mat3[5]) / d) : _ === y[1] ? (f = 0.5 * g * (v /= h = Math.sqrt((y[1] - c) * v)), d = 0.5 * p * v, 0.5 * (b.mat3[2] - b.mat3[6]) / h) : (d = 0.5 * m * (v /= f = Math.sqrt((y[2] - c) * v)), h = 0.5 * g * v, 0.5 * (b.mat3[3] - b.mat3[1]) / f), p = r4 * Math.atan2(_, c), m = Math.cos(p), y = Math.sin(p), (_ = new j.default.Matrix("mat3", [m + (g = 1 - m) * d * d, g * (v = d * h) + y * f, g * (b = f * d) - y * h, g * v - y * f, m + g * h * h, g * (r4 = h * f) + y * d, g * b + y * h, g * r4 - y * d, m + g * f * f])).multiplyVec3(i, e5), l.set(e5).mult(n2 * o2).add(s2), u.set(e5).mult((n2 - 1) * o2).add(s2), _.multiplyVec3(a, t4)), this.camera(l.x, l.y, l.z, u.x, u.y, u.z, t4.x, t4.y, t4.z));
+              var o2, n2, s2, i, a, l, u, c, d, h3, f, p, m, y, g, v, b, _;
+              0 === r4 ? this.set(e5) : 1 === r4 ? this.set(t4) : (0 !== this.projMatrix.mat4[15] && (this.projMatrix.mat4[0] = e5.projMatrix.mat4[0] * Math.pow(t4.projMatrix.mat4[0] / e5.projMatrix.mat4[0], r4), this.projMatrix.mat4[5] = e5.projMatrix.mat4[5] * Math.pow(t4.projMatrix.mat4[5] / e5.projMatrix.mat4[5], r4), this._isActive() && (this._renderer.uPMatrix.mat4 = this.projMatrix.mat4.slice())), i = new j.default.Vector(e5.eyeX, e5.eyeY, e5.eyeZ), a = new j.default.Vector(t4.eyeX, t4.eyeY, t4.eyeZ), v = new j.default.Vector(e5.centerX, e5.centerY, e5.centerZ), _ = new j.default.Vector(t4.centerX, t4.centerY, t4.centerZ), s2 = j.default.Vector.dist(i, v), o2 = j.default.Vector.dist(a, _), o2 = s2 * Math.pow(o2 / s2, r4), s2 = j.default.Vector.sub(i, a), n2 = 1, 1e-6 < (b = (y = i.copy().sub(a).sub(v).add(_)).magSq()) && (n2 = j.default.Vector.dot(s2, y) / b, n2 = Math.max(0, Math.min(n2, 1))), s2 = j.default.Vector.lerp(j.default.Vector.lerp(i, v, n2), j.default.Vector.lerp(a, _, n2), r4), y = e5.cameraMatrix.createSubMatrix3x3(), b = t4.cameraMatrix.createSubMatrix3x3(), i = y.row(2), v = b.row(2), a = y.row(1), _ = b.row(1), e5 = new j.default.Vector(), t4 = new j.default.Vector(), l = new j.default.Vector(), u = new j.default.Vector(), 1 - (c = 0.5 * ((y = (b = b.mult3x3(y.copy().transpose3x3())).diagonal())[0] + y[1] + y[2] - 1)) < 1e-7 ? (e5.set(j.default.Vector.lerp(i, v, r4)).normalize(), l.set(e5).mult(n2 * o2).add(s2), u.set(e5).mult((n2 - 1) * o2).add(s2), t4.set(j.default.Vector.lerp(a, _, r4)).normalize()) : (v = 1 / (1 - c), _ = Math.max(y[0], y[1], y[2]), p = b.mat3[1] + b.mat3[3], m = b.mat3[2] + b.mat3[6], g = b.mat3[5] + b.mat3[7], _ = _ === y[0] ? (h3 = 0.5 * p * (v /= d = Math.sqrt((y[0] - c) * v)), f = 0.5 * m * v, 0.5 * (b.mat3[7] - b.mat3[5]) / d) : _ === y[1] ? (f = 0.5 * g * (v /= h3 = Math.sqrt((y[1] - c) * v)), d = 0.5 * p * v, 0.5 * (b.mat3[2] - b.mat3[6]) / h3) : (d = 0.5 * m * (v /= f = Math.sqrt((y[2] - c) * v)), h3 = 0.5 * g * v, 0.5 * (b.mat3[3] - b.mat3[1]) / f), p = r4 * Math.atan2(_, c), m = Math.cos(p), y = Math.sin(p), (_ = new j.default.Matrix("mat3", [m + (g = 1 - m) * d * d, g * (v = d * h3) + y * f, g * (b = f * d) - y * h3, g * v - y * f, m + g * h3 * h3, g * (r4 = h3 * f) + y * d, g * b + y * h3, g * r4 - y * d, m + g * f * f])).multiplyVec3(i, e5), l.set(e5).mult(n2 * o2).add(s2), u.set(e5).mult((n2 - 1) * o2).add(s2), _.multiplyVec3(a, t4)), this.camera(l.x, l.y, l.z, u.x, u.y, u.z, t4.x, t4.y, t4.z));
             } }, { key: "_computeCameraDefaultSettings", value: function() {
               this.defaultAspectRatio = this._renderer.width / this._renderer.height, this.defaultEyeX = 0, this.defaultEyeY = 0, this.defaultEyeZ = 800, this.defaultCameraFOV = 2 * Math.atan(this._renderer.height / 2 / this.defaultEyeZ), this.defaultCenterX = 0, this.defaultCenterY = 0, this.defaultCenterZ = 0, this.defaultCameraNear = 0.1 * this.defaultEyeZ, this.defaultCameraFar = 10 * this.defaultEyeZ;
             } }, { key: "_setDefaultCamera", value: function() {
@@ -15047,7 +15047,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               o2.enumerable = o2.enumerable || false, o2.configurable = true, "value" in o2 && (o2.writable = true), Object.defineProperty(e4, o2.key, o2);
             }
           }
-          function h(e4, t3, r3) {
+          function h3(e4, t3, r3) {
             t3 && s2(e4.prototype, t3), r3 && s2(e4, r3);
           }
           function m(e4, t3, r3) {
@@ -15097,14 +15097,14 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               var t4;
               return d(this, o2), (t4 = r3.call(this, e5.target._renderer)).fbo = e5, t4.yScale = -1, t4;
             }
-            return h(o2, [{ key: "_computeCameraDefaultSettings", value: function() {
+            return h3(o2, [{ key: "_computeCameraDefaultSettings", value: function() {
               m(v(o2.prototype), "_computeCameraDefaultSettings", this).call(this), this.defaultAspectRatio = this.fbo.width / this.fbo.height, this.defaultCameraFOV = 2 * Math.atan(this.fbo.height / 2 / this.defaultEyeZ);
             } }]), o2;
           }(f.default.Camera), _ = (f.default.FramebufferCamera = b, function() {
             function r3(e4, t3) {
               d(this, r3), this.framebuffer = e4, this.property = t3;
             }
-            return h(r3, [{ key: "rawTexture", value: function() {
+            return h3(r3, [{ key: "rawTexture", value: function() {
               return this.framebuffer[this.property];
             } }, { key: "width", get: function() {
               return this.framebuffer.width * this.framebuffer.density;
@@ -15122,7 +15122,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                 return t3.target.clear();
               });
             }
-            return h(s3, [{ key: "resize", value: function(e4, t3) {
+            return h3(s3, [{ key: "resize", value: function(e4, t3) {
               this._autoSized = false;
               var r3 = this.target._renderer._adjustDimensions(e4, t3);
               e4 = r3.adjustedWidth, t3 = r3.adjustedHeight, this.width = e4, this.height = t3, this._handleResize();
@@ -15202,8 +15202,8 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               else if (void 0 === r3 && void 0 === o2) return (e4 < 0 || t3 < 0 || e4 >= this.width || t3 >= this.height) && (console.warn("The x and y values passed to p5.Framebuffer.get are outside of its range and will be clamped."), e4 = this.target.constrain(e4, 0, this.width - 1), t3 = this.target.constrain(t3, 0, this.height - 1)), (0, p.readPixelWebGL)(this.gl, this.framebuffer, e4 * this.density, t3 * this.density, n2.format, n2.type);
               e4 = this.target.constrain(e4, 0, this.width - 1), t3 = this.target.constrain(t3, 0, this.height - 1), r3 = this.target.constrain(r3, 1, this.width - e4), o2 = this.target.constrain(o2, 1, this.height - t3);
               for (var s4 = (0, p.readPixelsWebGL)(void 0, this.gl, this.framebuffer, e4 * this.density, t3 * this.density, r3 * this.density, o2 * this.density, n2.format, n2.type), i2 = new Uint8ClampedArray(r3 * o2 * this.density * this.density * 4), a2 = (i2.fill(255), n2.type === this.gl.RGB ? 3 : 4), l2 = 0; l2 < o2 * this.density; l2++) for (var u2 = 0; u2 < r3 * this.density; u2++) for (var c2 = 0; c2 < 4; c2++) {
-                var d2, h2 = 4 * (l2 * r3 * this.density + u2) + c2;
-                c2 < a2 && (d2 = 4 == a2 ? h2 : (l2 * r3 * this.density + u2) * a2 + c2, i2[h2] = s4[d2]);
+                var d2, h4 = 4 * (l2 * r3 * this.density + u2) + c2;
+                c2 < a2 && (d2 = 4 == a2 ? h4 : (l2 * r3 * this.density + u2) * a2 + c2, i2[h4] = s4[d2]);
               }
               e4 = new f.default.Image(r3 * this.density, o2 * this.density);
               return e4.imageData = e4.canvas.getContext("2d").createImageData(e4.width, e4.height), e4.imageData.data.set(i2), e4.pixels = e4.imageData.data, e4.updatePixels(), 1 !== this.density && e4.resize(r3, o2), e4;
@@ -15350,8 +15350,8 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               var e5 = 0 < arguments.length && void 0 !== arguments[0] ? arguments[0] : "model.stl", t4 = (1 < arguments.length && void 0 !== arguments[1] ? arguments[1] : {}).binary, t4 = void 0 !== t4 && t4, r4 = e5.substring(0, e5.lastIndexOf(".")), o3 = [], n2 = true, s3 = false, i2 = void 0;
               try {
                 for (var a2, l = this.faces[Symbol.iterator](); !(n2 = (a2 = l.next()).done); n2 = true) {
-                  var u = a2.value, c2 = F.default.Vector.sub(this.vertices[u[1]], this.vertices[u[0]]), d = F.default.Vector.sub(this.vertices[u[2]], this.vertices[u[0]]), h = c2.y * d.z - c2.z * d.y, f = c2.z * d.x - c2.x * d.z, p = c2.x * d.y - c2.y * d.x;
-                  o3.push(new F.default.Vector(h, f, p).normalize());
+                  var u = a2.value, c2 = F.default.Vector.sub(this.vertices[u[1]], this.vertices[u[0]]), d = F.default.Vector.sub(this.vertices[u[2]], this.vertices[u[0]]), h3 = c2.y * d.z - c2.z * d.y, f = c2.z * d.x - c2.x * d.z, p = c2.x * d.y - c2.y * d.x;
+                  o3.push(new F.default.Vector(h3, f, p).normalize());
                 }
               } catch (e6) {
                 s3 = true, i2 = e6;
@@ -15429,8 +15429,8 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                   return Math.round(e6 * u) / u;
                 }, d = function(e6) {
                   return "".concat(c2(e6.x), ",").concat(c2(e6.y), ",").concat(c2(e6.z));
-                }, h = 0; h < o3.length; h++) {
-                  var f = o3[h], p = d(f);
+                }, h3 = 0; h3 < o3.length; h3++) {
+                  var f = o3[h3], p = d(f);
                   void 0 === a2[p] && (a2[p] = l.length, l.push(f));
                 }
                 n2.forEach(function(e6) {
@@ -15473,8 +15473,8 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             } }, { key: "_edgesToVertices", value: function() {
               this.lineVertices.clear(), this.lineTangentsIn.clear(), this.lineTangentsOut.clear(), this.lineSides.clear();
               for (var e5, t4 = /* @__PURE__ */ new Map(), r4 = /* @__PURE__ */ new Set(), o3 = 0; o3 < this.edges.length; o3++) {
-                var n2, s3 = this.edges[o3 - 1], i2 = this.edges[o3], a2 = this.vertices[i2[0]], l = this.vertices[i2[1]], u = 0 < this.vertexStrokeColors.length ? this.vertexStrokeColors.slice(4 * i2[0], 4 * (i2[0] + 1)) : [0, 0, 0, 0], c2 = 0 < this.vertexStrokeColors.length ? this.vertexStrokeColors.slice(4 * i2[1], 4 * (i2[1] + 1)) : [0, 0, 0, 0], d = l.copy().sub(a2).normalize(), h = 0 < d.magSq();
-                h && this._addSegment(a2, l, u, c2, d), 0 < o3 && s3[1] === i2[0] ? r4.has(i2[0]) || (r4.add(i2[0]), t4.delete(i2[0]), e5 && h && d.dot(e5) < 1 - 1e-8 && this._addJoin(a2, e5, d, u)) : (h && !r4.has(i2[0]) && ((n2 = t4.get(i2[0])) ? (this._addJoin(a2, n2.dir, d, u), t4.delete(i2[0]), r4.add(i2[0])) : t4.set(i2[0], { point: a2, dir: d.copy().mult(-1), color: u })), e5 && !r4.has(s3[1]) && ((n2 = t4.get(s3[1])) ? (this._addJoin(this.vertices[s3[1]], e5, n2.dir.copy().mult(-1), u), t4.delete(s3[1]), r4.add(s3[1])) : t4.set(s3[1], { point: this.vertices[s3[1]], dir: e5, color: u }), e5 = void 0)), o3 !== this.edges.length - 1 || r4.has(i2[1]) || ((a2 = t4.get(i2[1])) ? (this._addJoin(l, d, a2.dir.copy().mult(-1), c2), t4.delete(i2[1]), r4.add(i2[1])) : t4.set(i2[1], { point: l, dir: d, color: c2 })), h && (e5 = d);
+                var n2, s3 = this.edges[o3 - 1], i2 = this.edges[o3], a2 = this.vertices[i2[0]], l = this.vertices[i2[1]], u = 0 < this.vertexStrokeColors.length ? this.vertexStrokeColors.slice(4 * i2[0], 4 * (i2[0] + 1)) : [0, 0, 0, 0], c2 = 0 < this.vertexStrokeColors.length ? this.vertexStrokeColors.slice(4 * i2[1], 4 * (i2[1] + 1)) : [0, 0, 0, 0], d = l.copy().sub(a2).normalize(), h3 = 0 < d.magSq();
+                h3 && this._addSegment(a2, l, u, c2, d), 0 < o3 && s3[1] === i2[0] ? r4.has(i2[0]) || (r4.add(i2[0]), t4.delete(i2[0]), e5 && h3 && d.dot(e5) < 1 - 1e-8 && this._addJoin(a2, e5, d, u)) : (h3 && !r4.has(i2[0]) && ((n2 = t4.get(i2[0])) ? (this._addJoin(a2, n2.dir, d, u), t4.delete(i2[0]), r4.add(i2[0])) : t4.set(i2[0], { point: a2, dir: d.copy().mult(-1), color: u })), e5 && !r4.has(s3[1]) && ((n2 = t4.get(s3[1])) ? (this._addJoin(this.vertices[s3[1]], e5, n2.dir.copy().mult(-1), u), t4.delete(s3[1]), r4.add(s3[1])) : t4.set(s3[1], { point: this.vertices[s3[1]], dir: e5, color: u }), e5 = void 0)), o3 !== this.edges.length - 1 || r4.has(i2[1]) || ((a2 = t4.get(i2[1])) ? (this._addJoin(l, d, a2.dir.copy().mult(-1), c2), t4.delete(i2[1]), r4.add(i2[1])) : t4.set(i2[1], { point: l, dir: d, color: c2 })), h3 && (e5 = d);
               }
               var f = true, p = false, m2 = void 0;
               try {
@@ -15552,12 +15552,12 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               var t4, r4, o2, n2, s3, i;
               return e5 instanceof O.default.Matrix ? (t4 = e5.mat4[1], r4 = e5.mat4[2], o2 = e5.mat4[3], n2 = e5.mat4[6], s3 = e5.mat4[7], i = e5.mat4[11], this.mat4[0] = e5.mat4[0], this.mat4[1] = e5.mat4[4], this.mat4[2] = e5.mat4[8], this.mat4[3] = e5.mat4[12], this.mat4[4] = t4, this.mat4[5] = e5.mat4[5], this.mat4[6] = e5.mat4[9], this.mat4[7] = e5.mat4[13], this.mat4[8] = r4, this.mat4[9] = n2, this.mat4[10] = e5.mat4[10], this.mat4[11] = e5.mat4[14], this.mat4[12] = o2, this.mat4[13] = s3, this.mat4[14] = i, this.mat4[15] = e5.mat4[15]) : C(e5) && (t4 = e5[1], r4 = e5[2], o2 = e5[3], n2 = e5[6], s3 = e5[7], i = e5[11], this.mat4[0] = e5[0], this.mat4[1] = e5[4], this.mat4[2] = e5[8], this.mat4[3] = e5[12], this.mat4[4] = t4, this.mat4[5] = e5[5], this.mat4[6] = e5[9], this.mat4[7] = e5[13], this.mat4[8] = r4, this.mat4[9] = n2, this.mat4[10] = e5[10], this.mat4[11] = e5[14], this.mat4[12] = o2, this.mat4[13] = s3, this.mat4[14] = i, this.mat4[15] = e5[15]), this;
             } }, { key: "invert", value: function(e5) {
-              e5 instanceof O.default.Matrix ? (t4 = e5.mat4[0], r4 = e5.mat4[1], o2 = e5.mat4[2], n2 = e5.mat4[3], s3 = e5.mat4[4], i = e5.mat4[5], a = e5.mat4[6], l = e5.mat4[7], u = e5.mat4[8], c = e5.mat4[9], d = e5.mat4[10], h = e5.mat4[11], f = e5.mat4[12], p = e5.mat4[13], m = e5.mat4[14], y = e5.mat4[15]) : C(e5) && (t4 = e5[0], r4 = e5[1], o2 = e5[2], n2 = e5[3], s3 = e5[4], i = e5[5], a = e5[6], l = e5[7], u = e5[8], c = e5[9], d = e5[10], h = e5[11], f = e5[12], p = e5[13], m = e5[14], y = e5[15]);
-              var t4, r4, o2, n2, s3, i, a, l, u, c, d, h, f, p, m, y, e5 = t4 * i - r4 * s3, g = t4 * a - o2 * s3, v = t4 * l - n2 * s3, b = r4 * a - o2 * i, _ = r4 * l - n2 * i, j = o2 * l - n2 * a, x = u * p - c * f, w = u * m - d * f, S = u * y - h * f, T = c * m - d * p, E = c * y - h * p, M = d * y - h * m, k = e5 * M - g * E + v * T + b * S - _ * w + j * x;
-              return k ? (this.mat4[0] = (i * M - a * E + l * T) * (k = 1 / k), this.mat4[1] = (o2 * E - r4 * M - n2 * T) * k, this.mat4[2] = (p * j - m * _ + y * b) * k, this.mat4[3] = (d * _ - c * j - h * b) * k, this.mat4[4] = (a * S - s3 * M - l * w) * k, this.mat4[5] = (t4 * M - o2 * S + n2 * w) * k, this.mat4[6] = (m * v - f * j - y * g) * k, this.mat4[7] = (u * j - d * v + h * g) * k, this.mat4[8] = (s3 * E - i * S + l * x) * k, this.mat4[9] = (r4 * S - t4 * E - n2 * x) * k, this.mat4[10] = (f * _ - p * v + y * e5) * k, this.mat4[11] = (c * v - u * _ - h * e5) * k, this.mat4[12] = (i * w - s3 * T - a * x) * k, this.mat4[13] = (t4 * T - r4 * w + o2 * x) * k, this.mat4[14] = (p * g - f * b - m * e5) * k, this.mat4[15] = (u * b - c * g + d * e5) * k, this) : null;
+              e5 instanceof O.default.Matrix ? (t4 = e5.mat4[0], r4 = e5.mat4[1], o2 = e5.mat4[2], n2 = e5.mat4[3], s3 = e5.mat4[4], i = e5.mat4[5], a = e5.mat4[6], l = e5.mat4[7], u = e5.mat4[8], c = e5.mat4[9], d = e5.mat4[10], h3 = e5.mat4[11], f = e5.mat4[12], p = e5.mat4[13], m = e5.mat4[14], y = e5.mat4[15]) : C(e5) && (t4 = e5[0], r4 = e5[1], o2 = e5[2], n2 = e5[3], s3 = e5[4], i = e5[5], a = e5[6], l = e5[7], u = e5[8], c = e5[9], d = e5[10], h3 = e5[11], f = e5[12], p = e5[13], m = e5[14], y = e5[15]);
+              var t4, r4, o2, n2, s3, i, a, l, u, c, d, h3, f, p, m, y, e5 = t4 * i - r4 * s3, g = t4 * a - o2 * s3, v = t4 * l - n2 * s3, b = r4 * a - o2 * i, _ = r4 * l - n2 * i, j = o2 * l - n2 * a, x = u * p - c * f, w = u * m - d * f, S = u * y - h3 * f, T = c * m - d * p, E = c * y - h3 * p, M = d * y - h3 * m, k = e5 * M - g * E + v * T + b * S - _ * w + j * x;
+              return k ? (this.mat4[0] = (i * M - a * E + l * T) * (k = 1 / k), this.mat4[1] = (o2 * E - r4 * M - n2 * T) * k, this.mat4[2] = (p * j - m * _ + y * b) * k, this.mat4[3] = (d * _ - c * j - h3 * b) * k, this.mat4[4] = (a * S - s3 * M - l * w) * k, this.mat4[5] = (t4 * M - o2 * S + n2 * w) * k, this.mat4[6] = (m * v - f * j - y * g) * k, this.mat4[7] = (u * j - d * v + h3 * g) * k, this.mat4[8] = (s3 * E - i * S + l * x) * k, this.mat4[9] = (r4 * S - t4 * E - n2 * x) * k, this.mat4[10] = (f * _ - p * v + y * e5) * k, this.mat4[11] = (c * v - u * _ - h3 * e5) * k, this.mat4[12] = (i * w - s3 * T - a * x) * k, this.mat4[13] = (t4 * T - r4 * w + o2 * x) * k, this.mat4[14] = (p * g - f * b - m * e5) * k, this.mat4[15] = (u * b - c * g + d * e5) * k, this) : null;
             } }, { key: "invert3x3", value: function() {
-              var e5 = this.mat3[0], t4 = this.mat3[1], r4 = this.mat3[2], o2 = this.mat3[3], n2 = this.mat3[4], s3 = this.mat3[5], i = this.mat3[6], a = this.mat3[7], l = this.mat3[8], u = l * n2 - s3 * a, c = -l * o2 + s3 * i, d = a * o2 - n2 * i, h = e5 * u + t4 * c + r4 * d;
-              return h ? (this.mat3[0] = u * (h = 1 / h), this.mat3[1] = (-l * t4 + r4 * a) * h, this.mat3[2] = (s3 * t4 - r4 * n2) * h, this.mat3[3] = c * h, this.mat3[4] = (l * e5 - r4 * i) * h, this.mat3[5] = (-s3 * e5 + r4 * o2) * h, this.mat3[6] = d * h, this.mat3[7] = (-a * e5 + t4 * i) * h, this.mat3[8] = (n2 * e5 - t4 * o2) * h, this) : null;
+              var e5 = this.mat3[0], t4 = this.mat3[1], r4 = this.mat3[2], o2 = this.mat3[3], n2 = this.mat3[4], s3 = this.mat3[5], i = this.mat3[6], a = this.mat3[7], l = this.mat3[8], u = l * n2 - s3 * a, c = -l * o2 + s3 * i, d = a * o2 - n2 * i, h3 = e5 * u + t4 * c + r4 * d;
+              return h3 ? (this.mat3[0] = u * (h3 = 1 / h3), this.mat3[1] = (-l * t4 + r4 * a) * h3, this.mat3[2] = (s3 * t4 - r4 * n2) * h3, this.mat3[3] = c * h3, this.mat3[4] = (l * e5 - r4 * i) * h3, this.mat3[5] = (-s3 * e5 + r4 * o2) * h3, this.mat3[6] = d * h3, this.mat3[7] = (-a * e5 + t4 * i) * h3, this.mat3[8] = (n2 * e5 - t4 * o2) * h3, this) : null;
             } }, { key: "transpose3x3", value: function(e5) {
               var t4 = (e5 = void 0 === e5 ? this.mat3 : e5)[1], r4 = e5[2], o2 = e5[5];
               return this.mat3[0] = e5[0], this.mat3[1] = e5[3], this.mat3[2] = e5[6], this.mat3[3] = t4, this.mat3[4] = e5[4], this.mat3[5] = e5[7], this.mat3[6] = r4, this.mat3[7] = o2, this.mat3[8] = e5[8], this;
@@ -15595,8 +15595,8 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               return e5 instanceof O.default.Vector ? (t4 = e5.y, r4 = e5.z, e5 = e5.x) : e5 instanceof Array && (t4 = e5[1], r4 = e5[2], e5 = e5[0]), this.mat4[0] *= e5, this.mat4[1] *= e5, this.mat4[2] *= e5, this.mat4[3] *= e5, this.mat4[4] *= t4, this.mat4[5] *= t4, this.mat4[6] *= t4, this.mat4[7] *= t4, this.mat4[8] *= r4, this.mat4[9] *= r4, this.mat4[10] *= r4, this.mat4[11] *= r4, this;
             } }, { key: "rotate", value: function(e5, t4, r4, o2) {
               t4 instanceof O.default.Vector ? (r4 = t4.y, o2 = t4.z, t4 = t4.x) : t4 instanceof Array && (r4 = t4[1], o2 = t4[2], t4 = t4[0]);
-              var n2 = Math.sqrt(t4 * t4 + r4 * r4 + o2 * o2), n2 = (t4 *= 1 / n2, r4 *= 1 / n2, o2 *= 1 / n2, this.mat4[0]), s3 = this.mat4[1], i = this.mat4[2], a = this.mat4[3], l = this.mat4[4], u = this.mat4[5], c = this.mat4[6], d = this.mat4[7], h = this.mat4[8], f = this.mat4[9], p = this.mat4[10], m = this.mat4[11], y = Math.sin(e5), e5 = Math.cos(e5), g = 1 - e5, v = t4 * t4 * g + e5, b = r4 * t4 * g + o2 * y, _ = o2 * t4 * g - r4 * y, j = t4 * r4 * g - o2 * y, x = r4 * r4 * g + e5, w = o2 * r4 * g + t4 * y, S = t4 * o2 * g + r4 * y, r4 = r4 * o2 * g - t4 * y, t4 = o2 * o2 * g + e5;
-              return this.mat4[0] = n2 * v + l * b + h * _, this.mat4[1] = s3 * v + u * b + f * _, this.mat4[2] = i * v + c * b + p * _, this.mat4[3] = a * v + d * b + m * _, this.mat4[4] = n2 * j + l * x + h * w, this.mat4[5] = s3 * j + u * x + f * w, this.mat4[6] = i * j + c * x + p * w, this.mat4[7] = a * j + d * x + m * w, this.mat4[8] = n2 * S + l * r4 + h * t4, this.mat4[9] = s3 * S + u * r4 + f * t4, this.mat4[10] = i * S + c * r4 + p * t4, this.mat4[11] = a * S + d * r4 + m * t4, this;
+              var n2 = Math.sqrt(t4 * t4 + r4 * r4 + o2 * o2), n2 = (t4 *= 1 / n2, r4 *= 1 / n2, o2 *= 1 / n2, this.mat4[0]), s3 = this.mat4[1], i = this.mat4[2], a = this.mat4[3], l = this.mat4[4], u = this.mat4[5], c = this.mat4[6], d = this.mat4[7], h3 = this.mat4[8], f = this.mat4[9], p = this.mat4[10], m = this.mat4[11], y = Math.sin(e5), e5 = Math.cos(e5), g = 1 - e5, v = t4 * t4 * g + e5, b = r4 * t4 * g + o2 * y, _ = o2 * t4 * g - r4 * y, j = t4 * r4 * g - o2 * y, x = r4 * r4 * g + e5, w = o2 * r4 * g + t4 * y, S = t4 * o2 * g + r4 * y, r4 = r4 * o2 * g - t4 * y, t4 = o2 * o2 * g + e5;
+              return this.mat4[0] = n2 * v + l * b + h3 * _, this.mat4[1] = s3 * v + u * b + f * _, this.mat4[2] = i * v + c * b + p * _, this.mat4[3] = a * v + d * b + m * _, this.mat4[4] = n2 * j + l * x + h3 * w, this.mat4[5] = s3 * j + u * x + f * w, this.mat4[6] = i * j + c * x + p * w, this.mat4[7] = a * j + d * x + m * w, this.mat4[8] = n2 * S + l * r4 + h3 * t4, this.mat4[9] = s3 * S + u * r4 + f * t4, this.mat4[10] = i * S + c * r4 + p * t4, this.mat4[11] = a * S + d * r4 + m * t4, this;
             } }, { key: "translate", value: function(e5) {
               var t4 = e5[0], r4 = e5[1], e5 = e5[2] || 0;
               this.mat4[12] += this.mat4[0] * t4 + this.mat4[4] * r4 + this.mat4[8] * e5, this.mat4[13] += this.mat4[1] * t4 + this.mat4[5] * r4 + this.mat4[9] * e5, this.mat4[14] += this.mat4[2] * t4 + this.mat4[6] * r4 + this.mat4[10] * e5, this.mat4[15] += this.mat4[3] * t4 + this.mat4[7] * r4 + this.mat4[11] * e5;
@@ -15720,7 +15720,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             })(e4);
           }
           e3("core-js/modules/es.symbol"), e3("core-js/modules/es.symbol.description"), e3("core-js/modules/es.symbol.iterator"), e3("core-js/modules/es.array.concat"), e3("core-js/modules/es.array.fill"), e3("core-js/modules/es.array.find-index"), e3("core-js/modules/es.array.from"), e3("core-js/modules/es.array.iterator"), e3("core-js/modules/es.array.map"), e3("core-js/modules/es.array.slice"), e3("core-js/modules/es.map"), e3("core-js/modules/es.object.get-own-property-descriptor"), e3("core-js/modules/es.object.to-string"), e3("core-js/modules/es.regexp.to-string"), e3("core-js/modules/es.string.iterator"), e3("core-js/modules/es.weak-map"), e3("core-js/modules/web.dom-collections.iterator"), e3("core-js/modules/es.symbol"), e3("core-js/modules/es.symbol.description"), e3("core-js/modules/es.symbol.iterator"), e3("core-js/modules/es.array.concat"), e3("core-js/modules/es.array.fill"), e3("core-js/modules/es.array.find-index"), e3("core-js/modules/es.array.iterator"), e3("core-js/modules/es.array.map"), e3("core-js/modules/es.array.slice"), e3("core-js/modules/es.map"), e3("core-js/modules/es.object.to-string"), e3("core-js/modules/es.string.iterator"), e3("core-js/modules/web.dom-collections.iterator"), Object.defineProperty(r2, "__esModule", { value: true }), r2.default = void 0;
-          var l = (n = e3("../core/main")) && n.__esModule ? n : { default: n }, h = function(e4) {
+          var l = (n = e3("../core/main")) && n.__esModule ? n : { default: n }, h3 = function(e4) {
             if (e4 && e4.__esModule) return e4;
             if (null === e4 || "object" !== i(e4) && "function" != typeof e4) return { default: e4 };
             var t3 = a();
@@ -15752,56 +15752,56 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             }();
           }
           e3("./p5.RenderBuffer"), l.default.RendererGL.prototype.beginShape = function(e4) {
-            return this.immediateMode.shapeMode = void 0 !== e4 ? e4 : h.TESS, this.immediateMode.geometry.reset(), this.immediateMode.contourIndices = [], this;
+            return this.immediateMode.shapeMode = void 0 !== e4 ? e4 : h3.TESS, this.immediateMode.geometry.reset(), this.immediateMode.contourIndices = [], this;
           };
           var u = { vertices: 1, vertexNormals: 1, vertexColors: 4, vertexStrokeColors: 4, uvs: 2 }, n = (l.default.RendererGL.prototype.beginContour = function() {
-            if (this.immediateMode.shapeMode !== h.TESS) throw new Error("WebGL mode can only use contours with beginShape(TESS).");
+            if (this.immediateMode.shapeMode !== h3.TESS) throw new Error("WebGL mode can only use contours with beginShape(TESS).");
             this.immediateMode.contourIndices.push(this.immediateMode.geometry.vertices.length);
           }, l.default.RendererGL.prototype.vertex = function(e4, t3) {
-            if (this.immediateMode.shapeMode === h.QUADS && this.immediateMode.geometry.vertices.length % 6 == 3) for (var r3 in u) {
+            if (this.immediateMode.shapeMode === h3.QUADS && this.immediateMode.geometry.vertices.length % 6 == 3) for (var r3 in u) {
               var o2 = u[r3], r3 = this.immediateMode.geometry[r3];
               r3.push.apply(r3, f(r3.slice(r3.length - 3 * o2, r3.length - 2 * o2)).concat(f(r3.slice(r3.length - o2, r3.length))));
             }
             var n2, s2, i2 = n2 = s2 = 0, a2 = (3 === arguments.length ? i2 = arguments[2] : 4 === arguments.length ? (n2 = arguments[2], s2 = arguments[3]) : 5 === arguments.length && (i2 = arguments[2], n2 = arguments[3], s2 = arguments[4]), new l.default.Vector(e4, t3, i2)), a2 = (this.immediateMode.geometry.vertices.push(a2), this.immediateMode.geometry.vertexNormals.push(this._currentNormal), this.curFillColor || [0.5, 0.5, 0.5, 1]), a2 = (this.immediateMode.geometry.vertexColors.push(a2[0], a2[1], a2[2], a2[3]), this.curStrokeColor || [0.5, 0.5, 0.5, 1]);
-            return this.immediateMode.geometry.vertexStrokeColors.push(a2[0], a2[1], a2[2], a2[3]), this.textureMode !== h.IMAGE || this.isProcessingVertices || (null !== this._tex ? 0 < this._tex.width && 0 < this._tex.height && (n2 /= this._tex.width, s2 /= this._tex.height) : void 0 === this.userFillShader && void 0 === this.userStrokeShader && void 0 === this.userPointShader && null === this._tex && 4 <= arguments.length && console.warn("You must first call texture() before using vertex() with image based u and v coordinates")), this.immediateMode.geometry.uvs.push(n2, s2), this.immediateMode._bezierVertex[0] = e4, this.immediateMode._bezierVertex[1] = t3, this.immediateMode._bezierVertex[2] = i2, this.immediateMode._quadraticVertex[0] = e4, this.immediateMode._quadraticVertex[1] = t3, this.immediateMode._quadraticVertex[2] = i2, this;
+            return this.immediateMode.geometry.vertexStrokeColors.push(a2[0], a2[1], a2[2], a2[3]), this.textureMode !== h3.IMAGE || this.isProcessingVertices || (null !== this._tex ? 0 < this._tex.width && 0 < this._tex.height && (n2 /= this._tex.width, s2 /= this._tex.height) : void 0 === this.userFillShader && void 0 === this.userStrokeShader && void 0 === this.userPointShader && null === this._tex && 4 <= arguments.length && console.warn("You must first call texture() before using vertex() with image based u and v coordinates")), this.immediateMode.geometry.uvs.push(n2, s2), this.immediateMode._bezierVertex[0] = e4, this.immediateMode._bezierVertex[1] = t3, this.immediateMode._bezierVertex[2] = i2, this.immediateMode._quadraticVertex[0] = e4, this.immediateMode._quadraticVertex[1] = t3, this.immediateMode._quadraticVertex[2] = i2, this;
           }, l.default.RendererGL.prototype.normal = function(e4, t3, r3) {
             return e4 instanceof l.default.Vector ? this._currentNormal = e4 : this._currentNormal = new l.default.Vector(e4, t3, r3), this;
           }, l.default.RendererGL.prototype.endShape = function(e4, t3, r3, o2, n2, s2) {
             var i2, a2 = 6 < arguments.length && void 0 !== arguments[6] ? arguments[6] : 1;
-            return this.immediateMode.shapeMode === h.POINTS ? this._drawPoints(this.immediateMode.geometry.vertices, this.immediateMode.buffers.point) : (3 === this.immediateMode.geometry.vertices.length && this.immediateMode.shapeMode === h.TESS && (this.immediateMode.shapeMode = h.TRIANGLES), this.isProcessingVertices = true, this._processVertices.apply(this, arguments), i2 = this.isProcessingVertices = false, this.immediateMode.shapeMode !== h.LINE_STRIP && this.immediateMode.shapeMode !== h.LINES || (this.immediateMode.shapeMode = h.TRIANGLE_FAN, i2 = true), this.immediateMode.shapeMode === h.QUADS ? this.immediateMode.shapeMode = h.TRIANGLES : this.immediateMode.shapeMode === h.QUAD_STRIP && (this.immediateMode.shapeMode = h.TRIANGLE_STRIP), this._doFill && !i2 && !this.geometryBuilder && 3 <= this.immediateMode.geometry.vertices.length && this._drawImmediateFill(a2), this._doStroke && !this.geometryBuilder && 1 <= this.immediateMode.geometry.lineVertices.length && this._drawImmediateStroke(), this.geometryBuilder && this.geometryBuilder.addImmediate(), this.isBezier = false, this.isQuadratic = false, this.isCurve = false, this.immediateMode._bezierVertex.length = 0, this.immediateMode._quadraticVertex.length = 0, this.immediateMode._curveVertex.length = 0), this;
+            return this.immediateMode.shapeMode === h3.POINTS ? this._drawPoints(this.immediateMode.geometry.vertices, this.immediateMode.buffers.point) : (3 === this.immediateMode.geometry.vertices.length && this.immediateMode.shapeMode === h3.TESS && (this.immediateMode.shapeMode = h3.TRIANGLES), this.isProcessingVertices = true, this._processVertices.apply(this, arguments), i2 = this.isProcessingVertices = false, this.immediateMode.shapeMode !== h3.LINE_STRIP && this.immediateMode.shapeMode !== h3.LINES || (this.immediateMode.shapeMode = h3.TRIANGLE_FAN, i2 = true), this.immediateMode.shapeMode === h3.QUADS ? this.immediateMode.shapeMode = h3.TRIANGLES : this.immediateMode.shapeMode === h3.QUAD_STRIP && (this.immediateMode.shapeMode = h3.TRIANGLE_STRIP), this._doFill && !i2 && !this.geometryBuilder && 3 <= this.immediateMode.geometry.vertices.length && this._drawImmediateFill(a2), this._doStroke && !this.geometryBuilder && 1 <= this.immediateMode.geometry.lineVertices.length && this._drawImmediateStroke(), this.geometryBuilder && this.geometryBuilder.addImmediate(), this.isBezier = false, this.isQuadratic = false, this.isCurve = false, this.immediateMode._bezierVertex.length = 0, this.immediateMode._quadraticVertex.length = 0, this.immediateMode._curveVertex.length = 0), this;
           }, l.default.RendererGL.prototype._processVertices = function(e4) {
             var t3;
-            0 !== this.immediateMode.geometry.vertices.length && (t3 = this._doStroke, e4 = e4 === h.CLOSE, t3 && (this.immediateMode.geometry.edges = this._calculateEdges(this.immediateMode.shapeMode, this.immediateMode.geometry.vertices, e4), this.geometryBuilder || this.immediateMode.geometry._edgesToVertices()), t3 = this.immediateMode.shapeMode === h.TESS, e4 = 0 < this.immediateMode.contourIndices.length, this._doFill && (this.isBezier || this.isQuadratic || this.isCurve || t3 || e4) && this.immediateMode.shapeMode !== h.LINES && this._tesselateShape());
+            0 !== this.immediateMode.geometry.vertices.length && (t3 = this._doStroke, e4 = e4 === h3.CLOSE, t3 && (this.immediateMode.geometry.edges = this._calculateEdges(this.immediateMode.shapeMode, this.immediateMode.geometry.vertices, e4), this.geometryBuilder || this.immediateMode.geometry._edgesToVertices()), t3 = this.immediateMode.shapeMode === h3.TESS, e4 = 0 < this.immediateMode.contourIndices.length, this._doFill && (this.isBezier || this.isQuadratic || this.isCurve || t3 || e4) && this.immediateMode.shapeMode !== h3.LINES && this._tesselateShape());
           }, l.default.RendererGL.prototype._calculateEdges = function(e4, t3, r3) {
             var o2 = [], n2 = 0, s2 = this.immediateMode.contourIndices.slice(), i2 = 0;
             switch (e4) {
-              case h.TRIANGLE_STRIP:
+              case h3.TRIANGLE_STRIP:
                 for (n2 = 0; n2 < t3.length - 2; n2++) o2.push([n2, n2 + 1]), o2.push([n2, n2 + 2]);
                 o2.push([n2, n2 + 1]);
                 break;
-              case h.TRIANGLE_FAN:
+              case h3.TRIANGLE_FAN:
                 for (n2 = 1; n2 < t3.length - 1; n2++) o2.push([0, n2]), o2.push([n2, n2 + 1]);
                 o2.push([0, t3.length - 1]);
                 break;
-              case h.TRIANGLES:
+              case h3.TRIANGLES:
                 for (n2 = 0; n2 < t3.length - 2; n2 += 3) o2.push([n2, n2 + 1]), o2.push([n2 + 1, n2 + 2]), o2.push([n2 + 2, n2]);
                 break;
-              case h.LINES:
+              case h3.LINES:
                 for (n2 = 0; n2 < t3.length - 1; n2 += 2) o2.push([n2, n2 + 1]);
                 break;
-              case h.QUADS:
+              case h3.QUADS:
                 for (n2 = 0; n2 < t3.length - 5; n2 += 6) o2.push([n2, n2 + 1]), o2.push([n2 + 1, n2 + 2]), o2.push([n2 + 3, n2 + 5]), o2.push([n2 + 4, n2 + 5]);
                 break;
-              case h.QUAD_STRIP:
+              case h3.QUAD_STRIP:
                 for (n2 = 0; n2 < t3.length - 2; n2 += 2) o2.push([n2, n2 + 1]), o2.push([n2, n2 + 2]), o2.push([n2 + 1, n2 + 3]);
                 o2.push([n2, n2 + 1]);
                 break;
               default:
                 for (n2 = 0; n2 < t3.length; n2++) n2 + 1 < t3.length && n2 + 1 !== s2[0] ? o2.push([n2, n2 + 1]) : ((r3 || i2) && o2.push([n2, i2]), 0 < s2.length && (i2 = s2.shift()));
             }
-            return e4 !== h.TESS && r3 && o2.push([t3.length - 1, 0]), o2;
+            return e4 !== h3.TESS && r3 && o2.push([t3.length - 1, 0]), o2;
           }, l.default.RendererGL.prototype._tesselateShape = function() {
-            for (var u2 = this, e4 = (this.immediateMode.shapeMode = h.TRIANGLES, [[]]), t3 = 0; t3 < this.immediateMode.geometry.vertices.length; t3++) 0 < this.immediateMode.contourIndices.length && this.immediateMode.contourIndices[0] === t3 && (this.immediateMode.contourIndices.shift(), e4.push([])), e4[e4.length - 1].push(this.immediateMode.geometry.vertices[t3].x, this.immediateMode.geometry.vertices[t3].y, this.immediateMode.geometry.vertices[t3].z, this.immediateMode.geometry.uvs[2 * t3], this.immediateMode.geometry.uvs[2 * t3 + 1], this.immediateMode.geometry.vertexColors[4 * t3], this.immediateMode.geometry.vertexColors[4 * t3 + 1], this.immediateMode.geometry.vertexColors[4 * t3 + 2], this.immediateMode.geometry.vertexColors[4 * t3 + 3], this.immediateMode.geometry.vertexNormals[t3].x, this.immediateMode.geometry.vertexNormals[t3].y, this.immediateMode.geometry.vertexNormals[t3].z);
+            for (var u2 = this, e4 = (this.immediateMode.shapeMode = h3.TRIANGLES, [[]]), t3 = 0; t3 < this.immediateMode.geometry.vertices.length; t3++) 0 < this.immediateMode.contourIndices.length && this.immediateMode.contourIndices[0] === t3 && (this.immediateMode.contourIndices.shift(), e4.push([])), e4[e4.length - 1].push(this.immediateMode.geometry.vertices[t3].x, this.immediateMode.geometry.vertices[t3].y, this.immediateMode.geometry.vertices[t3].z, this.immediateMode.geometry.uvs[2 * t3], this.immediateMode.geometry.uvs[2 * t3 + 1], this.immediateMode.geometry.vertexColors[4 * t3], this.immediateMode.geometry.vertexColors[4 * t3 + 1], this.immediateMode.geometry.vertexColors[4 * t3 + 2], this.immediateMode.geometry.vertexColors[4 * t3 + 3], this.immediateMode.geometry.vertexNormals[t3].x, this.immediateMode.geometry.vertexNormals[t3].y, this.immediateMode.geometry.vertexNormals[t3].z);
             for (var c, r3 = this._triangulate(e4), d = this.immediateMode.geometry.vertices, o2 = (this.immediateMode.geometry.vertices = [], this.immediateMode.geometry.vertexNormals = [], this.immediateMode.geometry.uvs = [], []), n2 = 0, s2 = r3.length; n2 < s2; n2 += l.default.RendererGL.prototype.tessyVertexSize) o2.push.apply(o2, f(r3.slice(n2 + 5, n2 + 9))), this.normal.apply(this, f(r3.slice(n2 + 9, n2 + 12))), this.vertex.apply(this, f(r3.slice(n2, n2 + 5)));
             this.geometryBuilder && (c = /* @__PURE__ */ new Map(), this.immediateMode.geometry.edges = this.immediateMode.geometry.edges.map(function(e5) {
               return e5.map(function(e6) {
@@ -15945,12 +15945,12 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               this._useLineColor = 0 < r3.model.vertexStrokeColors.length;
               var u = this._getRetainedStrokeShader(), c = (this._setStrokeUniforms(u), true), s3 = false, i2 = void 0;
               try {
-                for (var d, h = this.retainedMode.buffers.stroke[Symbol.iterator](); !(c = (d = h.next()).done); c = true) d.value._prepareBuffer(r3, u);
+                for (var d, h3 = this.retainedMode.buffers.stroke[Symbol.iterator](); !(c = (d = h3.next()).done); c = true) d.value._prepareBuffer(r3, u);
               } catch (e5) {
                 s3 = true, i2 = e5;
               } finally {
                 try {
-                  c || null == h.return || h.return();
+                  c || null == h3.return || h3.return();
                 } finally {
                   if (s3) throw i2;
                 }
@@ -16018,7 +16018,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
           function n(e4) {
             return e4 && e4.__esModule ? e4 : { default: e4 };
           }
-          function h(e4) {
+          function h3(e4) {
             return function(e5) {
               if (Array.isArray(e5)) {
                 for (var t3 = 0, r3 = new Array(e5.length); t3 < e5.length; t3++) r3[t3] = e5[t3];
@@ -16088,8 +16088,8 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
           _(e3 = {}, l.GRAY, "precision highp float;\n\nvarying vec2 vTexCoord;\n\nuniform sampler2D tex0;\n\nfloat luma(vec3 color) {\n  // weighted grayscale with luminance values\n  return dot(color, vec3(0.2126, 0.7152, 0.0722));\n}\n\nvoid main() {\n  vec4 tex = texture2D(tex0, vTexCoord);\n  float gray = luma(tex.rgb);\n  gl_FragColor = vec4(gray, gray, gray, tex.a);\n}\n"), _(e3, l.ERODE, "// Reduces the bright areas in an image\n\nprecision highp float;\n\nvarying vec2 vTexCoord;\n\nuniform sampler2D tex0;\nuniform vec2 texelSize;\n\nfloat luma(vec3 color) {\n  // weighted grayscale with luminance values\n  // weights 77, 151, 28 taken from src/image/filters.js\n  return dot(color, vec3(0.300781, 0.589844, 0.109375));\n}\n\nvoid main() {\n  vec4 color = texture2D(tex0, vTexCoord);\n  float lum = luma(color.rgb);\n\n  // set current color as the darkest neighbor color\n\n  vec4 neighbors[4];\n  neighbors[0] = texture2D(tex0, vTexCoord + vec2( texelSize.x, 0.0));\n  neighbors[1] = texture2D(tex0, vTexCoord + vec2(-texelSize.x, 0.0));\n  neighbors[2] = texture2D(tex0, vTexCoord + vec2(0.0,  texelSize.y));\n  neighbors[3] = texture2D(tex0, vTexCoord + vec2(0.0, -texelSize.y));\n\n  for (int i = 0; i < 4; i++) {\n    vec4 neighborColor = neighbors[i];\n    float neighborLum = luma(neighborColor.rgb);\n\n    if (neighborLum < lum) {\n      color = neighborColor;\n      lum = neighborLum;\n    }\n  }\n\n  gl_FragColor = color;\n}\n"), _(e3, l.DILATE, "// Increase the bright areas in an image\n\nprecision highp float;\n\nvarying vec2 vTexCoord;\n\nuniform sampler2D tex0;\nuniform vec2 texelSize;\n\nfloat luma(vec3 color) {\n  // weighted grayscale with luminance values\n  // weights 77, 151, 28 taken from src/image/filters.js\n  return dot(color, vec3(0.300781, 0.589844, 0.109375));\n}\n\nvoid main() {\n  vec4 color = texture2D(tex0, vTexCoord);\n  float lum = luma(color.rgb);\n\n  // set current color as the brightest neighbor color\n\n  vec4 neighbors[4];\n  neighbors[0] = texture2D(tex0, vTexCoord + vec2( texelSize.x, 0.0));\n  neighbors[1] = texture2D(tex0, vTexCoord + vec2(-texelSize.x, 0.0));\n  neighbors[2] = texture2D(tex0, vTexCoord + vec2(0.0,  texelSize.y));\n  neighbors[3] = texture2D(tex0, vTexCoord + vec2(0.0, -texelSize.y));\n\n  for (int i = 0; i < 4; i++) {\n    vec4 neighborColor = neighbors[i];\n    float neighborLum = luma(neighborColor.rgb);\n\n    if (neighborLum > lum) {\n      color = neighborColor;\n      lum = neighborLum;\n    }\n  }\n\n  gl_FragColor = color;\n}\n"), _(e3, l.BLUR, "precision highp float;\n\n// Two-pass blur filter, unweighted kernel.\n// See also a similar blur at Adam Ferriss' repo of shader examples:\n// https://github.com/aferriss/p5jsShaderExamples/blob/gh-pages/4_image-effects/4-9_single-pass-blur/effect.frag\n\n\nuniform sampler2D tex0;\nvarying vec2 vTexCoord;\nuniform vec2 direction;\nuniform vec2 canvasSize;\nuniform float radius;\n\nfloat random(vec2 p) {\n  vec3 p3  = fract(vec3(p.xyx) * .1031);\n  p3 += dot(p3, p3.yzx + 33.33);\n  return fract((p3.x + p3.y) * p3.z);\n}\n\n// This isn't a real Gaussian weight, it's a quadratic weight. It's what the\n// CPU mode's blur uses though, so we also use it here to match.\nfloat quadWeight(float x, float e) {\n  return pow(e-abs(x), 2.);\n}\n\nvoid main(){\n  vec2 uv = vTexCoord;\n\n  // A reasonable maximum number of samples\n  const float maxSamples = 64.0;\n\n  float numSamples = floor(7. * radius);\n  if (fract(numSamples / 2.) == 0.) {\n    numSamples++;\n  }\n  vec4 avg = vec4(0.0);\n  float total = 0.0;\n\n  // Calculate the spacing to avoid skewing if numSamples > maxSamples\n  float spacing = 1.0;\n  if (numSamples > maxSamples) {\n    spacing = numSamples / maxSamples;\n    numSamples = maxSamples;\n  }\n\n  float randomOffset = (spacing - 1.0) * mix(-0.5, 0.5, random(gl_FragCoord.xy));\n  for (float i = 0.0; i < maxSamples; i++) {\n    if (i >= numSamples) break;\n\n    float sample = i * spacing - (numSamples - 1.0) * 0.5 * spacing + randomOffset;\n    vec2 sampleCoord = uv + vec2(sample, sample) / canvasSize * direction;\n    float weight = quadWeight(sample, (numSamples - 1.0) * 0.5 * spacing);\n\n    avg += weight * texture2D(tex0, sampleCoord);\n    total += weight;\n  }\n\n  avg /= total;\n  gl_FragColor = avg;\n}\n"), _(e3, l.POSTERIZE, "// Limit color space for a stylized cartoon / poster effect\n\nprecision highp float;\n\nvarying vec2 vTexCoord;\n\nuniform sampler2D tex0;\nuniform float filterParameter;\n\nvec3 quantize(vec3 color, float n) {\n  // restrict values to N options/bins\n  // and floor each channel to nearest value\n  //\n  // eg. when N = 5, values = 0.0, 0.25, 0.50, 0.75, 1.0\n  // then quantize (0.1, 0.7, 0.9) -> (0.0, 0.5, 1.0)\n\n  color = color * n;\n  color = floor(color);\n  color = color / (n - 1.0);\n  return color;\n}\n\nvoid main() {\n  vec4 color = texture2D(tex0, vTexCoord);\n\n  vec3 restrictedColor = quantize(color.rgb / color.a, filterParameter);\n\n  gl_FragColor = vec4(restrictedColor.rgb * color.a, color.a);\n}\n"), _(e3, l.OPAQUE, "// Set alpha channel to entirely opaque\n\nprecision highp float;\n\nvarying vec2 vTexCoord;\n\nuniform sampler2D tex0;\n\nvoid main() {\n  vec4 color = texture2D(tex0, vTexCoord);\n  gl_FragColor = vec4(color.rgb / color.a, 1.0);\n}\n"), _(e3, l.INVERT, "// Set each pixel to inverse value\n// Note that original INVERT does not change the opacity, so this follows suit\n\nprecision highp float;\n\nvarying vec2 vTexCoord;\n\nuniform sampler2D tex0;\n\nvoid main() {\nvec4 color = texture2D(tex0, vTexCoord);\nvec3 origColor = color.rgb / color.a;\nvec3 invertedColor = vec3(1.0) - origColor;\ngl_FragColor = vec4(invertedColor * color.a, color.a);\n}\n"), _(e3, l.THRESHOLD, "// Convert pixels to either white or black, \n// depending on if their luma is above or below filterParameter\n\nprecision highp float;\n\nvarying vec2 vTexCoord;\n\nuniform sampler2D tex0;\nuniform float filterParameter;\n\nfloat luma(vec3 color) {\n  // weighted grayscale with luminance values\n  return dot(color, vec3(0.2126, 0.7152, 0.0722));\n}\n\nvoid main() {\n  vec4 color = texture2D(tex0, vTexCoord);\n  float gray = luma(color.rgb / color.a);\n  // floor() used to match src/image/filters.js\n  float threshold = floor(filterParameter * 255.0) / 255.0;\n  float blackOrWhite = step(threshold, gray);\n  gl_FragColor = vec4(vec3(blackOrWhite) * color.a, color.a);\n}\n");
           var k = e3;
           function O(e4, t3, r3, o2, n2, s3, i2, a2, l2, u2) {
-            var c2 = t3.getParameter(t3.FRAMEBUFFER_BINDING), r3 = (t3.bindFramebuffer(t3.FRAMEBUFFER, r3), a2 === t3.RGBA ? 4 : 3), d2 = s3 * i2 * r3, h2 = l2 === t3.UNSIGNED_BYTE ? Uint8Array : Float32Array;
-            if (e4 instanceof h2 && e4.length === d2 || (e4 = new h2(d2)), t3.readPixels(o2, u2 ? u2 - n2 - i2 : n2, s3, i2, a2, l2, e4), t3.bindFramebuffer(t3.FRAMEBUFFER, c2), u2) for (var f2 = Math.floor(i2 / 2), p2 = new h2(s3 * r3), m2 = 0; m2 < f2; m2++) {
+            var c2 = t3.getParameter(t3.FRAMEBUFFER_BINDING), r3 = (t3.bindFramebuffer(t3.FRAMEBUFFER, r3), a2 === t3.RGBA ? 4 : 3), d2 = s3 * i2 * r3, h4 = l2 === t3.UNSIGNED_BYTE ? Uint8Array : Float32Array;
+            if (e4 instanceof h4 && e4.length === d2 || (e4 = new h4(d2)), t3.readPixels(o2, u2 ? u2 - n2 - i2 : n2, s3, i2, a2, l2, e4), t3.bindFramebuffer(t3.FRAMEBUFFER, c2), u2) for (var f2 = Math.floor(i2 / 2), p2 = new h4(s3 * r3), m2 = 0; m2 < f2; m2++) {
               var y2 = m2 * s3 * 4, g2 = (i2 - m2 - 1) * s3 * 4;
               p2.set(e4.subarray(y2, y2 + 4 * s3)), e4.copyWithin(y2, g2, g2 + 4 * s3), e4.set(p2, g2);
             }
@@ -16349,9 +16349,9 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             } }, { key: "_setStrokeUniforms", value: function(e5) {
               e5.bindShader(), e5.setUniform("uUseLineColor", this._useLineColor), e5.setUniform("uMaterialColor", this.curStrokeColor), e5.setUniform("uStrokeWeight", this.curStrokeWeight), e5.setUniform("uStrokeCap", w[this.curStrokeCap]), e5.setUniform("uStrokeJoin", S[this.curStrokeJoin]);
             } }, { key: "_setFillUniforms", value: function(e5) {
-              var r4 = this, t4 = (e5.bindShader(), this.mixedSpecularColor = h(this.curSpecularColor), 0 < this._useMetalness && (this.mixedSpecularColor = this.mixedSpecularColor.map(function(e6, t5) {
+              var r4 = this, t4 = (e5.bindShader(), this.mixedSpecularColor = h3(this.curSpecularColor), 0 < this._useMetalness && (this.mixedSpecularColor = this.mixedSpecularColor.map(function(e6, t5) {
                 return r4.curFillColor[t5] * r4._useMetalness + e6 * (1 - r4._useMetalness);
-              })), e5.setUniform("uUseVertexColor", this._useVertexColor), e5.setUniform("uMaterialColor", this.curFillColor), e5.setUniform("isTexture", !!this._tex), this._tex && e5.setUniform("uSampler", this._tex), e5.setUniform("uTint", this._tint), e5.setUniform("uHasSetAmbient", this._hasSetAmbient), e5.setUniform("uAmbientMatColor", this.curAmbientColor), e5.setUniform("uSpecularMatColor", this.mixedSpecularColor), e5.setUniform("uEmissiveMatColor", this.curEmissiveColor), e5.setUniform("uSpecular", this._useSpecularMaterial), e5.setUniform("uEmissive", this._useEmissiveMaterial), e5.setUniform("uShininess", this._useShininess), e5.setUniform("uMetallic", this._useMetalness), this._setImageLightUniforms(e5), e5.setUniform("uUseLighting", this._enableLighting), this.pointLightDiffuseColors.length / 3), t4 = (e5.setUniform("uPointLightCount", t4), e5.setUniform("uPointLightLocation", this.pointLightPositions), e5.setUniform("uPointLightDiffuseColors", this.pointLightDiffuseColors), e5.setUniform("uPointLightSpecularColors", this.pointLightSpecularColors), this.directionalLightDiffuseColors.length / 3), t4 = (e5.setUniform("uDirectionalLightCount", t4), e5.setUniform("uLightingDirection", this.directionalLightDirections), e5.setUniform("uDirectionalDiffuseColors", this.directionalLightDiffuseColors), e5.setUniform("uDirectionalSpecularColors", this.directionalLightSpecularColors), this.ambientLightColors.length / 3), t4 = (this.mixedAmbientLight = h(this.ambientLightColors), 0 < this._useMetalness && (this.mixedAmbientLight = this.mixedAmbientLight.map(function(e6) {
+              })), e5.setUniform("uUseVertexColor", this._useVertexColor), e5.setUniform("uMaterialColor", this.curFillColor), e5.setUniform("isTexture", !!this._tex), this._tex && e5.setUniform("uSampler", this._tex), e5.setUniform("uTint", this._tint), e5.setUniform("uHasSetAmbient", this._hasSetAmbient), e5.setUniform("uAmbientMatColor", this.curAmbientColor), e5.setUniform("uSpecularMatColor", this.mixedSpecularColor), e5.setUniform("uEmissiveMatColor", this.curEmissiveColor), e5.setUniform("uSpecular", this._useSpecularMaterial), e5.setUniform("uEmissive", this._useEmissiveMaterial), e5.setUniform("uShininess", this._useShininess), e5.setUniform("uMetallic", this._useMetalness), this._setImageLightUniforms(e5), e5.setUniform("uUseLighting", this._enableLighting), this.pointLightDiffuseColors.length / 3), t4 = (e5.setUniform("uPointLightCount", t4), e5.setUniform("uPointLightLocation", this.pointLightPositions), e5.setUniform("uPointLightDiffuseColors", this.pointLightDiffuseColors), e5.setUniform("uPointLightSpecularColors", this.pointLightSpecularColors), this.directionalLightDiffuseColors.length / 3), t4 = (e5.setUniform("uDirectionalLightCount", t4), e5.setUniform("uLightingDirection", this.directionalLightDirections), e5.setUniform("uDirectionalDiffuseColors", this.directionalLightDiffuseColors), e5.setUniform("uDirectionalSpecularColors", this.directionalLightSpecularColors), this.ambientLightColors.length / 3), t4 = (this.mixedAmbientLight = h3(this.ambientLightColors), 0 < this._useMetalness && (this.mixedAmbientLight = this.mixedAmbientLight.map(function(e6) {
                 e6 -= r4._useMetalness;
                 return Math.max(0, e6);
               })), e5.setUniform("uAmbientLightCount", t4), e5.setUniform("uAmbientColor", this.mixedAmbientLight), this.spotLightDiffuseColors.length / 3);
@@ -16431,8 +16431,8 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               r4 ? this._tessy.gluTessNormal(0, 0, 1) : this._tessy.gluTessNormal(0, 0, 0);
               var n3 = [], c2 = (this._tessy.gluTessBeginPolygon(n3), true), s4 = false, d2 = void 0;
               try {
-                for (var h2, f2 = e5[Symbol.iterator](); !(c2 = (h2 = f2.next()).done); c2 = true) {
-                  var p2 = h2.value;
+                for (var h4, f2 = e5[Symbol.iterator](); !(c2 = (h4 = f2.next()).done); c2 = true) {
+                  var p2 = h4.value;
                   this._tessy.gluTessBeginContour();
                   for (var m2 = 0; m2 < p2.length; m2 += g.default.RendererGL.prototype.tessyVertexSize) {
                     var y2 = p2.slice(m2, m2 + g.default.RendererGL.prototype.tessyVertexSize);
@@ -16774,14 +16774,14 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
           function d(e4, t3) {
             if (!(e4 instanceof t3)) throw new TypeError("Cannot call a class as a function");
           }
-          function h(e4, t3) {
+          function h3(e4, t3) {
             for (var r3 = 0; r3 < t3.length; r3++) {
               var o2 = t3[r3];
               o2.enumerable = o2.enumerable || false, o2.configurable = true, "value" in o2 && (o2.writable = true), Object.defineProperty(e4, o2.key, o2);
             }
           }
           function f(e4, t3, r3) {
-            t3 && h(e4.prototype, t3), r3 && h(e4, r3);
+            t3 && h3(e4.prototype, t3), r3 && h3(e4, r3);
           }
           s2.default.Texture = function() {
             function n2(e4, t3, r3) {
@@ -16942,7 +16942,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                 if (0 == s3 || 0 == i2 || !a2.length) return this.glyphInfos[e4.index] = {};
                 for (var u = [], c = [], d = [], l2 = 8; 0 <= l2; --l2) d.push([]);
                 for (l2 = 8; 0 <= l2; --l2) c.push([]);
-                var h, f, p, m, D = function() {
+                var h3, f, p, m, D = function() {
                   function n3(e5, t5, r4, o3) {
                     G(this, n3), this.p0 = e5, this.c0 = t5, this.c1 = r4, this.p1 = o3;
                   }
@@ -16961,26 +16961,26 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                 try {
                   for (var b, _ = a2[Symbol.iterator](); !(y = (b = _.next()).done); y = true) {
                     var j = b.value, x = (j.x - o2) / s3, w = (j.y - n2) / i2;
-                    if (!U(h, f, x, w)) {
+                    if (!U(h3, f, x, w)) {
                       switch (j.type) {
                         case "M":
                           p = x, m = w;
                           break;
                         case "L":
-                          I(h, f, x, w);
+                          I(h3, f, x, w);
                           break;
                         case "Q":
                           var S = (j.x1 - o2) / s3, T = (j.y1 - n2) / i2;
-                          L([h, x, S], [f, w, T], { x: h, y: f, cx: S, cy: T });
+                          L([h3, x, S], [f, w, T], { x: h3, y: f, cx: S, cy: T });
                           break;
                         case "Z":
-                          U(h, f, p, m) ? u.push({ x: h, y: f }) : (I(h, f, p, m), u.push({ x: p, y: m }));
+                          U(h3, f, p, m) ? u.push({ x: h3, y: f }) : (I(h3, f, p, m), u.push({ x: p, y: m }));
                           break;
                         case "C":
                           for (var E2 = function(e5, t5, r4, o3, n3, s4, i3, a3) {
                             var e5 = new D(new B.default.Vector(e5, t5), new B.default.Vector(r4, o3), new B.default.Vector(n3, s4), new B.default.Vector(i3, a3)).splitInflections(), l3 = [], u2 = 30 / H, c2 = true, t5 = false, r4 = void 0;
                             try {
-                              for (var d2, h2 = e5[Symbol.iterator](); !(c2 = (d2 = h2.next()).done); c2 = true) {
+                              for (var d2, h4 = e5[Symbol.iterator](); !(c2 = (d2 = h4.next()).done); c2 = true) {
                                 for (var f2 = d2.value, p2 = [], m2 = void 0; !(0.125 <= (m2 = u2 / f2.quadError())); ) {
                                   var y2 = Math.pow(m2, 1 / 3), g2 = f2.split(y2), v2 = f2.split(1 - y2 / (1 - y2));
                                   l3.push(g2), p2.push(f2), f2 = v2;
@@ -16991,13 +16991,13 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                               t5 = true, r4 = e6;
                             } finally {
                               try {
-                                c2 || null == h2.return || h2.return();
+                                c2 || null == h4.return || h4.return();
                               } finally {
                                 if (t5) throw r4;
                               }
                             }
                             return l3;
-                          }(h, f, (j.x1 - o2) / s3, (j.y1 - n2) / i2, (j.x2 - o2) / s3, (j.y2 - n2) / i2, x, w), M2 = 0; M2 < E2.length; M2++) {
+                          }(h3, f, (j.x1 - o2) / s3, (j.y1 - n2) / i2, (j.x2 - o2) / s3, (j.y2 - n2) / i2, x, w), M2 = 0; M2 < E2.length; M2++) {
                             var k = E2[M2].toQuadratic();
                             L([k.x, k.x1, k.cx], [k.y, k.y1, k.cy], k);
                           }
@@ -17005,7 +17005,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                         default:
                           throw new Error("unknown command type: ".concat(j.type));
                       }
-                      h = x, f = w;
+                      h3 = x, f = w;
                     }
                   }
                 } catch (e5) {
@@ -17052,8 +17052,8 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                 for (var a3 = r4.findImage(s4), l3 = 0; l3 < o3; ++l3) {
                   var u2 = e5[l3], c2 = u2.length, d2 = a3.index;
                   z(n3, d2 >> 7, 127 & d2, c2 >> 7, 127 & c2);
-                  for (var h2 = 0; h2 < c2; ++h2) {
-                    var f2 = u2[h2] + F;
+                  for (var h4 = 0; h4 < c2; ++h4) {
+                    var f2 = u2[h4] + F;
                     z(a3, f2 >> 7, 127 & f2, 0, 0);
                   }
                 }
@@ -17070,7 +17070,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                     for (var e5 = 0; e5 <= 1; e5++) for (var t4 = 0; t4 <= 1; t4++) this.vertices.push(new B.default.Vector(t4, e5, 0)), this.uvs.push(t4, e5);
                   })).computeFaces().computeNormals(), c = this.createBuffers("glyph", o2)), true), r3 = false, o2 = void 0;
                   try {
-                    for (var h, f = this.retainedMode.buffers.text[Symbol.iterator](); !(d = (h = f.next()).done); d = true) h.value._prepareBuffer(c, u);
+                    for (var h3, f = this.retainedMode.buffers.text[Symbol.iterator](); !(d = (h3 = f.next()).done); d = true) h3.value._prepareBuffer(c, u);
                   } catch (e5) {
                     r3 = true, o2 = e5;
                   } finally {
@@ -17560,6 +17560,958 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
     }
   });
 
+  // solid_monke/mini-solid.js
+  var equalFn = (a, b) => a === b;
+  var $PROXY = Symbol("solid-proxy");
+  var $TRACK = Symbol("solid-track");
+  var signalOptions = {
+    equals: equalFn
+  };
+  var runEffects = runQueue;
+  var STALE = 1;
+  var PENDING = 2;
+  var UNOWNED = {
+    owned: null,
+    cleanups: null,
+    context: null,
+    owner: null
+  };
+  var Owner = null;
+  var Transition = null;
+  var Listener = null;
+  var Updates = null;
+  var Effects = null;
+  var ExecCount = 0;
+  function createSignal(value, options) {
+    options = options ? Object.assign({}, signalOptions, options) : signalOptions;
+    const s = {
+      value,
+      observers: null,
+      observerSlots: null,
+      comparator: options.equals || void 0
+    };
+    const setter = (value2) => {
+      if (typeof value2 === "function") {
+        value2 = value2(s.value);
+      }
+      return writeSignal(s, value2);
+    };
+    return [readSignal.bind(s), setter];
+  }
+  function createRenderEffect(fn, value, options) {
+    const c = createComputation(fn, value, false, STALE);
+    updateComputation(c);
+  }
+  function untrack(fn) {
+    if (Listener === null) return fn();
+    const listener = Listener;
+    Listener = null;
+    try {
+      return fn();
+    } finally {
+      Listener = listener;
+    }
+  }
+  function readSignal() {
+    if (this.sources && this.state) {
+      if (this.state === STALE)
+        updateComputation(this);
+      else {
+        const updates = Updates;
+        Updates = null;
+        runUpdates(() => lookUpstream(this), false);
+        Updates = updates;
+      }
+    }
+    if (Listener) {
+      const sSlot = this.observers ? this.observers.length : 0;
+      if (!Listener.sources) {
+        Listener.sources = [this];
+        Listener.sourceSlots = [sSlot];
+      } else {
+        Listener.sources.push(this);
+        Listener.sourceSlots.push(sSlot);
+      }
+      if (!this.observers) {
+        this.observers = [Listener];
+        this.observerSlots = [Listener.sources.length - 1];
+      } else {
+        this.observers.push(Listener);
+        this.observerSlots.push(Listener.sources.length - 1);
+      }
+    }
+    return this.value;
+  }
+  function writeSignal(node, value, isComp) {
+    let current2 = node.value;
+    if (!node.comparator || !node.comparator(current2, value)) {
+      node.value = value;
+      if (node.observers && node.observers.length) {
+        runUpdates(() => {
+          for (let i = 0; i < node.observers.length; i += 1) {
+            const o = node.observers[i];
+            const TransitionRunning = Transition && Transition.running;
+            if (TransitionRunning && Transition.disposed.has(o)) ;
+            if (TransitionRunning ? !o.tState : !o.state) {
+              if (o.pure) Updates.push(o);
+              else Effects.push(o);
+              if (o.observers) markDownstream(o);
+            }
+            if (!TransitionRunning) o.state = STALE;
+          }
+          if (Updates.length > 1e6) {
+            Updates = [];
+            if (false) ;
+            throw new Error();
+          }
+        }, false);
+      }
+    }
+    return value;
+  }
+  function updateComputation(node) {
+    if (!node.fn) return;
+    cleanNode(node);
+    const owner = Owner, listener = Listener, time = ExecCount;
+    Listener = Owner = node;
+    runComputation(
+      node,
+      node.value,
+      time
+    );
+    Listener = listener;
+    Owner = owner;
+  }
+  function runComputation(node, value, time) {
+    let nextValue;
+    try {
+      nextValue = node.fn(value);
+    } catch (err) {
+      if (node.pure) {
+        {
+          node.state = STALE;
+          node.owned && node.owned.forEach(cleanNode);
+          node.owned = null;
+        }
+      }
+      node.updatedAt = time + 1;
+      return handleError(err);
+    }
+    if (!node.updatedAt || node.updatedAt <= time) {
+      if (node.updatedAt != null && "observers" in node) {
+        writeSignal(node, nextValue);
+      } else node.value = nextValue;
+      node.updatedAt = time;
+    }
+  }
+  function createComputation(fn, init, pure, state = STALE, options) {
+    const c = {
+      fn,
+      state,
+      updatedAt: null,
+      owned: null,
+      sources: null,
+      sourceSlots: null,
+      cleanups: null,
+      value: init,
+      owner: Owner,
+      context: Owner ? Owner.context : null,
+      pure
+    };
+    if (Owner === null) ;
+    else if (Owner !== UNOWNED) {
+      {
+        if (!Owner.owned) Owner.owned = [c];
+        else Owner.owned.push(c);
+      }
+    }
+    return c;
+  }
+  function runTop(node) {
+    if (node.state === 0) return;
+    if (node.state === PENDING)
+      return lookUpstream(node);
+    if (node.suspense && untrack(node.suspense.inFallback))
+      return node.suspense.effects.push(node);
+    const ancestors = [node];
+    while ((node = node.owner) && (!node.updatedAt || node.updatedAt < ExecCount)) {
+      if (node.state) ancestors.push(node);
+    }
+    for (let i = ancestors.length - 1; i >= 0; i--) {
+      node = ancestors[i];
+      if (node.state === STALE) {
+        updateComputation(node);
+      } else if (node.state === PENDING) {
+        const updates = Updates;
+        Updates = null;
+        runUpdates(() => lookUpstream(node, ancestors[0]), false);
+        Updates = updates;
+      }
+    }
+  }
+  function runUpdates(fn, init) {
+    if (Updates) return fn();
+    let wait = false;
+    if (!init) Updates = [];
+    if (Effects) wait = true;
+    else Effects = [];
+    ExecCount++;
+    try {
+      const res = fn();
+      completeUpdates(wait);
+      return res;
+    } catch (err) {
+      if (!wait) Effects = null;
+      Updates = null;
+      handleError(err);
+    }
+  }
+  function completeUpdates(wait) {
+    if (Updates) {
+      runQueue(Updates);
+      Updates = null;
+    }
+    if (wait) return;
+    const e3 = Effects;
+    Effects = null;
+    if (e3.length) runUpdates(() => runEffects(e3), false);
+  }
+  function runQueue(queue) {
+    for (let i = 0; i < queue.length; i++) runTop(queue[i]);
+  }
+  function lookUpstream(node, ignore) {
+    node.state = 0;
+    for (let i = 0; i < node.sources.length; i += 1) {
+      const source = node.sources[i];
+      if (source.sources) {
+        const state = source.state;
+        if (state === STALE) {
+          if (source !== ignore && (!source.updatedAt || source.updatedAt < ExecCount))
+            runTop(source);
+        } else if (state === PENDING) lookUpstream(source, ignore);
+      }
+    }
+  }
+  function markDownstream(node) {
+    for (let i = 0; i < node.observers.length; i += 1) {
+      const o = node.observers[i];
+      if (!o.state) {
+        o.state = PENDING;
+        if (o.pure) Updates.push(o);
+        else Effects.push(o);
+        o.observers && markDownstream(o);
+      }
+    }
+  }
+  function cleanNode(node) {
+    let i;
+    if (node.sources) {
+      while (node.sources.length) {
+        const source = node.sources.pop(), index = node.sourceSlots.pop(), obs = source.observers;
+        if (obs && obs.length) {
+          const n = obs.pop(), s = source.observerSlots.pop();
+          if (index < obs.length) {
+            n.sourceSlots[s] = index;
+            obs[index] = n;
+            source.observerSlots[index] = s;
+          }
+        }
+      }
+    }
+    if (node.owned) {
+      for (i = node.owned.length - 1; i >= 0; i--) cleanNode(node.owned[i]);
+      node.owned = null;
+    }
+    if (node.cleanups) {
+      for (i = node.cleanups.length - 1; i >= 0; i--) node.cleanups[i]();
+      node.cleanups = null;
+    }
+    node.state = 0;
+  }
+  function castError(err) {
+    if (err instanceof Error) return err;
+    return new Error(typeof err === "string" ? err : "Unknown error", {
+      cause: err
+    });
+  }
+  function handleError(err, owner = Owner) {
+    const error = castError(err);
+    throw error;
+  }
+  var FALLBACK = Symbol("fallback");
+  function createComponent(Comp, props) {
+    return untrack(() => Comp(props || {}));
+  }
+  var booleans = [
+    "allowfullscreen",
+    "async",
+    "autofocus",
+    "autoplay",
+    "checked",
+    "controls",
+    "default",
+    "disabled",
+    "formnovalidate",
+    "hidden",
+    "indeterminate",
+    "ismap",
+    "loop",
+    "multiple",
+    "muted",
+    "nomodule",
+    "novalidate",
+    "open",
+    "playsinline",
+    "readonly",
+    "required",
+    "reversed",
+    "seamless",
+    "selected"
+  ];
+  var Properties = /* @__PURE__ */ new Set([
+    "className",
+    "value",
+    "readOnly",
+    "formNoValidate",
+    "isMap",
+    "noModule",
+    "playsInline",
+    ...booleans
+  ]);
+  var ChildProperties = /* @__PURE__ */ new Set([
+    "innerHTML",
+    "textContent",
+    "innerText",
+    "children"
+  ]);
+  var Aliases = /* @__PURE__ */ Object.assign(/* @__PURE__ */ Object.create(null), {
+    className: "class",
+    htmlFor: "for"
+  });
+  var PropAliases = /* @__PURE__ */ Object.assign(/* @__PURE__ */ Object.create(null), {
+    class: "className",
+    formnovalidate: {
+      $: "formNoValidate",
+      BUTTON: 1,
+      INPUT: 1
+    },
+    ismap: {
+      $: "isMap",
+      IMG: 1
+    },
+    nomodule: {
+      $: "noModule",
+      SCRIPT: 1
+    },
+    playsinline: {
+      $: "playsInline",
+      VIDEO: 1
+    },
+    readonly: {
+      $: "readOnly",
+      INPUT: 1,
+      TEXTAREA: 1
+    }
+  });
+  function getPropAlias(prop, tagName) {
+    const a = PropAliases[prop];
+    return typeof a === "object" ? a[tagName] ? a["$"] : void 0 : a;
+  }
+  var DelegatedEvents = /* @__PURE__ */ new Set([
+    "beforeinput",
+    "click",
+    "dblclick",
+    "contextmenu",
+    "focusin",
+    "focusout",
+    "input",
+    "keydown",
+    "keyup",
+    "mousedown",
+    "mousemove",
+    "mouseout",
+    "mouseover",
+    "mouseup",
+    "pointerdown",
+    "pointermove",
+    "pointerout",
+    "pointerover",
+    "pointerup",
+    "touchend",
+    "touchmove",
+    "touchstart"
+  ]);
+  var SVGElements = /* @__PURE__ */ new Set([
+    "altGlyph",
+    "altGlyphDef",
+    "altGlyphItem",
+    "animate",
+    "animateColor",
+    "animateMotion",
+    "animateTransform",
+    "circle",
+    "clipPath",
+    "color-profile",
+    "cursor",
+    "defs",
+    "desc",
+    "ellipse",
+    "feBlend",
+    "feColorMatrix",
+    "feComponentTransfer",
+    "feComposite",
+    "feConvolveMatrix",
+    "feDiffuseLighting",
+    "feDisplacementMap",
+    "feDistantLight",
+    "feFlood",
+    "feFuncA",
+    "feFuncB",
+    "feFuncG",
+    "feFuncR",
+    "feGaussianBlur",
+    "feImage",
+    "feMerge",
+    "feMergeNode",
+    "feMorphology",
+    "feOffset",
+    "fePointLight",
+    "feSpecularLighting",
+    "feSpotLight",
+    "feTile",
+    "feTurbulence",
+    "filter",
+    "font",
+    "font-face",
+    "font-face-format",
+    "font-face-name",
+    "font-face-src",
+    "font-face-uri",
+    "foreignObject",
+    "g",
+    "glyph",
+    "glyphRef",
+    "hkern",
+    "image",
+    "line",
+    "linearGradient",
+    "marker",
+    "mask",
+    "metadata",
+    "missing-glyph",
+    "mpath",
+    "path",
+    "pattern",
+    "polygon",
+    "polyline",
+    "radialGradient",
+    "rect",
+    "set",
+    "stop",
+    "svg",
+    "switch",
+    "symbol",
+    "text",
+    "textPath",
+    "tref",
+    "tspan",
+    "use",
+    "view",
+    "vkern"
+  ]);
+  var SVGNamespace = {
+    xlink: "http://www.w3.org/1999/xlink",
+    xml: "http://www.w3.org/XML/1998/namespace"
+  };
+  function reconcileArrays(parentNode, a, b) {
+    let bLength = b.length, aEnd = a.length, bEnd = bLength, aStart = 0, bStart = 0, after = a[aEnd - 1].nextSibling, map = null;
+    while (aStart < aEnd || bStart < bEnd) {
+      if (a[aStart] === b[bStart]) {
+        aStart++;
+        bStart++;
+        continue;
+      }
+      while (a[aEnd - 1] === b[bEnd - 1]) {
+        aEnd--;
+        bEnd--;
+      }
+      if (aEnd === aStart) {
+        const node = bEnd < bLength ? bStart ? b[bStart - 1].nextSibling : b[bEnd - bStart] : after;
+        while (bStart < bEnd) parentNode.insertBefore(b[bStart++], node);
+      } else if (bEnd === bStart) {
+        while (aStart < aEnd) {
+          if (!map || !map.has(a[aStart])) a[aStart].remove();
+          aStart++;
+        }
+      } else if (a[aStart] === b[bEnd - 1] && b[bStart] === a[aEnd - 1]) {
+        const node = a[--aEnd].nextSibling;
+        parentNode.insertBefore(b[bStart++], a[aStart++].nextSibling);
+        parentNode.insertBefore(b[--bEnd], node);
+        a[aEnd] = b[bEnd];
+      } else {
+        if (!map) {
+          map = /* @__PURE__ */ new Map();
+          let i = bStart;
+          while (i < bEnd) map.set(b[i], i++);
+        }
+        const index = map.get(a[aStart]);
+        if (index != null) {
+          if (bStart < index && index < bEnd) {
+            let i = aStart, sequence = 1, t;
+            while (++i < aEnd && i < bEnd) {
+              if ((t = map.get(a[i])) == null || t !== index + sequence) break;
+              sequence++;
+            }
+            if (sequence > index - bStart) {
+              const node = a[aStart];
+              while (bStart < index) parentNode.insertBefore(b[bStart++], node);
+            } else parentNode.replaceChild(b[bStart++], a[aStart++]);
+          } else aStart++;
+        } else a[aStart++].remove();
+      }
+    }
+  }
+  var $$EVENTS = "_$DX_DELEGATE";
+  function delegateEvents(eventNames, document2 = window.document) {
+    const e3 = document2[$$EVENTS] || (document2[$$EVENTS] = /* @__PURE__ */ new Set());
+    for (let i = 0, l = eventNames.length; i < l; i++) {
+      const name = eventNames[i];
+      if (!e3.has(name)) {
+        e3.add(name);
+        document2.addEventListener(name, eventHandler);
+      }
+    }
+  }
+  function setAttribute(node, name, value) {
+    if (value == null) node.removeAttribute(name);
+    else node.setAttribute(name, value);
+  }
+  function setAttributeNS(node, namespace, name, value) {
+    if (value == null) node.removeAttributeNS(namespace, name);
+    else node.setAttributeNS(namespace, name, value);
+  }
+  function className(node, value) {
+    if (value == null) node.removeAttribute("class");
+    else node.className = value;
+  }
+  function addEventListener(node, name, handler2, delegate) {
+    if (delegate) {
+      if (Array.isArray(handler2)) {
+        node[`$$${name}`] = handler2[0];
+        node[`$$${name}Data`] = handler2[1];
+      } else node[`$$${name}`] = handler2;
+    } else if (Array.isArray(handler2)) {
+      const handlerFn = handler2[0];
+      node.addEventListener(
+        name,
+        handler2[0] = (e3) => handlerFn.call(node, handler2[1], e3)
+      );
+    } else node.addEventListener(name, handler2);
+  }
+  function classList(node, value, prev = {}) {
+    const classKeys = Object.keys(value || {}), prevKeys = Object.keys(prev);
+    let i, len;
+    for (i = 0, len = prevKeys.length; i < len; i++) {
+      const key = prevKeys[i];
+      if (!key || key === "undefined" || value[key]) continue;
+      toggleClassKey(node, key, false);
+      delete prev[key];
+    }
+    for (i = 0, len = classKeys.length; i < len; i++) {
+      const key = classKeys[i], classValue = !!value[key];
+      if (!key || key === "undefined" || prev[key] === classValue || !classValue)
+        continue;
+      toggleClassKey(node, key, true);
+      prev[key] = classValue;
+    }
+    return prev;
+  }
+  function style(node, value, prev) {
+    if (!value) return prev ? setAttribute(node, "style") : value;
+    const nodeStyle = node.style;
+    if (typeof value === "string") return nodeStyle.cssText = value;
+    typeof prev === "string" && (nodeStyle.cssText = prev = void 0);
+    prev || (prev = {});
+    value || (value = {});
+    let v, s;
+    for (s in prev) {
+      value[s] == null && nodeStyle.removeProperty(s);
+      delete prev[s];
+    }
+    for (s in value) {
+      v = value[s];
+      if (v !== prev[s]) {
+        nodeStyle.setProperty(s, v);
+        prev[s] = v;
+      }
+    }
+    return prev;
+  }
+  function spread(node, props = {}, isSVG, skipChildren) {
+    const prevProps = {};
+    if (!skipChildren) {
+      createRenderEffect(
+        () => prevProps.children = insertExpression(
+          node,
+          props.children,
+          prevProps.children
+        )
+      );
+    }
+    createRenderEffect(() => props.ref && props.ref(node));
+    createRenderEffect(() => assign(node, props, isSVG, true, prevProps, true));
+    return prevProps;
+  }
+  function dynamicProperty(props, key) {
+    const src = props[key];
+    Object.defineProperty(props, key, {
+      get() {
+        return src();
+      },
+      enumerable: true
+    });
+    return props;
+  }
+  function insert(parent, accessor, marker, initial) {
+    if (marker !== void 0 && !initial) initial = [];
+    if (typeof accessor !== "function")
+      return insertExpression(parent, accessor, initial, marker);
+    createRenderEffect(
+      (current2) => insertExpression(parent, accessor(), current2, marker),
+      initial
+    );
+  }
+  function assign(node, props, isSVG, skipChildren, prevProps = {}, skipRef = false) {
+    props || (props = {});
+    for (const prop in prevProps) {
+      if (!(prop in props)) {
+        if (prop === "children") continue;
+        prevProps[prop] = assignProp(
+          node,
+          prop,
+          null,
+          prevProps[prop],
+          isSVG,
+          skipRef
+        );
+      }
+    }
+    for (const prop in props) {
+      if (prop === "children") {
+        if (!skipChildren) insertExpression(node, props.children);
+        continue;
+      }
+      const value = props[prop];
+      prevProps[prop] = assignProp(
+        node,
+        prop,
+        value,
+        prevProps[prop],
+        isSVG,
+        skipRef
+      );
+    }
+  }
+  function toPropertyName(name) {
+    return name.toLowerCase().replace(/-([a-z])/g, (_, w) => w.toUpperCase());
+  }
+  function toggleClassKey(node, key, value) {
+    const classNames = key.trim().split(/\s+/);
+    for (let i = 0, nameLen = classNames.length; i < nameLen; i++)
+      node.classList.toggle(classNames[i], value);
+  }
+  function assignProp(node, prop, value, prev, isSVG, skipRef) {
+    let isCE, isProp, isChildProp, propAlias, forceProp;
+    if (prop === "style") return style(node, value, prev);
+    if (prop === "classList") return classList(node, value, prev);
+    if (value === prev) return prev;
+    if (prop === "ref") {
+      if (!skipRef) value(node);
+    } else if (prop.slice(0, 3) === "on:") {
+      const e3 = prop.slice(3);
+      prev && node.removeEventListener(e3, prev);
+      value && node.addEventListener(e3, value);
+    } else if (prop.slice(0, 10) === "oncapture:") {
+      const e3 = prop.slice(10);
+      prev && node.removeEventListener(e3, prev, true);
+      value && node.addEventListener(e3, value, true);
+    } else if (prop.slice(0, 2) === "on") {
+      const name = prop.slice(2).toLowerCase();
+      const delegate = DelegatedEvents.has(name);
+      if (!delegate && prev) {
+        const h3 = Array.isArray(prev) ? prev[0] : prev;
+        node.removeEventListener(name, h3);
+      }
+      if (delegate || value) {
+        addEventListener(node, name, value, delegate);
+        delegate && delegateEvents([name]);
+      }
+    } else if (prop.slice(0, 5) === "attr:") {
+      setAttribute(node, prop.slice(5), value);
+    } else if ((forceProp = prop.slice(0, 5) === "prop:") || (isChildProp = ChildProperties.has(prop)) || !isSVG && ((propAlias = getPropAlias(prop, node.tagName)) || (isProp = Properties.has(prop))) || (isCE = node.nodeName.includes("-"))) {
+      if (forceProp) {
+        prop = prop.slice(5);
+        isProp = true;
+      }
+      if (prop === "class" || prop === "className") className(node, value);
+      else if (isCE && !isProp && !isChildProp)
+        node[toPropertyName(prop)] = value;
+      else node[propAlias || prop] = value;
+    } else {
+      const ns = isSVG && prop.indexOf(":") > -1 && SVGNamespace[prop.split(":")[0]];
+      if (ns) setAttributeNS(node, ns, prop, value);
+      else setAttribute(node, Aliases[prop] || prop, value);
+    }
+    return value;
+  }
+  function eventHandler(e3) {
+    const key = `$$${e3.type}`;
+    let node = e3.composedPath && e3.composedPath()[0] || e3.target;
+    if (e3.target !== node) {
+      Object.defineProperty(e3, "target", {
+        configurable: true,
+        value: node
+      });
+    }
+    Object.defineProperty(e3, "currentTarget", {
+      configurable: true,
+      get() {
+        return node || document;
+      }
+    });
+    while (node) {
+      const handler2 = node[key];
+      if (handler2 && !node.disabled) {
+        const data = node[`${key}Data`];
+        data !== void 0 ? handler2.call(node, data, e3) : handler2.call(node, e3);
+        if (e3.cancelBubble) return;
+      }
+      node = node._$host || node.parentNode || node.host;
+    }
+  }
+  function insertExpression(parent, value, current2, marker, unwrapArray) {
+    while (typeof current2 === "function") current2 = current2();
+    if (value === current2) return current2;
+    const t = typeof value, multi = marker !== void 0;
+    parent = multi && current2[0] && current2[0].parentNode || parent;
+    if (t === "string" || t === "number") {
+      if (t === "number") value = value.toString();
+      if (multi) {
+        let node = current2[0];
+        if (node && node.nodeType === 3) {
+          node.data = value;
+        } else node = document.createTextNode(value);
+        current2 = cleanChildren(parent, current2, marker, node);
+      } else {
+        if (current2 !== "" && typeof current2 === "string") {
+          current2 = parent.firstChild.data = value;
+        } else current2 = parent.textContent = value;
+      }
+    } else if (value == null || t === "boolean") {
+      current2 = cleanChildren(parent, current2, marker);
+    } else if (t === "function") {
+      createRenderEffect(() => {
+        let v = value();
+        while (typeof v === "function") v = v();
+        current2 = insertExpression(parent, v, current2, marker);
+      });
+      return () => current2;
+    } else if (Array.isArray(value)) {
+      const array = [];
+      const currentArray = current2 && Array.isArray(current2);
+      if (normalizeIncomingArray(array, value, current2, unwrapArray)) {
+        createRenderEffect(
+          () => current2 = insertExpression(parent, array, current2, marker, true)
+        );
+        return () => current2;
+      }
+      if (array.length === 0) {
+        current2 = cleanChildren(parent, current2, marker);
+        if (multi) return current2;
+      } else if (currentArray) {
+        if (current2.length === 0) {
+          appendNodes(parent, array, marker);
+        } else reconcileArrays(parent, current2, array);
+      } else {
+        current2 && cleanChildren(parent);
+        appendNodes(parent, array);
+      }
+      current2 = array;
+    } else if (value.nodeType) {
+      if (Array.isArray(current2)) {
+        if (multi)
+          return current2 = cleanChildren(parent, current2, marker, value);
+        cleanChildren(parent, current2, null, value);
+      } else if (current2 == null || current2 === "" || !parent.firstChild) {
+        parent.appendChild(value);
+      } else parent.replaceChild(value, parent.firstChild);
+      current2 = value;
+    } else console.warn(`Unrecognized value. Skipped inserting`, value);
+    return current2;
+  }
+  function normalizeIncomingArray(normalized, array, current2, unwrap) {
+    let dynamic = false;
+    for (let i = 0, len = array.length; i < len; i++) {
+      let item = array[i], prev = current2 && current2[i], t;
+      if (item == null || item === true || item === false) ;
+      else if ((t = typeof item) === "object" && item.nodeType) {
+        normalized.push(item);
+      } else if (Array.isArray(item)) {
+        dynamic = normalizeIncomingArray(normalized, item, prev) || dynamic;
+      } else if (t === "function") {
+        if (unwrap) {
+          while (typeof item === "function") item = item();
+          dynamic = normalizeIncomingArray(
+            normalized,
+            Array.isArray(item) ? item : [item],
+            Array.isArray(prev) ? prev : [prev]
+          ) || dynamic;
+        } else {
+          normalized.push(item);
+          dynamic = true;
+        }
+      } else {
+        const value = String(item);
+        if (prev && prev.nodeType === 3 && prev.data === value)
+          normalized.push(prev);
+        else normalized.push(document.createTextNode(value));
+      }
+    }
+    return dynamic;
+  }
+  function appendNodes(parent, array, marker = null) {
+    for (let i = 0, len = array.length; i < len; i++)
+      parent.insertBefore(array[i], marker);
+  }
+  function cleanChildren(parent, current2, marker, replacement) {
+    if (marker === void 0) return parent.textContent = "";
+    const node = replacement || document.createTextNode("");
+    if (current2.length) {
+      let inserted = false;
+      for (let i = current2.length - 1; i >= 0; i--) {
+        const el = current2[i];
+        if (node !== el) {
+          const isParent = el.parentNode === parent;
+          if (!inserted && !i)
+            isParent ? parent.replaceChild(node, el) : parent.insertBefore(node, marker);
+          else isParent && el.remove();
+        } else inserted = true;
+      }
+    } else parent.insertBefore(node, marker);
+    return [node];
+  }
+  var $ELEMENT = Symbol("hyper-element");
+  function createHyperScript(r) {
+    function h3() {
+      let args = [].slice.call(arguments), e3, multiExpression = false;
+      while (Array.isArray(args[0])) args = args[0];
+      if (args[0][$ELEMENT]) args.unshift(h3.Fragment);
+      typeof args[0] === "string" && detectMultiExpression(args);
+      const ret = () => {
+        while (args.length) item(args.shift());
+        return e3;
+      };
+      ret[$ELEMENT] = true;
+      return ret;
+      function item(l) {
+        const type = typeof l;
+        if (l == null) ;
+        else if ("string" === type) {
+          if (!e3) parseClass(l);
+          else e3.appendChild(document.createTextNode(l));
+        } else if ("number" === type || "boolean" === type || l instanceof Date || l instanceof RegExp) {
+          e3.appendChild(document.createTextNode(l.toString()));
+        } else if (Array.isArray(l)) {
+          for (let i = 0; i < l.length; i++) item(l[i]);
+        } else if (l instanceof Element) {
+          r.insert(e3, l, multiExpression ? null : void 0);
+        } else if ("object" === type) {
+          let dynamic = false;
+          const d = Object.getOwnPropertyDescriptors(l);
+          for (const k in d) {
+            if (k !== "ref" && k.slice(0, 2) !== "on" && typeof d[k].value === "function") {
+              r.dynamicProperty(l, k);
+              dynamic = true;
+            } else if (d[k].get) dynamic = true;
+          }
+          dynamic ? r.spread(e3, l, e3 instanceof SVGElement, !!args.length) : r.assign(e3, l, e3 instanceof SVGElement, !!args.length);
+        } else if ("function" === type) {
+          if (!e3) {
+            let props, next = args[0];
+            if (next == null || typeof next === "object" && !Array.isArray(next) && !(next instanceof Element))
+              props = args.shift();
+            props || (props = {});
+            if (args.length) {
+              props.children = args.length > 1 ? args : args[0];
+            }
+            const d = Object.getOwnPropertyDescriptors(props);
+            for (const k in d) {
+              if (Array.isArray(d[k].value)) {
+                const list = d[k].value;
+                props[k] = () => {
+                  for (let i = 0; i < list.length; i++) {
+                    while (list[i][$ELEMENT]) list[i] = list[i]();
+                  }
+                  return list;
+                };
+                r.dynamicProperty(props, k);
+              } else if (typeof d[k].value === "function" && !d[k].value.length)
+                r.dynamicProperty(props, k);
+            }
+            e3 = r.createComponent(l, props);
+            args = [];
+          } else {
+            while (l[$ELEMENT]) l = l();
+            r.insert(e3, l, multiExpression ? null : void 0);
+          }
+        }
+      }
+      function parseClass(string) {
+        const m = string.split(/([\.#]?[^\s#.]+)/);
+        if (/^\.|#/.test(m[1])) e3 = document.createElement("div");
+        for (let i = 0; i < m.length; i++) {
+          const v = m[i], s = v.substring(1, v.length);
+          if (!v) continue;
+          if (!e3)
+            e3 = r.SVGElements.has(v) ? document.createElementNS("http://www.w3.org/2000/svg", v) : document.createElement(v);
+          else if (v[0] === ".") e3.classList.add(s);
+          else if (v[0] === "#") e3.setAttribute("id", s);
+        }
+      }
+      function detectMultiExpression(list) {
+        for (let i = 1; i < list.length; i++) {
+          if (typeof list[i] === "function") {
+            multiExpression = true;
+            return;
+          } else if (Array.isArray(list[i])) {
+            detectMultiExpression(list[i]);
+          }
+        }
+      }
+    }
+    h3.Fragment = (props) => props.children;
+    return h3;
+  }
+  var h = createHyperScript({
+    spread,
+    assign,
+    insert,
+    createComponent,
+    dynamicProperty,
+    SVGElements
+  });
+  var $RAW = Symbol("store-raw");
+  var $NODE = Symbol("store-node");
+  var $HAS = Symbol("store-has");
+  var $SELF = Symbol("store-self");
+
+  // solid_monke/solid_monke.js
+  var sig = (val) => {
+    const [getter, setter] = createSignal(val);
+    getter.set = setter;
+    return getter;
+  };
+
   // node_modules/qr-scanner/qr-scanner.min.js
   var e2 = class _e {
     constructor(a, b, c, d, f) {
@@ -17584,9 +18536,9 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
       a.disablePictureInPicture = true;
       a.playsInline = true;
       a.muted = true;
-      let h = false;
-      a.hidden && (a.hidden = false, h = true);
-      document.body.contains(a) || (document.body.appendChild(a), h = true);
+      let h3 = false;
+      a.hidden && (a.hidden = false, h3 = true);
+      document.body.contains(a) || (document.body.appendChild(a), h3 = true);
       c = a.parentElement;
       if (b.highlightScanRegion || b.highlightCodeOutline) {
         d = !!b.overlay;
@@ -17612,9 +18564,9 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
       this._scanRegion = this._calculateScanRegion(a);
       requestAnimationFrame(() => {
         let m = window.getComputedStyle(a);
-        "none" === m.display && (a.style.setProperty("display", "block", "important"), h = true);
-        "visible" !== m.visibility && (a.style.setProperty("visibility", "visible", "important"), h = true);
-        h && (console.warn("QrScanner has overwritten the video hiding style to avoid Safari stopping the playback."), a.style.opacity = "0", a.style.width = "0", a.style.height = "0", this.$overlay && this.$overlay.parentElement && this.$overlay.parentElement.removeChild(this.$overlay), delete this.$overlay, delete this.$codeOutlineHighlight);
+        "none" === m.display && (a.style.setProperty("display", "block", "important"), h3 = true);
+        "visible" !== m.visibility && (a.style.setProperty("visibility", "visible", "important"), h3 = true);
+        h3 && (console.warn("QrScanner has overwritten the video hiding style to avoid Safari stopping the playback."), a.style.opacity = "0", a.style.width = "0", a.style.height = "0", this.$overlay && this.$overlay.parentElement && this.$overlay.parentElement.removeChild(this.$overlay), delete this.$overlay, delete this.$codeOutlineHighlight);
         this.$overlay && this._updateOverlay();
       });
       a.addEventListener("play", this._onPlay);
@@ -17724,9 +18676,9 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
     async setCamera(a) {
       a !== this._preferredCamera && (this._preferredCamera = a, await this._restartVideoStream());
     }
-    static async scanImage(a, b, c, d, f = false, h = false) {
+    static async scanImage(a, b, c, d, f = false, h3 = false) {
       let m, n = false;
-      b && ("scanRegion" in b || "qrEngine" in b || "canvas" in b || "disallowCanvasResizing" in b || "alsoTryWithoutScanRegion" in b || "returnDetailedScanResult" in b) ? (m = b.scanRegion, c = b.qrEngine, d = b.canvas, f = b.disallowCanvasResizing || false, h = b.alsoTryWithoutScanRegion || false, n = true) : b || c || d || f || h ? console.warn("You're using a deprecated api for scanImage which will be removed in the future.") : console.warn("Note that the return type of scanImage will change in the future. To already switch to the new api today, you can pass returnDetailedScanResult: true.");
+      b && ("scanRegion" in b || "qrEngine" in b || "canvas" in b || "disallowCanvasResizing" in b || "alsoTryWithoutScanRegion" in b || "returnDetailedScanResult" in b) ? (m = b.scanRegion, c = b.qrEngine, d = b.canvas, f = b.disallowCanvasResizing || false, h3 = b.alsoTryWithoutScanRegion || false, n = true) : b || c || d || f || h3 ? console.warn("You're using a deprecated api for scanImage which will be removed in the future.") : console.warn("Note that the return type of scanImage will change in the future. To already switch to the new api today, you can pass returnDetailedScanResult: true.");
       b = !!c;
       try {
         let p, k;
@@ -17760,13 +18712,13 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             return { data: g.rawValue, cornerPoints: _e._convertPoints(g.cornerPoints, m) };
           } catch (l) {
             g = l.message || l;
-            if (/not implemented|service unavailable/.test(g)) return _e._disableBarcodeDetector = true, _e.scanImage(a, { scanRegion: m, canvas: d, disallowCanvasResizing: f, alsoTryWithoutScanRegion: h });
+            if (/not implemented|service unavailable/.test(g)) return _e._disableBarcodeDetector = true, _e.scanImage(a, { scanRegion: m, canvas: d, disallowCanvasResizing: f, alsoTryWithoutScanRegion: h3 });
             throw `Scanner error: ${g}`;
           }
         })()]);
         return n ? q : q.data;
       } catch (p) {
-        if (!m || !h) throw p;
+        if (!m || !h3) throw p;
         let k = await _e.scanImage(a, { qrEngine: c, canvas: d, disallowCanvasResizing: f });
         return n ? k : k.data;
       } finally {
@@ -17811,7 +18763,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
     _updateOverlay() {
       requestAnimationFrame(() => {
         if (this.$overlay) {
-          var a = this.$video, b = a.videoWidth, c = a.videoHeight, d = a.offsetWidth, f = a.offsetHeight, h = a.offsetLeft, m = a.offsetTop, n = window.getComputedStyle(a), p = n.objectFit, k = b / c, q = d / f;
+          var a = this.$video, b = a.videoWidth, c = a.videoHeight, d = a.offsetWidth, f = a.offsetHeight, h3 = a.offsetLeft, m = a.offsetTop, n = window.getComputedStyle(a), p = n.objectFit, k = b / c, q = d / f;
           switch (p) {
             case "none":
               var g = b;
@@ -17837,7 +18789,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
           k.height = `${q / c * l}px`;
           k.top = `${m + w + u / c * l}px`;
           c = /scaleX\(-1\)/.test(a.style.transform);
-          k.left = `${h + (c ? d - v - g : v) + (c ? b - p - n : p) / b * g}px`;
+          k.left = `${h3 + (c ? d - v - g : v) + (c ? b - p - n : p) / b * g}px`;
           k.transform = a.style.transform;
         }
       });
@@ -17846,7 +18798,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
       if (!b) return a;
       let c = b.x || 0, d = b.y || 0, f = b.width && b.downScaledWidth ? b.width / b.downScaledWidth : 1;
       b = b.height && b.downScaledHeight ? b.height / b.downScaledHeight : 1;
-      for (let h of a) h.x = h.x * f + c, h.y = h.y * b + d;
+      for (let h3 of a) h3.x = h3.x * f + c, h3.y = h3.y * b + d;
       return a;
     }
     _scanFrame() {
@@ -17877,8 +18829,8 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
       if (!navigator.mediaDevices) throw "Camera not found.";
       let a = /^(environment|user)$/.test(this._preferredCamera) ? "facingMode" : "deviceId", b = [{ width: { min: 1024 } }, { width: { min: 768 } }, {}], c = b.map((d) => Object.assign({}, d, { [a]: { exact: this._preferredCamera } }));
       for (let d of [...c, ...b]) try {
-        let f = await navigator.mediaDevices.getUserMedia({ video: d, audio: false }), h = this._getFacingMode(f) || (d.facingMode ? this._preferredCamera : "environment" === this._preferredCamera ? "user" : "environment");
-        return { stream: f, facingMode: h };
+        let f = await navigator.mediaDevices.getUserMedia({ video: d, audio: false }), h3 = this._getFacingMode(f) || (d.facingMode ? this._preferredCamera : "environment" === this._preferredCamera ? "user" : "environment");
+        return { stream: f, facingMode: h3 };
       } catch (f) {
       }
       throw "Camera not found.";
@@ -17898,11 +18850,11 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
     }
     static _drawToCanvas(a, b, c, d = false) {
       c = c || document.createElement("canvas");
-      let f = b && b.x ? b.x : 0, h = b && b.y ? b.y : 0, m = b && b.width ? b.width : a.videoWidth || a.width, n = b && b.height ? b.height : a.videoHeight || a.height;
+      let f = b && b.x ? b.x : 0, h3 = b && b.y ? b.y : 0, m = b && b.width ? b.width : a.videoWidth || a.width, n = b && b.height ? b.height : a.videoHeight || a.height;
       d || (d = b && b.downScaledWidth ? b.downScaledWidth : m, b = b && b.downScaledHeight ? b.downScaledHeight : n, c.width !== d && (c.width = d), c.height !== b && (c.height = b));
       b = c.getContext("2d", { alpha: false });
       b.imageSmoothingEnabled = false;
-      b.drawImage(a, f, h, m, n, 0, 0, c.width, c.height);
+      b.drawImage(a, f, h3, m, n, 0, 0, c.width, c.height);
       return [c, b];
     }
     static async _loadImage(a) {
@@ -22231,7 +23183,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               }
             }
           });
-          nativeAudioWorkletNode.addEventListener = /* @__PURE__ */ ((addEventListener) => {
+          nativeAudioWorkletNode.addEventListener = /* @__PURE__ */ ((addEventListener2) => {
             return (...args) => {
               if (args[0] === "processorerror") {
                 const unpatchedEventListener = typeof args[1] === "function" ? args[1] : typeof args[1] === "object" && args[1] !== null && typeof args[1].handleEvent === "function" ? args[1].handleEvent : null;
@@ -22254,8 +23206,8 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
                   }
                 }
               }
-              addEventListener.call(nativeAudioWorkletNode, "error", args[1], args[2]);
-              return addEventListener.call(nativeAudioWorkletNode, ...args);
+              addEventListener2.call(nativeAudioWorkletNode, "error", args[1], args[2]);
+              return addEventListener2.call(nativeAudioWorkletNode, ...args);
             };
           })(nativeAudioWorkletNode.addEventListener);
           nativeAudioWorkletNode.removeEventListener = /* @__PURE__ */ ((removeEventListener) => {
@@ -22518,7 +23470,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
         }
       };
       const patchedEventListeners = /* @__PURE__ */ new Map();
-      messageChannel.port1.addEventListener = /* @__PURE__ */ ((addEventListener) => {
+      messageChannel.port1.addEventListener = /* @__PURE__ */ ((addEventListener2) => {
         return (...args) => {
           if (args[0] === "message") {
             const unpatchedEventListener = typeof args[1] === "function" ? args[1] : typeof args[1] === "object" && args[1] !== null && typeof args[1].handleEvent === "function" ? args[1].handleEvent : null;
@@ -22534,7 +23486,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               }
             }
           }
-          return addEventListener.call(messageChannel.port1, args[0], args[1], args[2]);
+          return addEventListener2.call(messageChannel.port1, args[0], args[1], args[2]);
         };
       })(messageChannel.port1.addEventListener);
       messageChannel.port1.removeEventListener = /* @__PURE__ */ ((removeEventListener) => {
@@ -28555,13 +29507,13 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
   };
   function connectSeries(...nodes) {
     const first = nodes.shift();
-    nodes.reduce((prev, current) => {
+    nodes.reduce((prev, current2) => {
       if (prev instanceof ToneAudioNode) {
-        prev.connect(current);
+        prev.connect(current2);
       } else if (isAudioNode2(prev)) {
-        connect(prev, current);
+        connect(prev, current2);
       }
-      return current;
+      return current2;
     }, first);
   }
   function connect(srcNode, dstNode, outputNumber = 0, inputNumber = 0) {
@@ -32925,11 +33877,11 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
     get spread() {
       return this._spread;
     }
-    set spread(spread) {
-      this._spread = spread;
+    set spread(spread2) {
+      this._spread = spread2;
       if (this._oscillators.length > 1) {
-        const start2 = -spread / 2;
-        const step = spread / (this._oscillators.length - 1);
+        const start2 = -spread2 / 2;
+        const step = spread2 / (this._oscillators.length - 1);
         this._forEach((osc, i) => osc.detune.value = start2 + step * i);
       }
     }
@@ -33367,9 +34319,9 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
         return void 0;
       }
     }
-    set spread(spread) {
-      if (this._getOscType(this._oscillator, "fat") && isNumber(spread)) {
-        this._oscillator.spread = spread;
+    set spread(spread2) {
+      if (this._getOscType(this._oscillator, "fat") && isNumber(spread2)) {
+        this._oscillator.spread = spread2;
       }
     }
     /**
@@ -35199,7 +36151,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
       const aValues = this._analyser.getValue();
       const channelValues = this.channels === 1 ? [aValues] : aValues;
       const vals = channelValues.map((values, index) => {
-        const totalSquared = values.reduce((total, current) => total + current * current, 0);
+        const totalSquared = values.reduce((total, current2) => total + current2 * current2, 0);
         const rms = Math.sqrt(totalSquared / values.length);
         this._rms[index] = Math.max(rms, this._rms[index] * this.smoothing);
         return this.normalRange ? this._rms[index] : gainToDb(this._rms[index]);
@@ -35485,7 +36437,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
   var Transport = getContext().transport;
   var Destination = getContext().destination;
   var Master = getContext().destination;
-  var Listener = getContext().listener;
+  var Listener2 = getContext().listener;
   var Draw = getContext().draw;
   var context = getContext();
 
@@ -35498,7 +36450,10 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
   var c_width = canvas?.clientWidth;
   var c_height = canvas?.clientHeight;
   var img;
+  var img_1;
+  var img_2;
   var graphic;
+  var current = "spread_0";
   var spread_1 = {
     image: [img, 0, 0, 50, 70, 89, 330]
   };
@@ -35512,18 +36467,12 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
     function draw_base() {
       if (capturing) {
         p.image(capture, 0, 0, c_width, c_height);
-        if (corners) {
-          p.fill(255, 0, 0);
-          for (let i = 0; i < corners.length; i++) {
-            p.ellipse(corners[i].x, corners[i].y, 10, 10);
-          }
-        }
       }
     }
-    function draw_pixel_grid(p2, x, y, w, h, skip) {
+    function draw_pixel_grid(p2, x, y, w, h3, skip) {
       let size = 10;
       let row = w / size;
-      let col = h / size;
+      let col = h3 / size;
       let positive = "white";
       let negative = "black";
       p2.noStroke();
@@ -35539,24 +36488,36 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
         }
       }
     }
-    function image_and_grid(img2, x, y, w, h, skip) {
+    function image_and_grid(img2, x, y, w, h3, skip) {
       if (!graphic) graphic = p.createGraphics(p.width, p.height);
-      graphic.image(img2, x, y, w, h);
+      graphic.image(img2, x, y, w, h3);
       graphic.blendMode(p.SCREEN);
       graphic.blendMode(p.MULTIPLY);
-      draw_pixel_grid(graphic, x, y, w, h, skip);
+      draw_pixel_grid(graphic, x, y, w, h3, skip);
       graphic.blendMode(p.BLEND);
       p.blendMode(p.SCREEN);
       p.image(graphic, 0, 0);
       p.blendMode(p.BLEND);
     }
     function qr_code_init() {
+      let options = ["spread_1", "spread_2", "spread_3", "spread_4"];
       setInterval(() => {
         let canvas2 = document.querySelector("canvas");
         if (!canvas2) return;
         qr_scanner_min_default.scanImage(canvas2, { returnDetailedScanResult: true }).then((result) => {
           let text = result.data;
           corners = result.cornerPoints;
+          if (text !== current) {
+            if (options.includes(text)) {
+              counter = 0;
+            }
+            if (text == "spread_1") {
+              current = "spread_1";
+            }
+            if (text == "spread_2") {
+              current = "spread_2";
+            }
+          }
         }).catch((error) => {
           corners = null;
         });
@@ -35566,6 +36527,8 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
       img = p.loadImage("./img.jpg", () => {
         spread_1.image[0] = img;
       });
+      img_1 = p.loadImage("./spread_1.png");
+      img_2 = p.loadImage("./spread_2.png");
     };
     p.setup = () => {
       p.createCanvas(c_width, c_height);
@@ -35588,7 +36551,10 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
       p.textSize(32);
       if (val > 0) counter = counter + val / 100;
       draw_base();
-      image_and_grid(img, 50, 50, 180, 290, counter);
+      let i = img;
+      if (current === "spread_1") i = img_1;
+      if (current === "spread_2") i = img_2;
+      image_and_grid(i, 50, 50, 180, 290, counter);
       p.fill(0);
       p.text("Value: " + val, 10, 30);
       p.text("Counter: " + counter, 50, 50);
@@ -35601,6 +36567,58 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
     };
   };
   new import_p5.default(sketch, document.getElementById("p5"));
+  function map_value(value, oldMin, oldMax, newMin, newMax) {
+    if (oldMax - oldMin === 0) {
+      throw new Error("The old range cannot have zero width.");
+    }
+    var mappedValue = (value - oldMin) * (newMax - newMin) / (oldMax - oldMin) + newMin;
+    if (newMin < newMax) {
+      mappedValue = Math.min(Math.max(mappedValue, newMin), newMax);
+    } else {
+      mappedValue = Math.min(Math.max(mappedValue, newMax), newMin);
+    }
+    return mappedValue;
+  }
+  var to_type = [
+    { word: "a" },
+    { word: "hello" }
+  ];
+  var audioContext = new AudioContext();
+  var time_since_last_word = 500;
+  var get_file = async (path) => {
+    const response = await fetch(path);
+    const arrayBuffer = await response.arrayBuffer();
+    const audioBuffer = await new AudioContext().decodeAudioData(arrayBuffer);
+    return audioBuffer;
+  };
+  to_type.forEach(async (x) => {
+    x.audio = await get_file(`./audio/${x.word}.mp3`);
+  });
+  var play_sample = (audioBuffer) => {
+    const source = audioContext.createBufferSource();
+    const gainNode = audioContext.createGain();
+    gainNode.gain.value = 0.7;
+    source.playbackRate.value = calculate_playback(time_since_last_word);
+    source.buffer = audioBuffer;
+    source.connect(gainNode);
+    gainNode.connect(audioContext.destination);
+    source.start();
+  };
+  function calculate_playback(milliseconds) {
+    let playback_offset = map_value(milliseconds, 0, 3500, 0, 0.7);
+    return 1.25 - playback_offset;
+  }
+  function get_audio(word) {
+    let found = to_type.find((x) => x.word.toLowerCase() === word);
+    if (found) return found.audio;
+    else return void 0;
+  }
+  setTimeout(() => {
+    let file = get_audio("hello");
+    console.log(file);
+    if (file) play_sample(file);
+  }, 2e3);
+  var typed = sig("");
 })();
 /*! Bundled license information:
 

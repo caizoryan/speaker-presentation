@@ -17582,6 +17582,22 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
   var Updates = null;
   var Effects = null;
   var ExecCount = 0;
+  function createRoot(fn, detachedOwner) {
+    const listener = Listener, owner = Owner, unowned = fn.length === 0, current2 = detachedOwner === void 0 ? owner : detachedOwner, root = unowned ? UNOWNED : {
+      owned: null,
+      cleanups: null,
+      context: current2 ? current2.context : null,
+      owner: current2
+    }, updateFn = unowned ? fn : () => fn(() => untrack(() => cleanNode(root)));
+    Owner = root;
+    Listener = null;
+    try {
+      return runUpdates(updateFn, true);
+    } finally {
+      Listener = listener;
+      Owner = owner;
+    }
+  }
   function createSignal(value, options) {
     options = options ? Object.assign({}, signalOptions, options) : signalOptions;
     const s = {
@@ -17602,6 +17618,21 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
     const c = createComputation(fn, value, false, STALE);
     updateComputation(c);
   }
+  function createEffect(fn, value, options) {
+    runEffects = runUserEffects;
+    const c = createComputation(fn, value, false, STALE);
+    if (!options || !options.render) c.user = true;
+    Effects ? Effects.push(c) : updateComputation(c);
+  }
+  function createMemo(fn, value, options) {
+    options = options ? Object.assign({}, signalOptions, options) : signalOptions;
+    const c = createComputation(fn, value, true, 0);
+    c.observers = null;
+    c.observerSlots = null;
+    c.comparator = options.equals || void 0;
+    updateComputation(c);
+    return readSignal.bind(c);
+  }
   function untrack(fn) {
     if (Listener === null) return fn();
     const listener = Listener;
@@ -17611,6 +17642,40 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
     } finally {
       Listener = listener;
     }
+  }
+  function on(deps, fn, options) {
+    const isArray2 = Array.isArray(deps);
+    let prevInput;
+    let defer = options && options.defer;
+    return (prevValue) => {
+      let input2;
+      if (isArray2) {
+        input2 = Array(deps.length);
+        for (let i = 0; i < deps.length; i++) input2[i] = deps[i]();
+      } else input2 = deps();
+      if (defer) {
+        defer = false;
+        return void 0;
+      }
+      const result = untrack(() => fn(input2, prevInput, prevValue));
+      prevInput = input2;
+      return result;
+    };
+  }
+  function onCleanup(fn) {
+    if (Owner === null) ;
+    else if (Owner.cleanups === null) Owner.cleanups = [fn];
+    else Owner.cleanups.push(fn);
+    return fn;
+  }
+  function children(fn) {
+    const children2 = createMemo(fn);
+    const memo = createMemo(() => resolveChildren(children2()));
+    memo.toArray = () => {
+      const c = memo();
+      return Array.isArray(c) ? c : c != null ? [c] : [];
+    };
+    return memo;
   }
   function readSignal() {
     if (this.sources && this.state) {
@@ -17779,6 +17844,15 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
   function runQueue(queue) {
     for (let i = 0; i < queue.length; i++) runTop(queue[i]);
   }
+  function runUserEffects(queue) {
+    let i, userLength = 0;
+    for (i = 0; i < queue.length; i++) {
+      const e3 = queue[i];
+      if (!e3.user) runTop(e3);
+      else queue[userLength++] = e3;
+    }
+    for (i = 0; i < userLength; i++) runTop(queue[i]);
+  }
   function lookUpstream(node, ignore) {
     node.state = 0;
     for (let i = 0; i < node.sources.length; i += 1) {
@@ -17838,9 +17912,163 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
     const error = castError(err);
     throw error;
   }
+  function resolveChildren(children2) {
+    if (typeof children2 === "function" && !children2.length)
+      return resolveChildren(children2());
+    if (Array.isArray(children2)) {
+      const results = [];
+      for (let i = 0; i < children2.length; i++) {
+        const result = resolveChildren(children2[i]);
+        Array.isArray(result) ? results.push.apply(results, result) : results.push(result);
+      }
+      return results;
+    }
+    return children2;
+  }
   var FALLBACK = Symbol("fallback");
+  function dispose(d) {
+    for (let i = 0; i < d.length; i++) d[i]();
+  }
+  function mapArray(list, mapFn, options = {}) {
+    let items = [], mapped = [], disposers = [], len = 0, indexes = mapFn.length > 1 ? [] : null;
+    onCleanup(() => dispose(disposers));
+    return () => {
+      let newItems = list() || [], i, j;
+      newItems[$TRACK];
+      return untrack(() => {
+        let newLen = newItems.length, newIndices, newIndicesNext, temp, tempdisposers, tempIndexes, start2, end, newEnd, item;
+        if (newLen === 0) {
+          if (len !== 0) {
+            dispose(disposers);
+            disposers = [];
+            items = [];
+            mapped = [];
+            len = 0;
+            indexes && (indexes = []);
+          }
+          if (options.fallback) {
+            items = [FALLBACK];
+            mapped[0] = createRoot((disposer) => {
+              disposers[0] = disposer;
+              return options.fallback();
+            });
+            len = 1;
+          }
+        } else if (len === 0) {
+          mapped = new Array(newLen);
+          for (j = 0; j < newLen; j++) {
+            items[j] = newItems[j];
+            mapped[j] = createRoot(mapper);
+          }
+          len = newLen;
+        } else {
+          temp = new Array(newLen);
+          tempdisposers = new Array(newLen);
+          indexes && (tempIndexes = new Array(newLen));
+          for (start2 = 0, end = Math.min(len, newLen); start2 < end && items[start2] === newItems[start2]; start2++) ;
+          for (end = len - 1, newEnd = newLen - 1; end >= start2 && newEnd >= start2 && items[end] === newItems[newEnd]; end--, newEnd--) {
+            temp[newEnd] = mapped[end];
+            tempdisposers[newEnd] = disposers[end];
+            indexes && (tempIndexes[newEnd] = indexes[end]);
+          }
+          newIndices = /* @__PURE__ */ new Map();
+          newIndicesNext = new Array(newEnd + 1);
+          for (j = newEnd; j >= start2; j--) {
+            item = newItems[j];
+            i = newIndices.get(item);
+            newIndicesNext[j] = i === void 0 ? -1 : i;
+            newIndices.set(item, j);
+          }
+          for (i = start2; i <= end; i++) {
+            item = items[i];
+            j = newIndices.get(item);
+            if (j !== void 0 && j !== -1) {
+              temp[j] = mapped[i];
+              tempdisposers[j] = disposers[i];
+              indexes && (tempIndexes[j] = indexes[i]);
+              j = newIndicesNext[j];
+              newIndices.set(item, j);
+            } else disposers[i]();
+          }
+          for (j = start2; j < newLen; j++) {
+            if (j in temp) {
+              mapped[j] = temp[j];
+              disposers[j] = tempdisposers[j];
+              if (indexes) {
+                indexes[j] = tempIndexes[j];
+                indexes[j](j);
+              }
+            } else mapped[j] = createRoot(mapper);
+          }
+          mapped = mapped.slice(0, len = newLen);
+          items = newItems.slice(0);
+        }
+        return mapped;
+      });
+      function mapper(disposer) {
+        disposers[j] = disposer;
+        if (indexes) {
+          const [s, set] = createSignal(j);
+          indexes[j] = set;
+          return mapFn(newItems[j], s);
+        }
+        return mapFn(newItems[j]);
+      }
+    };
+  }
   function createComponent(Comp, props) {
     return untrack(() => Comp(props || {}));
+  }
+  var narrowedError = (name) => `Stale read from <${name}>.`;
+  function For(props) {
+    const fallback = "fallback" in props && {
+      fallback: () => props.fallback
+    };
+    return createMemo(
+      mapArray(() => props.each, props.children, fallback || void 0)
+    );
+  }
+  function Switch(props) {
+    let keyed = false;
+    const equals = (a, b) => a[0] === b[0] && (keyed ? a[1] === b[1] : !a[1] === !b[1]) && a[2] === b[2];
+    const conditions = children(() => props.children), evalConditions = createMemo(
+      () => {
+        let conds = conditions();
+        if (!Array.isArray(conds)) conds = [conds];
+        for (let i = 0; i < conds.length; i++) {
+          let c = conds[i].when;
+          if (typeof c === "function") c = c();
+          if (c) {
+            keyed = !!conds[i].keyed;
+            return [i, c, conds[i]];
+          }
+        }
+        return [-1];
+      },
+      void 0,
+      {
+        equals
+      }
+    );
+    return createMemo(
+      () => {
+        const [index, when, cond] = evalConditions();
+        if (index < 0) return props.fallback;
+        const c = cond.children;
+        const fn = typeof c === "function" && c.length > 0;
+        return fn ? untrack(
+          () => c(
+            keyed ? when : () => {
+              if (untrack(evalConditions)[0] !== index)
+                throw narrowedError("Match");
+              return cond.when;
+            }
+          )
+        ) : c;
+      },
+      void 0,
+      void 0
+    );
   }
   var booleans = [
     "allowfullscreen",
@@ -18072,6 +18300,17 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
     }
   }
   var $$EVENTS = "_$DX_DELEGATE";
+  function render(code, element, init, options = {}) {
+    let disposer;
+    createRoot((dispose2) => {
+      disposer = dispose2;
+      element === document ? code() : insert(element, code(), element.firstChild ? null : void 0, init);
+    }, options.owner);
+    return () => {
+      disposer();
+      element.textContent = "";
+    };
+  }
   function delegateEvents(eventNames, document2 = window.document) {
     const e3 = document2[$$EVENTS] || (document2[$$EVENTS] = /* @__PURE__ */ new Set());
     for (let i = 0, l = eventNames.length; i < l; i++) {
@@ -18505,11 +18744,460 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
   var $HAS = Symbol("store-has");
   var $SELF = Symbol("store-self");
 
+  // solid_monke/concise_html/index.js
+  function h2(strings, ...values) {
+    let arr = strings.reduce((acc, str, i) => {
+      acc.push(str);
+      if (values[i]) {
+        acc.push({ value: values[i], type: "expression" });
+      }
+      return acc;
+    }, []);
+    let parser = new Parser(arr);
+    let ast = parser.parse();
+    return converAstToHyperscript(ast);
+  }
+  var hyper = h;
+  function converAstToHyperscript(ast) {
+    let ret = [];
+    ast.forEach((element) => {
+      let children2 = element.children.length > 0 ? converAstToHyperscript(element.children) : [];
+      if (element.tag == "text" || element.tag == "expression") {
+        ret.push(element.value);
+      } else if (element.tag == "each") {
+        let of = element.children.find((child) => child.tag === "of");
+        let children3 = element.children.find((child) => child.tag === "children" || child.tag === "as");
+        if (of && children3 && (of === null || of === void 0 ? void 0 : of.value) && (children3 === null || children3 === void 0 ? void 0 : children3.value)) {
+          let e3 = () => each(of.value, children3.value);
+          ret.push(e3);
+        } else {
+          let f = of === null || of === void 0 ? void 0 : of.children.find((e4) => e4.tag === "expression");
+          let c = children3 === null || children3 === void 0 ? void 0 : children3.children.find((e4) => e4.tag === "expression");
+          if (!f || !c)
+            throw new Error("Invalid each block");
+          let e3 = () => each(f.value, c.value);
+          ret.push(e3);
+        }
+      } else if (element.tag == "when") {
+        let w = element.children.find((e4) => e4.tag === "condition");
+        let t = element.children.find((e4) => e4.tag === "then");
+        if (!w || !t)
+          throw new Error("Invalid when block");
+        let e3 = () => if_then({ if: w.value, then: t.value });
+        ret.push(e3);
+      } else {
+        ret.push(hyper(element.tag, element.attrs, children2));
+      }
+    });
+    return ret;
+  }
+  var Parser = class {
+    constructor(data) {
+      this.data = data;
+      this.index = 0;
+      this.current = this.data[this.index];
+      this.ast = [];
+      this.cursor = 0;
+    }
+    peekNext() {
+      if (this.index >= this.data.length)
+        return void 0;
+      else {
+        let i = this.index;
+        let peek = i + 1;
+        let peeked = this.data[peek];
+        return peeked;
+      }
+    }
+    ended() {
+      if (!this.char() && !this.peekNext())
+        return true;
+      else
+        return false;
+    }
+    next() {
+      if (this.index >= this.data.length)
+        return void 0;
+      else {
+        this.index++;
+        this.current = this.data[this.index];
+        this.cursor = 0;
+        return this.current;
+      }
+    }
+    recursivelyCheckChildrenIndentAndAdd(element, last) {
+      let compare = last;
+      while (compare.children.length > 0) {
+        let compareBuffer = compare.children[compare.children.length - 1];
+        if (!compareBuffer)
+          break;
+        if (element.indent > compareBuffer.indent) {
+          compare = compareBuffer;
+        } else {
+          break;
+        }
+      }
+      compare.children.push(element);
+    }
+    parse() {
+      while (!this.ended()) {
+        let element = this.parseElement();
+        let ast_last = this.ast[this.ast.length - 1];
+        if (element) {
+          if (ast_last && element.indent > ast_last.indent) {
+            this.recursivelyCheckChildrenIndentAndAdd(element, ast_last);
+          } else {
+            this.ast.push(element);
+          }
+        } else
+          break;
+      }
+      return this.ast;
+    }
+    parseElement() {
+      let indent = 0;
+      let tag = "";
+      let attrs = {};
+      let children2 = [];
+      if (this.ended())
+        return void 0;
+      if (typeof this.current === "string") {
+        indent = this.parseIndent();
+      }
+      if (typeof this.current === "string") {
+        this.eatEmpty();
+        tag = this.parseTag();
+        if (tag === "")
+          return void 0;
+      } else if (this.current.type === "expression") {
+      }
+      attrs = this.parseAttrs();
+      if (tag === "when" || tag === "each") {
+        if (tag === "each") {
+          children2 = this.parseEach(indent);
+        }
+        if (tag === "when") {
+          children2 = this.parseWhen(indent);
+        }
+      } else
+        children2 = this.parseText();
+      if (tag === "#each")
+        tag = "each";
+      return {
+        tag,
+        attrs,
+        children: children2,
+        indent
+      };
+    }
+    // pattern -> when [expression] then [expression]
+    parseWhen(indent = 0) {
+      let when = this.next();
+      if (when === void 0)
+        throw new Error("Invalid when [when]: WHEN needs to be an expression");
+      if (typeof when !== "string") {
+        if (when.type !== "expression")
+          throw new Error("Invalid when [when]: WHEN needs to be an expression");
+      } else
+        throw new Error("Invalid when [when]: WHEN cannot be string");
+      let then = this.next();
+      if (then === void 0)
+        throw new Error("Invalid when [then]: THEN needs to be an expression");
+      if (typeof then == "string") {
+        if (then.trim() !== "then")
+          throw new Error("Invalid when [then]: THEN needs to be an expression");
+      } else
+        throw new Error("Invalid when [then]: THEN cannot be string");
+      let value = this.next();
+      if (value === void 0)
+        throw new Error("Invalid when block");
+      if (value.type !== "expression")
+        throw new Error("Invalid when [when]: WHEN needs to be an expression");
+      let next = this.next();
+      if (next === void 0) {
+      } else
+        this.eatWhitespace();
+      return [
+        { tag: "condition", value: when.value, attrs: {}, children: [], indent: indent + 2 },
+        { tag: "then", value: value.value, attrs: {}, children: [], indent: indent + 2 }
+      ];
+    }
+    // ** If this is called, then we are sure that the tag is "each"
+    // the pattern should be -> each [expression] as [expression]
+    // if its not this we fail
+    // if it is, we create a each block with children elements tag with of and children
+    parseEach(indent = 0) {
+      let of = this.next();
+      if (of === void 0)
+        throw new Error("Invalid each [of]: OF needs to be an expression");
+      if (typeof of !== "string") {
+        if (of.type !== "expression")
+          throw new Error("Invalid each [of]: OF needs to be an expression");
+      } else
+        throw new Error("Invalid each [of]: OF cannot be string");
+      let ofValue = this.next();
+      if (ofValue === void 0)
+        throw new Error("invalid each of [as]: as keyword missing");
+      if (typeof ofValue === "string") {
+        if (ofValue.trim() !== "as")
+          throw new Error("invalid each of [as]: as keyword missing");
+      } else
+        throw new Error("ofValue is not a string");
+      let asValue = this.next();
+      if (asValue === void 0)
+        throw new Error("Invalid each block");
+      if (typeof asValue.value !== "function")
+        throw new Error("Invalid d");
+      let next = this.next();
+      if (next === void 0) {
+      } else
+        this.eatWhitespace();
+      return [
+        { tag: "of", value: of.value, attrs: {}, children: [], indent: indent + 2 },
+        { tag: "children", value: asValue.value, attrs: {}, children: [], indent: indent + 2 }
+      ];
+    }
+    parseSingleLineText() {
+      let ret = [];
+      let text = "";
+      while (this.char() !== `
+`) {
+        if (this.char() === void 0) {
+          ret.push(this.makeTextElement(text));
+          text = "";
+          let next = this.next();
+          if (next === void 0)
+            break;
+          if (typeof next !== "string") {
+            ret.push(this.makeExpressionElement(next.value));
+            this.next();
+          }
+        } else {
+          text += this.eat();
+        }
+      }
+      if (text !== "")
+        ret.push(this.makeTextElement(text));
+      return ret;
+    }
+    lookAhead(n = 1) {
+      let c = this.cursor;
+      let current2 = this.current;
+      return current2[c + n];
+    }
+    isThreeHyphens() {
+      return this.lookAhead(0) === "-" && this.lookAhead(1) === "-" && this.lookAhead(2) === "-";
+    }
+    parseMultiLineText() {
+      let ret = [];
+      let text = "";
+      while (!this.isThreeHyphens()) {
+        if (this.char() === void 0) {
+          ret.push(this.makeTextElement(text));
+          text = "";
+          let next = this.next();
+          if (next === void 0)
+            break;
+          if (typeof next !== "string") {
+            ret.push(this.makeExpressionElement(next.value));
+            this.next();
+          }
+        } else {
+          text += this.eat();
+        }
+      }
+      if (this.isThreeHyphens()) {
+        this.eat();
+        this.eat();
+        this.eat();
+      }
+      if (text !== "")
+        ret.push(this.makeTextElement(text));
+      return ret;
+    }
+    parseText() {
+      let ret = [];
+      this.eatWhitespace();
+      if (this.char() === "-") {
+        this.eat();
+        if (this.char() === "-") {
+          if (this.lookAhead() === "-") {
+            this.eat();
+            this.eat();
+            this.eatWhitespace();
+            ret = this.parseMultiLineText();
+          } else {
+            this.eat();
+            this.eatWhitespace();
+            ret = this.parseSingleLineText();
+          }
+        }
+      }
+      return ret;
+    }
+    makeExpressionElement(value) {
+      return {
+        tag: "expression",
+        children: [],
+        indent: 0,
+        attrs: {},
+        value
+      };
+    }
+    makeTextElement(value) {
+      return {
+        tag: "text",
+        children: [],
+        indent: 0,
+        attrs: {},
+        value
+      };
+    }
+    eatWhitespace() {
+      while (this.current[this.cursor] === " ") {
+        this.cursor++;
+      }
+    }
+    eatNewline() {
+    }
+    eatEmpty() {
+      while (this.char() === " " || this.char() === "\n" || this.char() === "	") {
+        this.eat();
+      }
+    }
+    char() {
+      return this.current ? this.current[this.cursor] : void 0;
+    }
+    eat() {
+      let char = this.current[this.cursor];
+      this.cursor++;
+      return char;
+    }
+    parseAttrs() {
+      this.eatWhitespace();
+      if (this.current[this.cursor] !== "[")
+        return {};
+      else {
+        let attrs = {};
+        this.cursor++;
+        this.eatEmpty();
+        while (this.char() !== "]") {
+          let key = "";
+          let value = "";
+          this.eatEmpty();
+          if (this.char() === void 0) {
+            let next = this.next();
+            if (next === void 0)
+              throw new Error("Invalid attribute");
+            if (typeof next !== "string") {
+              key = next.value;
+              this.next();
+              if (this.char() === "=")
+                this.eat();
+              else
+                throw new Error("Should have =");
+            } else {
+              key = this.parseKey();
+            }
+          } else {
+            key = this.parseKey();
+          }
+          this.eatEmpty();
+          if (this.char() === void 0) {
+            let next = this.next();
+            if (next === void 0)
+              throw new Error("Invalid attribute");
+            if (typeof next !== "string") {
+              value = next.value;
+              this.next();
+            } else {
+              value = this.parseValue();
+            }
+          } else {
+            value = this.parseValue();
+          }
+          this.eatEmpty();
+          attrs[key] = value;
+        }
+        this.eat();
+        return attrs;
+      }
+    }
+    parseKey() {
+      let key = "";
+      this.eatWhitespace();
+      while (this.char() !== "=" && this.current.length > this.cursor) {
+        key += this.eat();
+      }
+      this.eat();
+      this.eatWhitespace();
+      return key.trim();
+    }
+    parseValue() {
+      let value = "";
+      this.eatWhitespace();
+      while (this.char() !== " ") {
+        if (this.char() === void 0)
+          break;
+        if (this.char() === "]") {
+          this.eat;
+          break;
+        }
+        value += this.eat();
+      }
+      this.eatWhitespace();
+      return value.trim();
+    }
+    parseIndent() {
+      let i = 0;
+      while (this.char() === " " || this.char() === "	" || this.char() === "\n") {
+        if (this.char() === " ")
+          i++;
+        if (this.char() === "	")
+          i += 2;
+        if (this.char() === "\n")
+          i = 0;
+        this.cursor++;
+      }
+      return i;
+    }
+    parseTag() {
+      let tag = "";
+      while (this.char() !== " " && this.char() !== "\n" && this.char() !== "	" && this.char() !== "[" && this.char() !== void 0) {
+        tag += this.eat();
+      }
+      return tag;
+    }
+    cursorCheck() {
+      if (this.cursor >= this.current.length) {
+        this.next();
+      }
+    }
+  };
+
   // solid_monke/solid_monke.js
   var sig = (val) => {
     const [getter, setter] = createSignal(val);
     getter.set = setter;
     return getter;
+  };
+  var eff = (callback) => createEffect(callback);
+  var eff_on = (dep, callback) => eff(on(typeof dep === "function" ? dep : () => dep, callback));
+  var each = (dep, children2) => () => For({ each: typeof dep === "function" ? dep() : /* @__PURE__ */ (() => dep)(), children: children2 });
+  var if_then = (...etc) => {
+    const kids = etc.map((item) => {
+      const [when, children2] = Array.isArray(item) ? item : if_then_object(item);
+      return () => ({ when, children: children2 });
+    });
+    return Switch({
+      fallback: null,
+      children: kids
+    });
+  };
+  var if_then_object = (obj) => {
+    let cond = obj.if;
+    let child = obj.then;
+    return [cond, child];
   };
 
   // node_modules/qr-scanner/qr-scanner.min.js
@@ -18911,8 +19599,8 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
 
   // node_modules/standardized-audio-context/build/es2019/factories/add-active-input-connection-to-audio-node.js
   var createAddActiveInputConnectionToAudioNode = (insertElementInSet2) => {
-    return (activeInputs, source, [output, input, eventListener], ignoreDuplicates) => {
-      insertElementInSet2(activeInputs[input], [source, output, eventListener], (activeInputConnection) => activeInputConnection[0] === source && activeInputConnection[1] === output, ignoreDuplicates);
+    return (activeInputs, source, [output, input2, eventListener], ignoreDuplicates) => {
+      insertElementInSet2(activeInputs[input2], [source, output, eventListener], (activeInputConnection) => activeInputConnection[0] === source && activeInputConnection[1] === output, ignoreDuplicates);
     };
   };
 
@@ -19118,9 +19806,9 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
   };
 
   // node_modules/standardized-audio-context/build/es2019/helpers/delete-passive-input-connection-to-audio-node.js
-  var deletePassiveInputConnectionToAudioNode = (passiveInputs, source, output, input) => {
+  var deletePassiveInputConnectionToAudioNode = (passiveInputs, source, output, input2) => {
     const passiveInputConnections = getValueForKey(passiveInputs, source);
-    const matchingConnection = pickElementFromSet(passiveInputConnections, (passiveInputConnection) => passiveInputConnection[0] === output && passiveInputConnection[1] === input);
+    const matchingConnection = pickElementFromSet(passiveInputConnections, (passiveInputConnection) => passiveInputConnection[0] === output && passiveInputConnection[1] === input2);
     if (passiveInputConnections.size === 0) {
       passiveInputs.delete(source);
     }
@@ -19165,7 +19853,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
   // node_modules/standardized-audio-context/build/es2019/factories/add-connection-to-audio-node.js
   var createAddConnectionToAudioNode = (addActiveInputConnectionToAudioNode2, addPassiveInputConnectionToAudioNode2, connectNativeAudioNodeToNativeAudioNode2, deleteActiveInputConnectionToAudioNode2, disconnectNativeAudioNodeFromNativeAudioNode2, getAudioNodeConnections2, getAudioNodeTailTime2, getEventListenersOfAudioNode2, getNativeAudioNode2, insertElementInSet2, isActiveAudioNode2, isPartOfACycle2, isPassiveAudioNode2) => {
     const tailTimeTimeoutIds = /* @__PURE__ */ new WeakMap();
-    return (source, destination, output, input, isOffline) => {
+    return (source, destination, output, input2, isOffline) => {
       const { activeInputs, passiveInputs } = getAudioNodeConnections2(destination);
       const { outputs } = getAudioNodeConnections2(source);
       const eventListeners = getEventListenersOfAudioNode2(source);
@@ -19173,19 +19861,19 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
         const nativeDestinationAudioNode = getNativeAudioNode2(destination);
         const nativeSourceAudioNode = getNativeAudioNode2(source);
         if (isActive) {
-          const partialConnection = deletePassiveInputConnectionToAudioNode(passiveInputs, source, output, input);
+          const partialConnection = deletePassiveInputConnectionToAudioNode(passiveInputs, source, output, input2);
           addActiveInputConnectionToAudioNode2(activeInputs, source, partialConnection, false);
           if (!isOffline && !isPartOfACycle2(source)) {
-            connectNativeAudioNodeToNativeAudioNode2(nativeSourceAudioNode, nativeDestinationAudioNode, output, input);
+            connectNativeAudioNodeToNativeAudioNode2(nativeSourceAudioNode, nativeDestinationAudioNode, output, input2);
           }
           if (isPassiveAudioNode2(destination)) {
             setInternalStateToActive(destination);
           }
         } else {
-          const partialConnection = deleteActiveInputConnectionToAudioNode2(activeInputs, source, output, input);
-          addPassiveInputConnectionToAudioNode2(passiveInputs, input, partialConnection, false);
+          const partialConnection = deleteActiveInputConnectionToAudioNode2(activeInputs, source, output, input2);
+          addPassiveInputConnectionToAudioNode2(passiveInputs, input2, partialConnection, false);
           if (!isOffline && !isPartOfACycle2(source)) {
-            disconnectNativeAudioNodeFromNativeAudioNode2(nativeSourceAudioNode, nativeDestinationAudioNode, output, input);
+            disconnectNativeAudioNodeFromNativeAudioNode2(nativeSourceAudioNode, nativeDestinationAudioNode, output, input2);
           }
           const tailTime = getAudioNodeTailTime2(destination);
           if (tailTime === 0) {
@@ -19205,12 +19893,12 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
           }
         }
       };
-      if (insertElementInSet2(outputs, [destination, output, input], (outputConnection) => outputConnection[0] === destination && outputConnection[1] === output && outputConnection[2] === input, true)) {
+      if (insertElementInSet2(outputs, [destination, output, input2], (outputConnection) => outputConnection[0] === destination && outputConnection[1] === output && outputConnection[2] === input2, true)) {
         eventListeners.add(eventListener);
         if (isActiveAudioNode2(source)) {
-          addActiveInputConnectionToAudioNode2(activeInputs, source, [output, input, eventListener], true);
+          addActiveInputConnectionToAudioNode2(activeInputs, source, [output, input2, eventListener], true);
         } else {
-          addPassiveInputConnectionToAudioNode2(passiveInputs, input, [source, output, eventListener], true);
+          addPassiveInputConnectionToAudioNode2(passiveInputs, input2, [source, output, eventListener], true);
         }
         return true;
       }
@@ -19220,12 +19908,12 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
 
   // node_modules/standardized-audio-context/build/es2019/factories/add-passive-input-connection-to-audio-node.js
   var createAddPassiveInputConnectionToAudioNode = (insertElementInSet2) => {
-    return (passiveInputs, input, [source, output, eventListener], ignoreDuplicates) => {
+    return (passiveInputs, input2, [source, output, eventListener], ignoreDuplicates) => {
       const passiveInputConnections = passiveInputs.get(source);
       if (passiveInputConnections === void 0) {
-        passiveInputs.set(source, /* @__PURE__ */ new Set([[output, input, eventListener]]));
+        passiveInputs.set(source, /* @__PURE__ */ new Set([[output, input2, eventListener]]));
       } else {
-        insertElementInSet2(passiveInputConnections, [output, input, eventListener], (passiveInputConnection) => passiveInputConnection[0] === output && passiveInputConnection[1] === input, ignoreDuplicates);
+        insertElementInSet2(passiveInputConnections, [output, input2, eventListener], (passiveInputConnection) => passiveInputConnection[0] === output && passiveInputConnection[1] === input2, ignoreDuplicates);
       }
     };
   };
@@ -19909,14 +20597,14 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             nativeListener.setPosition(...lastPosition);
           }
         };
-        const createFakeAudioParam = (input, initialValue, setValue) => {
+        const createFakeAudioParam = (input2, initialValue, setValue) => {
           const constantSourceNode = createNativeConstantSourceNode2(nativeContext, {
             channelCount: 1,
             channelCountMode: "explicit",
             channelInterpretation: "discrete",
             offset: initialValue
           });
-          constantSourceNode.connect(channelMergerNode, 0, input);
+          constantSourceNode.connect(channelMergerNode, 0, input2);
           constantSourceNode.start();
           Object.defineProperty(constantSourceNode.offset, "defaultValue", {
             get() {
@@ -20113,14 +20801,14 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
   };
 
   // node_modules/standardized-audio-context/build/es2019/helpers/connect-native-audio-node-to-native-audio-node.js
-  var connectNativeAudioNodeToNativeAudioNode = (nativeSourceAudioNode, nativeDestinationAudioNode, output, input) => {
+  var connectNativeAudioNodeToNativeAudioNode = (nativeSourceAudioNode, nativeDestinationAudioNode, output, input2) => {
     if (isNativeAudioNodeFaker(nativeDestinationAudioNode)) {
-      const fakeNativeDestinationAudioNode = nativeDestinationAudioNode.inputs[input];
+      const fakeNativeDestinationAudioNode = nativeDestinationAudioNode.inputs[input2];
       nativeSourceAudioNode.connect(fakeNativeDestinationAudioNode, output, 0);
       return [fakeNativeDestinationAudioNode, output, 0];
     }
-    nativeSourceAudioNode.connect(nativeDestinationAudioNode, output, input);
-    return [nativeDestinationAudioNode, output, input];
+    nativeSourceAudioNode.connect(nativeDestinationAudioNode, output, input2);
+    return [nativeDestinationAudioNode, output, input2];
   };
 
   // node_modules/standardized-audio-context/build/es2019/helpers/delete-active-input-connection.js
@@ -20158,11 +20846,11 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
   };
 
   // node_modules/standardized-audio-context/build/es2019/helpers/disconnect-native-audio-node-from-native-audio-node.js
-  var disconnectNativeAudioNodeFromNativeAudioNode = (nativeSourceAudioNode, nativeDestinationAudioNode, output, input) => {
+  var disconnectNativeAudioNodeFromNativeAudioNode = (nativeSourceAudioNode, nativeDestinationAudioNode, output, input2) => {
     if (isNativeAudioNodeFaker(nativeDestinationAudioNode)) {
-      nativeSourceAudioNode.disconnect(nativeDestinationAudioNode.inputs[input], output, 0);
+      nativeSourceAudioNode.disconnect(nativeDestinationAudioNode.inputs[input2], output, 0);
     } else {
-      nativeSourceAudioNode.disconnect(nativeDestinationAudioNode, output, input);
+      nativeSourceAudioNode.disconnect(nativeDestinationAudioNode, output, input2);
     }
   };
 
@@ -20242,21 +20930,21 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
   var wrapAudioNodeDisconnectMethod = (nativeAudioNode) => {
     const connections = /* @__PURE__ */ new Map();
     nativeAudioNode.connect = /* @__PURE__ */ ((connect2) => {
-      return (destination, output = 0, input = 0) => {
-        const returnValue = isNativeAudioNode(destination) ? connect2(destination, output, input) : connect2(destination, output);
+      return (destination, output = 0, input2 = 0) => {
+        const returnValue = isNativeAudioNode(destination) ? connect2(destination, output, input2) : connect2(destination, output);
         const connectionsToDestination = connections.get(destination);
         if (connectionsToDestination === void 0) {
-          connections.set(destination, [{ input, output }]);
+          connections.set(destination, [{ input: input2, output }]);
         } else {
-          if (connectionsToDestination.every((connection) => connection.input !== input || connection.output !== output)) {
-            connectionsToDestination.push({ input, output });
+          if (connectionsToDestination.every((connection) => connection.input !== input2 || connection.output !== output)) {
+            connectionsToDestination.push({ input: input2, output });
           }
         }
         return returnValue;
       };
     })(nativeAudioNode.connect.bind(nativeAudioNode));
     nativeAudioNode.disconnect = /* @__PURE__ */ ((disconnect2) => {
-      return (destinationOrOutput, output, input) => {
+      return (destinationOrOutput, output, input2) => {
         disconnect2.apply(nativeAudioNode);
         if (destinationOrOutput === void 0) {
           connections.clear();
@@ -20275,7 +20963,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
           } else {
             const connectionsToDestination = connections.get(destinationOrOutput);
             if (connectionsToDestination !== void 0) {
-              const filteredConnections = connectionsToDestination.filter((connection) => connection.output !== output && (connection.input !== input || input === void 0));
+              const filteredConnections = connectionsToDestination.filter((connection) => connection.output !== output && (connection.input !== input2 || input2 === void 0));
               if (filteredConnections.length === 0) {
                 connections.delete(destinationOrOutput);
               } else {
@@ -20330,11 +21018,11 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
     }
     return false;
   };
-  var deleteInputConnectionOfAudioNode = (source, destination, output, input) => {
+  var deleteInputConnectionOfAudioNode = (source, destination, output, input2) => {
     const { activeInputs, passiveInputs } = getAudioNodeConnections(destination);
-    const activeInputConnection = deleteActiveInputConnection(activeInputs[input], source, output);
+    const activeInputConnection = deleteActiveInputConnection(activeInputs[input2], source, output);
     if (activeInputConnection === null) {
-      const passiveInputConnection = deletePassiveInputConnectionToAudioNode(passiveInputs, source, output, input);
+      const passiveInputConnection = deletePassiveInputConnectionToAudioNode(passiveInputs, source, output, input2);
       return [passiveInputConnection[2], false];
     }
     return [activeInputConnection[2], true];
@@ -20348,12 +21036,12 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
     }
     return [activeInputConnection[2], true];
   };
-  var deleteInputsOfAudioNode = (source, isOffline, destination, output, input) => {
-    const [listener, isActive] = deleteInputConnectionOfAudioNode(source, destination, output, input);
+  var deleteInputsOfAudioNode = (source, isOffline, destination, output, input2) => {
+    const [listener, isActive] = deleteInputConnectionOfAudioNode(source, destination, output, input2);
     if (listener !== null) {
       deleteEventListenerOfAudioNode(source, listener);
       if (isActive && !isOffline && !isPartOfACycle(source)) {
-        disconnectNativeAudioNodeFromNativeAudioNode(getNativeAudioNode(source), getNativeAudioNode(destination), output, input);
+        disconnectNativeAudioNodeFromNativeAudioNode(getNativeAudioNode(source), getNativeAudioNode(destination), output, input2);
       }
     }
     if (isActiveAudioNode(destination)) {
@@ -20400,9 +21088,9 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
     }
     return destinations;
   };
-  var deleteConnectionToDestination = (source, isOffline, destination, output, input) => {
+  var deleteConnectionToDestination = (source, isOffline, destination, output, input2) => {
     const audioNodeConnectionsOfSource = getAudioNodeConnections(source);
-    return Array.from(audioNodeConnectionsOfSource.outputs).filter((outputConnection) => outputConnection[0] === destination && (output === void 0 || outputConnection[1] === output) && (input === void 0 || outputConnection[2] === input)).map((outputConnection) => {
+    return Array.from(audioNodeConnectionsOfSource.outputs).filter((outputConnection) => outputConnection[0] === destination && (output === void 0 || outputConnection[1] === output) && (input2 === void 0 || outputConnection[2] === input2)).map((outputConnection) => {
       if (isAudioNodeOutputConnection(outputConnection)) {
         deleteInputsOfAudioNode(source, isOffline, ...outputConnection);
       } else {
@@ -20459,7 +21147,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
         return this._nativeAudioNode.numberOfOutputs;
       }
       // tslint:disable-next-line:invalid-void
-      connect(destination, output = 0, input = 0) {
+      connect(destination, output = 0, input2 = 0) {
         if (output < 0 || output >= this._nativeAudioNode.numberOfOutputs) {
           throw createIndexSizeError2();
         }
@@ -20471,7 +21159,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
         if (isAudioNode(destination)) {
           const nativeDestinationAudioNode = getNativeAudioNode(destination);
           try {
-            const connection = connectNativeAudioNodeToNativeAudioNode(this._nativeAudioNode, nativeDestinationAudioNode, output, input);
+            const connection = connectNativeAudioNodeToNativeAudioNode(this._nativeAudioNode, nativeDestinationAudioNode, output, input2);
             const isPassive = isPassiveAudioNode(this);
             if (isOffline || isPassive) {
               this._nativeAudioNode.disconnect(...connection);
@@ -20485,7 +21173,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             }
             throw err;
           }
-          const isNewConnectionToAudioNode = addConnectionToAudioNode(this, destination, output, input, isOffline);
+          const isNewConnectionToAudioNode = addConnectionToAudioNode(this, destination, output, input2, isOffline);
           if (isNewConnectionToAudioNode) {
             const cycles = detectCycles([this], destination);
             visitEachAudioNodeOnce(cycles, createIncrementCycleCounter(isOffline));
@@ -20513,7 +21201,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
           visitEachAudioNodeOnce(cycles, createIncrementCycleCounter(isOffline));
         }
       }
-      disconnect(destinationOrOutput, output, input) {
+      disconnect(destinationOrOutput, output, input2) {
         let destinations;
         const nativeContext = getNativeContext2(this._context);
         const isOffline = isNativeOfflineAudioContext2(nativeContext);
@@ -20528,10 +21216,10 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
           if (output !== void 0 && (output < 0 || output >= this.numberOfOutputs)) {
             throw createIndexSizeError2();
           }
-          if (isAudioNode(destinationOrOutput) && input !== void 0 && (input < 0 || input >= destinationOrOutput.numberOfInputs)) {
+          if (isAudioNode(destinationOrOutput) && input2 !== void 0 && (input2 < 0 || input2 >= destinationOrOutput.numberOfInputs)) {
             throw createIndexSizeError2();
           }
-          destinations = deleteConnectionToDestination(this, isOffline, destinationOrOutput, output, input);
+          destinations = deleteConnectionToDestination(this, isOffline, destinationOrOutput, output, input2);
           if (destinations.length === 0) {
             throw createInvalidAccessError2();
           }
@@ -20898,11 +21586,11 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
         }
       }
       try {
-        const potentiallyEmptyInputs = inputs.map((input, index) => {
+        const potentiallyEmptyInputs = inputs.map((input2, index) => {
           if (audioNodeConnections.activeInputs[index].size === 0) {
             return [];
           }
-          return input;
+          return input2;
         });
         const activeSourceFlag = exposeCurrentFrameAndCurrentTime2(i / nativeOfflineAudioContext.sampleRate, nativeOfflineAudioContext.sampleRate, () => audioWorkletProcessor.process(potentiallyEmptyInputs, outputs, parameters));
         if (processedBuffer !== null) {
@@ -21426,13 +22114,13 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
 
   // node_modules/standardized-audio-context/build/es2019/factories/connect-multiple-outputs.js
   var createConnectMultipleOutputs = (createIndexSizeError2) => {
-    return (outputAudioNodes, destination, output = 0, input = 0) => {
+    return (outputAudioNodes, destination, output = 0, input2 = 0) => {
       const outputAudioNode = outputAudioNodes[output];
       if (outputAudioNode === void 0) {
         throw createIndexSizeError2();
       }
       if (isNativeAudioNode(destination)) {
-        return outputAudioNode.connect(destination, 0, input);
+        return outputAudioNode.connect(destination, 0, input2);
       }
       return outputAudioNode.connect(destination, 0);
     };
@@ -21859,8 +22547,8 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
 
   // node_modules/standardized-audio-context/build/es2019/factories/delete-active-input-connection-to-audio-node.js
   var createDeleteActiveInputConnectionToAudioNode = (pickElementFromSet2) => {
-    return (activeInputs, source, output, input) => {
-      return pickElementFromSet2(activeInputs[input], (activeInputConnection) => activeInputConnection[0] === source && activeInputConnection[1] === output);
+    return (activeInputs, source, output, input2) => {
+      return pickElementFromSet2(activeInputs[input2], (activeInputConnection) => activeInputConnection[0] === source && activeInputConnection[1] === output);
     };
   };
 
@@ -21903,7 +22591,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
     return outputAudioNode;
   };
   var createDisconnectMultipleOutputs = (createIndexSizeError2) => {
-    return (outputAudioNodes, destinationOrOutput = void 0, output = void 0, input = 0) => {
+    return (outputAudioNodes, destinationOrOutput = void 0, output = void 0, input2 = 0) => {
       if (destinationOrOutput === void 0) {
         return outputAudioNodes.forEach((outputAudioNode) => outputAudioNode.disconnect());
       }
@@ -21914,10 +22602,10 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
         if (output === void 0) {
           return outputAudioNodes.forEach((outputAudioNode) => outputAudioNode.disconnect(destinationOrOutput));
         }
-        if (input === void 0) {
+        if (input2 === void 0) {
           return getOutputAudioNodeAtIndex(createIndexSizeError2, outputAudioNodes, output).disconnect(destinationOrOutput, 0);
         }
-        return getOutputAudioNodeAtIndex(createIndexSizeError2, outputAudioNodes, output).disconnect(destinationOrOutput, 0, input);
+        return getOutputAudioNodeAtIndex(createIndexSizeError2, outputAudioNodes, output).disconnect(destinationOrOutput, 0, input2);
       }
       if (output === void 0) {
         return outputAudioNodes.forEach((outputAudioNode) => outputAudioNode.disconnect(destinationOrOutput));
@@ -22357,11 +23045,11 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
   };
 
   // node_modules/standardized-audio-context/build/es2019/helpers/filter-buffer.js
-  var filterBuffer = (feedback, feedbackLength, feedforward, feedforwardLength, minLength, xBuffer, yBuffer, bufferIndex, bufferLength, input, output) => {
-    const inputLength = input.length;
+  var filterBuffer = (feedback, feedbackLength, feedforward, feedforwardLength, minLength, xBuffer, yBuffer, bufferIndex, bufferLength, input2, output) => {
+    const inputLength = input2.length;
     let i = bufferIndex;
     for (let j = 0; j < inputLength; j += 1) {
-      let y = feedforward[0] * input[j];
+      let y = feedforward[0] * input2[j];
       for (let k = 1; k < minLength; k += 1) {
         const x = i - k & bufferLength - 1;
         y += feedforward[k] * xBuffer[x];
@@ -22373,7 +23061,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
       for (let k = minLength; k < feedbackLength; k += 1) {
         y -= feedback[k] * yBuffer[i - k & bufferLength - 1];
       }
-      xBuffer[i] = input[j];
+      xBuffer[i] = input2[j];
       yBuffer[i] = y;
       i = i + 1 & bufferLength - 1;
       output[j] = y;
@@ -22402,11 +23090,11 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
     const filteredBuffer = nativeOfflineAudioContext.createBuffer(renderedBuffer.numberOfChannels, renderedBuffer.length, renderedBuffer.sampleRate);
     const numberOfChannels = renderedBuffer.numberOfChannels;
     for (let i = 0; i < numberOfChannels; i += 1) {
-      const input = renderedBuffer.getChannelData(i);
+      const input2 = renderedBuffer.getChannelData(i);
       const output = filteredBuffer.getChannelData(i);
       xBuffer.fill(0);
       yBuffer.fill(0);
-      filterBuffer(convertedFeedback, feedbackLength, convertedFeedforward, feedforwardLength, minLength, xBuffer, yBuffer, 0, bufferLength, input, output);
+      filterBuffer(convertedFeedback, feedbackLength, convertedFeedforward, feedforwardLength, minLength, xBuffer, yBuffer, 0, bufferLength, input2, output);
     }
     return filteredBuffer;
   };
@@ -22870,11 +23558,11 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
     return (nativeAudioNode, whenConnected, whenDisconnected) => {
       const connections = /* @__PURE__ */ new Set();
       nativeAudioNode.connect = /* @__PURE__ */ ((connect2) => {
-        return (destination, output = 0, input = 0) => {
+        return (destination, output = 0, input2 = 0) => {
           const wasDisconnected = connections.size === 0;
           if (isNativeAudioNode3(destination)) {
-            connect2.call(nativeAudioNode, destination, output, input);
-            insertElementInSet2(connections, [destination, output, input], (connection) => connection[0] === destination && connection[1] === output && connection[2] === input, true);
+            connect2.call(nativeAudioNode, destination, output, input2);
+            insertElementInSet2(connections, [destination, output, input2], (connection) => connection[0] === destination && connection[1] === output && connection[2] === input2, true);
             if (wasDisconnected) {
               whenConnected();
             }
@@ -22889,7 +23577,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
         };
       })(nativeAudioNode.connect);
       nativeAudioNode.disconnect = /* @__PURE__ */ ((disconnect2) => {
-        return (destinationOrOutput, output, input) => {
+        return (destinationOrOutput, output, input2) => {
           const wasConnected = connections.size > 0;
           if (destinationOrOutput === void 0) {
             disconnect2.apply(nativeAudioNode);
@@ -22903,12 +23591,12 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             }
           } else {
             if (isNativeAudioNode3(destinationOrOutput)) {
-              disconnect2.call(nativeAudioNode, destinationOrOutput, output, input);
+              disconnect2.call(nativeAudioNode, destinationOrOutput, output, input2);
             } else {
               disconnect2.call(nativeAudioNode, destinationOrOutput, output);
             }
             for (const connection of connections) {
-              if (connection[0] === destinationOrOutput && (output === void 0 || connection[1] === output) && (input === void 0 || connection[2] === input)) {
+              if (connection[0] === destinationOrOutput && (output === void 0 || connection[1] === output) && (input2 === void 0 || connection[2] === input2)) {
                 connections.delete(connection);
               }
             }
@@ -23558,24 +24246,24 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
               }
             }
             try {
-              const potentiallyEmptyInputs = inputs.map((input, index) => {
+              const potentiallyEmptyInputs = inputs.map((input2, index) => {
                 const activeInput = activeInputs[index];
                 if (activeInput.size > 0) {
                   activeInputIndexes.set(index, bufferSize / 128);
-                  return input;
+                  return input2;
                 }
                 const count = activeInputIndexes.get(index);
                 if (count === void 0) {
                   return [];
                 }
-                if (input.every((channelData) => channelData.every((sample) => sample === 0))) {
+                if (input2.every((channelData) => channelData.every((sample) => sample === 0))) {
                   if (count === 1) {
                     activeInputIndexes.delete(index);
                   } else {
                     activeInputIndexes.set(index, count - 1);
                   }
                 }
-                return input;
+                return input2;
               });
               const activeSourceFlag = exposeCurrentFrameAndCurrentTime2(nativeContext.currentTime + i / nativeContext.sampleRate, nativeContext.sampleRate, () => audioWorkletProcessor.process(potentiallyEmptyInputs, outputs, parameters));
               isActive = activeSourceFlag;
@@ -23980,9 +24668,9 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
         const outputBuffer = event.outputBuffer;
         const numberOfChannels = inputBuffer.numberOfChannels;
         for (let i = 0; i < numberOfChannels; i += 1) {
-          const input = inputBuffer.getChannelData(i);
+          const input2 = inputBuffer.getChannelData(i);
           const output = outputBuffer.getChannelData(i);
-          bufferIndexes[i] = filterBuffer(convertedFeedback, feedbackLength, convertedFeedforward, feedforwardLength, minLength, xBuffers[i], yBuffers[i], bufferIndexes[i], bufferLength, input, output);
+          bufferIndexes[i] = filterBuffer(convertedFeedback, feedbackLength, convertedFeedforward, feedforwardLength, minLength, xBuffers[i], yBuffers[i], bufferIndexes[i], bufferLength, input2, output);
         }
       };
       const nyquist = nativeContext.sampleRate / 2;
@@ -25428,12 +26116,12 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
   var createRenderInputsOfAudioNode = (getAudioNodeConnections2, getAudioNodeRenderer2, isPartOfACycle2) => {
     return async (audioNode, nativeOfflineAudioContext, nativeAudioNode) => {
       const audioNodeConnections = getAudioNodeConnections2(audioNode);
-      await Promise.all(audioNodeConnections.activeInputs.map((connections, input) => Array.from(connections).map(async ([source, output]) => {
+      await Promise.all(audioNodeConnections.activeInputs.map((connections, input2) => Array.from(connections).map(async ([source, output]) => {
         const audioNodeRenderer = getAudioNodeRenderer2(source);
         const renderedNativeAudioNode = await audioNodeRenderer.render(source, nativeOfflineAudioContext);
         const destination = audioNode.context.destination;
         if (!isPartOfACycle2(source) && (audioNode !== destination || !isPartOfACycle2(audioNode))) {
-          renderedNativeAudioNode.connect(nativeAudioNode, output, input);
+          renderedNativeAudioNode.connect(nativeAudioNode, output, input2);
         }
       })).reduce((allRenderingPromises, renderingPromises) => [...allRenderingPromises, ...renderingPromises], []));
     };
@@ -29254,11 +29942,11 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
      */
     setParam(param) {
       assert(this._swappable, "The Param must be assigned as 'swappable' in the constructor");
-      const input = this.input;
-      input.disconnect(this._param);
+      const input2 = this.input;
+      input2.disconnect(this._param);
       this.apply(param);
       this._param = param;
-      input.connect(this._param);
+      input2.connect(this._param);
       return this;
     }
     dispose() {
@@ -36445,7 +37133,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
   var capture;
   var corners;
   var mic;
-  var capturing = true;
+  var capturing = false;
   var canvas = document.getElementById("p5");
   var c_width = canvas?.clientWidth;
   var c_height = canvas?.clientHeight;
@@ -36454,6 +37142,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
   var img_2;
   var graphic;
   var current = "spread_1";
+  var time_since_last_word = 0;
   var spreads = {
     spread_1: {
       image_grid: [img_1, 50, 50, 180, 290, () => counter]
@@ -36465,11 +37154,8 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
   var grid_compare = Array.from({ length: 500 }, () => Array.from({ length: 500 }, () => Math.random()));
   var counter = 0;
   var meter;
-  setInterval(() => {
-    counter++;
-  }, 500);
   var sketch = (p) => {
-    function draw_base() {
+    function draw_video() {
       if (capturing) {
         p.image(capture, 0, 0, c_width, c_height);
       }
@@ -36552,12 +37238,14 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
     };
     p.draw = () => {
       let val = meter.getValue() + 30;
+      let delta = p.deltaTime;
+      time_since_last_word += delta;
       p.background(255);
       p.fill(255, 150, 0);
       p.ellipse(200, 200, 500, 500);
       p.textSize(32);
-      if (val > 0) counter = counter + val / 100;
-      draw_base();
+      if (val > 0) counter = counter + val / 50;
+      draw_video();
       let i = img;
       if (current === "spread_1") i = img_1;
       if (current === "spread_2") i = img_2;
@@ -36594,7 +37282,6 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
     { word: "hello" }
   ];
   var audioContext = new AudioContext();
-  var time_since_last_word = 500;
   var get_file = async (path) => {
     const response = await fetch(path);
     const arrayBuffer = await response.arrayBuffer();
@@ -36623,12 +37310,31 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
     if (found) return found.audio;
     else return void 0;
   }
-  setTimeout(() => {
-    let file = get_audio("hello");
-    console.log(file);
-    if (file) play_sample(file);
-  }, 2e3);
   var typed = sig("");
+  eff_on(typed, () => {
+    check_last_word();
+    console.log("Typed: ", typed());
+  });
+  function reset_last_word() {
+    time_since_last_word = 0;
+  }
+  function check_last_word() {
+    console.log("Checking last word");
+    let len = typed().split(" ").length;
+    let last_word = typed().split(" ")[len - 1];
+    console.log(last_word);
+    let last_audio = get_audio(last_word.toLowerCase());
+    console.log(last_audio);
+    if (last_audio) {
+      play_sample(last_audio);
+      reset_last_word();
+    }
+  }
+  var input = () => {
+    return h2`
+		input [oninput=${(e3) => typed.set(e3.target.value)}]`;
+  };
+  render(input, document.querySelector(".controller"));
 })();
 /*! Bundled license information:
 

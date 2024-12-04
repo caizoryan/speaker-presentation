@@ -1,4 +1,4 @@
-import { sig } from "./solid_monke/solid_monke"
+import { eff_on, html, mem, render, sig } from "./solid_monke/solid_monke"
 import QrScanner from 'qr-scanner';
 import p5 from 'p5';
 import * as tone from "tone"
@@ -6,7 +6,7 @@ import * as tone from "tone"
 let capture;
 let corners
 let mic
-let capturing = true
+let capturing = false
 
 let canvas = document.getElementById('p5')
 let c_width = canvas?.clientWidth
@@ -17,6 +17,8 @@ let img, img_1, img_2
 let graphic
 
 let current = "spread_1"
+
+let time_since_last_word = 0
 
 let spreads = {
 	spread_1: {
@@ -34,12 +36,9 @@ let grid_compare = Array.from({ length: 500 }, () => Array.from({ length: 500 },
 
 let counter = 0
 let meter
-setInterval(() => {
-	counter++
-}, 500)
 
 let sketch = (p: p5) => {
-	function draw_base() {
+	function draw_video() {
 		if (capturing) {
 			p.image(capture, 0, 0, c_width, c_height);
 		}
@@ -138,15 +137,17 @@ let sketch = (p: p5) => {
 
 	p.draw = () => {
 		let val = meter.getValue() + 30
+		let delta = p.deltaTime
+		time_since_last_word += delta
 		p.background(255);
 		p.fill(255, 150, 0);
 		p.ellipse(200, 200, 500, 500);
 		p.textSize(32);
 
-		if (val > 0) counter = (counter + (val / 100))
+		if (val > 0) counter = (counter + (val / 50))
 
 		// draw base image
-		draw_base()
+		draw_video()
 
 		let i = img
 		if (current === "spread_1") i = img_1
@@ -208,7 +209,6 @@ const to_type = [
 
 
 const audioContext = new AudioContext();
-const time_since_last_word = 500
 
 const get_file = async (path) => {
 	const response = await fetch(path);
@@ -249,23 +249,31 @@ function get_audio(word: string) {
 	else return undefined;
 }
 
-setTimeout(() => {
-	let file = get_audio("hello")
-	console.log(file)
-	if (file) play_sample(file)
-
-}, 2000)
-
 let typed = sig("")
+eff_on(typed, () => { check_last_word(); console.log("Typed: ", typed()) })
+
+function reset_last_word() {
+	time_since_last_word = 0
+}
 
 function check_last_word() {
+	console.log("Checking last word")
 	let len = typed().split(" ").length
 	let last_word = typed().split(" ")[len - 1]
+	console.log(last_word)
 	let last_audio = get_audio(last_word.toLowerCase())
+	console.log(last_audio)
 
 	if (last_audio) {
 		play_sample(last_audio);
-		// reset_last_word()
+		reset_last_word()
 	}
 	// updated()
 }
+
+let input = () => {
+	return html`
+		input [oninput=${(e) => typed.set(e.target.value)}]`
+}
+
+render(input, document.querySelector(".controller"))

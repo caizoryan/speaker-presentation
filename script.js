@@ -37131,65 +37131,70 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
 
   // script.ts
   var capture;
-  var corners;
   var mic;
   var capturing = false;
   var canvas = document.getElementById("p5");
   var c_width = canvas?.clientWidth;
   var c_height = canvas?.clientHeight;
-  var img;
-  var img_1;
-  var img_2;
-  var graphic;
-  var current = "spread_1";
+  var image_layer;
+  var current = "spread_2";
   var time_since_last_word = 0;
+  var typed = sig("");
+  var flash_timeout = 1e3;
+  var flash_counter = 0;
+  var flash = null;
+  var flash_bg = "yellow";
+  var flash_text = "blue";
   var spreads = {
-    spread_1: {
-      image_grid: [img_1, 50, 50, 180, 290, () => counter]
-    },
-    spread_2: {
-      image_grid: [img_1, 50, 50, 180, 290, () => counter]
-    }
+    spread_1: [
+      ["image_grid", "./spread_1.png", 50, 50, 180, 290, () => counter]
+    ],
+    spread_2: [
+      ["image_grid", "./spread_2.png", 50, 50, 180, 290, () => counter],
+      ["image_grid", "./spread_1.png", 150, 50, 180, 290, () => counter],
+      ["image_grid", "./spinner.gif", 50, 150, 180, 290, () => counter]
+    ]
   };
   var grid_compare = Array.from({ length: 500 }, () => Array.from({ length: 500 }, () => Math.random()));
-  var counter = 0;
+  var counter = 100;
   var meter;
-  var sketch = (p) => {
+  var sketch = (p52) => {
     function draw_video() {
       if (capturing) {
-        p.image(capture, 0, 0, c_width, c_height);
+        p52.image(capture, 0, 0, c_width, c_height);
       }
     }
-    function draw_pixel_grid(p2, x, y, w, h3, skip) {
+    function draw_pixel_grid(p, x, y, w, h3, skip) {
       let size = 10;
       let row = w / size;
       let col = h3 / size;
-      let positive = "white";
-      let negative = "black";
-      p2.noStroke();
+      let positive = "black";
+      let negative = "white";
+      p.noStroke();
       for (let i = 0; i < row; i++) {
         for (let j = 0; j < col; j++) {
           if (grid_compare[i][j] < skip / 100) {
-            p2.fill(positive);
-            p2.rect(x + i * size, y + j * size, size, size);
+            p.fill(positive);
+            p.rect(x + i * size, y + j * size, size, size);
           } else {
-            p2.fill(negative);
-            p2.rect(x + i * size, y + j * size, size, size);
+            p.fill(negative);
+            p.rect(x + i * size, y + j * size, size, size);
           }
         }
       }
     }
-    function image_and_grid(img2, x, y, w, h3, skip) {
+    function image_grid(img, x, y, w, h3, skip) {
       if ("function" === typeof skip) skip = skip();
-      if (!graphic) graphic = p.createGraphics(p.width, p.height);
-      graphic.image(img2, x, y, w, h3);
-      graphic.blendMode(p.SCREEN);
-      graphic.blendMode(p.MULTIPLY);
-      draw_pixel_grid(graphic, x, y, w, h3, skip);
-      graphic.blendMode(p.BLEND);
-      p.blendMode(p.SCREEN);
-      p.image(graphic, 0, 0);
-      p.blendMode(p.BLEND);
+      if (!image_layer) image_layer = p52.createGraphics(p52.width, p52.height);
+      image_layer.image(img, x, y, w, h3);
+      image_layer.blendMode(p52.MULTIPLY);
+      image_layer.blendMode(p52.SCREEN);
+      draw_pixel_grid(image_layer, x, y, w, h3, skip);
+      image_layer.blendMode(p52.BLEND);
+      p52.blendMode(p52.SCREEN);
+      p52.blendMode(p52.MULTIPLY);
+      p52.image(image_layer, 0, 0);
+      p52.blendMode(p52.BLEND);
     }
     function qr_code_init() {
       let options = ["spread_1", "spread_2", "spread_3", "spread_4"];
@@ -37198,7 +37203,6 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
         if (!canvas2) return;
         qr_scanner_min_default.scanImage(canvas2, { returnDetailedScanResult: true }).then((result) => {
           let text = result.data;
-          corners = result.cornerPoints;
           if (text !== current) {
             if (options.includes(text)) {
               counter = 0;
@@ -37211,60 +37215,97 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
             }
           }
         }).catch((error) => {
-          corners = null;
         });
       }, 500);
     }
-    p.preload = () => {
-      img_1 = p.loadImage("./spread_1.png", () => {
-        spreads["spread_1"].image_grid[0] = img_1;
-      });
-      img_2 = p.loadImage("./spread_2.png", () => {
-        spreads["spread_2"].image_grid[0] = img_2;
+    p52.preload = () => {
+      Object.values(spreads).forEach((spread2) => {
+        spread2.forEach((fn) => {
+          if ("string" === typeof fn[0] && fn[0].includes("image") && "string" === typeof fn[1]) {
+            let img = p52.loadImage(fn[1], () => {
+              fn[1] = img;
+            });
+          }
+        });
       });
     };
-    p.setup = () => {
-      p.createCanvas(c_width, c_height);
+    p52.setup = () => {
+      p52.createCanvas(c_width, c_height);
       mic = new UserMedia();
       meter = new Meter();
       mic.connect(meter);
       mic.open();
       if (capturing) {
-        capture = p.createCapture(p.VIDEO);
+        capture = p52.createCapture(p52.VIDEO);
         capture.size(c_width, c_height);
         capture.hide();
         qr_code_init();
       }
     };
-    p.draw = () => {
+    p52.draw = () => {
       let val = meter.getValue() + 30;
-      let delta = p.deltaTime;
+      let delta = p52.deltaTime;
       time_since_last_word += delta;
-      p.background(255);
-      p.fill(255, 150, 0);
-      p.ellipse(200, 200, 500, 500);
-      p.textSize(32);
-      if (val > 0) counter = counter + val / 50;
+      p52.background(255);
+      p52.fill(255, 150, 0);
+      p52.ellipse(200, 200, 500, 500);
+      p52.textSize(12);
+      if (val > 0) counter = counter + val / 15;
       draw_video();
-      let i = img;
-      if (current === "spread_1") i = img_1;
-      if (current === "spread_2") i = img_2;
-      p.fill(0);
-      p.text("Value: " + val, 10, 30);
-      p.text("Counter: " + counter, 50, 50);
+      p52.fill(0);
+      p52.text("Value: " + val, 10, 30);
+      p52.text("Counter: " + counter, 10, 50);
       if (spreads[current]) {
-        Object.entries(spreads[current]).forEach(([key, value]) => p[key](...value));
+        spreads[current].forEach((x) => p52[x[0]](...x.slice(1)));
+      }
+      if ("string" == typeof flash) {
+        if (flash_counter < flash_timeout) {
+          p52.fill(flash_bg);
+          p52.rect(0, 0, p52.width, p52.height);
+          p52.fill(flash_text);
+          p52.textSize(50);
+          p52.textAlign(p52.CENTER, p52.CENTER);
+          p52.text(flash, p52.width / 2, p52.height / 2);
+          p52.textAlign(p52.LEFT, p52.TOP);
+          flash_counter += delta;
+        } else {
+          flash_counter = 0;
+          flash = null;
+        }
       }
     };
-    p.keyPressed = (e3) => {
+    p52.keyPressed = (e3) => {
+      if (e3.target instanceof HTMLInputElement) return;
       if (e3.key === "c") {
-        counter = 0;
-        console.log("Counter reset");
+        flash = "COGNITION (<->) COGNITIVE";
+      }
+      if (e3.key === "a") {
+        flash = "AXIOM";
+      }
+      if (e3.key === "q") {
+        flash = "QUESTION";
+      }
+      if (e3.key === "i") {
+        flash = "IMPLICATION";
+        flash_bg = "black";
+        flash_text = "white";
       }
     };
-    p.image_grid = image_and_grid;
+    p52.image_grid = image_grid;
   };
   new import_p5.default(sketch, document.getElementById("p5"));
+  var audioContext = new AudioContext();
+  var to_type = [
+    { word: "a" },
+    { word: "hello" },
+    { word: "k_1" },
+    { word: "k_2" },
+    { word: "k_3" },
+    { word: "k_4" },
+    { word: "k_5" },
+    { word: "k_6" },
+    { word: "k_7" }
+  ];
   function map_value(value, oldMin, oldMax, newMin, newMax) {
     if (oldMax - oldMin === 0) {
       throw new Error("The old range cannot have zero width.");
@@ -37277,21 +37318,28 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
     }
     return mappedValue;
   }
-  var to_type = [
-    { word: "a" },
-    { word: "hello" }
-  ];
-  var audioContext = new AudioContext();
-  var get_file = async (path) => {
+  async function get_file(path) {
     const response = await fetch(path);
     const arrayBuffer = await response.arrayBuffer();
     const audioBuffer = await new AudioContext().decodeAudioData(arrayBuffer);
     return audioBuffer;
-  };
-  to_type.forEach(async (x) => {
-    x.audio = await get_file(`./audio/${x.word}.mp3`);
-  });
-  var play_sample = (audioBuffer) => {
+  }
+  function reset_last_word() {
+    time_since_last_word = 0;
+  }
+  function play_keyboard() {
+    let random = Math.floor(Math.random() * 7);
+    let audioBuffer = get_audio("k_" + random);
+    const source = audioContext.createBufferSource();
+    const gainNode = audioContext.createGain();
+    gainNode.gain.value = 0.4;
+    source.playbackRate.value = 1;
+    source.buffer = audioBuffer;
+    source.connect(gainNode);
+    gainNode.connect(audioContext.destination);
+    source.start();
+  }
+  function play_sample(audioBuffer) {
     const source = audioContext.createBufferSource();
     const gainNode = audioContext.createGain();
     gainNode.gain.value = 0.7;
@@ -37300,7 +37348,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
     source.connect(gainNode);
     gainNode.connect(audioContext.destination);
     source.start();
-  };
+  }
   function calculate_playback(milliseconds) {
     let playback_offset = map_value(milliseconds, 0, 3500, 0, 0.7);
     return 1.25 - playback_offset;
@@ -37310,29 +37358,24 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
     if (found) return found.audio;
     else return void 0;
   }
-  var typed = sig("");
-  eff_on(typed, () => {
-    check_last_word();
-    console.log("Typed: ", typed());
-  });
-  function reset_last_word() {
-    time_since_last_word = 0;
-  }
   function check_last_word() {
-    console.log("Checking last word");
     let len = typed().split(" ").length;
     let last_word = typed().split(" ")[len - 1];
-    console.log(last_word);
     let last_audio = get_audio(last_word.toLowerCase());
-    console.log(last_audio);
     if (last_audio) {
       play_sample(last_audio);
       reset_last_word();
     }
   }
+  eff_on(typed, () => {
+    check_last_word();
+  });
+  to_type.forEach(async (x) => {
+    x.audio = await get_file(`./audio/${x.word}.mp3`);
+  });
   var input = () => {
     return h2`
-		input [oninput=${(e3) => typed.set(e3.target.value)}]`;
+		input [value=${typed} oninput=${(e3) => typed.set(e3.target.value)} onkeydown=${play_keyboard}]`;
   };
   render(input, document.querySelector(".controller"));
 })();

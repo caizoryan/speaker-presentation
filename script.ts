@@ -1,46 +1,68 @@
-import { eff_on, html, mem, render, sig } from "./solid_monke/solid_monke"
+// x---------------------x
+// -----------------------
+// Imports
+// -----------------------
+// x---------------------x
+//
+import { eff_on, html, render, sig } from "./solid_monke/solid_monke"
 import QrScanner from 'qr-scanner';
 import p5 from 'p5';
 import * as tone from "tone"
 
-let capture;
-let corners
-let mic
+// x---------------------x
+// -----------------------
+// Model (Data) State
+// -----------------------
+// x---------------------x
+//
+let capture; // webcam capture
+let mic; // microphone capture
 let capturing = false
 
+// ---------------------
+// DOM Element
+// ---------------------
 let canvas = document.getElementById('p5')
 let c_width = canvas?.clientWidth
 let c_height = canvas?.clientHeight
 
-let img, img_1, img_2
 
-let graphic
+let image_layer
 
-let current = "spread_1"
+let current = "spread_2"
 
 let time_since_last_word = 0
+let typed = sig("")
+
+let flash_timeout = 1000
+let flash_counter = 0
+let flash = null
+
+let flash_bg = "yellow"
+let flash_text = "blue"
 
 let spreads = {
-	spread_1: {
-		image_grid: [img_1, 50, 50, 180, 290, () => counter],
-	},
+	spread_1: [
+		["image_grid", "./spread_1.png", 50, 50, 180, 290, () => counter],
+	],
 
-	spread_2: {
-		image_grid: [img_1, 50, 50, 180, 290, () => counter],
-	}
+	spread_2: [
+		["image_grid", "./spread_2.png", 50, 50, 180, 290, () => counter],
+		["image_grid", "./spread_1.png", 150, 50, 180, 290, () => counter],
+		["image_grid", "./spinner.gif", 50, 150, 180, 290, () => counter],
+	],
+
 }
 
 
 let grid_compare = Array.from({ length: 500 }, () => Array.from({ length: 500 }, () => Math.random()))
-
-
-let counter = 0
+let counter = 100
 let meter
 
-let sketch = (p: p5) => {
+let sketch = (p5: p5) => {
 	function draw_video() {
 		if (capturing) {
-			p.image(capture, 0, 0, c_width, c_height);
+			p5.image(capture, 0, 0, c_width, c_height);
 		}
 	}
 
@@ -49,8 +71,8 @@ let sketch = (p: p5) => {
 		let row = w / size
 		let col = h / size
 
-		let positive = "white"
-		let negative = "black"
+		let positive = "black"
+		let negative = "white"
 		p.noStroke()
 
 		for (let i = 0; i < row; i++) {
@@ -67,19 +89,20 @@ let sketch = (p: p5) => {
 		}
 	}
 
-	function image_and_grid(img, x, y, w, h, skip) {
+	function image_grid(img, x, y, w, h, skip) {
 		if ("function" === typeof skip) skip = skip()
-		if (!graphic) graphic = p.createGraphics(p.width, p.height)
+		if (!image_layer) image_layer = p5.createGraphics(p5.width, p5.height)
 
-		graphic.image(img, x, y, w, h)
-		graphic.blendMode(p.SCREEN)
-		graphic.blendMode(p.MULTIPLY)
-		draw_pixel_grid(graphic, x, y, w, h, skip)
-		graphic.blendMode(p.BLEND)
+		image_layer.image(img, x, y, w, h)
+		image_layer.blendMode(p5.MULTIPLY)
+		image_layer.blendMode(p5.SCREEN)
+		draw_pixel_grid(image_layer, x, y, w, h, skip)
+		image_layer.blendMode(p5.BLEND)
 
-		p.blendMode(p.SCREEN)
-		p.image(graphic, 0, 0)
-		p.blendMode(p.BLEND)
+		p5.blendMode(p5.SCREEN)
+		p5.blendMode(p5.MULTIPLY)
+		p5.image(image_layer, 0, 0)
+		p5.blendMode(p5.BLEND)
 	}
 
 	function qr_code_init() {
@@ -90,7 +113,6 @@ let sketch = (p: p5) => {
 			QrScanner.scanImage(canvas, { returnDetailedScanResult: true })
 				.then(result => {
 					let text = result.data
-					corners = result.cornerPoints
 
 					if (text !== current) {
 						if (options.includes(text)) {
@@ -107,18 +129,25 @@ let sketch = (p: p5) => {
 
 				})
 				.catch(error => {
-					corners = null
 				});
 		}, 500)
 	}
 
-	p.preload = () => {
-		img_1 = p.loadImage("./spread_1.png", () => { spreads["spread_1"].image_grid[0] = img_1 });
-		img_2 = p.loadImage("./spread_2.png", () => { spreads["spread_2"].image_grid[0] = img_2 });
+	p5.preload = () => {
+		Object.values(spreads).forEach((spread) => {
+			spread.forEach((fn) => {
+				if ("string" === typeof fn[0]
+					&& fn[0].includes("image")
+					&& "string" === typeof fn[1]) {
+					// @ts-ignore
+					let img = p5.loadImage(fn[1], () => { fn[1] = img })
+				}
+			})
+		})
 	}
 
-	p.setup = () => {
-		p.createCanvas(c_width, c_height);
+	p5.setup = () => {
+		p5.createCanvas(c_width, c_height);
 		mic = new tone.UserMedia();
 		meter = new tone.Meter();
 		mic.connect(meter);
@@ -127,7 +156,7 @@ let sketch = (p: p5) => {
 
 		if (capturing) {
 			//@ts-ignore
-			capture = p.createCapture(p.VIDEO);
+			capture = p5.createCapture(p5.VIDEO);
 			capture.size(c_width, c_height);
 			capture.hide();
 			qr_code_init()
@@ -135,52 +164,108 @@ let sketch = (p: p5) => {
 
 	}
 
-	p.draw = () => {
+	p5.draw = () => {
 		let val = meter.getValue() + 30
-		let delta = p.deltaTime
+		let delta = p5.deltaTime
 		time_since_last_word += delta
-		p.background(255);
-		p.fill(255, 150, 0);
-		p.ellipse(200, 200, 500, 500);
-		p.textSize(32);
+		p5.background(255);
+		p5.fill(255, 150, 0);
+		p5.ellipse(200, 200, 500, 500);
+		p5.textSize(12);
 
-		if (val > 0) counter = (counter + (val / 50))
+		if (val > 0) counter = (counter + (val / 15))
 
 		// draw base image
 		draw_video()
 
-		let i = img
-		if (current === "spread_1") i = img_1
-		if (current === "spread_2") i = img_2
-
 		// draw pixel grid
-		// image_and_grid(i, 50, 50, 180, 290, counter)
-		p.fill(0);
-		p.text("Value: " + val, 10, 30);
-		p.text("Counter: " + counter, 50, 50);
+		p5.fill(0);
+		p5.text("Value: " + val, 10, 30);
+		p5.text("Counter: " + counter, 10, 50);
 
 		// draw relevant information
 		if (spreads[current]) {
-			Object.entries(spreads[current]).forEach(([key, value]) => p[key](...value))
+			spreads[current].forEach((x) => p5[x[0]](...x.slice(1)))
+			// Object.entries(spreads[current]).forEach(([key, value]) => p[key](...value))
+		}
+
+		if ("string" == typeof flash) {
+			if (flash_counter < flash_timeout) {
+				p5.fill(flash_bg)
+				p5.rect(0, 0, p5.width, p5.height)
+				p5.fill(flash_text)
+				p5.textSize(50)
+				p5.textAlign(p5.CENTER, p5.CENTER)
+				p5.text(flash, p5.width / 2, p5.height / 2)
+				p5.textAlign(p5.LEFT, p5.TOP)
+				flash_counter += delta
+			}
+			else {
+				flash_counter = 0
+				flash = null
+			}
 		}
 	}
 
-	p.keyPressed = (e) => {
+	p5.keyPressed = (e) => {
+		// if e target is an input do not run
+		if (e.target instanceof HTMLInputElement) return
 		if (e.key === "c") {
-			counter = 0
-			console.log("Counter reset")
+			flash = "COGNITION (<->) COGNITIVE"
+		}
+
+		if (e.key === "a") {
+			flash = "AXIOM"
+		}
+
+		if (e.key === "q") {
+			flash = "QUESTION"
+		}
+
+		if (e.key === "i") {
+			flash = "IMPLICATION"
+			flash_bg = "black"
+			flash_text = "white"
 		}
 
 	}
 
 	//@ts-ignore
-	p.image_grid = image_and_grid
+	p5.image_grid = image_grid
 
 }
 
 new p5(sketch, document.getElementById('p5')!);
 
 
+// x---------------------x
+// -----------------------
+// AUDIO ENGINE
+// -----------------------
+// x---------------------x
+//
+
+const audioContext = new AudioContext();
+
+// -----------------------
+// AUDIO Library
+// -----------------------
+const to_type = [
+	{ word: "a" },
+	{ word: "hello" },
+	{ word: "k_1" },
+	{ word: "k_2" },
+	{ word: "k_3" },
+	{ word: "k_4" },
+	{ word: "k_5" },
+	{ word: "k_6" },
+	{ word: "k_7" },
+]
+
+
+// -----------------------
+// Utility Functions
+// -----------------------
 function map_value(value, oldMin, oldMax, newMin, newMax) {
 	// Check if the old range is not zero to avoid division by zero
 	if (oldMax - oldMin === 0) {
@@ -202,15 +287,7 @@ function map_value(value, oldMin, oldMax, newMin, newMax) {
 }
 
 
-const to_type = [
-	{ word: "a" },
-	{ word: "hello" }
-]
-
-
-const audioContext = new AudioContext();
-
-const get_file = async (path) => {
+async function get_file(path) {
 	const response = await fetch(path);
 
 	const arrayBuffer = await response.arrayBuffer();
@@ -218,12 +295,24 @@ const get_file = async (path) => {
 	return audioBuffer;
 }
 
-to_type.forEach(async (x) => {
-	// @ts-ignore
-	x.audio = await get_file(`./audio/${x.word}.mp3`)
-})
+function reset_last_word() { time_since_last_word = 0 }
 
-const play_sample = (audioBuffer) => {
+function play_keyboard() {
+	let random = Math.floor(Math.random() * 7)
+	let audioBuffer = get_audio("k_" + random)
+
+	const source = audioContext.createBufferSource();
+	const gainNode = audioContext.createGain();
+	gainNode.gain.value = .4;
+
+	source.playbackRate.value = 1;
+	source.buffer = audioBuffer;
+	source.connect(gainNode);
+	gainNode.connect(audioContext.destination);
+	source.start();
+}
+
+function play_sample(audioBuffer) {
 	const source = audioContext.createBufferSource();
 
 	const gainNode = audioContext.createGain();
@@ -249,31 +338,56 @@ function get_audio(word: string) {
 	else return undefined;
 }
 
-let typed = sig("")
-eff_on(typed, () => { check_last_word(); console.log("Typed: ", typed()) })
-
-function reset_last_word() {
-	time_since_last_word = 0
-}
-
 function check_last_word() {
-	console.log("Checking last word")
 	let len = typed().split(" ").length
 	let last_word = typed().split(" ")[len - 1]
-	console.log(last_word)
 	let last_audio = get_audio(last_word.toLowerCase())
-	console.log(last_audio)
 
 	if (last_audio) {
 		play_sample(last_audio);
 		reset_last_word()
 	}
-	// updated()
 }
 
+
+// -----------------------
+// Hooks
+// -----------------------
+eff_on(typed, () => {
+	check_last_word();
+	// make sound
+
+})
+
+
+
+to_type.forEach(async (x) => {
+	// @ts-ignore
+	x.audio = await get_file(`./audio/${x.word}.mp3`)
+})
+
+
+// -----------------------
+// DOM Elements
+// -----------------------
 let input = () => {
 	return html`
-		input [oninput=${(e) => typed.set(e.target.value)}]`
+		input [value=${typed} oninput=${(e) => typed.set(e.target.value)} onkeydown=${play_keyboard}]`
 }
+
+function type_in(sentence, speed = 150) {
+	let keys = sentence.split("")
+
+	keys.forEach((key, i) => {
+		setTimeout(() => {
+			typed.set(typed() + key)
+		}, i * speed)
+	})
+}
+
+// setTimeout(() => {
+// 	type_in("hello k_1 world k_3 this is automatic typing")
+// }, 3000)
+
 
 render(input, document.querySelector(".controller"))

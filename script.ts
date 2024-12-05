@@ -18,6 +18,7 @@ import * as tone from "tone"
 let capture; // webcam capture
 let mic; // microphone capture
 let capturing = false
+let xanh
 
 // ---------------------
 // DOM Element
@@ -34,7 +35,7 @@ let current = "spread_2"
 let time_since_last_word = 0
 let typed = sig("")
 
-let flash_timeout = 1000
+let flash_timeout = 1500
 let flash_counter = 0
 let flash = null
 
@@ -56,7 +57,7 @@ let spreads = {
 
 
 let grid_compare = Array.from({ length: 500 }, () => Array.from({ length: 500 }, () => Math.random()))
-let counter = 100
+let counter = 0
 let meter
 
 let sketch = (p5: p5) => {
@@ -117,14 +118,8 @@ let sketch = (p5: p5) => {
 					if (text !== current) {
 						if (options.includes(text)) {
 							counter = 0
+							current = text
 						}
-						if (text == "spread_1") {
-							current = "spread_1"
-						}
-						if (text == "spread_2") {
-							current = "spread_2"
-						}
-
 					}
 
 				})
@@ -133,7 +128,10 @@ let sketch = (p5: p5) => {
 		}, 500)
 	}
 
+
 	p5.preload = () => {
+		xanh = p5.loadFont("./xanh.ttf")
+		// p5.textFont(font)
 		Object.values(spreads).forEach((spread) => {
 			spread.forEach((fn) => {
 				if ("string" === typeof fn[0]
@@ -168,12 +166,13 @@ let sketch = (p5: p5) => {
 		let val = meter.getValue() + 30
 		let delta = p5.deltaTime
 		time_since_last_word += delta
+		// p5.textFont(xanh)
 		p5.background(255);
 		p5.fill(255, 150, 0);
 		p5.ellipse(200, 200, 500, 500);
 		p5.textSize(12);
 
-		if (val > 0) counter = (counter + (val / 15))
+		if (val > 0) counter = (counter + (val / 25))
 
 		// draw base image
 		draw_video()
@@ -194,7 +193,7 @@ let sketch = (p5: p5) => {
 				p5.fill(flash_bg)
 				p5.rect(0, 0, p5.width, p5.height)
 				p5.fill(flash_text)
-				p5.textSize(50)
+				p5.textSize(80)
 				p5.textAlign(p5.CENTER, p5.CENTER)
 				p5.text(flash, p5.width / 2, p5.height / 2)
 				p5.textAlign(p5.LEFT, p5.TOP)
@@ -209,23 +208,36 @@ let sketch = (p5: p5) => {
 
 	p5.keyPressed = (e) => {
 		// if e target is an input do not run
-		if (e.target instanceof HTMLInputElement) return
+		if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return
 		if (e.key === "c") {
 			flash = "COGNITION (<->) COGNITIVE"
+			flash_bg = "yellow"
+			flash_text = "blue"
+		}
+
+		if (e.key === "f") {
+			setTimeout(() => {
+
+				document.querySelector("input").focus()
+			}, 5)
 		}
 
 		if (e.key === "a") {
 			flash = "AXIOM"
+			flash_bg = "cyan"
+			flash_text = "yellow"
 		}
 
 		if (e.key === "q") {
 			flash = "QUESTION"
+			flash_bg = "blue"
+			flash_text = "cyan"
 		}
 
 		if (e.key === "i") {
 			flash = "IMPLICATION"
-			flash_bg = "black"
-			flash_text = "white"
+			flash_bg = "white"
+			flash_text = "black"
 		}
 
 	}
@@ -251,8 +263,113 @@ const audioContext = new AudioContext();
 // AUDIO Library
 // -----------------------
 const to_type = [
-	{ word: "a" },
 	{ word: "hello" },
+	{ word: "if" },
+	{ word: "we" },
+	{ word: "consider" },
+	{ word: "but" },
+	{ word: "if" },
+	{ word: "mind" },
+	{ word: "with" },
+	{ word: "linked" },
+	{ word: "necessarily" },
+	{ word: "not" },
+	{ word: "then" },
+	{ word: "axiom" },
+	{ word: "an" },
+	{ word: "as" },
+	{ word: "world" },
+	{ word: "move" },
+	{ word: "how" },
+	{ word: "us" },
+	{ word: "unbeknownst" },
+	{ word: "this" },
+	{ word: "teach" },
+	{ word: "recieve" },
+	{ word: "what" },
+	{ word: "and" },
+	{ word: "in" },
+	{ word: "is" },
+	{ word: "understand" },
+	{ word: "push" },
+	{ word: "they" },
+	{ word: "environment" },
+	{ word: "external" },
+	{ word: "our" },
+	{ word: "noise" },
+	{ word: "below" },
+	{ word: "right" },
+	{ word: "present" },
+	{ word: "still" },
+	{ word: "untrained" },
+	{ word: "numb" },
+	{ word: "mutates" },
+	{ word: "becomes" },
+	{ word: "sense" },
+	{ word: "the" },
+	{ word: "of" },
+	{ word: "perceptors" },
+	{ word: "to" },
+	{ word: "ranges" },
+
+	{ word: "above" },
+	{ word: "consider" },
+	{ word: "we" },
+	{ word: "body" },
+	{ word: "bring" },
+	{ word: "them" },
+	{ word: "chasm" },
+	{ word: "close" },
+	{ word: "work" },
+	{ word: "mind" },
+	{ word: "alien" },
+	{ word: "brain" },
+	{ word: "between" },
+	{ word: "shift" },
+	{ word: "we" },
+	{ word: "itself" },
+	{ word: "through" },
+	{ word: "acting" },
+	{ word: "by" },
+	{ word: "represent" },
+	{ word: "thus" },
+	{ word: "can" },
+
+	{ word: "function" },
+	{ word: "motor" },
+	{ word: "its" },
+	{ word: "sensory" },
+	{ word: "it" },
+	{ word: "reframes" },
+	{ word: "interprets" },
+	{ word: "also" },
+	{ word: "but" },
+	{ word: "embodies" },
+	{ word: "only" },
+	{ word: "not" },
+	{ word: "explicit" },
+	{ word: "read" },
+	{ word: "unfolded" },
+	{ word: "be" },
+	{ word: "medium" },
+	{ word: "becomes" },
+	{ word: "knowledges" },
+	{ word: "these" },
+	{ word: "slices" },
+	{ word: "revealing" },
+	{ word: "unfolding" },
+	{ word: "deconstructing" },
+	{ word: "understand" },
+	{ word: "tools" },
+	{ word: "as" },
+	{ word: "understanding" },
+	{ word: "use" },
+	{ word: "processes" },
+	{ word: "tactile" },
+	{ word: "dissemination" },
+	{ word: "knowledge" },
+
+
 	{ word: "k_1" },
 	{ word: "k_2" },
 	{ word: "k_3" },
@@ -326,8 +443,8 @@ function play_sample(audioBuffer) {
 }
 
 function calculate_playback(milliseconds) {
-	let playback_offset = map_value(milliseconds, 0, 3500, 0, .7)
-	return 1.25 - playback_offset
+	let playback_offset = map_value(milliseconds, 0, 3500, 0, .3)
+	return 1.15 - playback_offset
 }
 
 function get_audio(word: string) {
@@ -342,6 +459,15 @@ function check_last_word() {
 	let len = typed().split(" ").length
 	let last_word = typed().split(" ")[len - 1]
 	let last_audio = get_audio(last_word.toLowerCase())
+
+	if (last_word === "cognition") {
+		flash = "COGNITION (<->) COGNITIVE"
+		return
+	}
+
+	if (last_word === "environment") {
+		type_in("They push to understand the noise the body is present in, and what they receive, they teach the body and this, unbeknownst to us, is how we move in the world.", 150)
+	}
 
 	if (last_audio) {
 		play_sample(last_audio);
@@ -372,7 +498,7 @@ to_type.forEach(async (x) => {
 // -----------------------
 let input = () => {
 	return html`
-		input [value=${typed} oninput=${(e) => typed.set(e.target.value)} onkeydown=${play_keyboard}]`
+		textarea [value=${typed} oninput=${(e) => typed.set(e.target.value)} onkeydown=${play_keyboard}]`
 }
 
 function type_in(sentence, speed = 150) {
@@ -381,6 +507,7 @@ function type_in(sentence, speed = 150) {
 	keys.forEach((key, i) => {
 		setTimeout(() => {
 			typed.set(typed() + key)
+			play_keyboard()
 		}, i * speed)
 	})
 }

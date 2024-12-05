@@ -37133,6 +37133,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
   var capture;
   var mic;
   var capturing = false;
+  var xanh;
   var canvas = document.getElementById("p5");
   var c_width = canvas?.clientWidth;
   var c_height = canvas?.clientHeight;
@@ -37140,7 +37141,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
   var current = "spread_2";
   var time_since_last_word = 0;
   var typed = sig("");
-  var flash_timeout = 1e3;
+  var flash_timeout = 1500;
   var flash_counter = 0;
   var flash = null;
   var flash_bg = "yellow";
@@ -37156,7 +37157,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
     ]
   };
   var grid_compare = Array.from({ length: 500 }, () => Array.from({ length: 500 }, () => Math.random()));
-  var counter = 100;
+  var counter = 0;
   var meter;
   var sketch = (p52) => {
     function draw_video() {
@@ -37206,12 +37207,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
           if (text !== current) {
             if (options.includes(text)) {
               counter = 0;
-            }
-            if (text == "spread_1") {
-              current = "spread_1";
-            }
-            if (text == "spread_2") {
-              current = "spread_2";
+              current = text;
             }
           }
         }).catch((error) => {
@@ -37219,6 +37215,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
       }, 500);
     }
     p52.preload = () => {
+      xanh = p52.loadFont("./xanh.ttf");
       Object.values(spreads).forEach((spread2) => {
         spread2.forEach((fn) => {
           if ("string" === typeof fn[0] && fn[0].includes("image") && "string" === typeof fn[1]) {
@@ -37250,7 +37247,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
       p52.fill(255, 150, 0);
       p52.ellipse(200, 200, 500, 500);
       p52.textSize(12);
-      if (val > 0) counter = counter + val / 15;
+      if (val > 0) counter = counter + val / 25;
       draw_video();
       p52.fill(0);
       p52.text("Value: " + val, 10, 30);
@@ -37263,7 +37260,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
           p52.fill(flash_bg);
           p52.rect(0, 0, p52.width, p52.height);
           p52.fill(flash_text);
-          p52.textSize(50);
+          p52.textSize(80);
           p52.textAlign(p52.CENTER, p52.CENTER);
           p52.text(flash, p52.width / 2, p52.height / 2);
           p52.textAlign(p52.LEFT, p52.TOP);
@@ -37275,20 +37272,31 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
       }
     };
     p52.keyPressed = (e3) => {
-      if (e3.target instanceof HTMLInputElement) return;
+      if (e3.target instanceof HTMLInputElement || e3.target instanceof HTMLTextAreaElement) return;
       if (e3.key === "c") {
         flash = "COGNITION (<->) COGNITIVE";
+        flash_bg = "yellow";
+        flash_text = "blue";
+      }
+      if (e3.key === "f") {
+        setTimeout(() => {
+          document.querySelector("input").focus();
+        }, 5);
       }
       if (e3.key === "a") {
         flash = "AXIOM";
+        flash_bg = "cyan";
+        flash_text = "yellow";
       }
       if (e3.key === "q") {
         flash = "QUESTION";
+        flash_bg = "blue";
+        flash_text = "cyan";
       }
       if (e3.key === "i") {
         flash = "IMPLICATION";
-        flash_bg = "black";
-        flash_text = "white";
+        flash_bg = "white";
+        flash_text = "black";
       }
     };
     p52.image_grid = image_grid;
@@ -37296,8 +37304,109 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
   new import_p5.default(sketch, document.getElementById("p5"));
   var audioContext = new AudioContext();
   var to_type = [
-    { word: "a" },
     { word: "hello" },
+    { word: "if" },
+    { word: "we" },
+    { word: "consider" },
+    { word: "but" },
+    { word: "if" },
+    { word: "mind" },
+    { word: "with" },
+    { word: "linked" },
+    { word: "necessarily" },
+    { word: "not" },
+    { word: "then" },
+    { word: "axiom" },
+    { word: "an" },
+    { word: "as" },
+    { word: "world" },
+    { word: "move" },
+    { word: "how" },
+    { word: "us" },
+    { word: "unbeknownst" },
+    { word: "this" },
+    { word: "teach" },
+    { word: "recieve" },
+    { word: "what" },
+    { word: "and" },
+    { word: "in" },
+    { word: "is" },
+    { word: "understand" },
+    { word: "push" },
+    { word: "they" },
+    { word: "environment" },
+    { word: "external" },
+    { word: "our" },
+    { word: "noise" },
+    { word: "below" },
+    { word: "right" },
+    { word: "present" },
+    { word: "still" },
+    { word: "untrained" },
+    { word: "numb" },
+    { word: "mutates" },
+    { word: "becomes" },
+    { word: "sense" },
+    { word: "the" },
+    { word: "of" },
+    { word: "perceptors" },
+    { word: "to" },
+    { word: "ranges" },
+    { word: "above" },
+    { word: "consider" },
+    { word: "we" },
+    { word: "body" },
+    { word: "bring" },
+    { word: "them" },
+    { word: "chasm" },
+    { word: "close" },
+    { word: "work" },
+    { word: "mind" },
+    { word: "alien" },
+    { word: "brain" },
+    { word: "between" },
+    { word: "shift" },
+    { word: "we" },
+    { word: "itself" },
+    { word: "through" },
+    { word: "acting" },
+    { word: "by" },
+    { word: "represent" },
+    { word: "thus" },
+    { word: "can" },
+    { word: "function" },
+    { word: "motor" },
+    { word: "its" },
+    { word: "sensory" },
+    { word: "it" },
+    { word: "reframes" },
+    { word: "interprets" },
+    { word: "also" },
+    { word: "but" },
+    { word: "embodies" },
+    { word: "only" },
+    { word: "not" },
+    { word: "explicit" },
+    { word: "read" },
+    { word: "unfolded" },
+    { word: "be" },
+    { word: "medium" },
+    { word: "becomes" },
+    { word: "knowledges" },
+    { word: "these" },
+    { word: "slices" },
+    { word: "revealing" },
+    { word: "unfolding" },
+    { word: "deconstructing" },
+    { word: "understand" },
+    { word: "tools" },
+    { word: "as" },
+    { word: "understanding" },
+    { word: "use" },
+    { word: "processes" },
+    { word: "tactile" },
+    { word: "dissemination" },
+    { word: "knowledge" },
     { word: "k_1" },
     { word: "k_2" },
     { word: "k_3" },
@@ -37350,8 +37459,8 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
     source.start();
   }
   function calculate_playback(milliseconds) {
-    let playback_offset = map_value(milliseconds, 0, 3500, 0, 0.7);
-    return 1.25 - playback_offset;
+    let playback_offset = map_value(milliseconds, 0, 3500, 0, 0.3);
+    return 1.15 - playback_offset;
   }
   function get_audio(word) {
     let found = to_type.find((x) => x.word.toLowerCase() === word);
@@ -37362,6 +37471,13 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
     let len = typed().split(" ").length;
     let last_word = typed().split(" ")[len - 1];
     let last_audio = get_audio(last_word.toLowerCase());
+    if (last_word === "cognition") {
+      flash = "COGNITION (<->) COGNITIVE";
+      return;
+    }
+    if (last_word === "environment") {
+      type_in("They push to understand the noise the body is present in, and what they receive, they teach the body and this, unbeknownst to us, is how we move in the world.", 150);
+    }
     if (last_audio) {
       play_sample(last_audio);
       reset_last_word();
@@ -37375,8 +37491,17 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
   });
   var input = () => {
     return h2`
-		input [value=${typed} oninput=${(e3) => typed.set(e3.target.value)} onkeydown=${play_keyboard}]`;
+		textarea [value=${typed} oninput=${(e3) => typed.set(e3.target.value)} onkeydown=${play_keyboard}]`;
   };
+  function type_in(sentence, speed = 150) {
+    let keys = sentence.split("");
+    keys.forEach((key, i) => {
+      setTimeout(() => {
+        typed.set(typed() + key);
+        play_keyboard();
+      }, i * speed);
+    });
+  }
   render(input, document.querySelector(".controller"));
 })();
 /*! Bundled license information:

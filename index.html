@@ -7,6 +7,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <style>
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
 	.container {
 		display: flex;
 		justify-content: center;
@@ -16,8 +22,8 @@
 	}
 
 	#p5 {
-		width: 95vw;
-		height: 95vh;
+		width: 92vw;
+		height: 92vh;
 		border: 1px solid black;
 		border: 1px solid black;
 		filter: invert(1);
@@ -28,12 +34,30 @@
 		border: 1px solid black;
 		background-color: white;
 		padding: 10px;
+		width: 80vw;
+	}
+
+	textarea {
+		all: unset;
+		/* background-color: white; */
+		padding: 10px;
+		font-size: 3rem;
+		width: 80vw;
+		opacity: 0.5;
+		height: 30vh;
+		border: 1px dotted black;
+	}
+
+	textarea:focus {
+		opacity: 1;
+		background-color: white;
+		border: 1px solid black;
 	}
 
 	.controller {
 		position: fixed;
 		z-index: 10;
-		bottom: 2.5vh;
+		top: 1.5vh;
 		right: 2.5vw;
 	}
 </style>

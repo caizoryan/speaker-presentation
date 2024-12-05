@@ -37138,7 +37138,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
   var c_width = canvas?.clientWidth;
   var c_height = canvas?.clientHeight;
   var image_layer;
-  var current = "spread_9";
+  var current = "spread_12";
   var time_since_last_word = 0;
   var typed = sig("");
   var flash_timeout = 1500;
@@ -37198,10 +37198,27 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
       ["text", "SPREAD 9", 50, 50],
       ["image_grid", "./images/9_1.png", 50, 150, 800, 800, () => counter - 300],
       ["image_grid", "./images/9_2.png", 850, 150, 800, 800, () => counter]
-    ]
+    ],
+    spread_11: [
+      ["textSize", 50],
+      ["text", "SPREAD 11", 50, 50],
+      ["image_grid", "./images/11.png", 50, 150, 800, 800, () => counter > 200 ? 0 : counter],
+      ["image_grid", "./images/11_1.png", 850, 150, 800, 800, () => counter - 100],
+      ["image_grid", "./images/11_2.png", 50, 150, 800, 800, () => counter - 150]
+    ],
+    spread_12: [
+      ["textSize", 50],
+      ["text", "SPREAD 12", 50, 50],
+      ["image_grid", "./images/12.png", 50, 150, 250, 250, () => counter],
+      ["image_grid", "./images/12_1.png", 1350, 150, 550, 550, () => counter - 100],
+      ["image_grid", "./images/12_2.png", 50, 150, 800, 800, () => counter - 150],
+      ["image_grid", "./images/12_3.png", 1250, 750, 100, 100, () => counter - 200],
+      ["image_grid", "./images/12_4.png", 750, 150, 800, 800, () => counter - 250]
+    ],
+    spread_13: []
   };
   var grid_compare = Array.from({ length: 500 }, () => Array.from({ length: 500 }, () => Math.random()));
-  var counter = 100;
+  var counter = 500;
   var meter;
   var sketch = (p52) => {
     function draw_video() {

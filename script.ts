@@ -30,7 +30,7 @@ let c_height = canvas?.clientHeight
 
 let image_layer
 
-let current = "spread_9"
+let current = "spread_12"
 
 let time_since_last_word = 0
 let typed = sig("")
@@ -106,14 +106,34 @@ let spreads = {
 		["image_grid", "./images/9_2.png", 850, 150, 800, 800, () => counter],
 	],
 
+	spread_11: [
+		["textSize", 50],
+		["text", "SPREAD 11", 50, 50],
+		["image_grid", "./images/11.png", 50, 150, 800, 800, () => counter > 200 ? 0 : counter],
+		["image_grid", "./images/11_1.png", 850, 150, 800, 800, () => counter - 100],
+		["image_grid", "./images/11_2.png", 50, 150, 800, 800, () => counter - 150],
+	],
 
+	spread_12: [
+		["textSize", 50],
+		["text", "SPREAD 12", 50, 50],
+		["image_grid", "./images/12.png", 50, 150, 250, 250, () => counter],
+		["image_grid", "./images/12_1.png", 1350, 150, 550, 550, () => counter - 100],
+		["image_grid", "./images/12_2.png", 50, 150, 800, 800, () => counter - 150],
+		["image_grid", "./images/12_3.png", 1250, 750, 100, 100, () => counter - 200],
+		["image_grid", "./images/12_4.png", 750, 150, 800, 800, () => counter - 250],
+	],
+
+	spread_13: [
+
+	]
 
 }
 
 
 let grid_compare = Array.from({ length: 500 }, () => Array.from({ length: 500 }, () => Math.random()))
 // let counter = 0
-let counter = 100
+let counter = 500
 let meter
 
 let sketch = (p5: p5) => {

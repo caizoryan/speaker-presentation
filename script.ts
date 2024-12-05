@@ -30,7 +30,7 @@ let c_height = canvas?.clientHeight
 
 let image_layer
 
-let current = "spread_2"
+let current = "spread_9"
 
 let time_since_last_word = 0
 let typed = sig("")
@@ -43,21 +43,77 @@ let flash_bg = "yellow"
 let flash_text = "blue"
 
 let spreads = {
+	spread_0: [
+		["image_grid", "./images/0.png", 200, 200, 800, 800, () => counter],
+		["image_grid", "./images/0_1.png", 50, 50, 480, 290, () => counter],
+		["image_grid", "./images/0_2.png", 1300, 500, 480, 290, () => counter]
+	],
 	spread_1: [
-		["image_grid", "./spread_1.png", 50, 50, 180, 290, () => counter],
+		["textSize", 50],
+		["text", "SPREAD 1", 50, 50],
+		["image_grid", "./images/1.png", 50, 50, 1200, 500, () => counter],
 	],
 
 	spread_2: [
-		["image_grid", "./spread_2.png", 50, 50, 180, 290, () => counter],
-		["image_grid", "./spread_1.png", 150, 50, 180, 290, () => counter],
-		["image_grid", "./spinner.gif", 50, 150, 180, 290, () => counter],
+		["textSize", 50],
+		["text", "SPREAD 2", 50, 50],
+		["image_grid", "./images/2.png", 1250, 550, 300, 300, () => counter],
+		["image_grid", "./images/2_1.png", 150, 150, 1200, 600, () => counter - 50],
+
 	],
+
+	spread_3: [
+		["textSize", 50],
+		["text", "SPREAD 3", 50, 50],
+		["image_grid", "./images/3.png", 450, 150, 800, 800, () => counter],
+
+	],
+
+	spread_4: [
+		["textSize", 50],
+		["text", "SPREAD 4", 50, 50],
+		["image_grid", "./images/spinner.gif", 50, 50, 1200, 500, () => counter - 300],
+	],
+
+	spread_5: [
+		["textSize", 50],
+		["text", "SPREAD 5", 50, 50],
+		["image_grid", "./images/5.png", 250, 150, 1400, 800, () => counter],
+	],
+
+	spread_6: [
+		["textSize", 50],
+		["text", "SPREAD 6", 50, 50],
+		["image_grid", "./images/6.png", 250, 150, 1200, 500, () => counter],
+	],
+
+	spread_7: [
+		["textSize", 50],
+		["text", "SPREAD 7", 50, 50],
+		["image_grid", "./images/7.png", 250, 150, 1200, 500, () => counter],
+	],
+
+	spread_8: [
+		["textSize", 50],
+		["text", "SPREAD 8", 50, 50],
+		["image_grid", "./images/8.jpg", 250, 150, 500, 800, () => counter],
+	],
+
+	spread_9: [
+		["textSize", 50],
+		["text", "SPREAD 9", 50, 50],
+		["image_grid", "./images/9_1.png", 50, 150, 800, 800, () => counter - 300],
+		["image_grid", "./images/9_2.png", 850, 150, 800, 800, () => counter],
+	],
+
+
 
 }
 
 
 let grid_compare = Array.from({ length: 500 }, () => Array.from({ length: 500 }, () => Math.random()))
-let counter = 0
+// let counter = 0
+let counter = 100
 let meter
 
 let sketch = (p5: p5) => {
@@ -107,7 +163,7 @@ let sketch = (p5: p5) => {
 	}
 
 	function qr_code_init() {
-		let options = ["spread_1", "spread_2", "spread_3", "spread_4"]
+		let options = Object.keys(spreads)
 		setInterval(() => {
 			let canvas = document.querySelector('canvas');
 			if (!canvas) return;
@@ -151,6 +207,8 @@ let sketch = (p5: p5) => {
 		mic.connect(meter);
 		mic.open();
 
+		p5.textFont("monospace")
+
 
 		if (capturing) {
 			//@ts-ignore
@@ -166,13 +224,12 @@ let sketch = (p5: p5) => {
 		let val = meter.getValue() + 30
 		let delta = p5.deltaTime
 		time_since_last_word += delta
-		// p5.textFont(xanh)
 		p5.background(255);
 		p5.fill(255, 150, 0);
-		p5.ellipse(200, 200, 500, 500);
+		// p5.ellipse(200, 200, 500, 500);
 		p5.textSize(12);
 
-		if (val > 0) counter = (counter + (val / 25))
+		if (val > 0) counter = (counter + (val / 15))
 
 		// draw base image
 		draw_video()
@@ -462,6 +519,8 @@ function check_last_word() {
 
 	if (last_word === "cognition") {
 		flash = "COGNITION (<->) COGNITIVE"
+		flash_bg = "yellow"
+		flash_text = "blue"
 		return
 	}
 

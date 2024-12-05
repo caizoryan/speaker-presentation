@@ -37138,7 +37138,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
   var c_width = canvas?.clientWidth;
   var c_height = canvas?.clientHeight;
   var image_layer;
-  var current = "spread_2";
+  var current = "spread_9";
   var time_since_last_word = 0;
   var typed = sig("");
   var flash_timeout = 1500;
@@ -37147,17 +37147,61 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
   var flash_bg = "yellow";
   var flash_text = "blue";
   var spreads = {
+    spread_0: [
+      ["image_grid", "./images/0.png", 200, 200, 800, 800, () => counter],
+      ["image_grid", "./images/0_1.png", 50, 50, 480, 290, () => counter],
+      ["image_grid", "./images/0_2.png", 1300, 500, 480, 290, () => counter]
+    ],
     spread_1: [
-      ["image_grid", "./spread_1.png", 50, 50, 180, 290, () => counter]
+      ["textSize", 50],
+      ["text", "SPREAD 1", 50, 50],
+      ["image_grid", "./images/1.png", 50, 50, 1200, 500, () => counter]
     ],
     spread_2: [
-      ["image_grid", "./spread_2.png", 50, 50, 180, 290, () => counter],
-      ["image_grid", "./spread_1.png", 150, 50, 180, 290, () => counter],
-      ["image_grid", "./spinner.gif", 50, 150, 180, 290, () => counter]
+      ["textSize", 50],
+      ["text", "SPREAD 2", 50, 50],
+      ["image_grid", "./images/2.png", 1250, 550, 300, 300, () => counter],
+      ["image_grid", "./images/2_1.png", 150, 150, 1200, 600, () => counter - 50]
+    ],
+    spread_3: [
+      ["textSize", 50],
+      ["text", "SPREAD 3", 50, 50],
+      ["image_grid", "./images/3.png", 450, 150, 800, 800, () => counter]
+    ],
+    spread_4: [
+      ["textSize", 50],
+      ["text", "SPREAD 4", 50, 50],
+      ["image_grid", "./images/spinner.gif", 50, 50, 1200, 500, () => counter - 300]
+    ],
+    spread_5: [
+      ["textSize", 50],
+      ["text", "SPREAD 5", 50, 50],
+      ["image_grid", "./images/5.png", 250, 150, 1400, 800, () => counter]
+    ],
+    spread_6: [
+      ["textSize", 50],
+      ["text", "SPREAD 6", 50, 50],
+      ["image_grid", "./images/6.png", 250, 150, 1200, 500, () => counter]
+    ],
+    spread_7: [
+      ["textSize", 50],
+      ["text", "SPREAD 7", 50, 50],
+      ["image_grid", "./images/7.png", 250, 150, 1200, 500, () => counter]
+    ],
+    spread_8: [
+      ["textSize", 50],
+      ["text", "SPREAD 8", 50, 50],
+      ["image_grid", "./images/8.jpg", 250, 150, 500, 800, () => counter]
+    ],
+    spread_9: [
+      ["textSize", 50],
+      ["text", "SPREAD 9", 50, 50],
+      ["image_grid", "./images/9_1.png", 50, 150, 800, 800, () => counter - 300],
+      ["image_grid", "./images/9_2.png", 850, 150, 800, 800, () => counter]
     ]
   };
   var grid_compare = Array.from({ length: 500 }, () => Array.from({ length: 500 }, () => Math.random()));
-  var counter = 0;
+  var counter = 100;
   var meter;
   var sketch = (p52) => {
     function draw_video() {
@@ -37198,7 +37242,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
       p52.blendMode(p52.BLEND);
     }
     function qr_code_init() {
-      let options = ["spread_1", "spread_2", "spread_3", "spread_4"];
+      let options = Object.keys(spreads);
       setInterval(() => {
         let canvas2 = document.querySelector("canvas");
         if (!canvas2) return;
@@ -37232,6 +37276,7 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
       meter = new Meter();
       mic.connect(meter);
       mic.open();
+      p52.textFont("monospace");
       if (capturing) {
         capture = p52.createCapture(p52.VIDEO);
         capture.size(c_width, c_height);
@@ -37245,9 +37290,8 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
       time_since_last_word += delta;
       p52.background(255);
       p52.fill(255, 150, 0);
-      p52.ellipse(200, 200, 500, 500);
       p52.textSize(12);
-      if (val > 0) counter = counter + val / 25;
+      if (val > 0) counter = counter + val / 15;
       draw_video();
       p52.fill(0);
       p52.text("Value: " + val, 10, 30);
@@ -37473,6 +37517,8 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
     let last_audio = get_audio(last_word.toLowerCase());
     if (last_word === "cognition") {
       flash = "COGNITION (<->) COGNITIVE";
+      flash_bg = "yellow";
+      flash_text = "blue";
       return;
     }
     if (last_word === "environment") {

@@ -17,7 +17,7 @@ import * as tone from "tone"
 //
 let capture; // webcam capture
 let mic; // microphone capture
-let capturing = false
+let capturing = true
 let xanh
 
 // ---------------------
@@ -30,7 +30,7 @@ let c_height = canvas?.clientHeight
 
 let image_layer
 
-let current = "spread_12"
+let current = "spread_0"
 
 let time_since_last_word = 0
 let typed = sig("")
@@ -45,8 +45,8 @@ let flash_text = "blue"
 let spreads = {
 	spread_0: [
 		["image_grid", "./images/0.png", 200, 200, 800, 800, () => counter],
-		["image_grid", "./images/0_1.png", 50, 50, 480, 290, () => counter],
-		["image_grid", "./images/0_2.png", 1300, 500, 480, 290, () => counter]
+		["image_grid", "./images/0_1.png", 50, 50, 480, 290, () => counter - 50],
+		["image_grid", "./images/0_2.png", 1300, 500, 480, 290, () => counter - 100]
 	],
 	spread_1: [
 		["textSize", 50],
@@ -125,7 +125,18 @@ let spreads = {
 	],
 
 	spread_13: [
+		["textSize", 50],
+		["text", "SPREAD 13", 50, 50],
+		["image_grid", "./images/13.png", 50, 150, 800, 800, () => counter],
+		// ["image_grid", "./images/13_1.gif", 1250, 150, 500, 400, () => counter - 100],
+		["image_grid", "./images/13_2.gif", 950, 150, 1000, 800, () => counter - 100],
+	],
 
+	spread_14: [
+		["textSize", 50],
+		["text", "SPREAD 14", 50, 50],
+		["image_grid", "./images/14_1.gif", 100, 150, 700, 800, () => counter],
+		["image_grid", "./images/14.png", 750, 150, 1100, 800, () => counter - 100],
 	]
 
 }
@@ -133,7 +144,7 @@ let spreads = {
 
 let grid_compare = Array.from({ length: 500 }, () => Array.from({ length: 500 }, () => Math.random()))
 // let counter = 0
-let counter = 500
+let counter = 0
 let meter
 
 let sketch = (p5: p5) => {
@@ -190,10 +201,12 @@ let sketch = (p5: p5) => {
 			QrScanner.scanImage(canvas, { returnDetailedScanResult: true })
 				.then(result => {
 					let text = result.data
+					console.log(text)
 
 					if (text !== current) {
 						if (options.includes(text)) {
 							counter = 0
+							image_layer.clear()
 							current = text
 						}
 					}
@@ -226,7 +239,7 @@ let sketch = (p5: p5) => {
 		meter = new tone.Meter();
 		mic.connect(meter);
 		mic.open();
-
+		// p5.frameRate(3);
 		p5.textFont("monospace")
 
 
@@ -286,6 +299,9 @@ let sketch = (p5: p5) => {
 	p5.keyPressed = (e) => {
 		// if e target is an input do not run
 		if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return
+		if (e.key === "x") {
+			counter = 0
+		}
 		if (e.key === "c") {
 			flash = "COGNITION (<->) COGNITIVE"
 			flash_bg = "yellow"

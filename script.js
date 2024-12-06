@@ -37132,13 +37132,13 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
   // script.ts
   var capture;
   var mic;
-  var capturing = false;
+  var capturing = true;
   var xanh;
   var canvas = document.getElementById("p5");
   var c_width = canvas?.clientWidth;
   var c_height = canvas?.clientHeight;
   var image_layer;
-  var current = "spread_12";
+  var current = "spread_0";
   var time_since_last_word = 0;
   var typed = sig("");
   var flash_timeout = 1500;
@@ -37149,8 +37149,8 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
   var spreads = {
     spread_0: [
       ["image_grid", "./images/0.png", 200, 200, 800, 800, () => counter],
-      ["image_grid", "./images/0_1.png", 50, 50, 480, 290, () => counter],
-      ["image_grid", "./images/0_2.png", 1300, 500, 480, 290, () => counter]
+      ["image_grid", "./images/0_1.png", 50, 50, 480, 290, () => counter - 50],
+      ["image_grid", "./images/0_2.png", 1300, 500, 480, 290, () => counter - 100]
     ],
     spread_1: [
       ["textSize", 50],
@@ -37215,10 +37215,22 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
       ["image_grid", "./images/12_3.png", 1250, 750, 100, 100, () => counter - 200],
       ["image_grid", "./images/12_4.png", 750, 150, 800, 800, () => counter - 250]
     ],
-    spread_13: []
+    spread_13: [
+      ["textSize", 50],
+      ["text", "SPREAD 13", 50, 50],
+      ["image_grid", "./images/13.png", 50, 150, 800, 800, () => counter],
+      // ["image_grid", "./images/13_1.gif", 1250, 150, 500, 400, () => counter - 100],
+      ["image_grid", "./images/13_2.gif", 950, 150, 1e3, 800, () => counter - 100]
+    ],
+    spread_14: [
+      ["textSize", 50],
+      ["text", "SPREAD 14", 50, 50],
+      ["image_grid", "./images/14_1.gif", 100, 150, 700, 800, () => counter],
+      ["image_grid", "./images/14.png", 750, 150, 1100, 800, () => counter - 100]
+    ]
   };
   var grid_compare = Array.from({ length: 500 }, () => Array.from({ length: 500 }, () => Math.random()));
-  var counter = 500;
+  var counter = 0;
   var meter;
   var sketch = (p52) => {
     function draw_video() {
@@ -37265,9 +37277,11 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
         if (!canvas2) return;
         qr_scanner_min_default.scanImage(canvas2, { returnDetailedScanResult: true }).then((result) => {
           let text = result.data;
+          console.log(text);
           if (text !== current) {
             if (options.includes(text)) {
               counter = 0;
+              image_layer.clear();
               current = text;
             }
           }
@@ -37334,6 +37348,9 @@ break;case "inversionMode":switch(c){case "original":Y="dontInvert";break;case "
     };
     p52.keyPressed = (e3) => {
       if (e3.target instanceof HTMLInputElement || e3.target instanceof HTMLTextAreaElement) return;
+      if (e3.key === "x") {
+        counter = 0;
+      }
       if (e3.key === "c") {
         flash = "COGNITION (<->) COGNITIVE";
         flash_bg = "yellow";
